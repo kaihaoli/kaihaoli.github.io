@@ -99,20 +99,24 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Kaihao">
-<meta property="og:url" content="http://kaihaoli.github.io/index.html">
+  <meta name="description" content="#Segment Tree 线段树线段树参考整理自：九章算法线段树教程 1 线段树是什么？Google常考数据结构，国内也经常问这个。  线段树是一种高级数据结构，也是一种树结构，准确的说是二叉树，它能够高效的处理区间修改查询等问题。 线段树是一种二叉搜索树，与区间树相似，它将一个区间划分成一些单元区间，每个单元区间对应线段树中的一个叶结点。 线段树中的每一个非叶子节点[a,b]，它的左儿子表示的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Segment-Tree">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/04/10/Segment-Tree/index.html">
 <meta property="og:site_name" content="Kaihao">
+<meta property="og:description" content="#Segment Tree 线段树线段树参考整理自：九章算法线段树教程 1 线段树是什么？Google常考数据结构，国内也经常问这个。  线段树是一种高级数据结构，也是一种树结构，准确的说是二叉树，它能够高效的处理区间修改查询等问题。 线段树是一种二叉搜索树，与区间树相似，它将一个区间划分成一些单元区间，每个单元区间对应线段树中的一个叶结点。 线段树中的每一个非叶子节点[a,b]，它的左儿子表示的">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-10T18:24:19.124Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kaihao">
+<meta name="twitter:title" content="Segment-Tree">
+<meta name="twitter:description" content="#Segment Tree 线段树线段树参考整理自：九章算法线段树教程 1 线段树是什么？Google常考数据结构，国内也经常问这个。  线段树是一种高级数据结构，也是一种树结构，准确的说是二叉树，它能够高效的处理区间修改查询等问题。 线段树是一种二叉搜索树，与区间树相似，它将一个区间划分成一些单元区间，每个单元区间对应线段树中的一个叶结点。 线段树中的每一个非叶子节点[a,b]，它的左儿子表示的">
 
 
 
 
 
 
-  <link rel="canonical" href="http://kaihaoli.github.io/"/>
+  <link rel="canonical" href="http://kaihaoli.github.io/2018/04/10/Segment-Tree/"/>
 
 
 
@@ -122,7 +126,7 @@
   };
 </script>
 
-  <title>Kaihao</title>
+  <title>Segment-Tree | Kaihao</title>
   
 
 
@@ -169,8 +173,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -210,7 +213,7 @@
         
           
   
-  <li class="menu-item menu-item-home menu-item-active">
+  <li class="menu-item menu-item-home">
     <a href="/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
 </li>
@@ -278,9 +281,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -312,9 +315,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/10/Segment-Tree/" itemprop="url">Segment-Tree</a></h1>
+          <h1 class="post-title" itemprop="name headline">Segment-Tree</h1>
         
 
         <div class="post-meta">
@@ -363,9 +364,7 @@
       
 
       
-        
-          
-            <p>#Segment Tree 线段树<br>线段树参考整理自：<a href="https://www.jiuzhang.com/tutorial/segment-tree/86" target="_blank" rel="noopener">九章算法线段树教程</a></p>
+        <p>#Segment Tree 线段树<br>线段树参考整理自：<a href="https://www.jiuzhang.com/tutorial/segment-tree/86" target="_blank" rel="noopener">九章算法线段树教程</a></p>
 <h2 id="1-线段树是什么？"><a href="#1-线段树是什么？" class="headerlink" title="1 线段树是什么？"></a>1 线段树是什么？</h2><p>Google常考数据结构，国内也经常问这个。</p>
 <ul>
 <li>线段树是一种高级数据结构，也是一种树结构，准确的说是二叉树，它能够高效的处理<strong>区间</strong>修改查询等问题。</li>
@@ -406,8 +405,6 @@
 <li>所以这个题得考虑别的解决方案</li>
 </ul>
 
-          
-        
       
     </div>
 
@@ -427,12 +424,12 @@
       
 
       
+      
+      
 
       
 
       
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -442,14 +439,19 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -470,8 +472,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -525,6 +536,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-线段树是什么？"><span class="nav-number">1.</span> <span class="nav-text">1 线段树是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-线段树的创建"><span class="nav-number">2.</span> <span class="nav-text">2 线段树的创建</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LintCode-201-Segment-Tree-Build"><span class="nav-number">2.1.</span> <span class="nav-text">LintCode 201. Segment Tree Build</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LintCode-439-Segment-Tree-Build-II"><span class="nav-number">3.</span> <span class="nav-text">LintCode 439. Segment Tree Build II</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-线段树的更新"><span class="nav-number">4.</span> <span class="nav-text">3 线段树的更新</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LintCode-203-Segment-Tree-Modify"><span class="nav-number">4.1.</span> <span class="nav-text">LintCode 203. Segment Tree Modify</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-线段树的查询"><span class="nav-number">5.</span> <span class="nav-text">4 线段树的查询</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#LintCode-202-Segment-Tree-Query"><span class="nav-number">5.1.</span> <span class="nav-text">LintCode 202. Segment Tree Query</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-线段树的应用"><span class="nav-number">6.</span> <span class="nav-text">5 线段树的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线段树的基本应用"><span class="nav-number">6.1.</span> <span class="nav-text">线段树的基本应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#307-Range-Sum-Query-Mutable"><span class="nav-number">6.2.</span> <span class="nav-text">307. Range Sum Query - Mutable</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#LintCode-249-Count-of-Smaller-Number-before-itsel"><span class="nav-number">6.3.</span> <span class="nav-text">LintCode 249. Count of Smaller Number before itsel</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#315-Count-of-Smaller-Numbers-After-Self"><span class="nav-number">6.4.</span> <span class="nav-text">315. Count of Smaller Numbers After Self</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -659,6 +686,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
 
   
 
