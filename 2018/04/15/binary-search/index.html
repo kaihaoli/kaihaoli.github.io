@@ -3,19 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Kaihao Li | kaihao</title>
+    <title>Binary Search 二分查找 | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Email: kaihaohust#gmail.com (replace # with @ please) Tel: (+1)631-428-7454   OBJECTIVE Seeking 2018 Summer Software Engineer Internship  EDUCATION 2017.01 ~ 2018.12: M.S. in Computer Science, Stony">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Kaihao Li">
-<meta property="og:url" content="http://kaihaoli.github.io/about/index.html">
+    <meta name="description" content="#Binary Search 二分查找 经典二分查找LintCode 457. Classical Binary Search1 基础应用 输入是单调递增或者单调递减的数组(sorted array)  278. First Bad Version35. Search Insert Position34. Search for a Range74. Search a 2D Matrix2 旋转数">
+<meta name="keywords" content="Binary Search">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Binary Search 二分查找">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/04/15/binary-search/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="Email: kaihaohust#gmail.com (replace # with @ please) Tel: (+1)631-428-7454   OBJECTIVE Seeking 2018 Summer Software Engineer Internship  EDUCATION 2017.01 ~ 2018.12: M.S. in Computer Science, Stony">
+<meta property="og:description" content="#Binary Search 二分查找 经典二分查找LintCode 457. Classical Binary Search1 基础应用 输入是单调递增或者单调递减的数组(sorted array)  278. First Bad Version35. Search Insert Position34. Search for a Range74. Search a 2D Matrix2 旋转数">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-04-11T02:13:48.024Z">
+<meta property="og:updated_time" content="2018-04-16T03:39:04.806Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kaihao Li">
-<meta name="twitter:description" content="Email: kaihaohust#gmail.com (replace # with @ please) Tel: (+1)631-428-7454   OBJECTIVE Seeking 2018 Summer Software Engineer Internship  EDUCATION 2017.01 ~ 2018.12: M.S. in Computer Science, Stony">
+<meta name="twitter:title" content="Binary Search 二分查找">
+<meta name="twitter:description" content="#Binary Search 二分查找 经典二分查找LintCode 457. Classical Binary Search1 基础应用 输入是单调递增或者单调递减的数组(sorted array)  278. First Bad Version35. Search Insert Position34. Search for a Range74. Search a 2D Matrix2 旋转数">
     
 
     
@@ -188,7 +189,7 @@
 </aside>
 
             
-            <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-binary-search" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -196,10 +197,34 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            Kaihao Li
+            Binary Search 二分查找
         </h1>
     
 
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/04/15/binary-search/">
+            <time datetime="2018-04-16T03:31:10.000Z" itemprop="datePublished">2018-04-15</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/Binary-Search/">Binary Search</a>
+    </div>
+
+                    </div>
                 
             </header>
         
@@ -207,24 +232,22 @@
         <div class="article-entry" itemprop="articleBody">
         
             
-            <hr>
-<ul>
-<li><strong>Email</strong>: kaihaohust#gmail.com (replace # with @ please)</li>
-<li><strong>Tel</strong>: (+1)631-428-7454 </li>
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catálogo</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#经典二分查找"><span class="toc-number">1.</span> <span class="toc-text">经典二分查找</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LintCode-457-Classical-Binary-Search"><span class="toc-number">1.1.</span> <span class="toc-text">LintCode 457. Classical Binary Search</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-基础应用"><span class="toc-number">2.</span> <span class="toc-text">1 基础应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#278-First-Bad-Version"><span class="toc-number">2.1.</span> <span class="toc-text">278. First Bad Version</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#35-Search-Insert-Position"><span class="toc-number">2.2.</span> <span class="toc-text">35. Search Insert Position</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#34-Search-for-a-Range"><span class="toc-number">2.3.</span> <span class="toc-text">34. Search for a Range</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#74-Search-a-2D-Matrix"><span class="toc-number">2.4.</span> <span class="toc-text">74. Search a 2D Matrix</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-旋转数组系列"><span class="toc-number">3.</span> <span class="toc-text">2 旋转数组系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#162-Find-Peak-Element"><span class="toc-number">3.1.</span> <span class="toc-text">162. Find Peak Element</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#153-Find-Minimum-in-Rotated-Sorted-Array"><span class="toc-number">3.2.</span> <span class="toc-text">153. Find Minimum in Rotated Sorted Array</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#154-Find-Minimum-in-Rotated-Sorted-Array-II"><span class="toc-number">3.3.</span> <span class="toc-text">154. Find Minimum in Rotated Sorted Array II</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-Search-in-Rotated-Sorted-Array"><span class="toc-number">3.4.</span> <span class="toc-text">33. Search in Rotated Sorted Array</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#81-Search-in-Rotated-Sorted-Array-II"><span class="toc-number">3.5.</span> <span class="toc-text">81. Search in Rotated Sorted Array II</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-倍增法"><span class="toc-number">4.</span> <span class="toc-text">3 倍增法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#367-Valid-Perfect-Square"><span class="toc-number">4.1.</span> <span class="toc-text">367. Valid Perfect Square</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#69-Sqrt-x"><span class="toc-number">4.2.</span> <span class="toc-text">69. Sqrt(x)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#29-Divide-Two-Integers"><span class="toc-number">4.3.</span> <span class="toc-text">29. Divide Two Integers</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#综合拔高"><span class="toc-number">5.</span> <span class="toc-text">综合拔高</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Median-of-Two-Sorted-Arrays"><span class="toc-number">5.1.</span> <span class="toc-text">4. Median of Two Sorted Arrays</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#658-Find-K-Closest-Elements"><span class="toc-number">5.2.</span> <span class="toc-text">658. Find K Closest Elements</span></a></li></ol></li></ol>
+                </div>
+            
+            <p>#Binary Search 二分查找</p>
+<h2 id="经典二分查找"><a href="#经典二分查找" class="headerlink" title="经典二分查找"></a>经典二分查找</h2><h3 id="LintCode-457-Classical-Binary-Search"><a href="#LintCode-457-Classical-Binary-Search" class="headerlink" title="LintCode 457. Classical Binary Search"></a><a href="http://www.lintcode.com/en/problem/classical-binary-search/" target="_blank" rel="noopener">LintCode 457. Classical Binary Search</a></h3><h2 id="1-基础应用"><a href="#1-基础应用" class="headerlink" title="1 基础应用"></a>1 基础应用</h2><ul>
+<li>输入是单调递增或者单调递减的数组(sorted array)</li>
 </ul>
-<h4 id="OBJECTIVE"><a href="#OBJECTIVE" class="headerlink" title="OBJECTIVE"></a>OBJECTIVE</h4><ul>
-<li>Seeking 2018 Summer Software Engineer Internship</li>
+<h3 id="278-First-Bad-Version"><a href="#278-First-Bad-Version" class="headerlink" title="278. First Bad Version"></a><a href="https://leetcode.com/problems/first-bad-version/" target="_blank" rel="noopener">278. First Bad Version</a></h3><h3 id="35-Search-Insert-Position"><a href="#35-Search-Insert-Position" class="headerlink" title="35. Search Insert Position"></a><a href="https://leetcode.com/problems/search-insert-position/" target="_blank" rel="noopener">35. Search Insert Position</a></h3><h3 id="34-Search-for-a-Range"><a href="#34-Search-for-a-Range" class="headerlink" title="34. Search for a Range"></a><a href="https://leetcode.com/problems/search-for-a-range/" target="_blank" rel="noopener">34. Search for a Range</a></h3><h3 id="74-Search-a-2D-Matrix"><a href="#74-Search-a-2D-Matrix" class="headerlink" title="74. Search a 2D Matrix"></a><a href="https://leetcode.com/problems/search-a-2d-matrix/" target="_blank" rel="noopener">74. Search a 2D Matrix</a></h3><h2 id="2-旋转数组系列"><a href="#2-旋转数组系列" class="headerlink" title="2 旋转数组系列"></a>2 旋转数组系列</h2><ul>
+<li>Input的数组不再是单调递增或者单调递减</li>
 </ul>
-<h4 id="EDUCATION"><a href="#EDUCATION" class="headerlink" title="EDUCATION"></a>EDUCATION</h4><ul>
-<li><strong>2017.01 ~ 2018.12</strong>: M.S. in Computer Science, <strong>Stony Brook University</strong></li>
-<li><strong>2011.09 ~ 2015.06</strong>: B.S. in Computer Science Engineering, <strong>Huazhong University of Science and Technology</strong></li>
+<h3 id="162-Find-Peak-Element"><a href="#162-Find-Peak-Element" class="headerlink" title="162. Find Peak Element"></a><a href="https://leetcode.com/problems/find-peak-element/" target="_blank" rel="noopener">162. Find Peak Element</a></h3><h3 id="153-Find-Minimum-in-Rotated-Sorted-Array"><a href="#153-Find-Minimum-in-Rotated-Sorted-Array" class="headerlink" title="153. Find Minimum in Rotated Sorted Array"></a><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/" target="_blank" rel="noopener">153. Find Minimum in Rotated Sorted Array</a></h3><h3 id="154-Find-Minimum-in-Rotated-Sorted-Array-II"><a href="#154-Find-Minimum-in-Rotated-Sorted-Array-II" class="headerlink" title="154. Find Minimum in Rotated Sorted Array II"></a><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/" target="_blank" rel="noopener">154. Find Minimum in Rotated Sorted Array II</a></h3><h3 id="33-Search-in-Rotated-Sorted-Array"><a href="#33-Search-in-Rotated-Sorted-Array" class="headerlink" title="33. Search in Rotated Sorted Array"></a><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">33. Search in Rotated Sorted Array</a></h3><h3 id="81-Search-in-Rotated-Sorted-Array-II"><a href="#81-Search-in-Rotated-Sorted-Array-II" class="headerlink" title="81. Search in Rotated Sorted Array II"></a><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/" target="_blank" rel="noopener">81. Search in Rotated Sorted Array II</a></h3><h2 id="3-倍增法"><a href="#3-倍增法" class="headerlink" title="3 倍增法"></a>3 倍增法</h2><ul>
+<li>Input不再是数组</li>
 </ul>
-<h4 id="SKILLS"><a href="#SKILLS" class="headerlink" title="SKILLS"></a>SKILLS</h4><ul>
-<li><strong>Programming Languages</strong>: Python, Java, C. <del>Go, Scala</del></li>
-<li><del><strong>Full Stack</strong>:React, Express, Node.js</del></li>
-<li>~~<strong>Tools</strong>: Tensorflow, ~~</li>
-</ul>
-
+<h3 id="367-Valid-Perfect-Square"><a href="#367-Valid-Perfect-Square" class="headerlink" title="367. Valid Perfect Square"></a><a href="https://leetcode.com/problems/valid-perfect-square/" target="_blank" rel="noopener">367. Valid Perfect Square</a></h3><h3 id="69-Sqrt-x"><a href="#69-Sqrt-x" class="headerlink" title="69. Sqrt(x)"></a><a href="https://leetcode.com/problems/sqrtx/" target="_blank" rel="noopener">69. Sqrt(x)</a></h3><h3 id="29-Divide-Two-Integers"><a href="#29-Divide-Two-Integers" class="headerlink" title="29. Divide Two Integers"></a><a href="https://leetcode.com/problems/divide-two-integers/" target="_blank" rel="noopener">29. Divide Two Integers</a></h3><h2 id="综合拔高"><a href="#综合拔高" class="headerlink" title="综合拔高"></a>综合拔高</h2><h3 id="4-Median-of-Two-Sorted-Arrays"><a href="#4-Median-of-Two-Sorted-Arrays" class="headerlink" title="4. Median of Two Sorted Arrays"></a><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">4. Median of Two Sorted Arrays</a></h3><h3 id="658-Find-K-Closest-Elements"><a href="#658-Find-K-Closest-Elements" class="headerlink" title="658. Find K Closest Elements"></a><a href="https://leetcode.com/problems/find-k-closest-elements/" target="_blank" rel="noopener">658. Find K Closest Elements</a></h3>
         
         </div>
         <footer class="article-footer">
@@ -234,7 +257,7 @@
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/about/index.html" data-id="cjg1ox8xt0009kl78my2j3ex0" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/15/binary-search/" data-id="cjg1ox8vt0000kl78qcrz4w0q" class="article-share-link"><i class="fa fa-share"></i>Compartir</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -307,6 +330,16 @@
     </div>
     
         
+<nav id="article-nav">
+    
+    
+        <a href="/2018/04/10/Segment-Tree/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Más viejo</strong>
+            <div class="article-nav-title">Segment Tree 线段树</div>
+        </a>
+    
+</nav>
+
 
     
 </article>
