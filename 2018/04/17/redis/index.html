@@ -3,16 +3,22 @@
 <head>
     <meta charset="utf-8">
     
-    <title>categories | kaihao</title>
+    <title>redis | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="categories">
-<meta property="og:url" content="http://kaihaoli.github.io/categories/index.html">
+    <meta name="description" content="(参考资料:Redis学习教程Gitbook, RUNOOB Redis 教程) What is Redis Redis is an opensource(BSDlicensed), in-memory datas tructure store, used as database, cache and message broker. database只是Redis的一个应用， In-memory">
+<meta property="og:type" content="article">
+<meta property="og:title" content="redis">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/04/17/redis/index.html">
 <meta property="og:site_name" content="kaihao">
+<meta property="og:description" content="(参考资料:Redis学习教程Gitbook, RUNOOB Redis 教程) What is Redis Redis is an opensource(BSDlicensed), in-memory datas tructure store, used as database, cache and message broker. database只是Redis的一个应用， In-memory">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-10T20:19:56.378Z">
+<meta property="og:image" content="http://kaihaoli.github.io/2018/04/17/redis/rediseventloop.jpg">
+<meta property="og:image" content="http://kaihaoli.github.io/2018/04/17/redis/rediscache.png">
+<meta property="og:updated_time" content="2018-04-17T23:36:15.606Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="categories">
+<meta name="twitter:title" content="redis">
+<meta name="twitter:description" content="(参考资料:Redis学习教程Gitbook, RUNOOB Redis 教程) What is Redis Redis is an opensource(BSDlicensed), in-memory datas tructure store, used as database, cache and message broker. database只是Redis的一个应用， In-memory">
+<meta name="twitter:image" content="http://kaihaoli.github.io/2018/04/17/redis/rediseventloop.jpg">
     
 
     
@@ -185,7 +191,7 @@
 </aside>
 
             
-            <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -193,10 +199,29 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            categories
+            redis
         </h1>
     
 
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/04/17/redis/">
+            <time datetime="2018-04-17T23:23:40.000Z" itemprop="datePublished">2018-04-17</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Full-Stack/">Full Stack</a>
+    </div>
+
+                        
+                    </div>
                 
             </header>
         
@@ -204,7 +229,82 @@
         <div class="article-entry" itemprop="articleBody">
         
             
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Redis"><span class="toc-number">1.</span> <span class="toc-text">What is Redis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-Redis"><span class="toc-number">2.</span> <span class="toc-text">Why Redis</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Application"><span class="toc-number">3.</span> <span class="toc-text">Application</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis-Install-amp-Config"><span class="toc-number">4.</span> <span class="toc-text">Redis Install &amp; Config</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redis-in-Python"><span class="toc-number">5.</span> <span class="toc-text">Redis in Python</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Install"><span class="toc-number">5.1.</span> <span class="toc-text">Install</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Connection"><span class="toc-number">5.2.</span> <span class="toc-text">Connection</span></a></li></ol></li></ol>
+                </div>
             
+            <p>(参考资料:<a href="https://piaosanlang.gitbooks.io/redis/content/" target="_blank" rel="noopener">Redis学习教程Gitbook</a>, <a href="http://www.runoob.com/redis/redis-tutorial.html" target="_blank" rel="noopener">RUNOOB Redis 教程</a>)</p>
+<h2 id="What-is-Redis"><a href="#What-is-Redis" class="headerlink" title="What is Redis"></a>What is Redis</h2><ul>
+<li>Redis is an opensource(BSDlicensed), <strong>in-memory datas tructure store</strong>, used as <strong>database, cache and message broker</strong>.</li>
+<li>database只是Redis的一个应用， In-memory data structure store</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Data Structure</th>
+<th style="text-align:center">Operations</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Strings - 字符串</td>
+<td style="text-align:center">SET, GET, APPEND</td>
+</tr>
+<tr>
+<td style="text-align:center">Hashes - 哈希表</td>
+<td style="text-align:center">HSET, HGET</td>
+</tr>
+<tr>
+<td style="text-align:center">List - 列表</td>
+<td style="text-align:center">LPUSH, LRANGE, LSET, LTRIM</td>
+</tr>
+<tr>
+<td style="text-align:center">Set - 集合</td>
+<td style="text-align:center">SADD, SMEMBERS</td>
+</tr>
+<tr>
+<td style="text-align:center">Sorted Set</td>
+<td style="text-align:center">ZADD, ZRANGE, ZRANGEBYSCORE</td>
+</tr>
+</tbody>
+</table>
+<h2 id="Why-Redis"><a href="#Why-Redis" class="headerlink" title="Why Redis"></a>Why Redis</h2><ul>
+<li>Redis 有三个主要的特点, 有别于其它很多竞争对手 ：</li>
+<li>Redis支持<strong>数据的持久化</strong>，可以将内存中的数据保持在磁盘中，重启的时候可以 再次加载进行使用</li>
+<li>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储</li>
+<li>Redis支持<strong>数据的备份</strong>，即master-slave模式的数据备份。</li>
+<li>Redis 优势</li>
+<li><strong>性能极高</strong> – Redis能读的速度是110000次/s,写的速度是81000次/s 。</li>
+<li><strong>丰富的数据类型</strong> – Redis支持二进制案例的 Strings, Lists, Hashes, Sets 及 Ordered Sets 数据类型操作。</li>
+<li><strong>原子</strong> – Redis的所有操作都是原子性的，意思就是要么成功执行要么失败完全不执行。单个操作是原子性的。多个操作也支持事务，即原子性，通过MULTI和EXEC指令包起来。</li>
+<li><strong>丰富的特性</strong> – Redis还支持 publish/subscribe, 通知, key 过期等等特性。</li>
+</ul>
+<img src="/2018/04/17/redis/rediseventloop.jpg">
+<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><ul>
+<li>(1) Cache<img src="/2018/04/17/redis/rediscache.png"></li>
+<li>Replacement - LRU LFU</li>
+<li>Pre-load</li>
+<li>(2) Message Broker</li>
+<li><p>MQ</p>
+</li>
+<li><p>(3) Database</p>
+<h2 id="Redis-Install-amp-Config"><a href="#Redis-Install-amp-Config" class="headerlink" title="Redis Install &amp; Config"></a>Redis Install &amp; Config</h2></li>
+<li>Install Redis with MAC</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Install</span></span><br><span class="line">brew install redis</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start</span></span><br><span class="line">brew services start redis</span><br><span class="line"><span class="comment"># or redis-server /usr/local/etc/redis.conf</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># CMD</span></span><br><span class="line">~ % redis-cli</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
+<p>Try CMD here : <a href="http://try.redis.io/" target="_blank" rel="noopener">Redis Interactive Online</a></p>
+<h2 id="Redis-in-Python"><a href="#Redis-in-Python" class="headerlink" title="Redis in Python"></a>Redis in Python</h2><p><a href="https://github.com/andymccurdy/redis-py" target="_blank" rel="noopener">The Python interface to the Redis key-value store.</a></p>
+<h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install redis</span><br></pre></td></tr></table></figure>
+<h3 id="Connection"><a href="#Connection" class="headerlink" title="Connection"></a>Connection</h3><p>Opening a Connection to Redis Using redis-py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#The following code creates a connection to Redis using redis-py:</span></span><br><span class="line"><span class="keyword">import</span> redis</span><br><span class="line">redis_client = redis.Redis(</span><br><span class="line">host = <span class="string">'hostname'</span>,</span><br><span class="line">port = port <span class="comment"># redis default port 6379</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><p>redis提供两个类Redis和StrictRedis用于实现Redis的命令，<strong>StrictRedis用于实现大部分官方的命令，并使用官方的语法和命令</strong>，Redis是StrictRedis的子类，用于向后兼容旧版本的redis-py。</p>
+</li>
+<li><p>redis连接实例是<strong>线程安全</strong>的，可以直接将redis连接实例设置为一个全局变量，直接使用。如果需要另一个Redis实例（or Redis数据库）时，就需要重新创建redis连接实例来获取一个新的连接。同理，python的redis没有实现select命令。</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># set, get</span></span><br><span class="line">r.set(<span class="string">'name'</span>, <span class="string">'junxi'</span>) <span class="comment"># key是"foo" value是"bar" 将键值对存入redis缓存</span></span><br><span class="line">print(r[<span class="string">'name'</span>])</span><br><span class="line">print(r.get(<span class="string">'name'</span>)) <span class="comment"># 取出键name对应的值</span></span><br><span class="line">print(type(r.get(<span class="string">'name'</span>)))</span><br></pre></td></tr></table></figure>
+
         
         </div>
         <footer class="article-footer">
@@ -214,7 +314,7 @@
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/categories/index.html" data-id="cjg4b4kqi0003cyu0e6bphzcq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/17/redis/" data-id="cjg4b4kqg0002cyu0xcqz0gr7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -287,6 +387,16 @@
     </div>
     
         
+<nav id="article-nav">
+    
+    
+        <a href="/2018/04/15/binary-search/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Binary Search 二分查找</div>
+        </a>
+    
+</nav>
+
 
     
 </article>
