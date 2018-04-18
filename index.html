@@ -144,7 +144,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                3
+                4
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -185,6 +185,188 @@
 
             
             <section id="main">
+    <article id="post-message-queue" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/04/18/message-queue/">Message Queue 消息队列</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/04/18/message-queue/">
+            <time datetime="2018-04-18T22:21:34.000Z" itemprop="datePublished">2018-04-18</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Full-Stack/">Full Stack</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>参考资料:</p>
+<ul>
+<li><a href="http://www.cnblogs.com/itfly8/p/5155983.html" target="_blank" rel="noopener">大型网站架构系列：分布式消息队列</a></li>
+</ul>
+<h2 id="What-is-Message-Queue"><a href="#What-is-Message-Queue" class="headerlink" title="What is Message Queue"></a>What is Message Queue</h2><ul>
+<li>A message queue is a <strong>queue of messages sent between applications</strong>. 中间人</li>
+<li>Message queues provide an <strong>asynchronous communications</strong> protocol, meaning that the sender and receiver of the message do not need to interact with the message queue at the same time.</li>
+</ul>
+<img src="/2018/04/18/message-queue/MessageQueuing.jpg">
+<ul>
+<li>An application framework for sending and receiving messages</li>
+<li>A way to communicate between applications / systems</li>
+<li>A way to <strong>decouple</strong> components</li>
+<li>A way to offload work (handle to another worker)</li>
+</ul>
+<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><ul>
+<li>Allow web servers to <strong>respond to requests quickly</strong> instead of being forced to perform resource-heavy procedures.</li>
+<li>Able to <strong>distribute a message to multiple recipients</strong> for consumption or for balancing loads between workers.</li>
+<li>消息队列中间件是分布式系统中重要的组件，主要解决<strong>应用耦合，异步消息，流量削锋等问题。实现高性能，高可用，可伸缩和最终一致性架构</strong>。是大型分布式系统不可缺少的中间件。</li>
+<li>目前在生产环境，使用较多的消息队列有ActiveMQ，RabbitMQ，ZeroMQ，Kafka，MetaMQ，RocketMQ等。</li>
+</ul>
+<h3 id="Message-Queue-in-Real-Life"><a href="#Message-Queue-in-Real-Life" class="headerlink" title="Message Queue in Real Life"></a>Message Queue in Real Life</h3><p>对实时性要求不高的任务！</p>
+<ul>
+<li>Image Resizing</li>
+<li>Video Processing</li>
+<li>Sending out Emails (Ad Campaigns)</li>
+<li>Log Analysis</li>
+<li>…</li>
+</ul>
+<h2 id="AMPQ协议"><a href="#AMPQ协议" class="headerlink" title="AMPQ协议"></a>AMPQ协议</h2><h3 id="Message-Queue-Protocol"><a href="#Message-Queue-Protocol" class="headerlink" title="Message Queue Protocol"></a>Message Queue Protocol</h3><ul>
+<li>AMQP - Advanced Message Queue Protocol (RabbitMQ)</li>
+<li>STOMP - Streaming Text Oriented Messaging Protocol (ActiveMQ)</li>
+<li>XMPP - Extensible Messaging and Presence Protocol</li>
+</ul>
+<h3 id="Network-wire-level-protocol"><a href="#Network-wire-level-protocol" class="headerlink" title="Network wire-level protocol"></a>Network wire-level protocol</h3><ul>
+<li>Defines how clients and brokers talk</li>
+<li>Data serialization, heartbeat</li>
+</ul>
+<h3 id="AMQP-Model"><a href="#AMQP-Model" class="headerlink" title="AMQP Model"></a>AMQP Model</h3><ul>
+<li>Defines routing and storing of messages</li>
+<li>Defines rules how these are wired together</li>
+<li>Exported API<img src="/2018/04/18/message-queue/MQ.jpg">
+</li>
+</ul>
+<h2 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h2><ul>
+<li>RabbitMQ是流行的开源消息队列系统，用erlang语言开发。RabbitMQ是AMQP（高级消息队列协议）的标准实现。Implements AMQP</li>
+<li>Easy to use, 支持多种客户端，如：Python、Ruby、.NET、Java、JMS、C、PHP、ActionScript、XMPP、STOMP等，支持AJAX，持久化。用于在分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。</li>
+<li>Open source and commercially supported</li>
+</ul>
+<h3 id="RabiitMQ-Solution"><a href="#RabiitMQ-Solution" class="headerlink" title="RabiitMQ Solution"></a>RabiitMQ Solution</h3><ul>
+<li>Could-based Solution<ul>
+<li><a href="https://www.cloudamqp.com/" target="_blank" rel="noopener">CloudAMQP</a></li>
+<li><a href="https://www.cloudamqp.com/docs/python.html" target="_blank" rel="noopener">CloudAMPQ in Python使用教程</a></li>
+</ul>
+</li>
+<li>Local<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install rabbitmq <span class="comment"># would take long</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/04/18/message-queue/" data-id="cjg5o6blz0002ne78gc4uam60" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-redis" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -193,7 +375,7 @@
                 
     
         <h1 itemprop="name">
-            <a class="article-title" href="/2018/04/17/redis/">redis</a>
+            <a class="article-title" href="/2018/04/17/redis/">Redis</a>
         </h1>
     
 
@@ -259,15 +441,19 @@
 </tbody>
 </table>
 <h2 id="Why-Redis"><a href="#Why-Redis" class="headerlink" title="Why Redis"></a>Why Redis</h2><ul>
-<li>Redis 有三个主要的特点, 有别于其它很多竞争对手 ：</li>
+<li>Redis 有三个主要的特点, 有别于其它很多竞争对手 ：<ul>
 <li>Redis支持<strong>数据的持久化</strong>，可以将内存中的数据保持在磁盘中，重启的时候可以 再次加载进行使用</li>
 <li>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储</li>
 <li>Redis支持<strong>数据的备份</strong>，即master-slave模式的数据备份。</li>
-<li>Redis 优势</li>
+</ul>
+</li>
+<li>Redis 优势<ul>
 <li><strong>性能极高</strong> – Redis能读的速度是110000次/s,写的速度是81000次/s 。</li>
 <li><strong>丰富的数据类型</strong> – Redis支持二进制案例的 Strings, Lists, Hashes, Sets 及 Ordered Sets 数据类型操作。</li>
 <li><strong>原子</strong> – Redis的所有操作都是原子性的，意思就是要么成功执行要么失败完全不执行。单个操作是原子性的。多个操作也支持事务，即原子性，通过MULTI和EXEC指令包起来。</li>
 <li><strong>丰富的特性</strong> – Redis还支持 publish/subscribe, 通知, key 过期等等特性。</li>
+</ul>
+</li>
 </ul>
 <img src="/2018/04/17/redis/rediseventloop.jpg">
 <h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><ul>
@@ -285,7 +471,7 @@
 <p>Try CMD here : <a href="http://try.redis.io/" target="_blank" rel="noopener">Redis Interactive Online</a></p>
 <h2 id="Redis-in-Python"><a href="#Redis-in-Python" class="headerlink" title="Redis in Python"></a>Redis in Python</h2><p><a href="https://github.com/andymccurdy/redis-py" target="_blank" rel="noopener">The Python interface to the Redis key-value store.</a></p>
 <h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install redis</span><br></pre></td></tr></table></figure>
-<h3 id="Connection"><a href="#Connection" class="headerlink" title="Connection"></a>Connection</h3><p>Opening a Connection to Redis Using redis-py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#The following code creates a connection to Redis using redis-py:</span></span><br><span class="line"><span class="keyword">import</span> redis</span><br><span class="line">redis_client = redis.Redis(</span><br><span class="line">host = <span class="string">'hostname'</span>,</span><br><span class="line">port = port <span class="comment"># redis default port 6379</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Connection"><a href="#Connection" class="headerlink" title="Connection"></a>Connection</h3><p>Opening a Connection to Redis Using redis-py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#The following code creates a connection to Redis using redis-py:</span></span><br><span class="line"><span class="keyword">import</span> redis</span><br><span class="line">redis_client = redis.Redis(</span><br><span class="line">  host = <span class="string">'hostname'</span>,</span><br><span class="line">  port = port <span class="comment"># redis default port 6379</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li><p>redis提供两个类Redis和StrictRedis用于实现Redis的命令，<strong>StrictRedis用于实现大部分官方的命令，并使用官方的语法和命令</strong>，Redis是StrictRedis的子类，用于向后兼容旧版本的redis-py。</p>
 </li>
@@ -303,7 +489,7 @@
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/17/redis/" data-id="cjg4b4kqg0002cyu0xcqz0gr7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/17/redis/" data-id="cjg5o6bma0006ne78sccmojz1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -442,7 +628,7 @@
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/15/binary-search/" data-id="cjg4b4kqa0000cyu0r2kom6iu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/15/binary-search/" data-id="cjg5o6blt0000ne7892q6s3lw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -610,7 +796,7 @@
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/10/segment-tree/" data-id="cjg4b4kqp0006cyu0a47x2yus" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/10/segment-tree/" data-id="cjg5o6bme0008ne78wmsczene" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -700,7 +886,16 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Full-Stack/">Full Stack</a></p>
-                            <p class="item-title"><a href="/2018/04/17/redis/" class="title">redis</a></p>
+                            <p class="item-title"><a href="/2018/04/18/message-queue/" class="title">Message Queue 消息队列</a></p>
+                            <p class="item-date"><time datetime="2018-04-18T22:21:34.000Z" itemprop="datePublished">2018-04-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Full-Stack/">Full Stack</a></p>
+                            <p class="item-title"><a href="/2018/04/17/redis/" class="title">Redis</a></p>
                             <p class="item-date"><time datetime="2018-04-17T23:23:40.000Z" itemprop="datePublished">2018-04-17</time></p>
                         </div>
                     </li>
@@ -732,7 +927,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -741,7 +936,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">4</span></li></ul>
         </div>
     </div>
 

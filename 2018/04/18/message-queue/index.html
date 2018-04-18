@@ -3,20 +3,22 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Binary Search 二分查找 | kaihao</title>
+    <title>Message Queue 消息队列 | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="#Binary Search 二分查找 经典二分查找LintCode 457. Classical Binary Search基础应用 输入是单调递增或者单调递减的数组(sorted array)  278. First Bad Version35. Search Insert Position34. Search for a Range74. Search a 2D Matrix旋转数组系列">
-<meta name="keywords" content="Binary Search">
+    <meta name="description" content="参考资料:  大型网站架构系列：分布式消息队列  What is Message Queue A message queue is a queue of messages sent between applications. 中间人 Message queues provide an asynchronous communications protocol, meaning that the se">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Binary Search 二分查找">
-<meta property="og:url" content="http://kaihaoli.github.io/2018/04/15/binary-search/index.html">
+<meta property="og:title" content="Message Queue 消息队列">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/04/18/message-queue/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="#Binary Search 二分查找 经典二分查找LintCode 457. Classical Binary Search基础应用 输入是单调递增或者单调递减的数组(sorted array)  278. First Bad Version35. Search Insert Position34. Search for a Range74. Search a 2D Matrix旋转数组系列">
+<meta property="og:description" content="参考资料:  大型网站架构系列：分布式消息队列  What is Message Queue A message queue is a queue of messages sent between applications. 中间人 Message queues provide an asynchronous communications protocol, meaning that the se">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-16T04:09:33.357Z">
+<meta property="og:image" content="http://kaihaoli.github.io/2018/04/18/message-queue/MessageQueuing.jpg">
+<meta property="og:image" content="http://kaihaoli.github.io/2018/04/18/message-queue/MQ.jpg">
+<meta property="og:updated_time" content="2018-04-18T22:28:21.883Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Binary Search 二分查找">
-<meta name="twitter:description" content="#Binary Search 二分查找 经典二分查找LintCode 457. Classical Binary Search基础应用 输入是单调递增或者单调递减的数组(sorted array)  278. First Bad Version35. Search Insert Position34. Search for a Range74. Search a 2D Matrix旋转数组系列">
+<meta name="twitter:title" content="Message Queue 消息队列">
+<meta name="twitter:description" content="参考资料:  大型网站架构系列：分布式消息队列  What is Message Queue A message queue is a queue of messages sent between applications. 中间人 Message queues provide an asynchronous communications protocol, meaning that the se">
+<meta name="twitter:image" content="http://kaihaoli.github.io/2018/04/18/message-queue/MessageQueuing.jpg">
     
 
     
@@ -189,7 +191,7 @@
 </aside>
 
             
-            <section id="main"><article id="post-binary-search" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-message-queue" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -197,7 +199,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            Binary Search 二分查找
+            Message Queue 消息队列
         </h1>
     
 
@@ -206,8 +208,8 @@
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2018/04/15/binary-search/">
-            <time datetime="2018-04-16T03:31:10.000Z" itemprop="datePublished">2018-04-15</time>
+        <a href="/2018/04/18/message-queue/">
+            <time datetime="2018-04-18T22:21:34.000Z" itemprop="datePublished">2018-04-18</time>
         </a>
     </div>
 
@@ -215,15 +217,10 @@
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+        <a class="article-category-link" href="/categories/Full-Stack/">Full Stack</a>
     </div>
 
                         
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/Binary-Search/">Binary Search</a>
-    </div>
-
                     </div>
                 
             </header>
@@ -234,20 +231,68 @@
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#经典二分查找"><span class="toc-number">1.</span> <span class="toc-text">经典二分查找</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LintCode-457-Classical-Binary-Search"><span class="toc-number">1.1.</span> <span class="toc-text">LintCode 457. Classical Binary Search</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#基础应用"><span class="toc-number">2.</span> <span class="toc-text">基础应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#278-First-Bad-Version"><span class="toc-number">2.1.</span> <span class="toc-text">278. First Bad Version</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#35-Search-Insert-Position"><span class="toc-number">2.2.</span> <span class="toc-text">35. Search Insert Position</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#34-Search-for-a-Range"><span class="toc-number">2.3.</span> <span class="toc-text">34. Search for a Range</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#74-Search-a-2D-Matrix"><span class="toc-number">2.4.</span> <span class="toc-text">74. Search a 2D Matrix</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#旋转数组系列"><span class="toc-number">3.</span> <span class="toc-text">旋转数组系列</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#162-Find-Peak-Element"><span class="toc-number">3.1.</span> <span class="toc-text">162. Find Peak Element</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#153-Find-Minimum-in-Rotated-Sorted-Array"><span class="toc-number">3.2.</span> <span class="toc-text">153. Find Minimum in Rotated Sorted Array</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#154-Find-Minimum-in-Rotated-Sorted-Array-II"><span class="toc-number">3.3.</span> <span class="toc-text">154. Find Minimum in Rotated Sorted Array II</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#33-Search-in-Rotated-Sorted-Array"><span class="toc-number">3.4.</span> <span class="toc-text">33. Search in Rotated Sorted Array</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#81-Search-in-Rotated-Sorted-Array-II"><span class="toc-number">3.5.</span> <span class="toc-text">81. Search in Rotated Sorted Array II</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#倍增法"><span class="toc-number">4.</span> <span class="toc-text">倍增法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#367-Valid-Perfect-Square"><span class="toc-number">4.1.</span> <span class="toc-text">367. Valid Perfect Square</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#69-Sqrt-x"><span class="toc-number">4.2.</span> <span class="toc-text">69. Sqrt(x)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#29-Divide-Two-Integers"><span class="toc-number">4.3.</span> <span class="toc-text">29. Divide Two Integers</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#综合拔高"><span class="toc-number">5.</span> <span class="toc-text">综合拔高</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-Median-of-Two-Sorted-Arrays"><span class="toc-number">5.1.</span> <span class="toc-text">4. Median of Two Sorted Arrays</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#658-Find-K-Closest-Elements"><span class="toc-number">5.2.</span> <span class="toc-text">658. Find K Closest Elements</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Message-Queue"><span class="toc-number">1.</span> <span class="toc-text">What is Message Queue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Application"><span class="toc-number">2.</span> <span class="toc-text">Application</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Message-Queue-in-Real-Life"><span class="toc-number">2.1.</span> <span class="toc-text">Message Queue in Real Life</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AMPQ协议"><span class="toc-number">3.</span> <span class="toc-text">AMPQ协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Message-Queue-Protocol"><span class="toc-number">3.1.</span> <span class="toc-text">Message Queue Protocol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Network-wire-level-protocol"><span class="toc-number">3.2.</span> <span class="toc-text">Network wire-level protocol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AMQP-Model"><span class="toc-number">3.3.</span> <span class="toc-text">AMQP Model</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RabbitMQ"><span class="toc-number">4.</span> <span class="toc-text">RabbitMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RabiitMQ-Solution"><span class="toc-number">4.1.</span> <span class="toc-text">RabiitMQ Solution</span></a></li></ol></li></ol>
                 </div>
             
-            <p>#Binary Search 二分查找</p>
-<h2 id="经典二分查找"><a href="#经典二分查找" class="headerlink" title="经典二分查找"></a>经典二分查找</h2><h3 id="LintCode-457-Classical-Binary-Search"><a href="#LintCode-457-Classical-Binary-Search" class="headerlink" title="LintCode 457. Classical Binary Search"></a><a href="http://www.lintcode.com/en/problem/classical-binary-search/" target="_blank" rel="noopener">LintCode 457. Classical Binary Search</a></h3><h2 id="基础应用"><a href="#基础应用" class="headerlink" title="基础应用"></a>基础应用</h2><ul>
-<li>输入是单调递增或者单调递减的数组(sorted array)</li>
+            <p>参考资料:</p>
+<ul>
+<li><a href="http://www.cnblogs.com/itfly8/p/5155983.html" target="_blank" rel="noopener">大型网站架构系列：分布式消息队列</a></li>
 </ul>
-<h3 id="278-First-Bad-Version"><a href="#278-First-Bad-Version" class="headerlink" title="278. First Bad Version"></a><a href="https://leetcode.com/problems/first-bad-version/" target="_blank" rel="noopener">278. First Bad Version</a></h3><h3 id="35-Search-Insert-Position"><a href="#35-Search-Insert-Position" class="headerlink" title="35. Search Insert Position"></a><a href="https://leetcode.com/problems/search-insert-position/" target="_blank" rel="noopener">35. Search Insert Position</a></h3><h3 id="34-Search-for-a-Range"><a href="#34-Search-for-a-Range" class="headerlink" title="34. Search for a Range"></a><a href="https://leetcode.com/problems/search-for-a-range/" target="_blank" rel="noopener">34. Search for a Range</a></h3><h3 id="74-Search-a-2D-Matrix"><a href="#74-Search-a-2D-Matrix" class="headerlink" title="74. Search a 2D Matrix"></a><a href="https://leetcode.com/problems/search-a-2d-matrix/" target="_blank" rel="noopener">74. Search a 2D Matrix</a></h3><h2 id="旋转数组系列"><a href="#旋转数组系列" class="headerlink" title="旋转数组系列"></a>旋转数组系列</h2><ul>
-<li>Input的数组不再是单调递增或者单调递减</li>
+<h2 id="What-is-Message-Queue"><a href="#What-is-Message-Queue" class="headerlink" title="What is Message Queue"></a>What is Message Queue</h2><ul>
+<li>A message queue is a <strong>queue of messages sent between applications</strong>. 中间人</li>
+<li>Message queues provide an <strong>asynchronous communications</strong> protocol, meaning that the sender and receiver of the message do not need to interact with the message queue at the same time.</li>
 </ul>
-<h3 id="162-Find-Peak-Element"><a href="#162-Find-Peak-Element" class="headerlink" title="162. Find Peak Element"></a><a href="https://leetcode.com/problems/find-peak-element/" target="_blank" rel="noopener">162. Find Peak Element</a></h3><h3 id="153-Find-Minimum-in-Rotated-Sorted-Array"><a href="#153-Find-Minimum-in-Rotated-Sorted-Array" class="headerlink" title="153. Find Minimum in Rotated Sorted Array"></a><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/" target="_blank" rel="noopener">153. Find Minimum in Rotated Sorted Array</a></h3><h3 id="154-Find-Minimum-in-Rotated-Sorted-Array-II"><a href="#154-Find-Minimum-in-Rotated-Sorted-Array-II" class="headerlink" title="154. Find Minimum in Rotated Sorted Array II"></a><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/" target="_blank" rel="noopener">154. Find Minimum in Rotated Sorted Array II</a></h3><h3 id="33-Search-in-Rotated-Sorted-Array"><a href="#33-Search-in-Rotated-Sorted-Array" class="headerlink" title="33. Search in Rotated Sorted Array"></a><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">33. Search in Rotated Sorted Array</a></h3><h3 id="81-Search-in-Rotated-Sorted-Array-II"><a href="#81-Search-in-Rotated-Sorted-Array-II" class="headerlink" title="81. Search in Rotated Sorted Array II"></a><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/" target="_blank" rel="noopener">81. Search in Rotated Sorted Array II</a></h3><h2 id="倍增法"><a href="#倍增法" class="headerlink" title="倍增法"></a>倍增法</h2><ul>
-<li>Input不再是数组</li>
+<img src="/2018/04/18/message-queue/MessageQueuing.jpg">
+<ul>
+<li>An application framework for sending and receiving messages</li>
+<li>A way to communicate between applications / systems</li>
+<li>A way to <strong>decouple</strong> components</li>
+<li>A way to offload work (handle to another worker)</li>
 </ul>
-<h3 id="367-Valid-Perfect-Square"><a href="#367-Valid-Perfect-Square" class="headerlink" title="367. Valid Perfect Square"></a><a href="https://leetcode.com/problems/valid-perfect-square/" target="_blank" rel="noopener">367. Valid Perfect Square</a></h3><h3 id="69-Sqrt-x"><a href="#69-Sqrt-x" class="headerlink" title="69. Sqrt(x)"></a><a href="https://leetcode.com/problems/sqrtx/" target="_blank" rel="noopener">69. Sqrt(x)</a></h3><h3 id="29-Divide-Two-Integers"><a href="#29-Divide-Two-Integers" class="headerlink" title="29. Divide Two Integers"></a><a href="https://leetcode.com/problems/divide-two-integers/" target="_blank" rel="noopener">29. Divide Two Integers</a></h3><h2 id="综合拔高"><a href="#综合拔高" class="headerlink" title="综合拔高"></a>综合拔高</h2><h3 id="4-Median-of-Two-Sorted-Arrays"><a href="#4-Median-of-Two-Sorted-Arrays" class="headerlink" title="4. Median of Two Sorted Arrays"></a><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">4. Median of Two Sorted Arrays</a></h3><h3 id="658-Find-K-Closest-Elements"><a href="#658-Find-K-Closest-Elements" class="headerlink" title="658. Find K Closest Elements"></a><a href="https://leetcode.com/problems/find-k-closest-elements/" target="_blank" rel="noopener">658. Find K Closest Elements</a></h3>
+<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><ul>
+<li>Allow web servers to <strong>respond to requests quickly</strong> instead of being forced to perform resource-heavy procedures.</li>
+<li>Able to <strong>distribute a message to multiple recipients</strong> for consumption or for balancing loads between workers.</li>
+<li>消息队列中间件是分布式系统中重要的组件，主要解决<strong>应用耦合，异步消息，流量削锋等问题。实现高性能，高可用，可伸缩和最终一致性架构</strong>。是大型分布式系统不可缺少的中间件。</li>
+<li>目前在生产环境，使用较多的消息队列有ActiveMQ，RabbitMQ，ZeroMQ，Kafka，MetaMQ，RocketMQ等。</li>
+</ul>
+<h3 id="Message-Queue-in-Real-Life"><a href="#Message-Queue-in-Real-Life" class="headerlink" title="Message Queue in Real Life"></a>Message Queue in Real Life</h3><p>对实时性要求不高的任务！</p>
+<ul>
+<li>Image Resizing</li>
+<li>Video Processing</li>
+<li>Sending out Emails (Ad Campaigns)</li>
+<li>Log Analysis</li>
+<li>…</li>
+</ul>
+<h2 id="AMPQ协议"><a href="#AMPQ协议" class="headerlink" title="AMPQ协议"></a>AMPQ协议</h2><h3 id="Message-Queue-Protocol"><a href="#Message-Queue-Protocol" class="headerlink" title="Message Queue Protocol"></a>Message Queue Protocol</h3><ul>
+<li>AMQP - Advanced Message Queue Protocol (RabbitMQ)</li>
+<li>STOMP - Streaming Text Oriented Messaging Protocol (ActiveMQ)</li>
+<li>XMPP - Extensible Messaging and Presence Protocol</li>
+</ul>
+<h3 id="Network-wire-level-protocol"><a href="#Network-wire-level-protocol" class="headerlink" title="Network wire-level protocol"></a>Network wire-level protocol</h3><ul>
+<li>Defines how clients and brokers talk</li>
+<li>Data serialization, heartbeat</li>
+</ul>
+<h3 id="AMQP-Model"><a href="#AMQP-Model" class="headerlink" title="AMQP Model"></a>AMQP Model</h3><ul>
+<li>Defines routing and storing of messages</li>
+<li>Defines rules how these are wired together</li>
+<li>Exported API<img src="/2018/04/18/message-queue/MQ.jpg">
+</li>
+</ul>
+<h2 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h2><ul>
+<li>RabbitMQ是流行的开源消息队列系统，用erlang语言开发。RabbitMQ是AMQP（高级消息队列协议）的标准实现。Implements AMQP</li>
+<li>Easy to use, 支持多种客户端，如：Python、Ruby、.NET、Java、JMS、C、PHP、ActionScript、XMPP、STOMP等，支持AJAX，持久化。用于在分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。</li>
+<li>Open source and commercially supported</li>
+</ul>
+<h3 id="RabiitMQ-Solution"><a href="#RabiitMQ-Solution" class="headerlink" title="RabiitMQ Solution"></a>RabiitMQ Solution</h3><ul>
+<li>Could-based Solution<ul>
+<li><a href="https://www.cloudamqp.com/" target="_blank" rel="noopener">CloudAMQP</a></li>
+<li><a href="https://www.cloudamqp.com/docs/python.html" target="_blank" rel="noopener">CloudAMPQ in Python使用教程</a></li>
+</ul>
+</li>
+<li>Local<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install rabbitmq <span class="comment"># would take long</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
         
         </div>
         <footer class="article-footer">
@@ -257,7 +302,7 @@
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/15/binary-search/" data-id="cjg5o6blt0000ne7892q6s3lw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/18/message-queue/" data-id="cjg5o6blz0002ne78gc4uam60" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -332,19 +377,10 @@
         
 <nav id="article-nav">
     
-        <a href="/2018/04/17/redis/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    Redis
-                
-            </div>
-        </a>
     
-    
-        <a href="/2018/04/10/segment-tree/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/04/17/redis/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Segment Tree 线段树</div>
+            <div class="article-nav-title">Redis</div>
         </a>
     
 </nav>

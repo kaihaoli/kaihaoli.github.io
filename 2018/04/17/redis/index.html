@@ -3,20 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>redis | kaihao</title>
+    <title>Redis | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="(参考资料:Redis学习教程Gitbook, RUNOOB Redis 教程) What is Redis Redis is an opensource(BSDlicensed), in-memory datas tructure store, used as database, cache and message broker. database只是Redis的一个应用， In-memory">
 <meta property="og:type" content="article">
-<meta property="og:title" content="redis">
+<meta property="og:title" content="Redis">
 <meta property="og:url" content="http://kaihaoli.github.io/2018/04/17/redis/index.html">
 <meta property="og:site_name" content="kaihao">
 <meta property="og:description" content="(参考资料:Redis学习教程Gitbook, RUNOOB Redis 教程) What is Redis Redis is an opensource(BSDlicensed), in-memory datas tructure store, used as database, cache and message broker. database只是Redis的一个应用， In-memory">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://kaihaoli.github.io/2018/04/17/redis/rediseventloop.jpg">
 <meta property="og:image" content="http://kaihaoli.github.io/2018/04/17/redis/rediscache.png">
-<meta property="og:updated_time" content="2018-04-17T23:36:15.606Z">
+<meta property="og:updated_time" content="2018-04-18T22:29:07.821Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="redis">
+<meta name="twitter:title" content="Redis">
 <meta name="twitter:description" content="(参考资料:Redis学习教程Gitbook, RUNOOB Redis 教程) What is Redis Redis is an opensource(BSDlicensed), in-memory datas tructure store, used as database, cache and message broker. database只是Redis的一个应用， In-memory">
 <meta name="twitter:image" content="http://kaihaoli.github.io/2018/04/17/redis/rediseventloop.jpg">
     
@@ -151,7 +151,7 @@
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                3
+                4
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -199,7 +199,7 @@
                 
     
         <h1 class="article-title" itemprop="name">
-            redis
+            Redis
         </h1>
     
 
@@ -270,15 +270,19 @@
 </tbody>
 </table>
 <h2 id="Why-Redis"><a href="#Why-Redis" class="headerlink" title="Why Redis"></a>Why Redis</h2><ul>
-<li>Redis 有三个主要的特点, 有别于其它很多竞争对手 ：</li>
+<li>Redis 有三个主要的特点, 有别于其它很多竞争对手 ：<ul>
 <li>Redis支持<strong>数据的持久化</strong>，可以将内存中的数据保持在磁盘中，重启的时候可以 再次加载进行使用</li>
 <li>Redis不仅仅支持简单的key-value类型的数据，同时还提供list，set，zset，hash等数据结构的存储</li>
 <li>Redis支持<strong>数据的备份</strong>，即master-slave模式的数据备份。</li>
-<li>Redis 优势</li>
+</ul>
+</li>
+<li>Redis 优势<ul>
 <li><strong>性能极高</strong> – Redis能读的速度是110000次/s,写的速度是81000次/s 。</li>
 <li><strong>丰富的数据类型</strong> – Redis支持二进制案例的 Strings, Lists, Hashes, Sets 及 Ordered Sets 数据类型操作。</li>
 <li><strong>原子</strong> – Redis的所有操作都是原子性的，意思就是要么成功执行要么失败完全不执行。单个操作是原子性的。多个操作也支持事务，即原子性，通过MULTI和EXEC指令包起来。</li>
 <li><strong>丰富的特性</strong> – Redis还支持 publish/subscribe, 通知, key 过期等等特性。</li>
+</ul>
+</li>
 </ul>
 <img src="/2018/04/17/redis/rediseventloop.jpg">
 <h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><ul>
@@ -296,7 +300,7 @@
 <p>Try CMD here : <a href="http://try.redis.io/" target="_blank" rel="noopener">Redis Interactive Online</a></p>
 <h2 id="Redis-in-Python"><a href="#Redis-in-Python" class="headerlink" title="Redis in Python"></a>Redis in Python</h2><p><a href="https://github.com/andymccurdy/redis-py" target="_blank" rel="noopener">The Python interface to the Redis key-value store.</a></p>
 <h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pip install redis</span><br></pre></td></tr></table></figure>
-<h3 id="Connection"><a href="#Connection" class="headerlink" title="Connection"></a>Connection</h3><p>Opening a Connection to Redis Using redis-py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#The following code creates a connection to Redis using redis-py:</span></span><br><span class="line"><span class="keyword">import</span> redis</span><br><span class="line">redis_client = redis.Redis(</span><br><span class="line">host = <span class="string">'hostname'</span>,</span><br><span class="line">port = port <span class="comment"># redis default port 6379</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
+<h3 id="Connection"><a href="#Connection" class="headerlink" title="Connection"></a>Connection</h3><p>Opening a Connection to Redis Using redis-py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#The following code creates a connection to Redis using redis-py:</span></span><br><span class="line"><span class="keyword">import</span> redis</span><br><span class="line">redis_client = redis.Redis(</span><br><span class="line">  host = <span class="string">'hostname'</span>,</span><br><span class="line">  port = port <span class="comment"># redis default port 6379</span></span><br><span class="line">)</span><br></pre></td></tr></table></figure></p>
 <ul>
 <li><p>redis提供两个类Redis和StrictRedis用于实现Redis的命令，<strong>StrictRedis用于实现大部分官方的命令，并使用官方的语法和命令</strong>，Redis是StrictRedis的子类，用于向后兼容旧版本的redis-py。</p>
 </li>
@@ -314,7 +318,7 @@
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/17/redis/" data-id="cjg4b4kqg0002cyu0xcqz0gr7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/17/redis/" data-id="cjg5o6bma0006ne78sccmojz1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -389,6 +393,15 @@
         
 <nav id="article-nav">
     
+        <a href="/2018/04/18/message-queue/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Message Queue 消息队列
+                
+            </div>
+        </a>
+    
     
         <a href="/2018/04/15/binary-search/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
@@ -420,7 +433,16 @@
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Full-Stack/">Full Stack</a></p>
-                            <p class="item-title"><a href="/2018/04/17/redis/" class="title">redis</a></p>
+                            <p class="item-title"><a href="/2018/04/18/message-queue/" class="title">Message Queue 消息队列</a></p>
+                            <p class="item-date"><time datetime="2018-04-18T22:21:34.000Z" itemprop="datePublished">2018-04-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Full-Stack/">Full Stack</a></p>
+                            <p class="item-title"><a href="/2018/04/17/redis/" class="title">Redis</a></p>
                             <p class="item-date"><time datetime="2018-04-17T23:23:40.000Z" itemprop="datePublished">2018-04-17</time></p>
                         </div>
                     </li>
@@ -452,7 +474,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -461,7 +483,7 @@
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">3</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">4</span></li></ul>
         </div>
     </div>
 
