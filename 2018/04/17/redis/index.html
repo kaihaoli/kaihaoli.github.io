@@ -14,7 +14,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://kaihaoli.github.io/2018/04/17/redis/rediseventloop.jpg">
 <meta property="og:image" content="http://kaihaoli.github.io/2018/04/17/redis/rediscache.png">
-<meta property="og:updated_time" content="2018-04-18T22:29:07.821Z">
+<meta property="og:updated_time" content="2018-04-18T22:32:23.103Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis">
 <meta name="twitter:description" content="(参考资料:Redis学习教程Gitbook, RUNOOB Redis 教程) What is Redis Redis is an opensource(BSDlicensed), in-memory datas tructure store, used as database, cache and message broker. database只是Redis的一个应用， In-memory">
@@ -39,6 +39,17 @@
     
         <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
     
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-117906283-1', 'auto');
+ga('send', 'pageview');
+
+</script>
     
     
     
@@ -171,18 +182,6 @@
                         </a>
                     </td>
                     
-                    <td>
-                        <a href="/" target="_blank" title="twitter" class=tooltip>
-                            <i class="fa fa-twitter"></i>
-                        </a>
-                    </td>
-                    
-                    <td>
-                        <a href="/" target="_blank" title="facebook" class=tooltip>
-                            <i class="fa fa-facebook"></i>
-                        </a>
-                    </td>
-                    
                 </tr>
             </table>
         </div>
@@ -286,14 +285,19 @@
 </ul>
 <img src="/2018/04/17/redis/rediseventloop.jpg">
 <h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><ul>
-<li>(1) Cache<img src="/2018/04/17/redis/rediscache.png"></li>
+<li>(1) Cache<img src="/2018/04/17/redis/rediscache.png">
+<ul>
 <li>Replacement - LRU LFU</li>
 <li>Pre-load</li>
-<li>(2) Message Broker</li>
-<li><p>MQ</p>
+</ul>
 </li>
-<li><p>(3) Database</p>
-<h2 id="Redis-Install-amp-Config"><a href="#Redis-Install-amp-Config" class="headerlink" title="Redis Install &amp; Config"></a>Redis Install &amp; Config</h2></li>
+<li>(2) Message Broker<ul>
+<li>MQ</li>
+</ul>
+</li>
+<li>(3) Database</li>
+</ul>
+<h2 id="Redis-Install-amp-Config"><a href="#Redis-Install-amp-Config" class="headerlink" title="Redis Install &amp; Config"></a>Redis Install &amp; Config</h2><ul>
 <li>Install Redis with MAC</li>
 </ul>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Install</span></span><br><span class="line">brew install redis</span><br><span class="line"></span><br><span class="line"><span class="comment"># Start</span></span><br><span class="line">brew services start redis</span><br><span class="line"><span class="comment"># or redis-server /usr/local/etc/redis.conf</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># CMD</span></span><br><span class="line">~ % redis-cli</span><br><span class="line">127.0.0.1:6379&gt;</span><br></pre></td></tr></table></figure>
@@ -318,7 +322,7 @@
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/17/redis/" data-id="cjg5o6bma0006ne78sccmojz1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/17/redis/" data-id="cjg6wqnqw0002bpu0d8nh2c41" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -513,7 +517,7 @@
             <ul>
                 
                     <li>
-                        <a href="http://hexo.io">Hexo</a>
+                        <a href="https://leetcode.com/">LeetCode</a>
                     </li>
                 
             </ul>
