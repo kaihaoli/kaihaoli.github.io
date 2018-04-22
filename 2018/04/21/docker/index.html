@@ -3,22 +3,23 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Message Queue 消息队列 | kaihao</title>
+    <title>docker | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="参考资料:  大型网站架构系列：分布式消息队列  What is Message Queue A message queue is a queue of messages sent between applications. 中间人 Message queues provide an asynchronous communications protocol, meaning that the se">
+    <meta name="description" content="参考资源:  Docker — 从入门到实践 Docker 入门教程 阮一峰  History Docker 最初是 dotCloud 公司创始人 Solomon Hykes 在法国期间发起的一个公司内部项目，它是基于 dotCloud 公司多年云服务技术的一次革新，并于 2013 年 3 月以 Apache 2.0 授权协议开源，主要项目代码在 GitHub 上进行维护。Docker 项目后来还">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Message Queue 消息队列">
-<meta property="og:url" content="http://kaihaoli.github.io/2018/04/18/message-queue/index.html">
+<meta property="og:title" content="docker">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/04/21/docker/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="参考资料:  大型网站架构系列：分布式消息队列  What is Message Queue A message queue is a queue of messages sent between applications. 中间人 Message queues provide an asynchronous communications protocol, meaning that the se">
+<meta property="og:description" content="参考资源:  Docker — 从入门到实践 Docker 入门教程 阮一峰  History Docker 最初是 dotCloud 公司创始人 Solomon Hykes 在法国期间发起的一个公司内部项目，它是基于 dotCloud 公司多年云服务技术的一次革新，并于 2013 年 3 月以 Apache 2.0 授权协议开源，主要项目代码在 GitHub 上进行维护。Docker 项目后来还">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://kaihaoli.github.io/2018/04/18/message-queue/MessageQueuing.jpg">
-<meta property="og:image" content="http://kaihaoli.github.io/2018/04/18/message-queue/MQ.jpg">
-<meta property="og:updated_time" content="2018-04-18T22:28:21.883Z">
+<meta property="og:image" content="http://kaihaoli.github.io/2018/04/21/docker/docker-containers-vm.png">
+<meta property="og:image" content="http://kaihaoli.github.io/2018/04/21/docker/docker-unionfilesystem.jpg">
+<meta property="og:image" content="http://kaihaoli.github.io/2018/04/21/docker/docker-component.jpg">
+<meta property="og:updated_time" content="2018-04-22T00:38:03.866Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Message Queue 消息队列">
-<meta name="twitter:description" content="参考资料:  大型网站架构系列：分布式消息队列  What is Message Queue A message queue is a queue of messages sent between applications. 中间人 Message queues provide an asynchronous communications protocol, meaning that the se">
-<meta name="twitter:image" content="http://kaihaoli.github.io/2018/04/18/message-queue/MessageQueuing.jpg">
+<meta name="twitter:title" content="docker">
+<meta name="twitter:description" content="参考资源:  Docker — 从入门到实践 Docker 入门教程 阮一峰  History Docker 最初是 dotCloud 公司创始人 Solomon Hykes 在法国期间发起的一个公司内部项目，它是基于 dotCloud 公司多年云服务技术的一次革新，并于 2013 年 3 月以 Apache 2.0 授权协议开源，主要项目代码在 GitHub 上进行维护。Docker 项目后来还">
+<meta name="twitter:image" content="http://kaihaoli.github.io/2018/04/21/docker/docker-containers-vm.png">
     
 
     
@@ -190,7 +191,7 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-message-queue" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-docker" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -198,7 +199,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            Message Queue 消息队列
+            docker
         </h1>
     
 
@@ -207,8 +208,8 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2018/04/18/message-queue/">
-            <time datetime="2018-04-18T22:21:34.000Z" itemprop="datePublished">2018-04-18</time>
+        <a href="/2018/04/21/docker/">
+            <time datetime="2018-04-22T00:31:44.000Z" itemprop="datePublished">2018-04-21</time>
         </a>
     </div>
 
@@ -230,67 +231,86 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Message-Queue"><span class="toc-number">1.</span> <span class="toc-text">What is Message Queue</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Application"><span class="toc-number">2.</span> <span class="toc-text">Application</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Message-Queue-in-Real-Life"><span class="toc-number">2.1.</span> <span class="toc-text">Message Queue in Real Life</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#AMPQ协议"><span class="toc-number">3.</span> <span class="toc-text">AMPQ协议</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Message-Queue-Protocol"><span class="toc-number">3.1.</span> <span class="toc-text">Message Queue Protocol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Network-wire-level-protocol"><span class="toc-number">3.2.</span> <span class="toc-text">Network wire-level protocol</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AMQP-Model"><span class="toc-number">3.3.</span> <span class="toc-text">AMQP Model</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#RabbitMQ"><span class="toc-number">4.</span> <span class="toc-text">RabbitMQ</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#RabiitMQ-Solution"><span class="toc-number">4.1.</span> <span class="toc-text">RabiitMQ Solution</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#History"><span class="toc-number">1.</span> <span class="toc-text">History</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-use-Docker"><span class="toc-number">2.</span> <span class="toc-text">Why use Docker?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-vs-VM"><span class="toc-number">2.1.</span> <span class="toc-text">Docker vs VM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Docker"><span class="toc-number">3.</span> <span class="toc-text">What is Docker?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker的三个概念"><span class="toc-number">3.1.</span> <span class="toc-text">Docker的三个概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Union-File-System"><span class="toc-number">3.2.</span> <span class="toc-text">Union File System</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-Components"><span class="toc-number">3.3.</span> <span class="toc-text">Docker Components</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#性质"><span class="toc-number">3.4.</span> <span class="toc-text">性质</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Application"><span class="toc-number">4.</span> <span class="toc-text">Application</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-on-Mac"><span class="toc-number">5.</span> <span class="toc-text">Docker on Mac</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Install"><span class="toc-number">5.1.</span> <span class="toc-text">Install</span></a></li></ol></li></ol>
                 </div>
             
-            <p>参考资料:</p>
+            <p>参考资源:</p>
 <ul>
-<li><a href="http://www.cnblogs.com/itfly8/p/5155983.html" target="_blank" rel="noopener">大型网站架构系列：分布式消息队列</a></li>
+<li><a href="https://yeasy.gitbooks.io/docker_practice/content/" target="_blank" rel="noopener">Docker — 从入门到实践</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html" target="_blank" rel="noopener">Docker 入门教程 阮一峰</a></li>
 </ul>
-<h2 id="What-is-Message-Queue"><a href="#What-is-Message-Queue" class="headerlink" title="What is Message Queue"></a>What is Message Queue</h2><ul>
-<li>A message queue is a <strong>queue of messages sent between applications</strong>. 中间人</li>
-<li>Message queues provide an <strong>asynchronous communications</strong> protocol, meaning that the sender and receiver of the message do not need to interact with the message queue at the same time.</li>
-</ul>
-<img src="/2018/04/18/message-queue/MessageQueuing.jpg">
-<ul>
-<li>An application framework for sending and receiving messages</li>
-<li>A way to communicate between applications / systems</li>
-<li>A way to <strong>decouple</strong> components</li>
-<li>A way to offload work (handle to another worker)</li>
-</ul>
-<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><ul>
-<li>Allow web servers to <strong>respond to requests quickly</strong> instead of being forced to perform resource-heavy procedures.</li>
-<li>Able to <strong>distribute a message to multiple recipients</strong> for consumption or for balancing loads between workers.</li>
-<li>消息队列中间件是分布式系统中重要的组件，主要解决<strong>应用耦合，异步消息，流量削锋等问题。实现高性能，高可用，可伸缩和最终一致性架构</strong>。是大型分布式系统不可缺少的中间件。</li>
-<li>目前在生产环境，使用较多的消息队列有ActiveMQ，RabbitMQ，ZeroMQ，Kafka，MetaMQ，RocketMQ等。</li>
-</ul>
-<h3 id="Message-Queue-in-Real-Life"><a href="#Message-Queue-in-Real-Life" class="headerlink" title="Message Queue in Real Life"></a>Message Queue in Real Life</h3><p>对实时性要求不高的任务！</p>
-<ul>
-<li>Image Resizing</li>
-<li>Video Processing</li>
-<li>Sending out Emails (Ad Campaigns)</li>
-<li>Log Analysis</li>
-<li>…</li>
-</ul>
-<h2 id="AMPQ协议"><a href="#AMPQ协议" class="headerlink" title="AMPQ协议"></a>AMPQ协议</h2><h3 id="Message-Queue-Protocol"><a href="#Message-Queue-Protocol" class="headerlink" title="Message Queue Protocol"></a>Message Queue Protocol</h3><ul>
-<li>AMQP - Advanced Message Queue Protocol (RabbitMQ)</li>
-<li>STOMP - Streaming Text Oriented Messaging Protocol (ActiveMQ)</li>
-<li>XMPP - Extensible Messaging and Presence Protocol</li>
-</ul>
-<h3 id="Network-wire-level-protocol"><a href="#Network-wire-level-protocol" class="headerlink" title="Network wire-level protocol"></a>Network wire-level protocol</h3><ul>
-<li>Defines how clients and brokers talk</li>
-<li>Data serialization, heartbeat</li>
-</ul>
-<h3 id="AMQP-Model"><a href="#AMQP-Model" class="headerlink" title="AMQP Model"></a>AMQP Model</h3><ul>
-<li>Defines routing and storing of messages</li>
-<li>Defines rules how these are wired together</li>
-<li>Exported API<img src="/2018/04/18/message-queue/MQ.jpg">
+<h2 id="History"><a href="#History" class="headerlink" title="History"></a>History</h2><ul>
+<li><p>Docker 最初是 dotCloud 公司创始人 Solomon Hykes 在法国期间发起的一个公司内部项目，它是基于 dotCloud 公司多年云服务技术的一次革新，并于 <strong>2013 年 3 月以 Apache 2.0 授权协议开源</strong>，主要项目代码在 GitHub 上进行维护。Docker 项目后来还加入了 Linux 基金会，并成立推动 开放容器联盟（OCI）。</p>
+</li>
+<li><p>Docker 自开源后受到广泛的关注和讨论，至今其 GitHub 项目已经超过 4 万 6 千个星标和一万多个 fork。甚至由于 Docker 项目的火爆，在 2013 年底，dotCloud 公司决定改名为 Docker。Docker 最初是在 Ubuntu 12.04 上开发实现的；Red Hat 则从 RHEL 6.5 开始对 Docker 进行支持；Google 也在其 PaaS 产品中广泛应用 Docker。</p>
+</li>
+<li><p><strong>Docker 使用 Google 公司推出的 Go 语言 进行开发实现</strong></p>
+</li>
+<li><p><strong>Docker 在容器的基础上，进行了进一步的封装，从文件系统、网络互联到进程隔离等等，极大的简化了容器的创建和维护。使得 Docker 技术比虚拟机技术更为轻便、快捷。</strong></p>
 </li>
 </ul>
-<h2 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h2><ul>
-<li>RabbitMQ是流行的开源消息队列系统，用erlang语言开发。RabbitMQ是AMQP（高级消息队列协议）的标准实现。Implements AMQP</li>
-<li>Easy to use, 支持多种客户端，如：Python、Ruby、.NET、Java、JMS、C、PHP、ActionScript、XMPP、STOMP等，支持AJAX，持久化。用于在分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。</li>
-<li>Open source and commercially supported</li>
-</ul>
-<h3 id="RabiitMQ-Solution"><a href="#RabiitMQ-Solution" class="headerlink" title="RabiitMQ Solution"></a>RabiitMQ Solution</h3><ul>
-<li>Could-based Solution<ul>
-<li><a href="https://www.cloudamqp.com/" target="_blank" rel="noopener">CloudAMQP</a></li>
-<li><a href="https://www.cloudamqp.com/docs/python.html" target="_blank" rel="noopener">CloudAMPQ in Python使用教程</a></li>
-</ul>
-</li>
-<li>Local<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install rabbitmq <span class="comment"># would take long</span></span><br></pre></td></tr></table></figure>
+<h2 id="Why-use-Docker"><a href="#Why-use-Docker" class="headerlink" title="Why use Docker?"></a>Why use Docker?</h2><ul>
+<li>Docker - <strong>Build, Ship, and Run Any App, Anywhere</strong></li>
+<li><strong>向服务器部署代码非常困难</strong></li>
+<li>复杂的技术栈, 不同技术栈的版本依赖与冲突</li>
+<li>How to solve it?<h3 id="Docker-vs-VM"><a href="#Docker-vs-VM" class="headerlink" title="Docker vs VM"></a>Docker vs VM</h3><img src="/2018/04/21/docker/docker-containers-vm.png">
 </li>
 </ul>
+<h2 id="What-is-Docker"><a href="#What-is-Docker" class="headerlink" title="What is Docker?"></a>What is Docker?</h2><h3 id="Docker的三个概念"><a href="#Docker的三个概念" class="headerlink" title="Docker的三个概念"></a>Docker的三个概念</h3><ul>
+<li>1 镜像(Image)<ul>
+<li>类似于虚拟机中的镜像，是一个包含有文件系统的面向Docker引擎的只读模板。</li>
+<li>任何应用程序运行都需要环境，而镜像就是用来提供这种运行环境的。例如一个Ubuntu镜像就是一个包含Ubuntu操作系统环境的模板，同理在该镜像上装上Apache软件，就可以称为Apache镜像。</li>
+</ul>
+</li>
+<li>2 容器(Container)<ul>
+<li>类似于一个轻量级的沙盒，可以将其看作一个<strong>极简的Linux系统环境</strong>（包括root权限、进程空间、用户空间和网络空间等），以及运行在其中的应用程序。</li>
+<li><strong>Docker引擎利用容器来运行、隔离各个应用</strong>。容器是镜像创建的应用实例，可以创建、启动、停止、删除容器，<strong>各个容器之间是是相互隔离的，互不影响</strong>。</li>
+<li>注意：镜像本身是只读的，容器从镜像启动时，Docker在镜像的上层创建一个可写层，镜像本身不变。</li>
+</ul>
+</li>
+<li>3 仓库(Repository)<ul>
+<li>类似于代码仓库，这里是镜像仓库，是<strong>Docker用来集中存放镜像文件</strong>的地方。</li>
+<li>注意与注册服务器（Registry）的区别：注册服务器是存放仓库的地方，一般会有多个仓库；而仓库是存放镜像的地方，一般每个仓库存放一类镜像，每个镜像利用tag进行区分，比如Ubuntu仓库存放有多个版本（12.04、14.04等）的Ubuntu镜像。</li>
+</ul>
+</li>
+</ul>
+<h3 id="Union-File-System"><a href="#Union-File-System" class="headerlink" title="Union File System"></a>Union File System</h3><img src="/2018/04/21/docker/docker-unionfilesystem.jpg">
+<h3 id="Docker-Components"><a href="#Docker-Components" class="headerlink" title="Docker Components"></a>Docker Components</h3><img src="/2018/04/21/docker/docker-component.jpg">
+<ul>
+<li>Docker daemon<ul>
+<li>Runs on a host machine. It does <strong>the heavy lifting of building, running, and distributing Docker containers</strong></li>
+</ul>
+</li>
+<li>Docker client<ul>
+<li>The primary user interface to Docker. It accepts commands from the user and communicates back and forth with a Docker daemon</li>
+</ul>
+</li>
+<li>Docker images<ul>
+<li>Docker image is a read-only template, which is used to create containers</li>
+</ul>
+</li>
+<li>Docker registries<ul>
+<li>Docker registries hold images, which are public or private stores from which you upload or download images.</li>
+</ul>
+</li>
+<li>Docker containers<ul>
+<li>Docker containers are similar to a directory.</li>
+</ul>
+</li>
+</ul>
+<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><ul>
+<li>A Docker container holds everything that is needed for an application to run.</li>
+<li><strong>Each container is created from a Docker image</strong>.</li>
+<li>Docker containers can be <strong>run, started, stopped, moved, and deleted</strong>.</li>
+<li>Each container is an isolated and secure application platform.</li>
+</ul>
+<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><p>Docker 的主要用途，目前有三大类。</p>
+<ul>
+<li>1 <strong>提供一次性的环境。</strong>比如，本地测试他人的软件、持续集成的时候提供单元测试和构建的环境。</li>
+<li>2 <strong>提供弹性的云服务。</strong>因为 Docker 容器可以随开随关，很适合动态扩容和缩容。</li>
+<li>3 <strong>组建微服务架构。</strong>通过多个容器，一台机器可以跑多个服务，因此在本机就可以模拟出微服务架构。</li>
+</ul>
+<h2 id="Docker-on-Mac"><a href="#Docker-on-Mac" class="headerlink" title="Docker on Mac"></a>Docker on Mac</h2><h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew cask install docker</span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -301,7 +321,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/18/message-queue/" data-id="cjga4ldr70004xw787rhw7tqs" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/21/docker/" data-id="cjga4ldr20001xw78huf0f5q4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -376,19 +396,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2018/04/21/docker/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    docker
-                
-            </div>
-        </a>
     
-    
-        <a href="/2018/04/17/redis/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/04/18/message-queue/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Redis</div>
+            <div class="article-nav-title">Message Queue 消息队列</div>
         </a>
     
 </nav>
