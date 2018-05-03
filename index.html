@@ -159,11 +159,11 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                8
+                9
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                3
+                4
                 <span>tags</span>
             </div>
         </div>
@@ -188,6 +188,238 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-tree-traversal" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/05/03/tree-traversal/">Tree Traversal</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/03/tree-traversal/">
+            <time datetime="2018-05-03T21:47:21.000Z" itemprop="datePublished">2018-05-03</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/binary-tree/">binary tree</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="DFS-Traversal-三序遍历"><a href="#DFS-Traversal-三序遍历" class="headerlink" title="DFS Traversal 三序遍历"></a>DFS Traversal 三序遍历</h2><ul>
+<li><strong>Recursion vs Iteration</strong>. Too easy to use <strong>recursion</strong> to solve the traversal problem, Why we need the <strong>iterative solution</strong>?</li>
+</ul>
+<blockquote>
+<p>Java meomory area</p>
+<ul>
+<li>STACK: storing the local variables and other information for each of the method calls</li>
+<li>HEAP: allocationg spaces for dynamically created objects</li>
+<li>Threads have their own stack, but they share same heap!</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>Python内存中没有真正的堆栈，因为所有的对象都是在堆上分配的，but python默认的递归深度是很有限的（默认是1000）</p>
+</blockquote>
+<ul>
+<li>STACK<ul>
+<li>In Java, STACK is usually a size limited memory area.By default,<strong> a several thousands levels</strong> recursion call would easily eat up all the space and throw <strong>StackOverFlowException</strong> - this is something you have to keep in mind</li>
+<li>Iterative way is good because <strong>it needs much less space of STACK</strong>(There is probably only O(1) method call levels, so O(1) space on STACK.)</li>
+<li>It is not easy to convert all recursion solutions to a “while loop” solution without any other auxiliary data structures’ help.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Recursive Inorder Traversal</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inorderTraversal</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        self.inorderTraversal(root.left)</span><br><span class="line">        print(root.val)</span><br><span class="line">        self.inorderTraversal(root.right)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>There are two paths of recursion need to follow instead of one, and we need to finish the first branch, then the second one.</p>
+</li>
+<li><p>In this case, we will need something else to help us:</p>
+<ul>
+<li>The recursion is internally done by <strong>using STACK to maintain the method call levels and directions</strong>, we can simulate this ourselves, so a stack will be needed.</li>
+<li>The difference is, we use our own stack and the space used by our own stack is on HEAP. The space consumed on STACK is trivial.</li>
+<li>We do not change the total space consumption, but we <strong>move out the space consumption of STACK to HEAP</strong>!!!</li>
+</ul>
+</li>
+</ul>
+<h3 id="144-Binary-Tree-Preorder-Traversal"><a href="#144-Binary-Tree-Preorder-Traversal" class="headerlink" title="144. Binary Tree Preorder Traversal"></a><a href="https://leetcode.com/problems/binary-tree-preorder-traversal/" target="_blank" rel="noopener">144. Binary Tree Preorder Traversal</a></h3><h4 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">preorderTraversal</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> []</span><br><span class="line">        <span class="keyword">return</span> ([root.val]</span><br><span class="line">                + self.preorderTraversal(root.left)</span><br><span class="line">                + self.preorderTraversal(root.right))</span><br></pre></td></tr></table></figure>
+<h4 id="Iteration-Stack"><a href="#Iteration-Stack" class="headerlink" title="Iteration (Stack)"></a>Iteration (Stack)</h4><ul>
+<li>1 stack一出栈 一看见就访问！</li>
+<li>2 出栈元素的右子节点先加入栈，再加左子节点</li>
+<li>每个node其实处理了两次，一次是入栈，一次是出栈</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">preorderTraversal</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        stack = [root]</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">while</span> stack:</span><br><span class="line">            node = stack.pop()</span><br><span class="line">            res.append(node.val)</span><br><span class="line">            <span class="keyword">if</span> node.right:</span><br><span class="line">                stack.append(node.right)</span><br><span class="line">            <span class="keyword">if</span> node.left:</span><br><span class="line">                stack.append(node.left)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h3 id="94-Binary-Tree-Inorder-Traversal"><a href="#94-Binary-Tree-Inorder-Traversal" class="headerlink" title="94. Binary Tree Inorder Traversal"></a><a href="https://leetcode.com/problems/binary-tree-inorder-traversal/" target="_blank" rel="noopener">94. Binary Tree Inorder Traversal</a></h3><h4 id="Recursion-1"><a href="#Recursion-1" class="headerlink" title="Recursion"></a>Recursion</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inorderTraversal</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        left = self.inorderTraversal(root.left)</span><br><span class="line">        right = self.inorderTraversal(root.right)</span><br><span class="line">        <span class="keyword">return</span> left + [root.val] + right</span><br></pre></td></tr></table></figure>
+<h4 id="Iteration-Stack-cur"><a href="#Iteration-Stack-cur" class="headerlink" title="Iteration (Stack + cur)"></a>Iteration (Stack + cur)</h4><p>The problem is, we can not throw away the root in the stack before we traversed all the nodes in left subtreee. <strong>How can we know we have already traversed all the nodes in left sub?</strong></p>
+<ul>
+<li>The root is the top element in the stack, use a helper node to store the next “visiting” node and subtree.<ul>
+<li>1 When helper node is not null, we should traverse the subtree, so we push helper and we go left</li>
+<li>2 When helper is null, means the left subtree of the roots finished, the root is the top element in the stack. We can print the top, and let helper = top.right.(traverse the left subtree firtst, then top. then right subtree)</li>
+<li>3 do 1 and 2 <strong>until helper is null and there is no nodes left in the stack</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 写法1.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inorderTraversal</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        res, stack = [], []</span><br><span class="line">        cur = root</span><br><span class="line">        <span class="keyword">while</span> stack <span class="keyword">or</span> cur:</span><br><span class="line">            <span class="keyword">while</span> cur:</span><br><span class="line">                stack.append(cur)</span><br><span class="line">                cur = cur.left</span><br><span class="line">            cur = stack.pop()</span><br><span class="line">            res.append(cur.val)</span><br><span class="line">            cur = cur.right</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写法2.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">inorderTraversal</span><span class="params">(self, root)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">        <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">    stack, res = [], []</span><br><span class="line">    cur = root</span><br><span class="line">    <span class="keyword">while</span> stack <span class="keyword">or</span> cur:</span><br><span class="line">        <span class="keyword">if</span> cur:</span><br><span class="line">            stack.append(cur)</span><br><span class="line">            cur = cur.left</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            cur = stack.pop()</span><br><span class="line">            res.append(cur.val)</span><br><span class="line">            cur = cur.right</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h3 id="145-Binary-Tree-Postorder-Traversal"><a href="#145-Binary-Tree-Postorder-Traversal" class="headerlink" title="145. Binary Tree Postorder Traversal"></a><a href="https://leetcode.com/problems/binary-tree-postorder-traversal/" target="_blank" rel="noopener">145. Binary Tree Postorder Traversal</a></h3><h4 id="Recursion-2"><a href="#Recursion-2" class="headerlink" title="Recursion"></a>Recursion</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inorderTraversal</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        left = self.inorderTraversal(root.left)</span><br><span class="line">        right = self.inorderTraversal(root.right)</span><br><span class="line">        <span class="keyword">return</span> left + right + [root.val]</span><br></pre></td></tr></table></figure>
+<h4 id="Iteration"><a href="#Iteration" class="headerlink" title="Iteration"></a>Iteration</h4><h5 id="解法1-Two-Stacks"><a href="#解法1-Two-Stacks" class="headerlink" title="解法1. Two Stacks"></a>解法1. Two Stacks</h5><pre><code>* left-&gt;right-&gt;root (reverse)=&gt; root-&gt;right-&gt;left
+* Preorder -&gt; Postorder
+</code></pre><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">postorderTraversal</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="comment"># Pre-order, but root-&gt;right-&gt;left</span></span><br><span class="line">        stack, res = [root], []</span><br><span class="line">        <span class="keyword">while</span> stack:</span><br><span class="line">            node = stack.pop()</span><br><span class="line">            <span class="keyword">if</span> node:</span><br><span class="line">                res.append(node.val)</span><br><span class="line">                stack.append(node.left)</span><br><span class="line">                stack.append(node.right)</span><br><span class="line">        <span class="keyword">return</span> res[::<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>What is the <strong>drawback</strong> of two stacks solution, if we deal with the nodes on the fly? (Online)<br>Need to store everything in memory before we can get the whole post order traversal sequenct.</li>
+</ul>
+<h5 id="解法2-Stack-cur-prev"><a href="#解法2-Stack-cur-prev" class="headerlink" title="解法2. Stack + cur + prev"></a>解法2. Stack + cur + prev</h5><p>The problem is, we need to traverse both <strong>left and right subtrees first</strong>, then we can eliminate the root from the stack. We need an mechanism to know, <strong>when we finished visiting all subtrees’ nodes.</strong></p>
+<ul>
+<li><p>What we need to know?</p>
+<ul>
+<li><strong>Direction!!!!!!!</strong></li>
+<li>we are visiting down? or returning from left? or returning from right?<br><img src="/assets/binary_tree_postorder.png" alt=""></li>
+</ul>
+</li>
+<li><p><strong>思路1. 细分三种case</strong><br><strong>The root is the top element in the stack</strong><br>Maintain a previous Node, to record the previous visiting node on the tracersing path, so that we know <strong>what the direction we are taking now</strong> and <strong>what is the direction we are taking next</strong>.</p>
+<ul>
+<li>root = stack.top</li>
+<li>if previous is null -&gt; going down(left subtree has priority)</li>
+<li>if previous is current’parent -&gt; going down (left subtree has priority)</li>
+<li>if previous == current.left -&gt; left subtree finished, going current.right</li>
+<li>if previous == current.right -&gt; right subtree finished, pop current, going up.</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 思路写法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">postorderTraversal</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">        prev = <span class="keyword">None</span></span><br><span class="line">        stack = [root]</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">while</span> stack:</span><br><span class="line">            cur = stack[<span class="number">-1</span>]</span><br><span class="line">            <span class="comment"># Case1: 从父节点而来</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> prev <span class="keyword">or</span> cur == prev.left <span class="keyword">or</span> cur == prev.right:</span><br><span class="line">                <span class="keyword">if</span> cur.left:</span><br><span class="line">                    stack.append(cur.left)</span><br><span class="line">                <span class="keyword">elif</span> cur.right:</span><br><span class="line">                    stack.append(cur.right)</span><br><span class="line">                <span class="keyword">else</span>: <span class="comment"># 叶子节点</span></span><br><span class="line">                    res.append(cur.val)</span><br><span class="line">                    stack.pop()</span><br><span class="line">            <span class="comment"># Case2: 从左子树遍历完而来</span></span><br><span class="line">            <span class="keyword">elif</span> prev == cur.left:</span><br><span class="line">                <span class="keyword">if</span> cur.right:</span><br><span class="line">                    stack.append(cur.right)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    res.append(cur.val)</span><br><span class="line">                    stack.pop()</span><br><span class="line">            <span class="comment"># Case3: 从右子树遍历完而来</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res.append(cur.val)</span><br><span class="line">                stack.pop()</span><br><span class="line">            prev = cur</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="comment"># 简化写法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">postorderTraversal1</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">        prev = <span class="keyword">None</span></span><br><span class="line">        stack = [root]</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">while</span> stack:</span><br><span class="line">            cur = stack[<span class="number">-1</span>]</span><br><span class="line">            <span class="comment"># Case1: 从父节点而来</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> prev <span class="keyword">or</span> cur == prev.left <span class="keyword">or</span> cur == prev.right:</span><br><span class="line">                <span class="keyword">if</span> cur.left:</span><br><span class="line">                    stack.append(cur.left)</span><br><span class="line">                <span class="keyword">elif</span> cur.right:</span><br><span class="line">                    stack.append(cur.right)</span><br><span class="line">            <span class="comment"># Case2: 从左子树遍历完而来</span></span><br><span class="line">            <span class="keyword">elif</span> prev == cur.left:</span><br><span class="line">                <span class="keyword">if</span> cur.right:</span><br><span class="line">                    stack.append(cur.right)</span><br><span class="line">            <span class="comment"># Case3: 从右子树遍历完而来 或者 是叶子节点</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                res.append(cur.val)</span><br><span class="line">                stack.pop()</span><br><span class="line">            prev = cur</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>思路2 只划分上下两种case</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">postorderTraversal</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">        prev = <span class="keyword">None</span></span><br><span class="line">        stack, res = [root], []</span><br><span class="line">        <span class="keyword">while</span> stack:</span><br><span class="line">            cur = stack[<span class="number">-1</span>]</span><br><span class="line">            <span class="comment"># Case1: 什么时候访问节点？</span></span><br><span class="line">            <span class="comment"># 1.叶子节点 2.从子节点而来</span></span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">not</span> cur.left <span class="keyword">and</span> <span class="keyword">not</span> cur.right) <span class="keyword">or</span> (prev <span class="keyword">and</span> (cur.right == prev <span class="keyword">or</span> cur.left == prev)):</span><br><span class="line">                node = stack.pop()</span><br><span class="line">                res.append(node.val)</span><br><span class="line">                prev = node</span><br><span class="line">            <span class="comment"># Case2: 从父节点而来</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> cur.right:</span><br><span class="line">                    stack.append(cur.right)</span><br><span class="line">                <span class="keyword">if</span> cur.left:</span><br><span class="line">                    stack.append(cur.left)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>什么时候访问root节点？</strong><ul>
+<li>preorder: 直接访问 stack</li>
+<li>inorder: 左subtree访问完了，再访问 stack+cur</li>
+<li>postorder: 左右subtree访问完了，再访问 stack+cur+prev</li>
+</ul>
+</li>
+</ul>
+<h2 id="Morris-Traversal"><a href="#Morris-Traversal" class="headerlink" title="Morris Traversal"></a>Morris Traversal</h2><ul>
+<li>1968年，Knuth提出说能否将该问题的空间复杂度压缩到O(1)，同时原树的结构不能改变。</li>
+<li><p>大约十年后，1979年，Morris在”Traversing Binary Trees Simply and Cheaply”这篇论文中用一种<strong>Threaded Binary Tree</strong>的方法解决了该问题。</p>
+<img src="/2018/05/03/tree-traversal/morris_traversal.jpg">
+</li>
+<li><p>Morris算法在遍历过程中动态的构建Threaded Binary Tree，同时在结束时又将树恢复原样，在满足O(1)空间复杂度的同时也恰好满足Knuth对树结构不能改变的要求。适合空间复杂度要求高的场合！</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Inorder Demo Morris Traversal</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inorderTraversal</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        res = []</span><br><span class="line">        cur = root</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> cur.left:</span><br><span class="line">                res.append(cur.val)</span><br><span class="line">                cur = cur.right</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 1 Find Inorder Predecessor of cur</span></span><br><span class="line">                prev = cur.left</span><br><span class="line">                <span class="keyword">while</span> prev.right <span class="keyword">and</span> prev.right != cur:</span><br><span class="line">                    prev = prev.right</span><br><span class="line"></span><br><span class="line">                <span class="comment"># 2 Connect or Restore the Pointer</span></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> prev.right:</span><br><span class="line">                    prev.right = cur</span><br><span class="line">                    cur = cur.left</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    prev.right = <span class="keyword">None</span></span><br><span class="line">                    res.append(cur.val)</span><br><span class="line">                    cur = cur.right</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h2 id="BFS-Level-Order-Traversal"><a href="#BFS-Level-Order-Traversal" class="headerlink" title="BFS Level Order Traversal"></a>BFS Level Order Traversal</h2><h3 id="102-Binary-Tree-Level-Order-Traversal"><a href="#102-Binary-Tree-Level-Order-Traversal" class="headerlink" title="102. Binary Tree Level Order Traversal"></a><a href="https://leetcode.com/problems/binary-tree-level-order-traversal/" target="_blank" rel="noopener">102. Binary Tree Level Order Traversal</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">levelOrder</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">        queue = [root]</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            res.append([node.val <span class="keyword">for</span> node <span class="keyword">in</span> queue])</span><br><span class="line">            nqueue = []</span><br><span class="line">            <span class="keyword">for</span> node <span class="keyword">in</span> queue:</span><br><span class="line">                <span class="keyword">if</span> node.left:</span><br><span class="line">                    nqueue.append(node.left)</span><br><span class="line">                <span class="keyword">if</span> node.right:</span><br><span class="line">                    nqueue.append(node.right)</span><br><span class="line">            queue = nqueue</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h3 id="107-Binary-Tree-Level-Order-Traversal-II"><a href="#107-Binary-Tree-Level-Order-Traversal-II" class="headerlink" title="107. Binary Tree Level Order Traversal II"></a><a href="https://leetcode.com/problems/binary-tree-level-order-traversal-ii/" target="_blank" rel="noopener">107. Binary Tree Level Order Traversal II</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">levelOrderBottom</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        queue = [root]</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            res.append([node.val <span class="keyword">for</span> node <span class="keyword">in</span> queue]</span><br><span class="line">)</span><br><span class="line">            nqueue = []</span><br><span class="line">            <span class="keyword">for</span> node <span class="keyword">in</span> queue:</span><br><span class="line">                <span class="keyword">if</span> node.left:</span><br><span class="line">                    nqueue.append(node.left)</span><br><span class="line">                <span class="keyword">if</span> node.right:</span><br><span class="line">                    nqueue.append(node.right)</span><br><span class="line">            queue = nqueue</span><br><span class="line">        <span class="keyword">return</span> res[::<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="637-Average-of-Levels-in-Binary-Tree"><a href="#637-Average-of-Levels-in-Binary-Tree" class="headerlink" title="637. Average of Levels in Binary Tree"></a><a href="https://leetcode.com/problems/average-of-levels-in-binary-tree/" target="_blank" rel="noopener">637. Average of Levels in Binary Tree</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">averageOfLevels</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line">        res = []</span><br><span class="line">        queue = [root]</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            level = [node.val <span class="keyword">for</span> node <span class="keyword">in</span> queue]</span><br><span class="line">            ret = <span class="number">1.0</span> * sum(level) / len(level)</span><br><span class="line">            res.append(ret)</span><br><span class="line">            nqueue = []</span><br><span class="line">            <span class="keyword">for</span> node <span class="keyword">in</span> queue:</span><br><span class="line">                <span class="keyword">if</span> node.left:</span><br><span class="line">                    nqueue.append(node.left)</span><br><span class="line">                <span class="keyword">if</span> node.right:</span><br><span class="line">                    nqueue.append(node.right)</span><br><span class="line">            queue = nqueue</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h3 id="103-Binary-Tree-Zigzag-Level-Order-Traversal"><a href="#103-Binary-Tree-Zigzag-Level-Order-Traversal" class="headerlink" title="103. Binary Tree Zigzag Level Order Traversal"></a><a href="https://leetcode.com/problems/binary-tree-zigzag-level-order-traversal/" target="_blank" rel="noopener">103. Binary Tree Zigzag Level Order Traversal</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">zigzagLevelOrder</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">        queue = [root]</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            level = [node.val <span class="keyword">for</span> node <span class="keyword">in</span> queue]</span><br><span class="line">            <span class="keyword">if</span> len(res) % <span class="number">2</span>:</span><br><span class="line">                level.reverse()</span><br><span class="line">            res.append(level)</span><br><span class="line">            nqueue = []</span><br><span class="line">            <span class="keyword">for</span> node <span class="keyword">in</span> queue:</span><br><span class="line">                <span class="keyword">if</span> node.left: nqueue.append(node.left)</span><br><span class="line">                <span class="keyword">if</span> node.right: nqueue.append(node.right)</span><br><span class="line">            queue = nqueue</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/05/03/tree-traversal/" data-id="cjgr2qqe3000iitu0dlezlb4k" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-spark-quick-start" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -269,6 +501,7 @@ ga('send', 'pageview');
 <li>Transform this DataFrame to a new one<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># We call filter to return a new DataFrame with a subset of the lines in the file.</span></span><br><span class="line">&gt;&gt;&gt; linesWithSpark = textFile.filter(textFile.value.contains(<span class="string">"Spark"</span>))</span><br><span class="line"><span class="comment"># How many lines contain "Spark"?</span></span><br><span class="line">&gt;&gt;&gt; textFile.filter(textFile.value.contains(<span class="string">"Spark"</span>)).count()  </span><br><span class="line">20</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<hr>
 <h2 id="Self-Contained-Applications"><a href="#Self-Contained-Applications" class="headerlink" title="Self-Contained Applications"></a>Self-Contained Applications</h2><p><strong>Scala (with sbt), Java (with Maven), and Python (pip).</strong></p>
 <ul>
 <li>This program just counts the number of lines containing ‘a’ and the number containing ‘b’ in a text file.</li>
@@ -282,6 +515,23 @@ ga('send', 'pageview');
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; python spark-test.py</span><br><span class="line">........</span><br><span class="line">Lines with a: 61, lines with b: 30</span><br><span class="line">.......</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<hr>
+<h2 id="Spark-Streaming-With-Kafka"><a href="#Spark-Streaming-With-Kafka" class="headerlink" title="Spark Streaming With Kafka"></a>Spark Streaming With Kafka</h2><h3 id="SparkContext"><a href="#SparkContext" class="headerlink" title="SparkContext"></a><strong>SparkContext</strong></h3><ul>
+<li>Main entry point for <strong>Spark functionality</strong>.</li>
+<li>A SparkContext represents the connection to a Spark cluster, and can be used to create RDD and broadcast variables on that cluster.</li>
+<li>master = “local[2]”, appName = “StockAveragePrice“<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line">sc = SparkContext(<span class="string">"local[2]"</span>, <span class="string">"StockAveragePrice"</span>)</span><br><span class="line">sc.setLogLevel(<span class="string">'ERROR'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="StreamingContext"><a href="#StreamingContext" class="headerlink" title="StreamingContext"></a><strong>StreamingContext</strong></h3><ul>
+<li>Main entry point for <strong>Spark Streaming functionality</strong>.</li>
+<li>A StreamingContext represents the connection to a Spark cluster, and can be used to create <strong>DStream various input sources</strong>.<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.streaming <span class="keyword">import</span> StreamingContext</span><br><span class="line">ssc = StreamingContext(sc, <span class="number">5</span>)</span><br><span class="line"><span class="comment"># sparkContext = sc, batchDuration = 5</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="KafkaUtils"><a href="#KafkaUtils" class="headerlink" title="KafkaUtils"></a><strong>KafkaUtils</strong></h3><ul>
+<li>KafkaUtils.createDirectStream(ssc, topics, kafkaParams,…)</li>
+<li>Create an input stream that directly pulls messages from a Kafka Broker and specific offset.<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.streaming.kafka <span class="keyword">import</span> KafkaUtils</span><br><span class="line">topic = <span class="string">"test"</span></span><br><span class="line">brokers = <span class="string">"192.168.99.100:9092"</span></span><br><span class="line"><span class="comment"># Kafka Consumer</span></span><br><span class="line">directKafkaStream = KafkaUtils.createDirectStream(</span><br><span class="line">                            ssc,</span><br><span class="line">                            [topic],</span><br><span class="line">                            &#123;<span class="string">'metadata.broker.list'</span>: brokers&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
         
         </div>
@@ -292,7 +542,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/01/spark-quick-start/" data-id="cjgo0wu7z000e6ru0qh8tn0ev" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/01/spark-quick-start/" data-id="cjgr2qqdx000ditu0unex4lnr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -559,7 +809,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/29/bit-manipulation/" data-id="cjgo0wu7g00026ru0y0rrxpxb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/29/bit-manipulation/" data-id="cjgr2qqdt0009itu0yacjn7s1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -733,7 +983,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/25/docker-quick-start/" data-id="cjgo0wu7m00066ru06yw7ah5x" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/25/docker-quick-start/" data-id="cjgr2qqdd0000itu0cx5mx07t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -934,7 +1184,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/21/docker/" data-id="cjgo0wu7p00086ru0b8u90jjh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/21/docker/" data-id="cjgr2qqdo0005itu02f1o96ng" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1116,7 +1366,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/18/message-queue/" data-id="cjgo0wu7r000a6ru0cst93ijy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/18/message-queue/" data-id="cjgr2qqdr0008itu0tyqbxdga" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1319,7 +1569,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/17/redis/" data-id="cjgo0wu7w000d6ru07u61yz9b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/17/redis/" data-id="cjgr2qqe1000hitu0vd9pq3ej" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1581,7 +1831,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/15/binary-search/" data-id="cjgo0wu7a00006ru09jdv8nwm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/15/binary-search/" data-id="cjgr2qqdj0002itu04ursoi7b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1749,7 +1999,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/10/segment-tree/" data-id="cjgo0wu81000h6ru0h5q6v474" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/10/segment-tree/" data-id="cjgr2qqdv000bitu0v50hxo0v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1838,6 +2088,15 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/05/03/tree-traversal/" class="title">Tree Traversal</a></p>
+                            <p class="item-date"><time datetime="2018-05-03T21:47:21.000Z" itemprop="datePublished">2018-05-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Big-Data/">Big Data</a></p>
                             <p class="item-title"><a href="/2018/05/01/spark-quick-start/" class="title">Spark Quick Start</a></p>
                             <p class="item-date"><time datetime="2018-05-01T18:24:06.000Z" itemprop="datePublished">2018-05-01</time></p>
@@ -1871,15 +2130,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Full-Stack/">Full Stack</a></p>
-                            <p class="item-title"><a href="/2018/04/18/message-queue/" class="title">Message Queue 消息队列</a></p>
-                            <p class="item-date"><time datetime="2018-04-18T22:21:34.000Z" itemprop="datePublished">2018-04-18</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1889,7 +2139,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -1898,7 +2148,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -1907,7 +2157,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary-Search/">Binary Search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/segment-tree/">segment tree</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary-Search/">Binary Search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/segment-tree/">segment tree</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1916,7 +2166,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Binary-Search/" style="font-size: 10px;">Binary Search</a> <a href="/tags/binary-indexed-tree/" style="font-size: 10px;">binary indexed tree</a> <a href="/tags/segment-tree/" style="font-size: 10px;">segment tree</a>
+            <a href="/tags/Binary-Search/" style="font-size: 10px;">Binary Search</a> <a href="/tags/binary-indexed-tree/" style="font-size: 10px;">binary indexed tree</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary tree</a> <a href="/tags/segment-tree/" style="font-size: 10px;">segment tree</a>
         </div>
     </div>
 

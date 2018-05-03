@@ -14,7 +14,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://kaihaoli.github.io/2018/05/01/spark-quick-start/spark-architecture.png">
 <meta property="og:image" content="http://kaihaoli.github.io/2018/05/01/spark-quick-start/SparkStreaming.jpg">
-<meta property="og:updated_time" content="2018-05-01T18:28:50.773Z">
+<meta property="og:updated_time" content="2018-05-02T18:13:12.776Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Spark Quick Start">
 <meta name="twitter:description" content="Apache Spark™ is a unified analytics engine for large-scale data processing.  Speed Computation optimization (DAG, thread-based) In memory computing    Easy to Use &amp;amp; Generality Interactive Shell w">
@@ -166,11 +166,11 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                8
+                9
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                3
+                4
                 <span>tags</span>
             </div>
         </div>
@@ -234,7 +234,7 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Overview"><span class="toc-number">1.</span> <span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#History"><span class="toc-number">2.</span> <span class="toc-text">History</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-Spark-without-Hadoop"><span class="toc-number">3.</span> <span class="toc-text">Install Spark without Hadoop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interact-with-the-Spark-Shell"><span class="toc-number">4.</span> <span class="toc-text">Interact with the Spark Shell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Start"><span class="toc-number">4.1.</span> <span class="toc-text">Start</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DataSet"><span class="toc-number">4.2.</span> <span class="toc-text">DataSet</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Self-Contained-Applications"><span class="toc-number">5.</span> <span class="toc-text">Self-Contained Applications</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Overview"><span class="toc-number">1.</span> <span class="toc-text">Overview</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#History"><span class="toc-number">2.</span> <span class="toc-text">History</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Install-Spark-without-Hadoop"><span class="toc-number">3.</span> <span class="toc-text">Install Spark without Hadoop</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Interact-with-the-Spark-Shell"><span class="toc-number">4.</span> <span class="toc-text">Interact with the Spark Shell</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Start"><span class="toc-number">4.1.</span> <span class="toc-text">Start</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DataSet"><span class="toc-number">4.2.</span> <span class="toc-text">DataSet</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Self-Contained-Applications"><span class="toc-number">5.</span> <span class="toc-text">Self-Contained Applications</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Spark-Streaming-With-Kafka"><span class="toc-number">6.</span> <span class="toc-text">Spark Streaming With Kafka</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#SparkContext"><span class="toc-number">6.1.</span> <span class="toc-text">SparkContext</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#StreamingContext"><span class="toc-number">6.2.</span> <span class="toc-text">StreamingContext</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#KafkaUtils"><span class="toc-number">6.3.</span> <span class="toc-text">KafkaUtils</span></a></li></ol></li></ol>
                 </div>
             
             <p><strong>Apache Spark™</strong> is a <strong>unified analytics engine</strong> for <strong>large-scale data processing</strong>.</p>
@@ -280,6 +280,7 @@ ga('send', 'pageview');
 <li>Transform this DataFrame to a new one<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># We call filter to return a new DataFrame with a subset of the lines in the file.</span></span><br><span class="line">&gt;&gt;&gt; linesWithSpark = textFile.filter(textFile.value.contains(<span class="string">"Spark"</span>))</span><br><span class="line"><span class="comment"># How many lines contain "Spark"?</span></span><br><span class="line">&gt;&gt;&gt; textFile.filter(textFile.value.contains(<span class="string">"Spark"</span>)).count()  </span><br><span class="line">20</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<hr>
 <h2 id="Self-Contained-Applications"><a href="#Self-Contained-Applications" class="headerlink" title="Self-Contained Applications"></a>Self-Contained Applications</h2><p><strong>Scala (with sbt), Java (with Maven), and Python (pip).</strong></p>
 <ul>
 <li>This program just counts the number of lines containing ‘a’ and the number containing ‘b’ in a text file.</li>
@@ -293,6 +294,23 @@ ga('send', 'pageview');
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; python spark-test.py</span><br><span class="line">........</span><br><span class="line">Lines with a: 61, lines with b: 30</span><br><span class="line">.......</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<hr>
+<h2 id="Spark-Streaming-With-Kafka"><a href="#Spark-Streaming-With-Kafka" class="headerlink" title="Spark Streaming With Kafka"></a>Spark Streaming With Kafka</h2><h3 id="SparkContext"><a href="#SparkContext" class="headerlink" title="SparkContext"></a><strong>SparkContext</strong></h3><ul>
+<li>Main entry point for <strong>Spark functionality</strong>.</li>
+<li>A SparkContext represents the connection to a Spark cluster, and can be used to create RDD and broadcast variables on that cluster.</li>
+<li>master = “local[2]”, appName = “StockAveragePrice“<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line">sc = SparkContext(<span class="string">"local[2]"</span>, <span class="string">"StockAveragePrice"</span>)</span><br><span class="line">sc.setLogLevel(<span class="string">'ERROR'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="StreamingContext"><a href="#StreamingContext" class="headerlink" title="StreamingContext"></a><strong>StreamingContext</strong></h3><ul>
+<li>Main entry point for <strong>Spark Streaming functionality</strong>.</li>
+<li>A StreamingContext represents the connection to a Spark cluster, and can be used to create <strong>DStream various input sources</strong>.<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.streaming <span class="keyword">import</span> StreamingContext</span><br><span class="line">ssc = StreamingContext(sc, <span class="number">5</span>)</span><br><span class="line"><span class="comment"># sparkContext = sc, batchDuration = 5</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="KafkaUtils"><a href="#KafkaUtils" class="headerlink" title="KafkaUtils"></a><strong>KafkaUtils</strong></h3><ul>
+<li>KafkaUtils.createDirectStream(ssc, topics, kafkaParams,…)</li>
+<li>Create an input stream that directly pulls messages from a Kafka Broker and specific offset.<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.streaming.kafka <span class="keyword">import</span> KafkaUtils</span><br><span class="line">topic = <span class="string">"test"</span></span><br><span class="line">brokers = <span class="string">"192.168.99.100:9092"</span></span><br><span class="line"><span class="comment"># Kafka Consumer</span></span><br><span class="line">directKafkaStream = KafkaUtils.createDirectStream(</span><br><span class="line">                            ssc,</span><br><span class="line">                            [topic],</span><br><span class="line">                            &#123;<span class="string">'metadata.broker.list'</span>: brokers&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
         
         </div>
@@ -303,7 +321,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/01/spark-quick-start/" data-id="cjgo0wu7z000e6ru0qh8tn0ev" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/01/spark-quick-start/" data-id="cjgr2qqdx000ditu0unex4lnr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -378,6 +396,15 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
+        <a href="/2018/05/03/tree-traversal/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Tree Traversal
+                
+            </div>
+        </a>
+    
     
         <a href="/2018/04/29/bit-manipulation/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
@@ -404,6 +431,15 @@ ga('send', 'pageview');
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/05/03/tree-traversal/" class="title">Tree Traversal</a></p>
+                            <p class="item-date"><time datetime="2018-05-03T21:47:21.000Z" itemprop="datePublished">2018-05-03</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -441,15 +477,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Full-Stack/">Full Stack</a></p>
-                            <p class="item-title"><a href="/2018/04/18/message-queue/" class="title">Message Queue 消息队列</a></p>
-                            <p class="item-date"><time datetime="2018-04-18T22:21:34.000Z" itemprop="datePublished">2018-04-18</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -459,7 +486,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -468,7 +495,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -477,7 +504,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary-Search/">Binary Search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/segment-tree/">segment tree</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Binary-Search/">Binary Search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/segment-tree/">segment tree</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -486,7 +513,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/Binary-Search/" style="font-size: 10px;">Binary Search</a> <a href="/tags/binary-indexed-tree/" style="font-size: 10px;">binary indexed tree</a> <a href="/tags/segment-tree/" style="font-size: 10px;">segment tree</a>
+            <a href="/tags/Binary-Search/" style="font-size: 10px;">Binary Search</a> <a href="/tags/binary-indexed-tree/" style="font-size: 10px;">binary indexed tree</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary tree</a> <a href="/tags/segment-tree/" style="font-size: 10px;">segment tree</a>
         </div>
     </div>
 
