@@ -3,20 +3,15 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Segment Tree 线段树 | kaihao</title>
+    <title>kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Segment Tree 线段树线段树参考整理自：九章算法线段树教程 1 线段树是什么？Google常考数据结构，国内也经常问这个。  线段树是一种高级数据结构，也是一种树结构，准确的说是二叉树，它能够高效的处理区间修改查询等问题。 线段树是一种二叉搜索树，与区间树相似，它将一个区间划分成一些单元区间，每个单元区间对应线段树中的一个叶结点。 线段树中的每一个非叶子节点[a,b]，它的左儿子表示的区">
-<meta name="keywords" content="segment tree,binary indexed tree">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Segment Tree 线段树">
-<meta property="og:url" content="http://kaihaoli.github.io/2018/04/10/segment-tree/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="kaihao">
+<meta property="og:url" content="http://kaihaoli.github.io/page/2/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="Segment Tree 线段树线段树参考整理自：九章算法线段树教程 1 线段树是什么？Google常考数据结构，国内也经常问这个。  线段树是一种高级数据结构，也是一种树结构，准确的说是二叉树，它能够高效的处理区间修改查询等问题。 线段树是一种二叉搜索树，与区间树相似，它将一个区间划分成一些单元区间，每个单元区间对应线段树中的一个叶结点。 线段树中的每一个非叶子节点[a,b]，它的左儿子表示的区">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-10T21:36:39.075Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Segment Tree 线段树">
-<meta name="twitter:description" content="Segment Tree 线段树线段树参考整理自：九章算法线段树教程 1 线段树是什么？Google常考数据结构，国内也经常问这个。  线段树是一种高级数据结构，也是一种树结构，准确的说是二叉树，它能够高效的处理区间修改查询等问题。 线段树是一种二叉搜索树，与区间树相似，它将一个区间划分成一些单元区间，每个单元区间对应线段树中的一个叶结点。 线段树中的每一个非叶子节点[a,b]，它的左儿子表示的区">
+<meta name="twitter:title" content="kaihao">
     
 
     
@@ -192,15 +187,16 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-segment-tree" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main">
+    <article id="post-segment-tree" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
             <header class="article-header">
                 
     
-        <h1 class="article-title" itemprop="name">
-            Segment Tree 线段树
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/04/10/segment-tree/">Segment Tree 线段树</a>
         </h1>
     
 
@@ -234,11 +230,6 @@ ga('send', 'pageview');
         
         <div class="article-entry" itemprop="articleBody">
         
-            
-                <div id="toc" class="toc-article">
-                <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-线段树是什么？"><span class="toc-number">1.</span> <span class="toc-text">1 线段树是什么？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-线段树的创建"><span class="toc-number">2.</span> <span class="toc-text">2 线段树的创建</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LintCode-201-Segment-Tree-Build"><span class="toc-number">2.1.</span> <span class="toc-text">LintCode 201. Segment Tree Build</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LintCode-439-Segment-Tree-Build-II"><span class="toc-number">2.2.</span> <span class="toc-text">LintCode 439. Segment Tree Build II</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-线段树的更新"><span class="toc-number">3.</span> <span class="toc-text">3 线段树的更新</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LintCode-203-Segment-Tree-Modify"><span class="toc-number">3.1.</span> <span class="toc-text">LintCode 203. Segment Tree Modify</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-线段树的查询"><span class="toc-number">4.</span> <span class="toc-text">4 线段树的查询</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LintCode-202-Segment-Tree-Query"><span class="toc-number">4.1.</span> <span class="toc-text">LintCode 202. Segment Tree Query</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-线段树的应用"><span class="toc-number">5.</span> <span class="toc-text">5 线段树的应用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#线段树的基本应用"><span class="toc-number">5.1.</span> <span class="toc-text">线段树的基本应用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#307-Range-Sum-Query-Mutable"><span class="toc-number">5.2.</span> <span class="toc-text">307. Range Sum Query - Mutable</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LintCode-249-Count-of-Smaller-Number-before-itsel"><span class="toc-number">5.3.</span> <span class="toc-text">LintCode 249. Count of Smaller Number before itsel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#315-Count-of-Smaller-Numbers-After-Self"><span class="toc-number">5.4.</span> <span class="toc-text">315. Count of Smaller Numbers After Self</span></a></li></ol></li></ol>
-                </div>
             
             <p>Segment Tree 线段树<br>线段树参考整理自：<a href="https://www.jiuzhang.com/tutorial/segment-tree/86" target="_blank" rel="noopener">九章算法线段树教程</a></p>
 <h2 id="1-线段树是什么？"><a href="#1-线段树是什么？" class="headerlink" title="1 线段树是什么？"></a>1 线段树是什么？</h2><p>Google常考数据结构，国内也经常问这个。</p>
@@ -361,29 +352,13 @@ ga('send', 'pageview');
         </footer>
     </div>
     
-        
-<nav id="article-nav">
-    
-        <a href="/2018/04/15/binary-search/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    Binary Search 二分查找
-                
-            </div>
-        </a>
-    
-    
-</nav>
-
-
-    
 </article>
 
 
-    
-    
 
+    <nav id="page-nav">
+        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </nav>
 </section>
             
                 
