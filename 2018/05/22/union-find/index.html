@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>Union Find 并查集 | kaihao</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="What is Union Find ? Union-Find算法(并查集算法)是解决动态连通性（Dynamic Conectivity）问题的一种算法，”人以类聚,物以群分” 一种用来解决集合查询合并的数据结构，支持 O(1)find, O(1)union   查询 Find 确定某个元素x属于哪一个集合   合并 Union 将两个集合合并    应用场景 Computer Network 两">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Union Find 并查集">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/05/22/union-find/index.html">
+<meta property="og:site_name" content="kaihao">
+<meta property="og:description" content="What is Union Find ? Union-Find算法(并查集算法)是解决动态连通性（Dynamic Conectivity）问题的一种算法，”人以类聚,物以群分” 一种用来解决集合查询合并的数据结构，支持 O(1)find, O(1)union   查询 Find 确定某个元素x属于哪一个集合   合并 Union 将两个集合合并    应用场景 Computer Network 两">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://kaihaoli.github.io/2018/05/22/union-find/quick-find.png">
+<meta property="og:image" content="http://kaihaoli.github.io/2018/05/22/union-find/quick-union.png">
+<meta property="og:image" content="http://kaihaoli.github.io/2018/05/22/union-find/weighted-quick-union.png">
+<meta property="og:image" content="http://kaihaoli.github.io/2018/05/22/union-find/union-find.jpg">
+<meta property="og:updated_time" content="2018-05-23T03:02:58.890Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Union Find 并查集">
+<meta name="twitter:description" content="What is Union Find ? Union-Find算法(并查集算法)是解决动态连通性（Dynamic Conectivity）问题的一种算法，”人以类聚,物以群分” 一种用来解决集合查询合并的数据结构，支持 O(1)find, O(1)union   查询 Find 确定某个元素x属于哪一个集合   合并 Union 将两个集合合并    应用场景 Computer Network 两">
+<meta name="twitter:image" content="http://kaihaoli.github.io/2018/05/22/union-find/quick-find.png">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-117906283-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">kaihao</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/algorithms">Algorithms</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/about">About me</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/algorithms">Algorithms</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About me</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Kaihao(Chris) Li</h2>
+            <h3 id="title">I am the Bone of my Sword!</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Stony Brook, New York, USA</span>
+            <a id="follow" target="_blank" href="https://github.com/kaihaoli/">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                12
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                4
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/kaihaoli" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-union-find" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            Union Find 并查集
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/22/union-find/">
+            <time datetime="2018-05-23T02:32:20.000Z" itemprop="datePublished">2018-05-22</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Union-Find"><span class="toc-number">1.</span> <span class="toc-text">What is Union Find ?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#应用场景"><span class="toc-number">1.1.</span> <span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Union-Find-vs-DFS"><span class="toc-number">1.2.</span> <span class="toc-text">Union Find vs DFS</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Algorithm"><span class="toc-number">2.</span> <span class="toc-text">Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Quick-Find"><span class="toc-number">2.1.</span> <span class="toc-text">Quick-Find</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Quick-Union"><span class="toc-number">2.2.</span> <span class="toc-text">Quick-Union</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Weighted-Quick-Union"><span class="toc-number">2.3.</span> <span class="toc-text">Weighted Quick-Union</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Path-Compression"><span class="toc-number">2.4.</span> <span class="toc-text">Path Compression</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Weighted-Quick-Union-With-Path-Compression"><span class="toc-number">2.5.</span> <span class="toc-text">Weighted Quick-Union With Path Compression</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Connected"><span class="toc-number">3.</span> <span class="toc-text">Connected</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LintCode-589-Connecting-Graph"><span class="toc-number">3.1.</span> <span class="toc-text">LintCode 589. Connecting Graph</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LintCode-590-Connecting-Graph-II"><span class="toc-number">3.2.</span> <span class="toc-text">LintCode 590. Connecting Graph II</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#130-Surrounded-Regions"><span class="toc-number">3.3.</span> <span class="toc-text">130. Surrounded Regions</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#737-Sentence-Similarity-II"><span class="toc-number">3.4.</span> <span class="toc-text">737. Sentence Similarity II</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#统计连通块的个数"><span class="toc-number">4.</span> <span class="toc-text">统计连通块的个数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LintCode-591-Connecting-Graph-III"><span class="toc-number">4.1.</span> <span class="toc-text">LintCode 591. Connecting Graph III</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#323-Number-of-Connected-Components-in-an-Undirected-Graph"><span class="toc-number">4.2.</span> <span class="toc-text">323. Number of Connected Components in an Undirected Graph</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#305-Number-of-Islands-II"><span class="toc-number">4.3.</span> <span class="toc-text">305. Number of Islands II</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#547-Friend-Circles"><span class="toc-number">4.4.</span> <span class="toc-text">547. Friend Circles</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Redundant-Connection"><span class="toc-number">5.</span> <span class="toc-text">Redundant Connection</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#261-Graph-Valid-Tree"><span class="toc-number">5.1.</span> <span class="toc-text">261. Graph Valid Tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#684-Redundant-Connection"><span class="toc-number">5.2.</span> <span class="toc-text">684. Redundant Connection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#685-Redundant-Connection-II"><span class="toc-number">5.3.</span> <span class="toc-text">685. Redundant Connection II</span></a></li></ol></li></ol>
+                </div>
+            
+            <h2 id="What-is-Union-Find"><a href="#What-is-Union-Find" class="headerlink" title="What is Union Find ?"></a>What is Union Find ?</h2><ul>
+<li>Union-Find算法(并查集算法)是解决<strong>动态连通性（Dynamic Conectivity）</strong>问题的一种算法，”人以类聚,物以群分”</li>
+<li>一种用来解决<strong>集合查询合并</strong>的<strong>数据结构</strong>，支持 <strong>O(1)find, O(1)union</strong></li>
+</ul>
+<ol>
+<li>查询 Find<ul>
+<li>确定某个元素x属于哪一个集合</li>
+</ul>
+</li>
+<li>合并 Union<ul>
+<li>将两个集合合并</li>
+</ul>
+</li>
+</ol>
+<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ol>
+<li>Computer Network<ul>
+<li>两个网络节点是否联通</li>
+<li>最小的布线使得整个网络联通</li>
+</ul>
+</li>
+<li>Social Network<ul>
+<li>Linkedin 两个用户可能认识的人</li>
+</ul>
+</li>
+<li>集合论</li>
+</ol>
+<h3 id="Union-Find-vs-DFS"><a href="#Union-Find-vs-DFS" class="headerlink" title="Union Find vs DFS"></a>Union Find vs DFS</h3><p>在对问题进行建模的时候，我们应该尽量想清楚需要解决的问题是什么!<br>因为模型中选择的数据结构和算法显然会根据问题的不同而不同!</p>
+<ul>
+<li>Union Find - 给出两个节点，判断它们是否连通，如果连通，<strong>不需要给出具体的路径</strong></li>
+<li>DFS - 给出两个节点，判断它们是否连通，如果连通，<strong>需要给出具体的路径</strong></li>
+</ul>
+<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="Quick-Find"><a href="#Quick-Find" class="headerlink" title="Quick-Find"></a>Quick-Find</h3><p>有点类似于染色的过程，每个节点一个颜色，然后相同的节点设置成相同的颜色。<br>quick-find算法十分直观符合简单的思考过程。</p>
+<img src="/2018/05/22/union-find/quick-find.png">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Time : O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    rootx = root[x]</span><br><span class="line">    rooty = root[y]</span><br><span class="line">    <span class="keyword">if</span> rootx == rooty:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(root)):</span><br><span class="line">        <span class="keyword">if</span> root[i] == rootx:</span><br><span class="line">            root[i] = rooty</span><br></pre></td></tr></table></figure>
+<p>每次添加新路径(Union)就是<strong>“牵一发而动全身”</strong>，想要解决这个问题，关键就是要提高union方法的效率，让它不再需要遍历整个数组。</p>
+<h3 id="Quick-Union"><a href="#Quick-Union" class="headerlink" title="Quick-Union"></a>Quick-Union</h3><ul>
+<li><strong>以树的思想，表示集合</strong>！！！</li>
+<li>这是UF算法里最关键的思路，<strong>以树的形式表示集合</strong>，这样组织正好可是很高效的实现find和union!</li>
+</ul>
+<img src="/2018/05/22/union-find/quick-union.png">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(Tree Height), Worst Case O(n)</span></span><br><span class="line"><span class="comment"># Recursion</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> root[x] == x:</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    <span class="keyword">return</span> find(root[x])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Iteration</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> root[x] != x:</span><br><span class="line">        x = root[x]</span><br><span class="line">    <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(Tree Height), Worst Case O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    rootx = find(x)</span><br><span class="line">    rooty = find(y)</span><br><span class="line">    <span class="keyword">if</span> rootx != rooty: 判断两个Element在不在同一个集合当中</span><br><span class="line">        root[rootx] = rooty</span><br></pre></td></tr></table></figure>
+<h3 id="Weighted-Quick-Union"><a href="#Weighted-Quick-Union" class="headerlink" title="Weighted Quick-Union"></a>Weighted Quick-Union</h3><p><strong>既然树的高度成为制约时间复杂度的瓶颈，我们就想办法让树平衡！</strong></p>
+<img src="/2018/05/22/union-find/weighted-quick-union.png">
+<ul>
+<li>以Quick union为基础，我们<strong>额外利用一个size[]保存每一个联通集中对象的数量</strong>。</li>
+<li>在调用union()的时候，我们总是把<strong>对象数目较少的联通集连接到对象数目较多的联通集</strong>中。</li>
+<li>通过这种方式，我们可以在一定程度上缓解树的高度太大的问题，从而改善Quick union的时间复杂度。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(logn)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> root[x] == x:</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    <span class="keyword">return</span> find(root[x])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Time : O(logn)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    rootx = find(x)</span><br><span class="line">    rooty = find(y)</span><br><span class="line">    <span class="keyword">if</span> size[rootx] &gt;= size[rooty]:</span><br><span class="line">        root[rooty] = rootx</span><br><span class="line">        size[rootx] += size[rooty]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        root[rootx] = rooty</span><br><span class="line">        size[rooty] += size[rootx]</span><br></pre></td></tr></table></figure>
+<h3 id="Path-Compression"><a href="#Path-Compression" class="headerlink" title="Path Compression"></a>Path Compression</h3><p>随着数据的增加，树的深度不断增加，性能会逐渐变差。这个时候，如果我们在计算一个node的root时，将node为根的树摘下来，挂在当前树的根结点上，会降低树的深度，也就是提高效率，降低时间复杂度。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Path Compression 是在find的过程当中处理的</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> root[x] == x:</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line">    <span class="comment"># make every other node in path point to its grandparent.</span></span><br><span class="line">    root[x] = find(root[x]) <span class="comment"># Only one extra line</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> root[x]</span><br></pre></td></tr></table></figure></p>
+<h3 id="Weighted-Quick-Union-With-Path-Compression"><a href="#Weighted-Quick-Union-With-Path-Compression" class="headerlink" title="Weighted Quick-Union With Path Compression"></a>Weighted Quick-Union With Path Compression</h3><p><strong>Proof is very difficult, But the algorithm is still simple!</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Weighted 是体现在Union的过程当中</span></span><br><span class="line"><span class="comment"># Time : Very Near to O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    rootx = find(x)</span><br><span class="line">    rooty = find(y)</span><br><span class="line">    <span class="keyword">if</span> size[rootx] &gt;= size[rooty]:</span><br><span class="line">        root[rooty] = rootx</span><br><span class="line">        size[rootx] += size[rooty]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        root[rootx] = rooty</span><br><span class="line">        size[rooty] += size[rootx]</span><br></pre></td></tr></table></figure>
+<img src="/2018/05/22/union-find/union-find.jpg">
+<h2 id="Connected"><a href="#Connected" class="headerlink" title="Connected"></a>Connected</h2><p>查询两个元素是否在同一个集合内。</p>
+<h3 id="LintCode-589-Connecting-Graph"><a href="#LintCode-589-Connecting-Graph" class="headerlink" title="LintCode 589. Connecting Graph"></a><a href="https://www.lintcode.com/problem/connecting-graph/" target="_blank" rel="noopener">LintCode 589. Connecting Graph</a></h3><p>Given n nodes in a graph labeled from 1 to n. There is no edges in the graph at beginning.</p>
+<p>You need to support the following method:</p>
+<ol>
+<li>connect(a, b), add an edge to connect node a and node b`.</li>
+<li>query(a, b), check if two nodes are connected</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConnectingGraph</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.root = range(n+<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Find the Root of node x</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        root = self.root <span class="comment"># tip1 : root在类里面要加上"self."</span></span><br><span class="line">        <span class="keyword">if</span> root[x] == x:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        root[x] = self.find(root[x])</span><br><span class="line">        <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        rootx = self.find(x) <span class="comment"># tip2 : root[x] vs find(x)</span></span><br><span class="line">        rooty = self.find(y)</span><br><span class="line">        <span class="keyword">if</span> rootx != rooty:</span><br><span class="line">            root[rootx] = rooty</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connect</span><span class="params">(self, a, b)</span>:</span></span><br><span class="line">        self.union(a, b)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">query</span><span class="params">(self, a, b)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.find(a) == self.find(b)</span><br></pre></td></tr></table></figure>
+<h3 id="LintCode-590-Connecting-Graph-II"><a href="#LintCode-590-Connecting-Graph-II" class="headerlink" title="LintCode 590. Connecting Graph II"></a><a href="https://www.lintcode.com/problem/connecting-graph-ii/" target="_blank" rel="noopener">LintCode 590. Connecting Graph II</a></h3><ul>
+<li>统计每个联通块的元素个数</li>
+<li>query(a), Returns the number of connected <strong>component nodes which include node a</strong>.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConnectingGraph2</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.root = range(n+<span class="number">1</span>)</span><br><span class="line">        self.size = [<span class="number">1</span>] * (n+<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        <span class="keyword">if</span> root[x] == x:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        root[x] = self.find(root[x])</span><br><span class="line">        <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connect</span><span class="params">(self, a, b)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        size = self.size</span><br><span class="line">        roota = self.find(a)</span><br><span class="line">        rootb = self.find(b)</span><br><span class="line">        <span class="keyword">if</span> roota != rootb:</span><br><span class="line">            root[roota] = rootb</span><br><span class="line">            size[rootb] += size[roota]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">query</span><span class="params">(self, a)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.size[self.find(a)]</span><br></pre></td></tr></table></figure>
+<h3 id="130-Surrounded-Regions"><a href="#130-Surrounded-Regions" class="headerlink" title="130. Surrounded Regions"></a><a href="https://leetcode.com/problems/surrounded-regions/" target="_blank" rel="noopener">130. Surrounded Regions</a></h3><ul>
+<li><strong>解法1 DFS</strong></li>
+</ul>
+<p>从边缘的’O’出发，通过DFS，所有能够遍历的’O’都可以暂时被标记为’#’，那么剩下未能被标记的’O’说明被surrounded，需要在遍历结束之后全部转为’X’</p>
+<ul>
+<li><strong>解法2 Union Find</strong></li>
+</ul>
+<p>将与边缘相连通的’O’全部union到一个dummy node（也可以用hasEdge[]来存储，不过内存占用更多,<br>最终将没有和这个dummy node是一个component的’O’点全部标记为’X<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.root = range(n)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        <span class="keyword">if</span> root[x] == x:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        root[x] = self.find(root[x])</span><br><span class="line">        <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        rootx = self.find(x)</span><br><span class="line">        rooty = self.find(y)</span><br><span class="line">        <span class="keyword">if</span> rootx != rooty:</span><br><span class="line">            <span class="comment"># tip : 为了总是以dummy node(total)为父节点</span></span><br><span class="line">            root[min(rootx, rooty)] = max(rootx, rooty)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">(self, board)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> board:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        m, n = len(board), len(board[<span class="number">0</span>])</span><br><span class="line">        total = m*n</span><br><span class="line">        uf = UnionFind(total+<span class="number">1</span>)</span><br><span class="line">        grid = board</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(n):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="string">'X'</span>:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="comment"># Connect to "total" root</span></span><br><span class="line">                <span class="keyword">if</span> i == <span class="number">0</span> <span class="keyword">or</span> j == <span class="number">0</span> <span class="keyword">or</span> i == m<span class="number">-1</span> <span class="keyword">or</span> j == n<span class="number">-1</span>:</span><br><span class="line">                    uf.union(total, i*n+j)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    d = [(<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>), (<span class="number">-1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">-1</span>)]</span><br><span class="line">                    <span class="keyword">for</span> k <span class="keyword">in</span> xrange(<span class="number">4</span>):</span><br><span class="line">                        ni, nj = i + d[k][<span class="number">0</span>], j + d[k][<span class="number">1</span>]</span><br><span class="line">                        <span class="keyword">if</span> grid[ni][nj] == <span class="string">'O'</span>:</span><br><span class="line">                            uf.union(ni*n + nj, i*n + j)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(n):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="string">'X'</span>:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">if</span> uf.find(i*n + j) != total:</span><br><span class="line">                    grid[i][j] = <span class="string">'X'</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="737-Sentence-Similarity-II"><a href="#737-Sentence-Similarity-II" class="headerlink" title="737. Sentence Similarity II"></a><a href="https://leetcode.com/problems/sentence-similarity-ii/" target="_blank" rel="noopener">737. Sentence Similarity II</a></h3><p>典型的Union Find 应用题，两个单词是不是similarity其实就是两个单词在不在同一个集合内(connected 操作)！</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.root = range(n)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        <span class="keyword">if</span> root[x] == x:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        root[x] = self.find(root[x])</span><br><span class="line">        <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        self.root[self.find(x)] = self.find(y)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">areSentencesSimilarTwo</span><span class="params">(self, words1, words2, pairs)</span>:</span></span><br><span class="line">        m, n = len(words1), len(words2)</span><br><span class="line">        <span class="keyword">if</span> m != n: <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 建立words到index的映射关系！UnionFind 只支持数字的index！</span></span><br><span class="line">        uf = UnionFind(len(pairs)*<span class="number">2</span>)</span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        pdic = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> w1, w2 <span class="keyword">in</span> pairs:</span><br><span class="line">            <span class="keyword">if</span> w1 <span class="keyword">not</span> <span class="keyword">in</span> pdic:</span><br><span class="line">                pdic[w1] = cnt</span><br><span class="line">                cnt += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> w2 <span class="keyword">not</span> <span class="keyword">in</span> pdic:</span><br><span class="line">                pdic[w2] = cnt</span><br><span class="line">                cnt += <span class="number">1</span></span><br><span class="line">            uf.union(pdic[w1], pdic[w2])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> w1, w2 <span class="keyword">in</span> zip(words1, words2):</span><br><span class="line">            <span class="keyword">if</span> w1 == w2:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> w1 <span class="keyword">not</span> <span class="keyword">in</span> pdic <span class="keyword">or</span> w2 <span class="keyword">not</span> <span class="keyword">in</span> pdic:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">            <span class="keyword">if</span> uf.find(pdic[w1]) != uf.find(pdic[w2]):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<h2 id="统计连通块的个数"><a href="#统计连通块的个数" class="headerlink" title="统计连通块的个数"></a>统计连通块的个数</h2><p>the number of connected components.</p>
+<h3 id="LintCode-591-Connecting-Graph-III"><a href="#LintCode-591-Connecting-Graph-III" class="headerlink" title="LintCode 591. Connecting Graph III"></a><a href="https://www.lintcode.com/problem/connecting-graph-iii/" target="_blank" rel="noopener">LintCode 591. Connecting Graph III</a></h3><ul>
+<li>Query() - Returns <strong>the number of connected component</strong> in the graph</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConnectingGraph3</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.root = range(n+<span class="number">1</span>)</span><br><span class="line">        self.cnt = n</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        <span class="keyword">if</span> root[x] == x:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        root[x] = self.find(root[x])</span><br><span class="line">        <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connect</span><span class="params">(self, a, b)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        roota = self.find(a)</span><br><span class="line">        rootb = self.find(b)</span><br><span class="line">        <span class="keyword">if</span> roota != rootb:</span><br><span class="line">            root[roota] = rootb</span><br><span class="line">            self.cnt -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">query</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.cnt</span><br></pre></td></tr></table></figure>
+<h3 id="323-Number-of-Connected-Components-in-an-Undirected-Graph"><a href="#323-Number-of-Connected-Components-in-an-Undirected-Graph" class="headerlink" title="323. Number of Connected Components in an Undirected Graph"></a><a href="https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/" target="_blank" rel="noopener">323. Number of Connected Components in an Undirected Graph</a></h3><ul>
+<li><strong>解法1. DFS</strong></li>
+</ul>
+<p>将Graph原本的nodes和edges表达形式，改成hash做的邻接表，这个就可以查询从每个节点出发到的节点！<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countComponents</span><span class="params">(self, n, edges)</span>:</span></span><br><span class="line">        visited = [<span class="number">0</span>] * n</span><br><span class="line">        graph = [set() <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(n)] <span class="comment"># Adjacent Table</span></span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> edges:</span><br><span class="line">            graph[i].add(j)</span><br><span class="line">            graph[j].add(i)</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">            <span class="keyword">if</span> visited[i] == <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            self.dfs(i, visited, graph)</span><br><span class="line">            res += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, n, visited, graph)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> visited[n] == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        visited[n] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> graph[n]:</span><br><span class="line">            self.dfs(i, visited, graph)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li><strong>解法2. Union Find</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countComponents</span><span class="params">(self, n, edges)</span>:</span></span><br><span class="line">        root = range(n)</span><br><span class="line">        self.cnt = n</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root[x] == x:</span><br><span class="line">                <span class="keyword">return</span> x</span><br><span class="line">            root[x] = find(root[x])</span><br><span class="line">            <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(x, y)</span>:</span></span><br><span class="line">            rootx = find(x)</span><br><span class="line">            rooty = find(y)</span><br><span class="line">            <span class="keyword">if</span> rootx != rooty:</span><br><span class="line">                root[rootx] = rooty</span><br><span class="line">                self.cnt -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> edges:</span><br><span class="line">            union(i, j)</span><br><span class="line">        <span class="keyword">return</span> self.cnt</span><br></pre></td></tr></table></figure>
+<h3 id="305-Number-of-Islands-II"><a href="#305-Number-of-Islands-II" class="headerlink" title="305. Number of Islands II"></a><a href="https://leetcode.com/problems/number-of-islands-ii/" target="_blank" rel="noopener">305. Number of Islands II</a></h3><p>实时放入island显示出联通块的个数，算是一个online的算法！</p>
+<ul>
+<li>原始UF算法是一维的，2D坐标和1D坐标的转化</li>
+<li>体现Union Find的Online特性，可以实时添加边！</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(m * n + k)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.root = [<span class="number">-1</span>] * n</span><br><span class="line">        self.cnt = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        <span class="keyword">if</span> root[x] == x:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        root[x] = self.find(root[x])</span><br><span class="line">        <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.root[x] = x</span><br><span class="line">        self.cnt += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        rootx = self.find(x)</span><br><span class="line">        rooty = self.find(y)</span><br><span class="line">        <span class="keyword">if</span> rootx != rooty:</span><br><span class="line">            root[rootx] = rooty</span><br><span class="line">            self.cnt -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numIslands2</span><span class="params">(self, m, n, positions)</span>:</span></span><br><span class="line">        uf = UnionFind(m * n)</span><br><span class="line">        res = []</span><br><span class="line">        d = [(<span class="number">1</span>, <span class="number">0</span>), (<span class="number">-1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>), (<span class="number">0</span>, <span class="number">-1</span>)]</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> positions:</span><br><span class="line">            p = i*n + j</span><br><span class="line">            uf.add(p)</span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">                ni, nj = i + d[k][<span class="number">0</span>], j + d[k][<span class="number">1</span>]</span><br><span class="line">                q = ni * n + nj</span><br><span class="line">                <span class="keyword">if</span> ( <span class="number">0</span> &lt;= ni &lt;= m<span class="number">-1</span> <span class="keyword">and</span></span><br><span class="line">                     <span class="number">0</span> &lt;= nj &lt;= n<span class="number">-1</span> <span class="keyword">and</span></span><br><span class="line">                     uf.root[q] != <span class="number">-1</span>):</span><br><span class="line">                    uf.union(p, q)</span><br><span class="line">            res.append(uf.cnt)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h3 id="547-Friend-Circles"><a href="#547-Friend-Circles" class="headerlink" title="547. Friend Circles"></a><a href="https://leetcode.com/problems/friend-circles/" target="_blank" rel="noopener">547. Friend Circles</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findCircleNum</span><span class="params">(self, M)</span>:</span></span><br><span class="line">        n = len(M)</span><br><span class="line">        root = range(n)</span><br><span class="line">        self.cnt = n</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root[x] == x:</span><br><span class="line">                <span class="keyword">return</span> x</span><br><span class="line">            root[x] = find(root[x])</span><br><span class="line">            <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(x, y)</span>:</span></span><br><span class="line">            rootx = find(x)</span><br><span class="line">            rooty = find(y)</span><br><span class="line">            <span class="keyword">if</span> rootx != rooty:</span><br><span class="line">                root[rootx] = rooty</span><br><span class="line">                self.cnt -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(i+<span class="number">1</span>, n):</span><br><span class="line">                <span class="keyword">if</span> M[i][j]:</span><br><span class="line">                    union(i, j)</span><br><span class="line">        <span class="keyword">return</span> self.cnt</span><br></pre></td></tr></table></figure>
+<h2 id="Redundant-Connection"><a href="#Redundant-Connection" class="headerlink" title="Redundant Connection"></a>Redundant Connection</h2><h3 id="261-Graph-Valid-Tree"><a href="#261-Graph-Valid-Tree" class="headerlink" title="261. Graph Valid Tree"></a><a href="https://leetcode.com/problems/graph-valid-tree/" target="_blank" rel="noopener">261. Graph Valid Tree</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validTree</span><span class="params">(self, n, edges)</span>:</span></span><br><span class="line">        root = range(n)</span><br><span class="line">        self.cnt = n</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root[x] == x:</span><br><span class="line">                <span class="keyword">return</span> x</span><br><span class="line">            root[x] = find(root[x])</span><br><span class="line">            <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(x, y)</span>:</span></span><br><span class="line">            rootx = find(x)</span><br><span class="line">            rooty = find(y)</span><br><span class="line">            <span class="keyword">if</span> rootx != rooty:</span><br><span class="line">                root[rootx] = rooty</span><br><span class="line">                self.cnt -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> edges:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> union(i, j):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> self.cnt == <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="684-Redundant-Connection"><a href="#684-Redundant-Connection" class="headerlink" title="684. Redundant Connection"></a><a href="https://leetcode.com/problems/redundant-connection/" target="_blank" rel="noopener">684. Redundant Connection</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findRedundantConnection</span><span class="params">(self, edges)</span>:</span></span><br><span class="line">        root = range(<span class="number">1001</span>)</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root[x] == x:</span><br><span class="line">                <span class="keyword">return</span> x</span><br><span class="line">            root[x] = find(root[x])</span><br><span class="line">            <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> edges:</span><br><span class="line">            rooti = find(i)</span><br><span class="line">            rootj = find(j)</span><br><span class="line">            <span class="keyword">if</span> rooti == rootj:</span><br><span class="line">                <span class="keyword">return</span> [i, j]</span><br><span class="line">            root[rooti] = rootj</span><br></pre></td></tr></table></figure>
+<h3 id="685-Redundant-Connection-II"><a href="#685-Redundant-Connection-II" class="headerlink" title="685. Redundant Connection II"></a><a href="https://leetcode.com/problems/redundant-connection-ii/" target="_blank" rel="noopener">685. Redundant Connection II</a></h3><ul>
+<li>Case1: There is a <strong>loop</strong> in the graph, and no vertex has more than 1 parent.<ul>
+<li>有环，且没有入度大于1的node <strong>=&gt; Union Find</strong></li>
+</ul>
+</li>
+<li>Case2: A vertex has more than 1 parent, but there isn’t a loop in the graph.<ul>
+<li>无环，且有入度大于2的node <strong>=&gt; last node (indegree &gt; 1)</strong></li>
+</ul>
+</li>
+<li>Case3: A vertex has more than 1 parent, and is part of a loop.<ul>
+<li>有环，且有入度大于2的node</li>
+<li>这种复杂的情况怎么筛选?</li>
+<li><strong>Delete the second edge!</strong></li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findRedundantDirectedConnection</span><span class="params">(self, edges)</span>:</span></span><br><span class="line">        n = len(edges)</span><br><span class="line">        parent = [<span class="number">0</span>] * (n+<span class="number">1</span>)</span><br><span class="line">        ans = <span class="keyword">None</span></span><br><span class="line">        <span class="comment"># Step1 : calculate indegree &gt; 1 node</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">            u, v  = edges[i]</span><br><span class="line">            <span class="keyword">if</span> parent[v] == <span class="number">0</span>:</span><br><span class="line">                parent[v] = u</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                ans = [[parent[v], v], [u, v]]</span><br><span class="line">                <span class="comment"># !!! Delete the second Edge</span></span><br><span class="line">                edges[i][<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Step2 : Union Find detect cycle</span></span><br><span class="line">        root = range(n+<span class="number">1</span>)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root[x] == x:</span><br><span class="line">                <span class="keyword">return</span> x</span><br><span class="line">            <span class="keyword">return</span> find(root[x])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> u, v <span class="keyword">in</span> edges:</span><br><span class="line">            rootu = find(u)</span><br><span class="line">            rootv = find(v)</span><br><span class="line">            <span class="keyword">if</span> rootu == rootv: <span class="comment"># Detect Cycle</span></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> ans:</span><br><span class="line">                    <span class="keyword">return</span> [u, v]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> ans[<span class="number">0</span>]</span><br><span class="line">            root[rootu] = rootv</span><br><span class="line">        <span class="keyword">return</span> ans[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/05/22/union-find/" data-id="cjhiiybmm000msc78o92gc5gc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/05/18/ood-in-interview/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">OOD in Interview</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/05/22/union-find/" class="title">Union Find 并查集</a></p>
+                            <p class="item-date"><time datetime="2018-05-23T02:32:20.000Z" itemprop="datePublished">2018-05-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/OOD/">OOD</a></p>
+                            <p class="item-title"><a href="/2018/05/18/ood-in-interview/" class="title">OOD in Interview</a></p>
+                            <p class="item-date"><time datetime="2018-05-19T01:46:38.000Z" itemprop="datePublished">2018-05-18</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/05/16/binary-indexed-tree/" class="title">Binary Indexed Tree 树状数组</a></p>
+                            <p class="item-date"><time datetime="2018-05-17T00:56:24.000Z" itemprop="datePublished">2018-05-16</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/05/03/tree-traversal/" class="title">Tree Traversal</a></p>
+                            <p class="item-date"><time datetime="2018-05-03T21:47:21.000Z" itemprop="datePublished">2018-05-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Big-Data/">Big Data</a></p>
+                            <p class="item-title"><a href="/2018/05/01/spark-quick-start/" class="title">Spark Quick Start</a></p>
+                            <p class="item-date"><time datetime="2018-05-01T18:24:06.000Z" itemprop="datePublished">2018-05-01</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/segment-tree/">segment tree</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/binary-indexed-tree/" style="font-size: 10px;">binary indexed tree</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary tree</a> <a href="/tags/segment-tree/" style="font-size: 10px;">segment tree</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://leetcode.com/">LeetCode</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 Kaihao Li
+            <span id="busuanzi_container_site_uv">
+                ,  Visitors : <span id="busuanzi_value_site_uv"></span>
+            </span> <br>
+        </div>
+    </div>
+</footer>
+
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

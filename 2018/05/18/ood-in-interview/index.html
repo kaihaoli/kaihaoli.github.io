@@ -5,19 +5,19 @@
     
     <title>OOD in Interview | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Introduction of OOD总结自:九章算法 - OOD1 OOD in InterviewEverything is an object, Usable!!!  面试频率 Phone interview 低 Onsite interview 中高频   高频公司 Amazon, Bloomberg, TripAdvisor, EMC, Uber…   主要考察CS设计的基本素养，属于开">
+    <meta name="description" content="总结自:九章算法 - OOD1 OOD in InterviewEverything is an object, Usable!!!  面试频率 Phone interview 低 Onsite interview 中高频   高频公司 Amazon, Bloomberg, TripAdvisor, EMC, Uber…   主要考察CS设计的基本素养，属于开放型设计类题目，能用上OOD的常见的一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="OOD in Interview">
 <meta property="og:url" content="http://kaihaoli.github.io/2018/05/18/ood-in-interview/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="Introduction of OOD总结自:九章算法 - OOD1 OOD in InterviewEverything is an object, Usable!!!  面试频率 Phone interview 低 Onsite interview 中高频   高频公司 Amazon, Bloomberg, TripAdvisor, EMC, Uber…   主要考察CS设计的基本素养，属于开">
+<meta property="og:description" content="总结自:九章算法 - OOD1 OOD in InterviewEverything is an object, Usable!!!  面试频率 Phone interview 低 Onsite interview 中高频   高频公司 Amazon, Bloomberg, TripAdvisor, EMC, Uber…   主要考察CS设计的基本素养，属于开放型设计类题目，能用上OOD的常见的一">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://kaihaoli.github.io/2018/05/18/ood-in-interview/oodvssd.jpg">
 <meta property="og:image" content="http://kaihaoli.github.io/2018/05/18/ood-in-interview/ood_elevator.jpg">
-<meta property="og:updated_time" content="2018-05-19T01:49:28.508Z">
+<meta property="og:updated_time" content="2018-05-19T02:25:53.692Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OOD in Interview">
-<meta name="twitter:description" content="Introduction of OOD总结自:九章算法 - OOD1 OOD in InterviewEverything is an object, Usable!!!  面试频率 Phone interview 低 Onsite interview 中高频   高频公司 Amazon, Bloomberg, TripAdvisor, EMC, Uber…   主要考察CS设计的基本素养，属于开">
+<meta name="twitter:description" content="总结自:九章算法 - OOD1 OOD in InterviewEverything is an object, Usable!!!  面试频率 Phone interview 低 Onsite interview 中高频   高频公司 Amazon, Bloomberg, TripAdvisor, EMC, Uber…   主要考察CS设计的基本素养，属于开放型设计类题目，能用上OOD的常见的一">
 <meta name="twitter:image" content="http://kaihaoli.github.io/2018/05/18/ood-in-interview/oodvssd.jpg">
     
 
@@ -166,7 +166,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                11
+                12
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -234,10 +234,10 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Introduction-of-OOD"><span class="toc-number">1.</span> <span class="toc-text">Introduction of OOD</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#OOD-in-Interview"><span class="toc-number">1.1.</span> <span class="toc-text">OOD in Interview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OOD要避免的情况"><span class="toc-number">1.1.1.</span> <span class="toc-text">OOD要避免的情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#“SOLOD”原则"><span class="toc-number">1.1.2.</span> <span class="toc-text">“SOLOD”原则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Design-an-elevator-system"><span class="toc-number">1.2.</span> <span class="toc-text">Design an elevator system</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-什么"><span class="toc-number">1.2.1.</span> <span class="toc-text">What? - 什么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-怎样"><span class="toc-number">1.2.2.</span> <span class="toc-text">How? - 怎样?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Who-谁"><span class="toc-number">1.2.3.</span> <span class="toc-text">Who? - 谁?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#When-什么时间"><span class="toc-number">1.2.4.</span> <span class="toc-text">When? - 什么时间?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Think-Process"><span class="toc-number">1.3.</span> <span class="toc-text">Think Process</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Core-Object"><span class="toc-number">1.3.1.</span> <span class="toc-text">Core Object</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Access-modifier"><span class="toc-number">1.3.2.</span> <span class="toc-text">Access modifier</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Use-Cases"><span class="toc-number">1.3.3.</span> <span class="toc-text">Use Cases</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Class-diagram-类图"><span class="toc-number">1.3.4.</span> <span class="toc-text">Class diagram 类图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Challenge"><span class="toc-number">1.3.5.</span> <span class="toc-text">Challenge</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#OOD-in-Interview"><span class="toc-number">1.</span> <span class="toc-text">OOD in Interview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OOD要避免的情况"><span class="toc-number">1.1.</span> <span class="toc-text">OOD要避免的情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#“SOLOD”原则"><span class="toc-number">1.2.</span> <span class="toc-text">“SOLOD”原则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Design-an-elevator-system"><span class="toc-number">2.</span> <span class="toc-text">Design an elevator system</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-什么"><span class="toc-number">2.1.</span> <span class="toc-text">What? - 什么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-怎样"><span class="toc-number">2.2.</span> <span class="toc-text">How? - 怎样?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Who-谁"><span class="toc-number">2.3.</span> <span class="toc-text">Who? - 谁?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#When-什么时间"><span class="toc-number">2.4.</span> <span class="toc-text">When? - 什么时间?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Think-Process"><span class="toc-number">3.</span> <span class="toc-text">Think Process</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Core-Object"><span class="toc-number">3.1.</span> <span class="toc-text">Core Object</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Access-modifier"><span class="toc-number">3.2.</span> <span class="toc-text">Access modifier</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Use-Cases"><span class="toc-number">3.3.</span> <span class="toc-text">Use Cases</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Class-diagram-类图"><span class="toc-number">3.4.</span> <span class="toc-text">Class diagram 类图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Challenge"><span class="toc-number">3.5.</span> <span class="toc-text">Challenge</span></a></li></ol></li></ol>
                 </div>
             
-            <h1 id="Introduction-of-OOD"><a href="#Introduction-of-OOD" class="headerlink" title="Introduction of OOD"></a>Introduction of OOD</h1><p>总结自:<a href="https://www.jiuzhang.com/course/10/" target="_blank" rel="noopener">九章算法 - OOD1</a></p>
+            <p>总结自:<a href="https://www.jiuzhang.com/course/10/" target="_blank" rel="noopener">九章算法 - OOD1</a></p>
 <h2 id="OOD-in-Interview"><a href="#OOD-in-Interview" class="headerlink" title="OOD in Interview"></a>OOD in Interview</h2><p>Everything is an object, Usable!!!</p>
 <ul>
 <li>面试频率<ul>
@@ -391,7 +391,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/18/ood-in-interview/" data-id="cjhcrt0td0006hq78bylvqsbn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/18/ood-in-interview/" data-id="cjhiiybmg000csc786fpl76r9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -466,6 +466,15 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
+        <a href="/2018/05/22/union-find/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Union Find 并查集
+                
+            </div>
+        </a>
+    
     
         <a href="/2018/05/16/binary-indexed-tree/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
@@ -492,6 +501,15 @@ ga('send', 'pageview');
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/05/22/union-find/" class="title">Union Find 并查集</a></p>
+                            <p class="item-date"><time datetime="2018-05-23T02:32:20.000Z" itemprop="datePublished">2018-05-22</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -529,15 +547,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/04/29/bit-manipulation/" class="title">Bit Manipulation 位运算</a></p>
-                            <p class="item-date"><time datetime="2018-04-30T01:17:56.000Z" itemprop="datePublished">2018-04-29</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -547,7 +556,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -556,7 +565,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
