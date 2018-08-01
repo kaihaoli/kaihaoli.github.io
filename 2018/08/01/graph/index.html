@@ -3,19 +3,23 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Kafka Quick Start using Docker | kaihao</title>
+    <title>Graph - 图 | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Reference : Kafka Quick Start Guide Pre-RequisitesDocker 1 Create Virtual MachineGet the env for docker-machine, 2CPU, 2G1&amp;gt; docker-machine create --driver virtualbox --virtualbox-cpu-count 2 --virt">
+    <meta name="description" content="LeetCode 上很多问题都可以抽象成 “图” ，比如搜索类问题，树类问题，迷宫问题，矩阵路径问题，等等。Graph 是非常重要而又涵盖很广的内容，以至于有单独的”图论”研究方向。 1 图的计算机表示 Node / State Edge / Action Directed vs Undirected graph Representation of the graph  Edge List题目给的">
+<meta name="keywords" content="graph">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Kafka Quick Start using Docker">
-<meta property="og:url" content="http://kaihaoli.github.io/2018/04/25/docker-quick-start/index.html">
+<meta property="og:title" content="Graph - 图">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/08/01/graph/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="Reference : Kafka Quick Start Guide Pre-RequisitesDocker 1 Create Virtual MachineGet the env for docker-machine, 2CPU, 2G1&amp;gt; docker-machine create --driver virtualbox --virtualbox-cpu-count 2 --virt">
+<meta property="og:description" content="LeetCode 上很多问题都可以抽象成 “图” ，比如搜索类问题，树类问题，迷宫问题，矩阵路径问题，等等。Graph 是非常重要而又涵盖很广的内容，以至于有单独的”图论”研究方向。 1 图的计算机表示 Node / State Edge / Action Directed vs Undirected graph Representation of the graph  Edge List题目给的">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-26T01:24:35.459Z">
+<meta property="og:image" content="http://kaihaoli.github.io/2018/08/01/graph/adjacency_matrix.jpg">
+<meta property="og:image" content="http://kaihaoli.github.io/2018/08/01/graph/adjacency-list.png">
+<meta property="og:updated_time" content="2018-08-01T15:01:56.834Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kafka Quick Start using Docker">
-<meta name="twitter:description" content="Reference : Kafka Quick Start Guide Pre-RequisitesDocker 1 Create Virtual MachineGet the env for docker-machine, 2CPU, 2G1&amp;gt; docker-machine create --driver virtualbox --virtualbox-cpu-count 2 --virt">
+<meta name="twitter:title" content="Graph - 图">
+<meta name="twitter:description" content="LeetCode 上很多问题都可以抽象成 “图” ，比如搜索类问题，树类问题，迷宫问题，矩阵路径问题，等等。Graph 是非常重要而又涵盖很广的内容，以至于有单独的”图论”研究方向。 1 图的计算机表示 Node / State Edge / Action Directed vs Undirected graph Representation of the graph  Edge List题目给的">
+<meta name="twitter:image" content="http://kaihaoli.github.io/2018/08/01/graph/adjacency_matrix.jpg">
     
 
     
@@ -191,7 +195,7 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-docker-quick-start" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-graph" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -199,7 +203,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            Kafka Quick Start using Docker
+            Graph - 图
         </h1>
     
 
@@ -208,8 +212,8 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2018/04/25/docker-quick-start/">
-            <time datetime="2018-04-25T13:20:22.000Z" itemprop="datePublished">2018-04-25</time>
+        <a href="/2018/08/01/graph/">
+            <time datetime="2018-08-01T14:43:25.000Z" itemprop="datePublished">2018-08-01</time>
         </a>
     </div>
 
@@ -217,10 +221,15 @@ ga('send', 'pageview');
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
     </div>
 
                         
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/graph/">graph</a>
+    </div>
+
                     </div>
                 
             </header>
@@ -229,56 +238,80 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>Reference : <a href="https://sookocheff.com/post/kafka/kafka-quick-start/" target="_blank" rel="noopener">Kafka Quick Start Guide</a></p>
-<h3 id="Pre-Requisites"><a href="#Pre-Requisites" class="headerlink" title="Pre-Requisites"></a>Pre-Requisites</h3><p>Docker</p>
-<h3 id="1-Create-Virtual-Machine"><a href="#1-Create-Virtual-Machine" class="headerlink" title="1 Create Virtual Machine"></a>1 Create Virtual Machine</h3><p>Get the env for docker-machine, 2CPU, 2G<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker-machine create --driver virtualbox --virtualbox-cpu-count 2 --virtualbox-memory 2048 bigdata</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>This command downloads a <strong>lightweight Linux distribution (boot2docker)</strong> with the Docker daemon installed, and creates and starts a VirtualBox VM with Docker running.</p>
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-图的计算机表示"><span class="toc-number">1.</span> <span class="toc-text">1 图的计算机表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Edge-List"><span class="toc-number">1.1.</span> <span class="toc-text">Edge List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adjacency-Matrix"><span class="toc-number">1.2.</span> <span class="toc-text">Adjacency Matrix</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adjacency-List"><span class="toc-number">1.3.</span> <span class="toc-text">Adjacency List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adjacency-“Hash-Set”"><span class="toc-number">1.4.</span> <span class="toc-text">Adjacency “Hash Set”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Graph-Search-Algorithm"><span class="toc-number">2.</span> <span class="toc-text">2 Graph Search Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Breadth-First-Search"><span class="toc-number">2.1.</span> <span class="toc-text">Breadth First Search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dijkstra’s-Algorithm"><span class="toc-number">2.2.</span> <span class="toc-text">Dijkstra’s Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Depth-First-Search"><span class="toc-number">2.3.</span> <span class="toc-text">Depth First Search</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Application"><span class="toc-number">3.</span> <span class="toc-text">3 Application</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#133-Clone-Graph"><span class="toc-number">3.1.</span> <span class="toc-text">133. Clone Graph</span></a></li></ol></li></ol>
+                </div>
+            
+            <p>LeetCode 上很多问题都可以抽象成 “图” ，比如搜索类问题，树类问题，迷宫问题，矩阵路径问题，等等。Graph 是非常重要而又涵盖很广的内容，以至于有单独的”图论”研究方向。</p>
+<h2 id="1-图的计算机表示"><a href="#1-图的计算机表示" class="headerlink" title="1 图的计算机表示"></a>1 图的计算机表示</h2><ol>
+<li>Node / State</li>
+<li>Edge / Action</li>
+<li>Directed vs Undirected graph</li>
+<li>Representation of the graph</li>
+</ol>
+<h3 id="Edge-List"><a href="#Edge-List" class="headerlink" title="Edge List"></a>Edge List</h3><p>题目给的Nodes and Edges(Edge List)形式的图</p>
 <ul>
-<li>docker-machine create 创建一个Docker主机</li>
-<li><strong>–driver virtualbox</strong> flag to indicate which provider (VirtualBox, DigitalOcean, AWS, etc.) the machine should be created on.</li>
-<li>‘bigdata’ is <strong>an argument</strong> to indicate the n<strong>ame of the created machine</strong>.</li>
+<li>要么考虑用Union Find，要么考虑重新建立图的表示</li>
 </ul>
-</blockquote>
-<p>list available machines.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker-machine ls</span><br></pre></td></tr></table></figure></p>
-<p>Get the IP address of one or more machines.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker-machine ip bigdata</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-Connect-your-shell-to-the-machine"><a href="#2-Connect-your-shell-to-the-machine" class="headerlink" title="2 Connect your shell to the machine"></a>2 Connect your shell to the machine</h3><ul>
-<li><p>Show the virtual machine environment variable</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker-machine env bigdata</span><br><span class="line"><span class="built_in">export</span> DOCKER_TLS_VERIFY=<span class="string">"1"</span></span><br><span class="line"><span class="built_in">export</span> DOCKER_HOST=<span class="string">"tcp://192.168.99.100:2376"</span></span><br><span class="line"><span class="built_in">export</span> DOCKER_CERT_PATH=<span class="string">"/Users/yourhostname/.docker/machine/machines/bigdata"</span></span><br><span class="line"><span class="built_in">export</span> DOCKER_MACHINE_NAME=<span class="string">"bigdata"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>Run this command to configure your shell</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Each time you want to use this virtual machine, you should run this command first!</span></span><br><span class="line">&gt; <span class="built_in">eval</span> $(docker-machine env bigdata)</span><br></pre></td></tr></table></figure>
-</li>
+<h3 id="Adjacency-Matrix"><a href="#Adjacency-Matrix" class="headerlink" title="Adjacency Matrix"></a>Adjacency Matrix</h3><img src="/2018/08/01/graph/adjacency_matrix.jpg">
+<ul>
+<li><strong>Pros: Representation is easy to implement. </strong>Edge removal takes O(1) time. Queries like whether there is an edge from vertex ‘u’ to vertec ‘v’ are efficient and can be done O(1)</li>
+<li><strong>Cons: Consumes more space O(V^2)</strong>(V is the number of vertex/node) Even if the graph is sparse(contains less number of edges) == waste of space</li>
 </ul>
-<h3 id="3-Pull-Images"><a href="#3-Pull-Images" class="headerlink" title="3 Pull Images"></a>3 Pull Images</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker pull wurstmeister/zookeeper    </span><br><span class="line">&gt; docker pull wurstmeister/kafka</span><br></pre></td></tr></table></figure>
-<h3 id="4-Run-Images"><a href="#4-Run-Images" class="headerlink" title="4 Run Images"></a>4 Run Images</h3><ul>
-<li><p>Start zookeeper container</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker run \</span><br><span class="line">        -d \</span><br><span class="line">        -p 2181:2181 \</span><br><span class="line">        -p 2888:2888 \</span><br><span class="line">        -p 3888:3888 \</span><br><span class="line">        --name zookeeper \</span><br><span class="line">        wurstmeister/zookeeper</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Start kafka container</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker run \</span><br><span class="line">        -d \</span><br><span class="line">        -p 9092:9092 \</span><br><span class="line">        <span class="comment"># IP=$(docker-machine ip $&#123;MACHINE_NAME&#125;)</span></span><br><span class="line">        -e KAFKA_ADVERTISED_HOST_NAME=<span class="string">"<span class="variable">$&#123;IP&#125;</span>"</span> \</span><br><span class="line">        -e KAFKA_ADVERTISED_PORT=9092 \</span><br><span class="line">        --name kafka \</span><br><span class="line">        --link zookeeper:zookeeper \</span><br><span class="line">        -e KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 \</span><br><span class="line">        wurstmeister/kafka</span><br></pre></td></tr></table></figure>
-</li>
+<h3 id="Adjacency-List"><a href="#Adjacency-List" class="headerlink" title="Adjacency List"></a>Adjacency List</h3><img src="/2018/08/01/graph/adjacency-list.png">
+<p>Vertices/Nodes : V, Edges : E</p>
+<ul>
+<li><strong>Pros: Space Complexity = O(V + E)</strong>. Adding a vertex.node to the graph is easier</li>
+<li><strong>Cons: Time Complexity is O(V) </strong>to check wheter there is an edge from a node to the other.(Comprared to O(1) in adjacent matrix)</li>
 </ul>
-<h3 id="5-Kafka-Test"><a href="#5-Kafka-Test" class="headerlink" title="5 Kafka Test"></a>5 Kafka Test</h3><ul>
-<li><p>Enter the Kafka container</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># here CONTAINER ID = kafka</span></span><br><span class="line">&gt; docker <span class="built_in">exec</span> -it <span class="variable">$&#123;CONTAINER ID&#125;</span> /bin/bash</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Change to kafka default directory</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="built_in">cd</span> opt/kafka_2.xx-x.xx.x.x/</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Create a Topic</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic mykafka</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Run a Producer</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; bin/kafka-console-producer.sh --broker-list localhost:9092 --topic mykafka</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Run a Consumer(in another terminal!)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; bin/kafka-console-consumer.sh --zookeeper zookeeper:2181 --topic mykafka --from-beginning</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>TEST<br>When you type in some words in producer, it will appear in the consumer terminal. Kafka will replay the messages you have sent as a producer.</p>
-</li>
+<h3 id="Adjacency-“Hash-Set”"><a href="#Adjacency-“Hash-Set”" class="headerlink" title="Adjacency “Hash Set”"></a>Adjacency “Hash Set”</h3><p>用hashset替代list表示相邻的节点，综合了Adjacency Matrix和Adjacency List的优点！</p>
+<h2 id="2-Graph-Search-Algorithm"><a href="#2-Graph-Search-Algorithm" class="headerlink" title="2 Graph Search Algorithm"></a>2 Graph Search Algorithm</h2><h3 id="Breadth-First-Search"><a href="#Breadth-First-Search" class="headerlink" title="Breadth First Search"></a>Breadth First Search</h3><p><strong>How to describe a BFS’s action during an interview?</strong></p>
+<ul>
+<li>Definition 1: expand a node s, 延展一个node</li>
+<li>Definition 2: generate s’s neighbor node: reach out to its neighboring node</li>
+<li><strong>Data Structure</strong> : Maintain a FIFO queue, put all generated nodes in the queue</li>
+<li><strong>Termination condition</strong> : do a loop until the queue is empty</li>
 </ul>
-<p>All Done! :)</p>
+<p><strong>Discussion</strong></p>
+<ul>
+<li>When we deal with the tree-related problem and in the meantime we need to address the relationship <strong>on the same level</strong></li>
+<li>BFS is <strong>NOT</strong> the right algorithm to find <strong>the shortest path</strong> in the graph</li>
+<li>BFS 的时间空间占用以 <strong>branching factor</strong> 为底, 到解的距离 d 为指数增长；</li>
+<li>BFS 空间占用上 Queue 是不会像 DFS 一样只存一条路径的，而是从起点出发越扩越大，因此会有<strong>空间不够的风险，空间占用为 O(b^d)</strong>。</li>
+</ul>
+<p>Assume Input - graph adjacency “hash set”</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Undirected Graph</span></span><br><span class="line"><span class="comment"># 其实和Tree的BFS traversal是一样的！</span></span><br><span class="line"><span class="comment"># Why visited array? 如果有环的话需要，没有环的话不需要！</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BFS1</span><span class="params">()</span>:</span></span><br><span class="line">    visited = [<span class="number">0</span>] * n</span><br><span class="line">    queue = collections.deque([<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        print(node)</span><br><span class="line">        visited[node] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> graph[node]:</span><br><span class="line">            <span class="keyword">if</span> visited[nei] == <span class="number">0</span>:</span><br><span class="line">                queue.append(nei)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Directed Graph</span></span><br><span class="line"><span class="comment"># 从Indegree == 0 的node开始！</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BFS2</span><span class="params">()</span>:</span></span><br><span class="line">    queue = collections.deque([i <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n) <span class="keyword">if</span> indegree[i] == <span class="number">0</span>]）</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        print(node)</span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> graph[course]:</span><br><span class="line">            indegree[nei] -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> indegree[nei] == <span class="number">0</span>:</span><br><span class="line">                queue.append(nei)</span><br></pre></td></tr></table></figure>
+<h3 id="Dijkstra’s-Algorithm"><a href="#Dijkstra’s-Algorithm" class="headerlink" title="Dijkstra’s Algorithm"></a>Dijkstra’s Algorithm</h3><p>“呆克斯戳” - Best First Search</p>
+<ol>
+<li>Usages: Find the <strong>shortest path cost from a single node (source node) to any other nodes in that graph</strong></li>
+<li>Data Structure: Priority Queue (Min Heap)</li>
+<li><strong>Process</strong><ul>
+<li>Initial state (start node)</li>
+<li>Node expansion/ Generation rule</li>
+<li>Termination condition 所有点计算完毕也是”Queue is empty”</li>
+</ul>
+</li>
+</ol>
+<p><strong>Properties</strong></p>
+<pre><code>- One node can be expanded once and only once
+- One node can be generated more than once. (cost can be reduced over time)
+- all the cost of the nodes that are expanded are monotonically non-decreasing（所有从 priority queue里面pop出来的元素的值是单调非递减-&gt;单调递增）
+- time complexity, for a graph with n node and the connectivity of the node is **O(nlogn)**
+- when a node is popped out for expansion, **its value is fixed which is equal to the shortest distance from the start node** (非负权重)
+</code></pre><h3 id="Depth-First-Search"><a href="#Depth-First-Search" class="headerlink" title="Depth First Search"></a>Depth First Search</h3><ul>
+<li>DFS 的时间占用以 <strong>branching factor</strong> 为底，树的深度 m 为指数增长</li>
+<li>DFS 的空间占用上，却只是 O(bm)，可视化探索过程中只把每个 Node 的所有子节点存在 Stack 上， 探索完了再 pop 出来接着探，因此储存的节点数为 O(bm)。</li>
+</ul>
+<p>可以看到无论是 BFS 还是 DFS，树的 branching factor 都是对空间与时间复杂度影响最大的参数；除此之外，<strong>BFS 中最重要的是到解的距离，而 DFS 看从当前节点的深度。</strong>普遍来讲，DFS 空间上会经济一些，当然也要分情况讨论。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Undirected Graph</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(node)</span>:</span></span><br><span class="line">    visited.add(node)</span><br><span class="line">    <span class="keyword">for</span> nei <span class="keyword">in</span> node.neighbors:</span><br><span class="line">        <span class="keyword">if</span> nei <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">            dfs(nei)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Directed Graph</span></span><br><span class="line">visited 需要 三种状态！<span class="number">0</span>-未访问，<span class="number">1</span>-正在访问，<span class="number">2</span>-已经访问</span><br></pre></td></tr></table></figure>
+<h2 id="3-Application"><a href="#3-Application" class="headerlink" title="3 Application"></a>3 Application</h2><h3 id="133-Clone-Graph"><a href="#133-Clone-Graph" class="headerlink" title="133. Clone Graph"></a><a href="https://leetcode.com/problems/clone-graph/" target="_blank" rel="noopener">133. Clone Graph</a></h3><p>克隆Graph，很多graph都是用HashTable一一映射</p>
+<ul>
+<li>Hash Table 新旧node一一映射，再把关系同样映射！</li>
+<li>DFS，BFS都可以把所有node遍历一遍就好</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cloneGraph</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        gmap = &#123;node:UndirectedGraphNode(node.label)&#125;</span><br><span class="line">        queue = collections.deque([node])</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            nnode = queue.popleft()</span><br><span class="line">            <span class="keyword">for</span> nei <span class="keyword">in</span> nnode.neighbors:</span><br><span class="line">                <span class="keyword">if</span> nei <span class="keyword">not</span> <span class="keyword">in</span> gmap:</span><br><span class="line">                    gmap[nei] = UndirectedGraphNode(nei.label)</span><br><span class="line">                    queue.append(nei)</span><br><span class="line">                gmap[nnode].neighbors.append(gmap[nei])</span><br><span class="line">        <span class="keyword">return</span> gmap[node]</span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -289,7 +322,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/25/docker-quick-start/" data-id="cjkb9lhw50005neu06kw8vkld" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/01/graph/" data-id="cjkb9lhwe000dneu0a8ks8hdw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -364,19 +397,19 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2018/04/29/bit-manipulation/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2018/08/01/detect-the-cycle/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    Bit Manipulation 位运算
+                    Graph1 - Detect the Cycle
                 
             </div>
         </a>
     
     
-        <a href="/2018/04/21/docker/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/05/22/union-find/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Docker</div>
+            <div class="article-nav-title">Union Find 并查集</div>
         </a>
     
 </nav>
