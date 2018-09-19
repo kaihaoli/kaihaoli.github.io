@@ -3,15 +3,22 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Archive: 2018/8 | kaihao</title>
+    <title>Dynamic Programming Overview | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="kaihao">
-<meta property="og:url" content="http://kaihaoli.github.io/archives/2018/08/index.html">
+    <meta name="description" content="Big Name 公司必考，难度中上 题目类型多，没有固定模板  1 问题引入Fibonacci F(n) = F(n-1) + F(n-1) Base Case : F(0) = 0, F(1) = 1  1234public int fibN(int n) &amp;#123;    if (n == 0 || n == 1) return n; // base case    return fib">
+<meta name="keywords" content="dynamic programming">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dynamic Programming Overview">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/09/18/dp-overview/index.html">
 <meta property="og:site_name" content="kaihao">
+<meta property="og:description" content="Big Name 公司必考，难度中上 题目类型多，没有固定模板  1 问题引入Fibonacci F(n) = F(n-1) + F(n-1) Base Case : F(0) = 0, F(1) = 1  1234public int fibN(int n) &amp;#123;    if (n == 0 || n == 1) return n; // base case    return fib">
 <meta property="og:locale" content="en">
+<meta property="og:image" content="http://kaihaoli.github.io/2018/09/18/dp-overview/fibN.png">
+<meta property="og:updated_time" content="2018-09-19T16:07:28.457Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kaihao">
+<meta name="twitter:title" content="Dynamic Programming Overview">
+<meta name="twitter:description" content="Big Name 公司必考，难度中上 题目类型多，没有固定模板  1 问题引入Fibonacci F(n) = F(n-1) + F(n-1) Base Case : F(0) = 0, F(1) = 1  1234public int fibN(int n) &amp;#123;    if (n == 0 || n == 1) return n; // base case    return fib">
+<meta name="twitter:image" content="http://kaihaoli.github.io/2018/09/18/dp-overview/fibN.png">
     
 
     
@@ -187,86 +194,215 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><div class="timeline timeline-wrap">
-    
-            <div class="timeline-row timeline-row-major">
-                <span class="node"><i class="fa fa-calendar"></i></span>
-                <h1 class="title">2018</h1>
-            </div>
+            <section id="main"><article id="post-dp-overview" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
         
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/08/01/detect-the-cycle/">Graph1 - Detect the Cycle</a>
+        <h1 class="article-title" itemprop="name">
+            Dynamic Programming Overview
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2018/08/01/detect-the-cycle/">
-            <time datetime="2018-08-02T03:04:25.000Z" itemprop="datePublished">2018-08-01</time>
+        <a href="/2018/09/18/dp-overview/">
+            <time datetime="2018-09-18T15:52:12.000Z" itemprop="datePublished">2018-09-18</time>
         </a>
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
         <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/graph/">graph</a>
+        <a class="tag-link" href="/tags/dynamic-programming/">dynamic programming</a>
     </div>
 
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+                    </div>
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/08/01/graph/">Graph - 图</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/08/01/graph/">
-            <time datetime="2018-08-02T02:43:25.000Z" itemprop="datePublished">2018-08-01</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/graph/">graph</a>
-    </div>
-
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-问题引入Fibonacci"><span class="toc-number">1.</span> <span class="toc-text">1 问题引入Fibonacci</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-核心思想"><span class="toc-number">2.</span> <span class="toc-text">2 核心思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-动态规划题目特点"><span class="toc-number">3.</span> <span class="toc-text">3 动态规划题目特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-动态规划组成部分"><span class="toc-number">4.</span> <span class="toc-text">4 动态规划组成部分</span></a></li></ol>
                 </div>
-            </div>
+            
+            <ul>
+<li>Big Name 公司必考，<strong>难度中上</strong></li>
+<li>题目类型多，没有固定模板</li>
+</ul>
+<h3 id="1-问题引入Fibonacci"><a href="#1-问题引入Fibonacci" class="headerlink" title="1 问题引入Fibonacci"></a>1 问题引入Fibonacci</h3><ul>
+<li><strong>F(n) = F(n-1) + F(n-1)</strong></li>
+<li>Base Case : F(0) = 0, F(1) = 1</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fibN</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span> || n == <span class="number">1</span>) <span class="keyword">return</span> n; <span class="comment">// base case</span></span><br><span class="line">    <span class="keyword">return</span> fibN(n-<span class="number">1</span>) + fibN(n-<span class="number">2</span>); <span class="comment">// recursice rule</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<img src="/2018/09/18/dp-overview/fibN.png">
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fibN</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">0</span>; <span class="comment">// base case</span></span><br><span class="line">    dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        dp[i] = dp[i-<span class="number">1</span>] + dp[i-<span class="number">2</span>];</span><br><span class="line">        <span class="comment">// dp[2] = dp[0] + dp[1]</span></span><br><span class="line">        <span class="comment">// dp[2] = dp[1] + dp[2];</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-核心思想"><a href="#2-核心思想" class="headerlink" title="2 核心思想"></a>2 核心思想</h3><p>类似于高中学习的<strong>数学归纳法</strong>   </p>
+<ol>
+<li>把一个大问题(size == n)的解决方案用比他小的问题(问题们)来解决，也就是思考从问题size=n-1增加到size=n的时候，如何用小问题的solution构建大问题的solution</li>
+<li><strong>与Recursion的关系</strong><ul>
+<li>Recursion, 从大到小解决问题(自顶至下)，<strong>不记录任何sub-solution只考虑Base Case和Recursive Rule</strong></li>
+<li>DP, 从小到大解决问题(自底至上)，<strong>记录sub-solution</strong></li>
+</ul>
+</li>
+<li>将计算中间结果保存下来，并改变计算顺序！</li>
+</ol>
+<h3 id="3-动态规划题目特点"><a href="#3-动态规划题目特点" class="headerlink" title="3 动态规划题目特点"></a>3 动态规划题目特点</h3><ol>
+<li><strong>计数</strong><ul>
+<li>有多少种方式走到右下角</li>
+<li>有多少种发发选出k个数使得和是Sum</li>
+</ul>
+</li>
+<li><strong>求最大最小值</strong><ul>
+<li>从左上角走到右下角路径的最大数字和</li>
+<li>最长上升子序列长度</li>
+</ul>
+</li>
+<li><strong>求存在性</strong><ul>
+<li>取石子游戏，先手是否必胜</li>
+<li>能不能选出k个数使得和是Sum</li>
+</ul>
+</li>
+</ol>
+<h3 id="4-动态规划组成部分"><a href="#4-动态规划组成部分" class="headerlink" title="4 动态规划组成部分"></a>4 动态规划组成部分</h3><ol>
+<li><strong>确定状态</strong><ul>
+<li>解决动态规划的时候往往需要开一个数组，数组的每个元素f[i]或者f[i][j]代表什么物理意义(状态)</li>
+</ul>
+<ul>
+<li><strong>研究最优策略的最后一步</strong></li>
+<li><strong>子问题</strong></li>
+</ul>
+</li>
+<li><strong>递推公式(转移方程)</strong><ul>
+<li>根据子问题定义直接得到</li>
+</ul>
+</li>
+<li><strong>初始条件和边界情况</strong><ul>
+<li>细心，考虑周期</li>
+</ul>
+</li>
+<li><strong>计算顺序</strong><ul>
+<li>利用之前的计算结果</li>
+</ul>
+</li>
+</ol>
+
+        
         </div>
-    
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
 </div>
+
+    <a data-url="http://kaihaoli.github.io/2018/09/18/dp-overview/" data-id="cjm9ccn7l0003i678mkg08xbb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/08/01/detect-the-cycle/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Graph1 - Detect the Cycle</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
 </section>
             
                 
