@@ -3,23 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Graph - 图 | kaihao</title>
+    <title>Binary Search Tree | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="LeetCode 上很多问题都可以抽象成 “图” ，比如搜索类问题，树类问题，迷宫问题，矩阵路径问题，等等。Graph 是非常重要而又涵盖很广的内容，以至于有单独的”图论”研究方向。 1 图的计算机表示 Node / State Edge / Action Directed vs Undirected graph Representation of the graph  Edge List题目给的">
-<meta name="keywords" content="graph">
+    <meta name="description" content="Binary Search Tree: for every single node in the tree, the values in its left subtree are all smaller than its value, and the values in its right subtree are all larger than its value.  any(left_subst">
+<meta name="keywords" content="tree">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Graph - 图">
-<meta property="og:url" content="http://kaihaoli.github.io/2018/08/01/graph/index.html">
+<meta property="og:title" content="Binary Search Tree">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/09/25/binary-search-tree/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="LeetCode 上很多问题都可以抽象成 “图” ，比如搜索类问题，树类问题，迷宫问题，矩阵路径问题，等等。Graph 是非常重要而又涵盖很广的内容，以至于有单独的”图论”研究方向。 1 图的计算机表示 Node / State Edge / Action Directed vs Undirected graph Representation of the graph  Edge List题目给的">
+<meta property="og:description" content="Binary Search Tree: for every single node in the tree, the values in its left subtree are all smaller than its value, and the values in its right subtree are all larger than its value.  any(left_subst">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://kaihaoli.github.io/2018/08/01/graph/adjacency_matrix.jpg">
-<meta property="og:image" content="http://kaihaoli.github.io/2018/08/01/graph/adjacency-list.png">
-<meta property="og:updated_time" content="2018-08-01T15:01:56.834Z">
+<meta property="og:updated_time" content="2018-09-25T16:22:17.800Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Graph - 图">
-<meta name="twitter:description" content="LeetCode 上很多问题都可以抽象成 “图” ，比如搜索类问题，树类问题，迷宫问题，矩阵路径问题，等等。Graph 是非常重要而又涵盖很广的内容，以至于有单独的”图论”研究方向。 1 图的计算机表示 Node / State Edge / Action Directed vs Undirected graph Representation of the graph  Edge List题目给的">
-<meta name="twitter:image" content="http://kaihaoli.github.io/2018/08/01/graph/adjacency_matrix.jpg">
+<meta name="twitter:title" content="Binary Search Tree">
+<meta name="twitter:description" content="Binary Search Tree: for every single node in the tree, the values in its left subtree are all smaller than its value, and the values in its right subtree are all larger than its value.  any(left_subst">
     
 
     
@@ -195,7 +192,7 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-graph" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-binary-search-tree" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -203,7 +200,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            Graph - 图
+            Binary Search Tree
         </h1>
     
 
@@ -212,8 +209,8 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2018/08/01/graph/">
-            <time datetime="2018-08-02T02:43:25.000Z" itemprop="datePublished">2018-08-01</time>
+        <a href="/2018/09/25/binary-search-tree/">
+            <time datetime="2018-09-25T15:43:15.000Z" itemprop="datePublished">2018-09-25</time>
         </a>
     </div>
 
@@ -227,7 +224,7 @@ ga('send', 'pageview');
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/graph/">graph</a>
+        <a class="tag-link" href="/tags/tree/">tree</a>
     </div>
 
                     </div>
@@ -240,78 +237,22 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-图的计算机表示"><span class="toc-number">1.</span> <span class="toc-text">1 图的计算机表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Edge-List"><span class="toc-number">1.1.</span> <span class="toc-text">Edge List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adjacency-Matrix"><span class="toc-number">1.2.</span> <span class="toc-text">Adjacency Matrix</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adjacency-List"><span class="toc-number">1.3.</span> <span class="toc-text">Adjacency List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adjacency-“Hash-Set”"><span class="toc-number">1.4.</span> <span class="toc-text">Adjacency “Hash Set”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Graph-Search-Algorithm"><span class="toc-number">2.</span> <span class="toc-text">2 Graph Search Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Breadth-First-Search"><span class="toc-number">2.1.</span> <span class="toc-text">Breadth First Search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dijkstra’s-Algorithm"><span class="toc-number">2.2.</span> <span class="toc-text">Dijkstra’s Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Depth-First-Search"><span class="toc-number">2.3.</span> <span class="toc-text">Depth First Search</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Application"><span class="toc-number">3.</span> <span class="toc-text">3 Application</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#133-Clone-Graph"><span class="toc-number">3.1.</span> <span class="toc-text">133. Clone Graph</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#98-Validate-Binary-Search-Tree"><span class="toc-number">1.</span> <span class="toc-text">98. Validate Binary Search Tree</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Sol1-Primitive-Idea"><span class="toc-number">1.1.</span> <span class="toc-text">Sol1. Primitive Idea</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sol2-Range"><span class="toc-number">1.2.</span> <span class="toc-text">Sol2. Range</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Sol3-Inorder-Traversal"><span class="toc-number">1.3.</span> <span class="toc-text">Sol3. Inorder Traversal</span></a></li></ol></li></ol>
                 </div>
             
-            <p>LeetCode 上很多问题都可以抽象成 “图” ，比如搜索类问题，树类问题，迷宫问题，矩阵路径问题，等等。Graph 是非常重要而又涵盖很广的内容，以至于有单独的”图论”研究方向。</p>
-<h2 id="1-图的计算机表示"><a href="#1-图的计算机表示" class="headerlink" title="1 图的计算机表示"></a>1 图的计算机表示</h2><ol>
-<li>Node / State</li>
-<li>Edge / Action</li>
-<li>Directed vs Undirected graph</li>
-<li>Representation of the graph</li>
-</ol>
-<h3 id="Edge-List"><a href="#Edge-List" class="headerlink" title="Edge List"></a>Edge List</h3><p>题目给的Nodes and Edges(Edge List)形式的图</p>
+            <p><strong>Binary Search Tree</strong>: for <strong>every single node</strong> in the tree, the values in its left <strong>subtree</strong> are all smaller than its value, and the values in its right subtree are all larger than its value.</p>
 <ul>
-<li>要么考虑用Union Find，要么考虑重新建立图的表示</li>
+<li>any(left_substree) &lt; root.val &lt; any(right_subtree)</li>
+<li>for <strong>every sigle node</strong> in the tree</li>
+<li>for normal BST, we do <strong>not consider equal</strong>!</li>
 </ul>
-<h3 id="Adjacency-Matrix"><a href="#Adjacency-Matrix" class="headerlink" title="Adjacency Matrix"></a>Adjacency Matrix</h3><img src="/2018/08/01/graph/adjacency_matrix.jpg">
+<h3 id="98-Validate-Binary-Search-Tree"><a href="#98-Validate-Binary-Search-Tree" class="headerlink" title="98. Validate Binary Search Tree"></a><a href="https://leetcode.com/problems/validate-binary-search-tree/" target="_blank" rel="noopener">98. Validate Binary Search Tree</a></h3><h4 id="Sol1-Primitive-Idea"><a href="#Sol1-Primitive-Idea" class="headerlink" title="Sol1. Primitive Idea"></a>Sol1. Primitive Idea</h4><p>Time : O(n * h)<br>for each node,</p>
 <ul>
-<li><strong>Pros: Representation is easy to implement. </strong>Edge removal takes O(1) time. Queries like whether there is an edge from vertex ‘u’ to vertec ‘v’ are efficient and can be done O(1)</li>
-<li><strong>Cons: Consumes more space O(V^2)</strong>(V is the number of vertex/node) Even if the graph is sparse(contains less number of edges) == waste of space</li>
+<li>check all its left-subtree, to determine whether they all smaller,</li>
+<li>check all its right-subtree, to determine wheter they are all larger.</li>
 </ul>
-<h3 id="Adjacency-List"><a href="#Adjacency-List" class="headerlink" title="Adjacency List"></a>Adjacency List</h3><img src="/2018/08/01/graph/adjacency-list.png">
-<p>Vertices/Nodes : V, Edges : E</p>
-<ul>
-<li><strong>Pros: Space Complexity = O(V + E)</strong>. Adding a vertex.node to the graph is easier</li>
-<li><strong>Cons: Time Complexity is O(V) </strong>to check wheter there is an edge from a node to the other.(Comprared to O(1) in adjacent matrix)</li>
-</ul>
-<h3 id="Adjacency-“Hash-Set”"><a href="#Adjacency-“Hash-Set”" class="headerlink" title="Adjacency “Hash Set”"></a>Adjacency “Hash Set”</h3><p>用hashset替代list表示相邻的节点，综合了Adjacency Matrix和Adjacency List的优点！</p>
-<h2 id="2-Graph-Search-Algorithm"><a href="#2-Graph-Search-Algorithm" class="headerlink" title="2 Graph Search Algorithm"></a>2 Graph Search Algorithm</h2><h3 id="Breadth-First-Search"><a href="#Breadth-First-Search" class="headerlink" title="Breadth First Search"></a>Breadth First Search</h3><p><strong>How to describe a BFS’s action during an interview?</strong></p>
-<ul>
-<li>Definition 1: expand a node s, 延展一个node</li>
-<li>Definition 2: generate s’s neighbor node: reach out to its neighboring node</li>
-<li><strong>Data Structure</strong> : Maintain a FIFO queue, put all generated nodes in the queue</li>
-<li><strong>Termination condition</strong> : do a loop until the queue is empty</li>
-</ul>
-<p><strong>Discussion</strong></p>
-<ul>
-<li>When we deal with the tree-related problem and in the meantime we need to address the relationship <strong>on the same level</strong></li>
-<li>BFS is <strong>NOT</strong> the right algorithm to find <strong>the shortest path</strong> in the graph</li>
-<li>BFS 的时间空间占用以 <strong>branching factor</strong> 为底, 到解的距离 d 为指数增长；</li>
-<li>BFS 空间占用上 Queue 是不会像 DFS 一样只存一条路径的，而是从起点出发越扩越大，因此会有<strong>空间不够的风险，空间占用为 O(b^d)</strong>。</li>
-</ul>
-<p>Assume Input - graph adjacency “hash set”</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Undirected Graph</span></span><br><span class="line"><span class="comment"># 其实和Tree的BFS traversal是一样的！</span></span><br><span class="line"><span class="comment"># Why visited array? 如果有环的话需要，没有环的话不需要！</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BFS1</span><span class="params">()</span>:</span></span><br><span class="line">    visited = [<span class="number">0</span>] * n</span><br><span class="line">    queue = collections.deque([<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        print(node)</span><br><span class="line">        visited[node] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> graph[node]:</span><br><span class="line">            <span class="keyword">if</span> visited[nei] == <span class="number">0</span>:</span><br><span class="line">                queue.append(nei)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Directed Graph</span></span><br><span class="line"><span class="comment"># 从Indegree == 0 的node开始！</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BFS2</span><span class="params">()</span>:</span></span><br><span class="line">    queue = collections.deque([i <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n) <span class="keyword">if</span> indegree[i] == <span class="number">0</span>]）</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        print(node)</span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> graph[course]:</span><br><span class="line">            indegree[nei] -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> indegree[nei] == <span class="number">0</span>:</span><br><span class="line">                queue.append(nei)</span><br></pre></td></tr></table></figure>
-<h3 id="Dijkstra’s-Algorithm"><a href="#Dijkstra’s-Algorithm" class="headerlink" title="Dijkstra’s Algorithm"></a>Dijkstra’s Algorithm</h3><p>“呆克斯戳” - Best First Search</p>
-<ol>
-<li>Usages: Find the <strong>shortest path cost from a single node (source node) to any other nodes in that graph</strong></li>
-<li>Data Structure: Priority Queue (Min Heap)</li>
-<li><strong>Process</strong><ul>
-<li>Initial state (start node)</li>
-<li>Node expansion/ Generation rule</li>
-<li>Termination condition 所有点计算完毕也是”Queue is empty”</li>
-</ul>
-</li>
-</ol>
-<p><strong>Properties</strong></p>
-<pre><code>- One node can be expanded once and only once
-- One node can be generated more than once. (cost can be reduced over time)
-- all the cost of the nodes that are expanded are monotonically non-decreasing（所有从 priority queue里面pop出来的元素的值是单调非递减-&gt;单调递增）
-- time complexity, for a graph with n node and the connectivity of the node is **O(nlogn)**
-- when a node is popped out for expansion, **its value is fixed which is equal to the shortest distance from the start node** (非负权重)
-</code></pre><h3 id="Depth-First-Search"><a href="#Depth-First-Search" class="headerlink" title="Depth First Search"></a>Depth First Search</h3><ul>
-<li>DFS 的时间占用以 <strong>branching factor</strong> 为底，树的深度 m 为指数增长</li>
-<li>DFS 的空间占用上，却只是 O(bm)，可视化探索过程中只把每个 Node 的所有子节点存在 Stack 上， 探索完了再 pop 出来接着探，因此储存的节点数为 O(bm)。</li>
-</ul>
-<p>可以看到无论是 BFS 还是 DFS，树的 branching factor 都是对空间与时间复杂度影响最大的参数；除此之外，<strong>BFS 中最重要的是到解的距离，而 DFS 看从当前节点的深度。</strong>普遍来讲，DFS 空间上会经济一些，当然也要分情况讨论。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Undirected Graph</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(node)</span>:</span></span><br><span class="line">    visited.add(node)</span><br><span class="line">    <span class="keyword">for</span> nei <span class="keyword">in</span> node.neighbors:</span><br><span class="line">        <span class="keyword">if</span> nei <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">            dfs(nei)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Directed Graph</span></span><br><span class="line">visited 需要 三种状态！<span class="number">0</span>-未访问，<span class="number">1</span>-正在访问，<span class="number">2</span>-已经访问</span><br></pre></td></tr></table></figure>
-<h2 id="3-Application"><a href="#3-Application" class="headerlink" title="3 Application"></a>3 Application</h2><h3 id="133-Clone-Graph"><a href="#133-Clone-Graph" class="headerlink" title="133. Clone Graph"></a><a href="https://leetcode.com/problems/clone-graph/" target="_blank" rel="noopener">133. Clone Graph</a></h3><p>克隆Graph，很多graph都是用HashTable一一映射</p>
-<ul>
-<li>Hash Table 新旧node一一映射，再把关系同样映射！</li>
-<li>DFS，BFS都可以把所有node遍历一遍就好</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cloneGraph</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        gmap = &#123;node:UndirectedGraphNode(node.label)&#125;</span><br><span class="line">        queue = collections.deque([node])</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            nnode = queue.popleft()</span><br><span class="line">            <span class="keyword">for</span> nei <span class="keyword">in</span> nnode.neighbors:</span><br><span class="line">                <span class="keyword">if</span> nei <span class="keyword">not</span> <span class="keyword">in</span> gmap:</span><br><span class="line">                    gmap[nei] = UndirectedGraphNode(nei.label)</span><br><span class="line">                    queue.append(nei)</span><br><span class="line">                gmap[nnode].neighbors.append(gmap[nei])</span><br><span class="line">        <span class="keyword">return</span> gmap[node]</span><br></pre></td></tr></table></figure>
+<h4 id="Sol2-Range"><a href="#Sol2-Range" class="headerlink" title="Sol2. Range"></a>Sol2. Range</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(h)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValidBST</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.helper(root, -float(<span class="string">'inf'</span>), float(<span class="string">'inf'</span>))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">helper</span><span class="params">(self, root, tmin, tmax)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># BST 是不能有等于的！</span></span><br><span class="line">        <span class="keyword">if</span> root.val &gt;= tmax <span class="keyword">or</span> root.val &lt;= tmin:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (self.helper(root.left, tmin, root.val)</span><br><span class="line">            <span class="keyword">and</span> self.helper(root.right, root.val, tmax))</span><br></pre></td></tr></table></figure>
+<h4 id="Sol3-Inorder-Traversal"><a href="#Sol3-Inorder-Traversal" class="headerlink" title="Sol3. Inorder Traversal"></a>Sol3. Inorder Traversal</h4><p><strong> BST Inorder traversal后的结果是升序的！</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(n)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValidBST</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        res = []</span><br><span class="line">        self.dfs(root, res)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(res)<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> res[i+<span class="number">1</span>] &lt;= res[i]:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, root, res)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        self.dfs(root.left, res)</span><br><span class="line">        res.append(root.val)</span><br><span class="line">        self.dfs(root.right, res)</span><br></pre></td></tr></table></figure></p>
 
         
         </div>
@@ -322,7 +263,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/01/graph/" data-id="cjmhxnmnr000muw78pv983gst" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/09/25/binary-search-tree/" data-id="cjmhxnmn70001uw78iwaes7dg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -397,19 +338,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2018/08/01/detect-the-cycle/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    Graph1 - Detect the Cycle
-                
-            </div>
-        </a>
     
-    
-        <a href="/2018/05/22/union-find/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/09/19/dp-double-sequence/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Union Find 并查集</div>
+            <div class="article-nav-title">DP - Double Sequence</div>
         </a>
     
 </nav>

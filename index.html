@@ -159,7 +159,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                16
+                17
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -188,6 +188,148 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-binary-search-tree" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/09/25/binary-search-tree/">Binary Search Tree</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/09/25/binary-search-tree/">
+            <time datetime="2018-09-25T15:43:15.000Z" itemprop="datePublished">2018-09-25</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/tree/">tree</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><strong>Binary Search Tree</strong>: for <strong>every single node</strong> in the tree, the values in its left <strong>subtree</strong> are all smaller than its value, and the values in its right subtree are all larger than its value.</p>
+<ul>
+<li>any(left_substree) &lt; root.val &lt; any(right_subtree)</li>
+<li>for <strong>every sigle node</strong> in the tree</li>
+<li>for normal BST, we do <strong>not consider equal</strong>!</li>
+</ul>
+<h3 id="98-Validate-Binary-Search-Tree"><a href="#98-Validate-Binary-Search-Tree" class="headerlink" title="98. Validate Binary Search Tree"></a><a href="https://leetcode.com/problems/validate-binary-search-tree/" target="_blank" rel="noopener">98. Validate Binary Search Tree</a></h3><h4 id="Sol1-Primitive-Idea"><a href="#Sol1-Primitive-Idea" class="headerlink" title="Sol1. Primitive Idea"></a>Sol1. Primitive Idea</h4><p>Time : O(n * h)<br>for each node,</p>
+<ul>
+<li>check all its left-subtree, to determine whether they all smaller,</li>
+<li>check all its right-subtree, to determine wheter they are all larger.</li>
+</ul>
+<h4 id="Sol2-Range"><a href="#Sol2-Range" class="headerlink" title="Sol2. Range"></a>Sol2. Range</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(h)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValidBST</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.helper(root, -float(<span class="string">'inf'</span>), float(<span class="string">'inf'</span>))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">helper</span><span class="params">(self, root, tmin, tmax)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># BST 是不能有等于的！</span></span><br><span class="line">        <span class="keyword">if</span> root.val &gt;= tmax <span class="keyword">or</span> root.val &lt;= tmin:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> (self.helper(root.left, tmin, root.val)</span><br><span class="line">            <span class="keyword">and</span> self.helper(root.right, root.val, tmax))</span><br></pre></td></tr></table></figure>
+<h4 id="Sol3-Inorder-Traversal"><a href="#Sol3-Inorder-Traversal" class="headerlink" title="Sol3. Inorder Traversal"></a>Sol3. Inorder Traversal</h4><p><strong> BST Inorder traversal后的结果是升序的！</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(n)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValidBST</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        res = []</span><br><span class="line">        self.dfs(root, res)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(res)<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> res[i+<span class="number">1</span>] &lt;= res[i]:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, root, res)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        self.dfs(root.left, res)</span><br><span class="line">        res.append(root.val)</span><br><span class="line">        self.dfs(root.right, res)</span><br></pre></td></tr></table></figure></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/09/25/binary-search-tree/" data-id="cjmhxnmn70001uw78iwaes7dg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-dp-double-sequence" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -233,7 +375,7 @@ ga('send', 'pageview');
             
             <ul>
 <li>Input Parameters have <strong>two</strong> Sequences or Strings</li>
-<li>Two Sequences Matching?</li>
+<li>Two Sequences <strong>Matching</strong>?</li>
 </ul>
 <h2 id="1-Longest"><a href="#1-Longest" class="headerlink" title="1 Longest"></a>1 Longest</h2><h3 id="LintCode-77-Longest-Common-Subsequence"><a href="#LintCode-77-Longest-Common-Subsequence" class="headerlink" title="LintCode 77. Longest Common Subsequence"></a><a href="http://www.lintcode.com/en/problem/longest-common-subsequence/" target="_blank" rel="noopener">LintCode 77. Longest Common Subsequence</a></h3><ul>
 <li><strong>State</strong> : dp[i][j] means Longest Common Subsequence for A[0…i-1] and B[0…j-1]</li>
@@ -265,7 +407,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/09/19/dp-double-sequence/" data-id="cjm9lhuy90006xz785x2aki1c" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/09/19/dp-double-sequence/" data-id="cjmhxnmno000guw78480ydvbb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -454,7 +596,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/09/18/dp-overview/" data-id="cjm9lhuyn000exz7804u45i2z" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/09/18/dp-overview/" data-id="cjmhxnmnq000iuw78ogcamctl" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -632,7 +774,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/01/detect-the-cycle/" data-id="cjm9lhuy50005xz78dabxma7u" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/01/detect-the-cycle/" data-id="cjmhxnmnj000auw78mcaeoqfx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -830,7 +972,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/01/graph/" data-id="cjm9lhuyp000hxz78do6qp3r2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/01/graph/" data-id="cjmhxnmnr000muw78pv983gst" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1070,7 +1212,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/22/union-find/" data-id="cjm9lhuz40012xz78z1bw3rjb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/22/union-find/" data-id="cjmhxnmo7001buw789soi68o8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1338,7 +1480,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/18/ood-in-interview/" data-id="cjm9lhv0q001hxz78aalbga4t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/18/ood-in-interview/" data-id="cjmhxnmnx000uuw78yaeh4z09" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1444,6 +1586,11 @@ ga('send', 'pageview');
     </div>
 
                         
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/tree/">tree</a>
+    </div>
+
                     </div>
                 
             </header>
@@ -1554,7 +1701,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/16/binary-indexed-tree/" data-id="cjm9lhuxq0000xz78ha0ae7ss" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/16/binary-indexed-tree/" data-id="cjmhxnmn20000uw788msvsqy3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1662,7 +1809,7 @@ ga('send', 'pageview');
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/binary-tree/">binary tree</a>
+        <a class="tag-link" href="/tags/tree/">tree</a>
     </div>
 
                     </div>
@@ -1786,7 +1933,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/03/tree-traversal/" data-id="cjm9lhuz20010xz78kb031lsr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/03/tree-traversal/" data-id="cjmhxnmo20011uw78q00jtl02" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1984,298 +2131,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/01/spark-quick-start/" data-id="cjm9lhuyz000vxz783rouuuhd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-bit-manipulation" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/04/29/bit-manipulation/">Bit Manipulation 位运算</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/04/29/bit-manipulation/">
-            <time datetime="2018-04-30T01:17:56.000Z" itemprop="datePublished">2018-04-29</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h2><h3 id="知识点1-原码-反码-补码"><a href="#知识点1-原码-反码-补码" class="headerlink" title="知识点1 原码 反码 补码"></a>知识点1 原码 反码 补码</h3><p><strong>最高位存符号位</strong>。</p>
-<p>正数：原码=反码=补码 ；</p>
-<p>负数：符号位不变，原码 –(取反)–&gt; 反码 –(+1)–&gt; 补码</p>
-<blockquote>
-<p><a href="https://en.wikipedia.org/wiki/Single-precision_floating-point_format" target="_blank" rel="noopener">浮点数的位表示</a><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; 0.2+0.4==0.6</span><br><span class="line">False</span><br><span class="line">&gt;&gt;&gt; 0.2+0.4</span><br><span class="line">0.6000000000000001</span><br><span class="line"><span class="comment"># Python, Java(Double), Why not 0.6?</span></span><br><span class="line"><span class="comment"># tips:做浮点数的时候，知道有精度丢失这么个点</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<h3 id="知识点2-位运算符"><a href="#知识点2-位运算符" class="headerlink" title="知识点2 位运算符"></a>知识点2 位运算符</h3><ul>
-<li><strong>Java 位运算符</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">位运算符号</th>
-<th style="text-align:center"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">&amp;</td>
-<td style="text-align:center">注意和逻辑运算符区别 &amp;&amp;</td>
-</tr>
-<tr>
-<td style="text-align:center">&#124;</td>
-<td style="text-align:center">逻辑运算符 &#124;&#124;</td>
-</tr>
-<tr>
-<td style="text-align:center">～</td>
-<td style="text-align:center">逻辑运算符 ！</td>
-</tr>
-<tr>
-<td style="text-align:center">^ 异或</td>
-<td style="text-align:center">相异为1 相同为0</td>
-</tr>
-<tr>
-<td style="text-align:center">&lt;&lt; left shift</td>
-<td style="text-align:center">补0, <strong>会溢出的”*2”</strong></td>
-</tr>
-<tr>
-<td style="text-align:center">&gt;&gt; right shift</td>
-<td style="text-align:center">补0或1，<strong>保持和最高位相同</strong>Why？”/2”</td>
-</tr>
-<tr>
-<td style="text-align:center">&gt;&gt;&gt; 无符号right shift</td>
-<td style="text-align:center">补0</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li><strong>Python 位运算符</strong></li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">位运算符号</th>
-<th style="text-align:center"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">&amp;</td>
-<td style="text-align:center">and</td>
-</tr>
-<tr>
-<td style="text-align:center">&#124;</td>
-<td style="text-align:center">or</td>
-</tr>
-<tr>
-<td style="text-align:center">～</td>
-<td style="text-align:center">not</td>
-</tr>
-<tr>
-<td style="text-align:center">^ 异或</td>
-<td style="text-align:center">相异为1 相同为0</td>
-</tr>
-<tr>
-<td style="text-align:center">&lt;&lt; left shift</td>
-<td style="text-align:center">补0 <strong>无溢出的 “*2”</strong></td>
-</tr>
-<tr>
-<td style="text-align:center">&gt;&gt; right shift</td>
-<td style="text-align:center">补0或1，<strong>保持和最高位相同</strong> “/2”</td>
-</tr>
-</tbody>
-</table>
-<h3 id="知识点3-空间优化"><a href="#知识点3-空间优化" class="headerlink" title="知识点3 空间优化"></a>知识点3 空间优化</h3><h4 id="Contain-Unique-Letter-Word"><a href="#Contain-Unique-Letter-Word" class="headerlink" title="Contain Unique Letter Word"></a>Contain Unique Letter Word</h4><p>Determine whether a word contains all letters that are unique (no duplicate letters in the word).</p>
-<ul>
-<li>1 HashSet</li>
-<li>2 Array，256个ASCII码 长度256的Array</li>
-<li>3 <strong>Bit Vector</strong> 充分利用空间！！<ul>
-<li>xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx 0~31th bit</li>
-<li>xxxx xxxx xxxx xxxx xxxx xxxx xxxx xxxx 32~63th bit</li>
-<li>… …</li>
-</ul>
-</li>
-</ul>
-<h4 id="318-Maximum-Product-of-Word-Lengths"><a href="#318-Maximum-Product-of-Word-Lengths" class="headerlink" title="318. Maximum Product of Word Lengths"></a><a href="https://leetcode.com/problems/maximum-product-of-word-lengths/" target="_blank" rel="noopener">318. Maximum Product of Word Lengths</a></h4><p>给定一个字符串数组words，寻找length(words[i]) * length(words[j])的最大值，其中两个单词不包含相同字母。你可以假设每一个单词只包含小写字母。如果不存在这样的两个单词，返回0</p>
-<ul>
-<li>1 Two words do not share common letters ：Bit！</li>
-<li>2 包含相同类型letter的word只用取长度最长的</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProduct</span><span class="params">(self, words)</span>:</span></span><br><span class="line">        n = len(words)</span><br><span class="line">        <span class="keyword">if</span> n &lt;= <span class="number">1</span>: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        d = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">            mask = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> ch <span class="keyword">in</span> word:</span><br><span class="line">                mask |= (<span class="number">1</span> &lt;&lt; (ord(ch) - ord(<span class="string">'a'</span>)))</span><br><span class="line">            d[mask] = max(d.get(mask, <span class="number">0</span>), len(word))</span><br><span class="line"></span><br><span class="line">        <span class="comment"># pythonic：</span></span><br><span class="line">        <span class="comment"># return max([d[x]*d[y] for x in d for y in d if not x &amp; y])</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> x <span class="keyword">in</span> d:</span><br><span class="line">            <span class="keyword">for</span> y <span class="keyword">in</span> d:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> x &amp; y:</span><br><span class="line">                    res = max(res, d[x] * d[y])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-<h2 id="异或"><a href="#异或" class="headerlink" title="异或^"></a>异或^</h2><ul>
-<li><strong>两个相等的数经过异或运算会相互抵消</strong></li>
-</ul>
-<p>通常用来删除偶数个相同的数字，保留基数个个数的数字</p>
-<h3 id="Swap-Two-Integers"><a href="#Swap-Two-Integers" class="headerlink" title="Swap Two Integers"></a>Swap Two Integers</h3><p>不建议在实际应用中采用</p>
-<ul>
-<li>1 不一定比朴素方法快</li>
-<li>2 a 和 b 引用同一变量</li>
-</ul>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Swap</span><span class="params">(<span class="keyword">int</span> &amp;a, <span class="keyword">int</span> &amp;b)</span>  </span></span><br><span class="line"><span class="function"></span>&#123;  </span><br><span class="line">    <span class="keyword">if</span> (a != b)  </span><br><span class="line">    &#123;  </span><br><span class="line">        a ^= b;  </span><br><span class="line">        b ^= a;  </span><br><span class="line">        a ^= b;  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="389-Find-the-Difference"><a href="#389-Find-the-Difference" class="headerlink" title="389. Find the Difference"></a><a href="https://leetcode.com/problems/find-the-difference/" target="_blank" rel="noopener">389. Find the Difference</a></h3><p>给定两个字符串s和t，都只包含小写字母。字符串t由字符串s打乱顺序并且额外在随机位置添加一个字母组成。<br>寻找t中新增的那个字母。（和single number一样）<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findTheDifference</span><span class="params">(self, s, t)</span>:</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        n = len(s)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            res ^= ord(s[i]) ^ ord(t[i])</span><br><span class="line">        <span class="keyword">return</span> chr(res ^ ord(t[n]))</span><br></pre></td></tr></table></figure></p>
-<h3 id="268-Missing-Number"><a href="#268-Missing-Number" class="headerlink" title="268. Missing Number"></a><a href="https://leetcode.com/problems/missing-number/" target="_blank" rel="noopener">268. Missing Number</a></h3><p>给定一个包含从0, 1, 2, …, n, 选出的n个不同数字的数组，从中找出数组中缺失的那一个数。这里是少了一个数，single number 是多了一个数。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">missingNumber</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        ret = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums+range(len(nums)+<span class="number">1</span>):</span><br><span class="line">            ret ^= n</span><br><span class="line">        <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure></p>
-<h3 id="136-Single-Number"><a href="#136-Single-Number" class="headerlink" title="136. Single Number"></a><a href="https://leetcode.com/problems/single-number/" target="_blank" rel="noopener">136. Single Number</a></h3><p>所有数字都出现<strong>偶数次</strong>，只有一个数字出现奇数次，求出现奇数次的那个数</p>
-<ul>
-<li><p>解法1. HashSet</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(n)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">singleNumber</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        numSet = set()</span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> n <span class="keyword">in</span> numSet:</span><br><span class="line">                numSet.remove(n)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                numSet.add(n)</span><br><span class="line">        <span class="keyword">return</span> list(numSet)[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>解法2.异或</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(1)</span></span><br><span class="line"><span class="comment"># 偶数次异或可以抵消</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">singleNumber</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        ret = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            ret ^= n</span><br><span class="line">        <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="137-Single-Number-II"><a href="#137-Single-Number-II" class="headerlink" title="137. Single Number II"></a><a href="https://leetcode.com/problems/single-number-ii/" target="_blank" rel="noopener">137. Single Number II</a></h3><p>所有数字出现三次，只有一个数字出现一次，求出现一次那个数。</p>
-<ul>
-<li><p><strong>解法1. HashTable</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(n)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">singleNumber</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        dic = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> n <span class="keyword">in</span> dic:</span><br><span class="line">                <span class="keyword">if</span> dic[n] == <span class="number">2</span>:</span><br><span class="line">                    <span class="keyword">del</span> dic[n]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    dic[n] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dic[n] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> dic.keys()[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>解法2. <strong>用二进制模拟三进制</strong>运算<br>从一个bit出发考虑到32个bits</p>
-</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cnt  : 0    1    2     3          4</span><br><span class="line">one  : 0 -&gt; 1 -&gt; 0 -&gt; (1 -&gt; 0) -&gt; 1</span><br><span class="line">two  : 0 -&gt; 0 -&gt; 1 -&gt; (1 -&gt; 0) -&gt; 0</span><br><span class="line">mask : 1    1    1     1    0</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">singleNumber</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        one = two = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            two |= n &amp; one</span><br><span class="line">            one ^= n</span><br><span class="line">            mask = ~(one &amp; two)</span><br><span class="line">            one &amp;= mask</span><br><span class="line">            two &amp;= mask</span><br><span class="line">        <span class="keyword">return</span> one</span><br></pre></td></tr></table></figure>
-<h3 id="260-Single-Number-III"><a href="#260-Single-Number-III" class="headerlink" title="260. Single Number III"></a><a href="https://leetcode.com/problems/single-number-iii/" target="_blank" rel="noopener">260. Single Number III</a></h3><p>所有数字都出现两次，但是有两个数字只出现了一次。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">a ^ a ^ b ^ b ^ c ^ d = c ^ d</span><br><span class="line">0101 0100 c</span><br><span class="line">1001 0010 d</span><br><span class="line">1100 0110 c^d</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li>把只出现一次的c和d分到两个组里</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">singleNumber</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        mask = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            mask ^= n</span><br><span class="line"></span><br><span class="line">        mask &amp;= (-mask)</span><br><span class="line"></span><br><span class="line">        a, b = <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            <span class="keyword">if</span> n &amp; mask:</span><br><span class="line">                a ^= n</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                b ^= n</span><br><span class="line">        <span class="keyword">return</span> [a, b]</span><br></pre></td></tr></table></figure>
-<h3 id="371-Sum-of-Two-Integers"><a href="#371-Sum-of-Two-Integers" class="headerlink" title="371. Sum of Two Integers"></a><a href="https://leetcode.com/problems/sum-of-two-integers/" target="_blank" rel="noopener">371. Sum of Two Integers</a></h3><ul>
-<li><strong>用^和&amp;，构成加法运算</strong></li>
-</ul>
-<p>^表示相加后的结果，&amp;后的&lt;&lt; 1表示相加后的进位<br>(理解加减法的位操作)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Iterative</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSum</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (a == <span class="number">0</span>) <span class="keyword">return</span> b;</span><br><span class="line">    <span class="keyword">if</span> (b == <span class="number">0</span>) <span class="keyword">return</span> a;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span> (b != <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">int</span> carry = a &amp; b;</span><br><span class="line">        a = a ^ b;</span><br><span class="line">        b = carry &lt;&lt; <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> a;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Recursive</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">getSum</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (b == <span class="number">0</span>) ? a : getSum(a ^ b, (a &amp; b) &lt;&lt; <span class="number">1</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="n-amp-n-1"><a href="#n-amp-n-1" class="headerlink" title="n &amp; (n-1)"></a>n &amp; (n-1)</h2><ul>
-<li>算是一个小trick！</li>
-<li>n&amp;(n-1)可<strong>消除n中最右边(低位)的一个1</strong></li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">0101 1000 n</span><br><span class="line">0101 0111 n - 1    </span><br><span class="line">0101 0000 n &amp; (n-1)</span><br></pre></td></tr></table></figure>
-<h3 id="191-Number-of-1-Bits"><a href="#191-Number-of-1-Bits" class="headerlink" title="191. Number of 1 Bits"></a><a href="https://leetcode.com/problems/number-of-1-bits" target="_blank" rel="noopener">191. Number of 1 Bits</a></h3><p>统计一个整数用二进制表示时1的个数<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Java</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">hammingWeight</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cnt = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span> (n != <span class="number">0</span>) &#123;</span><br><span class="line">        cnt++;</span><br><span class="line">        n &amp;= (n - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h3 id="231-Power-of-Two"><a href="#231-Power-of-Two" class="headerlink" title="231. Power of Two"></a><a href="https://leetcode.com/problems/power-of-two/" target="_blank" rel="noopener">231. Power of Two</a></h3><p>判断一个数是不是2的n次幂<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">0000 0001 2^0</span><br><span class="line">0000 0010 2^1</span><br><span class="line">0000 0100 2^2</span><br><span class="line">0000 1000 2^3</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Java</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPowerOfTwo</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (n &gt; <span class="number">0</span>) &amp;&amp; (((n - <span class="number">1</span>) &amp; n) == <span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="326-Power-of-Three"><a href="#326-Power-of-Three" class="headerlink" title="326. Power of Three"></a><a href="https://leetcode.com/problems/power-of-three/" target="_blank" rel="noopener">326. Power of Three</a></h3><ul>
-<li>也有一行代码更数学上tricky的方法：return n &gt; 0 &amp;&amp; 1162261467 % n == 0;</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Java1 - Math</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPowerOfThree</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> (Math.log10(n) / Math.log10(<span class="number">3</span>)) % <span class="number">1</span> == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Java2 - Forloop</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPowerOfThree</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">while</span> (n &gt; <span class="number">0</span> &amp;&amp; (n%<span class="number">3</span> == <span class="number">0</span>)) &#123;</span><br><span class="line">            n /= <span class="number">3</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> n == <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="342-Power-of-Four"><a href="#342-Power-of-Four" class="headerlink" title="342. Power of Four"></a><a href="https://leetcode.com/problems/power-of-four/" target="_blank" rel="noopener">342. Power of Four</a></h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Java1 for loop</span></span><br><span class="line">class Solution:</span><br><span class="line">    <span class="function">def <span class="title">isPowerOfFour</span><span class="params">(self, n)</span>:</span></span><br><span class="line"><span class="function">        <span class="keyword">if</span> n &lt; 1:</span></span><br><span class="line"><span class="function">            return False</span></span><br><span class="line"><span class="function">        <span class="keyword">while</span> n % 4 </span>== <span class="number">0</span>:</span><br><span class="line">            n = n / <span class="number">4</span></span><br><span class="line">        <span class="keyword">return</span> n == <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Java2 Math</span></span><br><span class="line"><span class="comment">// 0000 0001 1</span></span><br><span class="line"><span class="comment">// 0000 0100 4</span></span><br><span class="line"><span class="comment">// 0001 0000 16</span></span><br><span class="line"><span class="comment">// 0100 0000 64</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isPowerOfFour</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="comment">//一个数学的方法：(4^n - 1) is multiple of 3</span></span><br><span class="line">        <span class="keyword">return</span> (n &gt; <span class="number">0</span>) &amp;&amp; (n&amp;(n-<span class="number">1</span>)) == <span class="number">0</span> &amp;&amp; (n-<span class="number">1</span>) % <span class="number">3</span> == <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="461-Hamming-Distance"><a href="#461-Hamming-Distance" class="headerlink" title="461. Hamming Distance"></a><a href="https://leetcode.com/problems/hamming-distance/" target="_blank" rel="noopener">461. Hamming Distance</a></h3><p>两个整数的汉明距离是指其二进制不相等的位的个数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hammingDistance</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        n = x ^ y <span class="comment"># =&gt; Count bits of a number</span></span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> n:</span><br><span class="line">            n &amp;= (n<span class="number">-1</span>)</span><br><span class="line">            cnt += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> cnt</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hammingDistance1</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        n = x ^ y</span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> n:</span><br><span class="line">            cnt += n &amp; <span class="number">1</span></span><br><span class="line">            n &gt;&gt;= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> cnt</span><br></pre></td></tr></table></figure></p>
-<h3 id="477-Total-Hamming-Distance"><a href="#477-Total-Hamming-Distance" class="headerlink" title="477. Total Hamming Distance"></a><a href="https://leetcode.com/problems/total-hamming-distance/" target="_blank" rel="noopener">477. Total Hamming Distance</a></h3><p>两个整数的汉明距离是指其二进制不相等的位的个数, 计算给定的整数数组两两之间的汉明距离之和。</p>
-<ul>
-<li>解法1. n^2 paris (TLE)</li>
-<li>解法2. 拆解integer<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(32 * n), Space : O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">totalHammingDistance</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        n = len(nums)</span><br><span class="line">        <span class="keyword">if</span> n &lt;= <span class="number">1</span>: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        mask = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(<span class="number">32</span>):</span><br><span class="line">            cnt1 = <span class="number">0</span>  </span><br><span class="line">            <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">                <span class="keyword">if</span> num &amp; mask:</span><br><span class="line">                    cnt1 += <span class="number">1</span></span><br><span class="line">            mask &lt;&lt;= <span class="number">1</span></span><br><span class="line">            res += (n - cnt1) * cnt1</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="201-Bitwise-AND-of-Numbers-Range"><a href="#201-Bitwise-AND-of-Numbers-Range" class="headerlink" title="201. Bitwise AND of Numbers Range"></a><a href="https://leetcode.com/problems/bitwise-and-of-numbers-range/" target="_blank" rel="noopener">201. Bitwise AND of Numbers Range</a></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># [26, 30]</span><br><span class="line">11010</span><br><span class="line">11011</span><br><span class="line">11100</span><br><span class="line">11101</span><br><span class="line">11110</span><br></pre></td></tr></table></figure>
-<p>仔细观察这个过程我们可以得出^_^，最后的结果是该范围内所有数的<strong>左边的共同部分，即公共左边首部(left header)</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rangeBitwiseAnd</span><span class="params">(self, m, n)</span>:</span></span><br><span class="line">        <span class="keyword">while</span> m &lt; n:</span><br><span class="line">            n &amp;= n<span class="number">-1</span></span><br><span class="line">        <span class="keyword">return</span> n</span><br></pre></td></tr></table></figure></p>
-<h2 id="Advanced-Topic"><a href="#Advanced-Topic" class="headerlink" title="Advanced Topic"></a>Advanced Topic</h2><h3 id="n-amp-n"><a href="#n-amp-n" class="headerlink" title="n &amp; (-n)"></a>n &amp; (-n)</h3><p>n &amp;-n returns <strong>the rightmost 1 bit in n</strong>., 属于第一次见，很难理解的小trick，这个会在<strong>Binary Indexed Tree</strong>中用到！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">n &amp; (n ^ (n-1)) = n &amp; (-n)</span><br><span class="line"></span><br><span class="line">0000 1011 11</span><br><span class="line">1111 0100</span><br><span class="line">1111 0101 -11</span><br><span class="line">0000 0001 11 &amp; (-11)</span><br><span class="line"></span><br><span class="line">1010 1000 168</span><br><span class="line">0101 0111</span><br><span class="line">0101 1000 -168</span><br><span class="line">0000 1000 168 &amp; (-168)</span><br><span class="line"># 充分利用了“取反加一”！</span><br></pre></td></tr></table></figure>
-<p>正整数n的二进制表示中，只保留最低位的1的值！</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/04/29/bit-manipulation/" data-id="cjm9lhuy20003xz78y214yndn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/01/spark-quick-start/" data-id="cjmhxnmnz000xuw78il49ypch" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2369,6 +2225,15 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/09/25/binary-search-tree/" class="title">Binary Search Tree</a></p>
+                            <p class="item-date"><time datetime="2018-09-25T15:43:15.000Z" itemprop="datePublished">2018-09-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/09/19/dp-double-sequence/" class="title">DP - Double Sequence</a></p>
                             <p class="item-date"><time datetime="2018-09-19T18:56:15.000Z" itemprop="datePublished">2018-09-19</time></p>
                         </div>
@@ -2401,15 +2266,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/05/22/union-find/" class="title">Union Find 并查集</a></p>
-                            <p class="item-date"><time datetime="2018-05-23T02:32:20.000Z" itemprop="datePublished">2018-05-22</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -2419,7 +2275,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -2428,7 +2284,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -2437,7 +2293,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-tree/">binary tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/segment-tree/">segment tree</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/segment-tree/">segment tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">3</span></li></ul>
         </div>
     </div>
 
@@ -2446,7 +2302,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/binary-indexed-tree/" style="font-size: 10px;">binary indexed tree</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/binary-tree/" style="font-size: 10px;">binary tree</a> <a href="/tags/dynamic-programming/" style="font-size: 20px;">dynamic programming</a> <a href="/tags/graph/" style="font-size: 20px;">graph</a> <a href="/tags/segment-tree/" style="font-size: 10px;">segment tree</a>
+            <a href="/tags/binary-indexed-tree/" style="font-size: 10px;">binary indexed tree</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/dynamic-programming/" style="font-size: 15px;">dynamic programming</a> <a href="/tags/graph/" style="font-size: 15px;">graph</a> <a href="/tags/segment-tree/" style="font-size: 10px;">segment tree</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
         </div>
     </div>
 
