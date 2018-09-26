@@ -3,19 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Kaihao Li | kaihao</title>
+    <title>Linked List Basic | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="kaihaohust#gmail.com (replace # with @ please) | (+1)631-428-7454 EDUCATION Jan. 2017 - Dec. 2018Stony Brook University, StonyBrook, NYM.S. in Computer Science Sep. 2011 - Jun. 2015Huazhong University">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Kaihao Li">
-<meta property="og:url" content="http://kaihaoli.github.io/about/index.html">
+    <meta name="description" content="IntroductionPrerequisite 同样是线性结构, Array是物理连续的, Linked List 是由Pointer连起来的，不一定是物理连续的！ 链表的题目往往算不上“算法性”题，只是一种模拟操作的题 考察的重点在于bug free，是否对写代码有熟练度！  Key Point 1 When you want to de-reference a List Node, make">
+<meta name="keywords" content="linked list">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linked List Basic">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/08/06/linked-list-basic/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="kaihaohust#gmail.com (replace # with @ please) | (+1)631-428-7454 EDUCATION Jan. 2017 - Dec. 2018Stony Brook University, StonyBrook, NYM.S. in Computer Science Sep. 2011 - Jun. 2015Huazhong University">
+<meta property="og:description" content="IntroductionPrerequisite 同样是线性结构, Array是物理连续的, Linked List 是由Pointer连起来的，不一定是物理连续的！ 链表的题目往往算不上“算法性”题，只是一种模拟操作的题 考察的重点在于bug free，是否对写代码有熟练度！  Key Point 1 When you want to de-reference a List Node, make">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-09-26T00:06:17.050Z">
+<meta property="og:updated_time" content="2018-09-26T14:09:00.107Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kaihao Li">
-<meta name="twitter:description" content="kaihaohust#gmail.com (replace # with @ please) | (+1)631-428-7454 EDUCATION Jan. 2017 - Dec. 2018Stony Brook University, StonyBrook, NYM.S. in Computer Science Sep. 2011 - Jun. 2015Huazhong University">
+<meta name="twitter:title" content="Linked List Basic">
+<meta name="twitter:description" content="IntroductionPrerequisite 同样是线性结构, Array是物理连续的, Linked List 是由Pointer连起来的，不一定是物理连续的！ 链表的题目往往算不上“算法性”题，只是一种模拟操作的题 考察的重点在于bug free，是否对写代码有熟练度！  Key Point 1 When you want to de-reference a List Node, make">
     
 
     
@@ -191,7 +192,7 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="page-" class="article article-type-page" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-linked-list-basic" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -199,10 +200,34 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            Kaihao Li
+            Linked List Basic
         </h1>
     
 
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/08/06/linked-list-basic/">
+            <time datetime="2018-08-06T12:42:40.000Z" itemprop="datePublished">2018-08-06</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/linked-list/">linked list</a>
+    </div>
+
+                    </div>
                 
             </header>
         
@@ -210,16 +235,65 @@ ga('send', 'pageview');
         <div class="article-entry" itemprop="articleBody">
         
             
-            <p>kaihaohust#gmail.com (replace # with @ please) | (+1)631-428-7454</p>
-<h4 id="EDUCATION"><a href="#EDUCATION" class="headerlink" title="EDUCATION"></a>EDUCATION</h4><hr>
-<p><strong>Jan. 2017 - Dec. 2018</strong><br><em>Stony Brook University, StonyBrook, NY</em><br>M.S. in Computer Science</p>
-<p><strong>Sep. 2011 - Jun. 2015</strong><br><em>Huazhong University of Science and Technology, Wuhan, China</em><br>B.S. in Computer Science Engineering</p>
-<h4 id="SKILLS"><a href="#SKILLS" class="headerlink" title="SKILLS"></a>SKILLS</h4><hr>
-<ul>
-<li><strong>Programming Language</strong> : Python, Java, C</li>
-<li><strong>Web Development</strong> : Django, Flask, RabbitMQ, Redis, MongoDB, nodejs, React, D3.js</li>
-<li><strong>Tools &amp; Frameworks</strong> : Docker, Kafka, Cassandra, Spark, Keras, Tensorflow, Linux</li>
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Prerequisite"><span class="toc-number">1.1.</span> <span class="toc-text">Prerequisite</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Key-Point"><span class="toc-number">1.2.</span> <span class="toc-text">Key Point</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tips"><span class="toc-number">1.3.</span> <span class="toc-text">Tips</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#203-Remove-Linked-List-Elements"><span class="toc-number">2.</span> <span class="toc-text">203. Remove Linked List Elements</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-Remove-Nth-Node-From-End-of-List"><span class="toc-number">3.</span> <span class="toc-text">19. Remove Nth Node From End of List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#237-Delete-Node-in-a-Linked-List"><span class="toc-number">4.</span> <span class="toc-text">237. Delete Node in a Linked List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#83-Remove-Duplicates-from-Sorted-List"><span class="toc-number">5.</span> <span class="toc-text">83. Remove Duplicates from Sorted List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#82-Remove-Duplicates-from-Sorted-List-II"><span class="toc-number">6.</span> <span class="toc-text">82. Remove Duplicates from Sorted List II</span></a></li></ol>
+                </div>
+            
+            <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><h4 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite"></a><strong>Prerequisite</strong></h4><ul>
+<li>同样是线性结构, <strong>Array是物理连续的</strong>, Linked List 是由Pointer连起来的，<strong>不一定是物理连续的</strong>！</li>
+<li>链表的题目往往算不上“算法性”题，只是一种模拟操作的题</li>
+<li>考察的重点在于bug free，是否对写代码有熟练度！</li>
 </ul>
+<h4 id="Key-Point"><a href="#Key-Point" class="headerlink" title="Key Point"></a><strong>Key Point</strong></h4><ul>
+<li>1 When you want to <strong>de-reference a List Node</strong>, make sure it is not a <strong>NULL Pointer</strong>.<ul>
+<li>任何使用用<strong>“.”</strong>这个符号的时候，一定要注意判断前面的Reference是否为空！！！</li>
+</ul>
+</li>
+<li>2 Never ever lost <strong>the control of the head pointer</strong> of the Linked List.<ul>
+<li>经常需要缓存nxt指针或者prev指针都是因为当你改变链表结构的时候很容易丢失之前或者之后的信息！</li>
+</ul>
+</li>
+</ul>
+<h4 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h4><ul>
+<li><p><strong>DummyNode</strong></p>
+<ul>
+<li><strong>Why or When should we use a dummy Node?</strong></li>
+<li>When we want to append new elements to an initially empty linkedlist, we do not have an initial head node. In this case, we can new a dummy node to act as a head node.</li>
+<li>链表的结构发生变化</li>
+</ul>
+</li>
+<li><p><strong>Two or More Pointers</strong></p>
+<ul>
+<li>We usually use many pointer to manipulate the node of the linked list</li>
+</ul>
+</li>
+</ul>
+<h3 id="203-Remove-Linked-List-Elements"><a href="#203-Remove-Linked-List-Elements" class="headerlink" title="203. Remove Linked List Elements"></a><a href="https://leetcode.com/problems/remove-linked-list-elements/" target="_blank" rel="noopener">203. Remove Linked List Elements</a></h3><ul>
+<li>Two pointers : prev, cur</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeElements</span><span class="params">(self, head, val)</span>:</span></span><br><span class="line">        dummyNode = ListNode(<span class="number">0</span>)</span><br><span class="line">        dummyNode.next = head</span><br><span class="line">        prev, cur = dummyNode, head</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            <span class="keyword">if</span> cur.val == val:</span><br><span class="line">                prev.next = cur.next</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                prev = cur</span><br><span class="line">            cur = cur.next</span><br><span class="line">        <span class="keyword">return</span> dummyNode.next</span><br></pre></td></tr></table></figure>
+<h3 id="19-Remove-Nth-Node-From-End-of-List"><a href="#19-Remove-Nth-Node-From-End-of-List" class="headerlink" title="19. Remove Nth Node From End of List"></a><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="noopener">19. Remove Nth Node From End of List</a></h3><ul>
+<li>快慢指针维护一个长度为n的滑动窗口</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeNthFromEnd</span><span class="params">(self, head, n)</span>:</span></span><br><span class="line">        dummyNode = ListNode(<span class="number">0</span>)</span><br><span class="line">        dummyNode.next = head</span><br><span class="line">        slow = fast = dummyNode</span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(n):</span><br><span class="line">            fast = fast.next</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> fast.next:</span><br><span class="line">            fast = fast.next</span><br><span class="line">            slow = slow.next</span><br><span class="line">        slow.next = slow.next.next</span><br><span class="line">        <span class="keyword">return</span> dummyNode.next</span><br></pre></td></tr></table></figure>
+<h3 id="237-Delete-Node-in-a-Linked-List"><a href="#237-Delete-Node-in-a-Linked-List" class="headerlink" title="237. Delete Node in a Linked List"></a><a href="https://leetcode.com/problems/delete-node-in-a-linked-list/" target="_blank" rel="noopener">237. Delete Node in a Linked List</a></h3><ul>
+<li>很奇怪的一道题，做法也很奇怪</li>
+<li>往往删除单链表的一个节点，需要有头节点或者前一个节点来绕过删除的节点，这道题只给了要删除的节点(单链表拿不到previous的节点)，只能通过<strong>节点覆盖</strong>来做。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deleteNode</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        node.val = node.next.val</span><br><span class="line">        node.next = node.next.next</span><br></pre></td></tr></table></figure>
+<h3 id="83-Remove-Duplicates-from-Sorted-List"><a href="#83-Remove-Duplicates-from-Sorted-List" class="headerlink" title="83. Remove Duplicates from Sorted List"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/" target="_blank" rel="noopener">83. Remove Duplicates from Sorted List</a></h3><ul>
+<li>和Remove Duplicate from Array一毛一样同样是同向双指针</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deleteDuplicates</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head: <span class="keyword">return</span> head</span><br><span class="line"></span><br><span class="line">        prev = head</span><br><span class="line">        cur = head.next</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            <span class="keyword">if</span> cur.val == prev.val:</span><br><span class="line">                prev.next = cur.next</span><br><span class="line">                cur = cur.next</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                prev = cur</span><br><span class="line">                cur = cur.next</span><br><span class="line">        <span class="keyword">return</span> head</span><br></pre></td></tr></table></figure>
+<h3 id="82-Remove-Duplicates-from-Sorted-List-II"><a href="#82-Remove-Duplicates-from-Sorted-List-II" class="headerlink" title="82. Remove Duplicates from Sorted List II"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/" target="_blank" rel="noopener">82. Remove Duplicates from Sorted List II</a></h3><ul>
+<li>删除所有的duplicate，只保留distinct的元素！<ul>
+<li>1 找到重复的元素</li>
+<li>2 用while循环删除掉所有</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deleteDuplicates</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        dummyNode = ListNode(<span class="number">-1</span>)</span><br><span class="line">        dummyNode.next = head</span><br><span class="line">        prev = dummyNode</span><br><span class="line">        cur = head</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            <span class="keyword">if</span> cur.next <span class="keyword">and</span> cur.val == cur.next.val:</span><br><span class="line">                <span class="keyword">while</span> cur.next <span class="keyword">and</span> cur.val == cur.next.val:</span><br><span class="line">                    cur = cur.next</span><br><span class="line">                prev.next = cur.next</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                prev = cur</span><br><span class="line">            cur = cur.next</span><br><span class="line">        <span class="keyword">return</span> dummyNode.next</span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -230,7 +304,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/about/index.html" data-id="cjmjsundq0001fr78q2tz20is" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/06/linked-list-basic/" data-id="cjmjsuneh000qfr7845eil1nk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -303,6 +377,25 @@ ga('send', 'pageview');
     </div>
     
         
+<nav id="article-nav">
+    
+        <a href="/2018/08/16/linked-list-reverse/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Reverse Linked List
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/08/01/detect-the-cycle/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Graph1 - Detect the Cycle</div>
+        </a>
+    
+</nav>
+
 
     
 </article>
