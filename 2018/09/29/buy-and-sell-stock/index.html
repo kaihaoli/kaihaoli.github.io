@@ -3,15 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Tag: dynamic programming | kaihao</title>
+    <title>Buy and Sell Stock | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="kaihao">
-<meta property="og:url" content="http://kaihaoli.github.io/tags/dynamic-programming/index.html">
+    <meta name="description" content="AnalysisQuestion Type Seperate an sequence to several nonoverlapping subarray no limit or limited k on the number of the subarray Each subarray meet or meet some requirement!  Solution Type Normally,">
+<meta name="keywords" content="dynamic programming">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Buy and Sell Stock">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/09/29/buy-and-sell-stock/index.html">
 <meta property="og:site_name" content="kaihao">
+<meta property="og:description" content="AnalysisQuestion Type Seperate an sequence to several nonoverlapping subarray no limit or limited k on the number of the subarray Each subarray meet or meet some requirement!  Solution Type Normally,">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-09-30T03:35:29.861Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kaihao">
+<meta name="twitter:title" content="Buy and Sell Stock">
+<meta name="twitter:description" content="AnalysisQuestion Type Seperate an sequence to several nonoverlapping subarray no limit or limited k on the number of the subarray Each subarray meet or meet some requirement!  Solution Type Normally,">
     
 
     
@@ -187,25 +192,21 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-tag"></i></span>
-        <h1 class="title">#dynamic programming</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-buy-and-sell-stock" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/09/29/buy-and-sell-stock/">Buy and Sell Stock</a>
+        <h1 class="article-title" itemprop="name">
+            Buy and Sell Stock
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/2018/09/29/buy-and-sell-stock/">
@@ -214,95 +215,155 @@ ga('send', 'pageview');
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
         <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
     </div>
 
-                    
+                        
     <div class="article-tag">
         <i class="fa fa-tag"></i>
         <a class="tag-link" href="/tags/dynamic-programming/">dynamic programming</a>
     </div>
 
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+                    </div>
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/09/19/dp-double-sequence/">DP - Double Sequence</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/09/19/dp-double-sequence/">
-            <time datetime="2018-09-19T18:56:15.000Z" itemprop="datePublished">2018-09-19</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/dynamic-programming/">dynamic programming</a>
-    </div>
-
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Analysis"><span class="toc-number">1.</span> <span class="toc-text">Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Question-Type"><span class="toc-number">1.1.</span> <span class="toc-text">Question Type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution-Type"><span class="toc-number">1.2.</span> <span class="toc-text">Solution Type</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#121-Best-Time-to-Buy-and-Sell-Stock"><span class="toc-number">2.</span> <span class="toc-text">121. Best Time to Buy and Sell Stock</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#122-Best-Time-to-Buy-and-Sell-Stock-II"><span class="toc-number">3.</span> <span class="toc-text">122. Best Time to Buy and Sell Stock II</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#122-Best-Time-to-Buy-and-Sell-Stock-III"><span class="toc-number">4.</span> <span class="toc-text">122. Best Time to Buy and Sell Stock III</span></a></li></ol>
                 </div>
-            </div>
+            
+            <h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Question-Type"><a href="#Question-Type" class="headerlink" title="Question Type"></a>Question Type</h4><ul>
+<li>Seperate an sequence to several <strong>nonoverlapping subarray</strong></li>
+<li>no limit or limited k on the number of the subarray</li>
+<li>Each subarray meet or meet some requirement!</li>
+</ul>
+<h4 id="Solution-Type"><a href="#Solution-Type" class="headerlink" title="Solution Type"></a>Solution Type</h4><ul>
+<li>Normally, dp[i][j]represents previous i elements seperate k subarray</li>
+<li><strong>最后一步，最后一段从后往前看</strong>！</li>
+</ul>
+<h3 id="121-Best-Time-to-Buy-and-Sell-Stock"><a href="#121-Best-Time-to-Buy-and-Sell-Stock" class="headerlink" title="121. Best Time to Buy and Sell Stock"></a><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="noopener">121. Best Time to Buy and Sell Stock</a></h3><ul>
+<li>Complete <strong>at most one transaction</strong></li>
+<li>We can get max profi when we buy on the lowest price and sell on the highest price!</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> prices:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        minp = prices[<span class="number">0</span>]</span><br><span class="line">        maxProfit = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, len(prices)):</span><br><span class="line">            minp = min(minp, prices[i])</span><br><span class="line">            maxProfit = max(maxProfit, prices[i] - minp)</span><br><span class="line">        <span class="keyword">return</span> maxProfit</span><br></pre></td></tr></table></figure>
+<h3 id="122-Best-Time-to-Buy-and-Sell-Stock-II"><a href="#122-Best-Time-to-Buy-and-Sell-Stock-II" class="headerlink" title="122. Best Time to Buy and Sell Stock II"></a><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="noopener">122. Best Time to Buy and Sell Stock II</a></h3><ul>
+<li>Complete <strong>as many transactions</strong> as you like</li>
+<li>Greedy Algorithms</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices)</span>:</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, len(prices)):</span><br><span class="line">            <span class="keyword">if</span> prices[i] &gt; prices[i<span class="number">-1</span>]:</span><br><span class="line">                res += prices[i]-prices[i<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h3 id="122-Best-Time-to-Buy-and-Sell-Stock-III"><a href="#122-Best-Time-to-Buy-and-Sell-Stock-III" class="headerlink" title="122. Best Time to Buy and Sell Stock III"></a><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iii/" target="_blank" rel="noopener">122. Best Time to Buy and Sell Stock III</a></h3><ul>
+<li>Complete <strong>at most two transactions</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices)</span>:</span></span><br><span class="line">        n = len(prices)</span><br><span class="line">        <span class="keyword">if</span> n &lt;= <span class="number">0</span>: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        left = [<span class="number">0</span>] * n</span><br><span class="line">        minp = prices[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, len(prices)):</span><br><span class="line">            minp = min(minp, prices[i])</span><br><span class="line">            left[i] = max(left[i<span class="number">-1</span>], prices[i] - minp)</span><br><span class="line"></span><br><span class="line">        maxp = prices[<span class="number">-1</span>]</span><br><span class="line">        right = [<span class="number">0</span>] * (n)</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(prices)<span class="number">-2</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            maxp = max(maxp, prices[i])</span><br><span class="line">            right[i] = max(maxp - prices[i], right[i+<span class="number">1</span>])</span><br><span class="line">            res = max(res, right[i] + (left[i<span class="number">-1</span>] <span class="keyword">if</span> i &gt; <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span>))</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+        
         </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/09/18/dp-overview/">Dynamic Programming Overview</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/09/18/dp-overview/">
-            <time datetime="2018-09-18T15:52:12.000Z" itemprop="datePublished">2018-09-18</time>
-        </a>
-    </div>
+        <footer class="article-footer">
+            <div class="share-container">
 
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
 
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/dynamic-programming/">dynamic programming</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
 </div>
+
+    <a data-url="http://kaihaoli.github.io/2018/09/29/buy-and-sell-stock/" data-id="cjmobc1fc0002z278p0bzf4v8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/09/25/binary-search-tree/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Binary Search Tree</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
 </section>
             
                 
