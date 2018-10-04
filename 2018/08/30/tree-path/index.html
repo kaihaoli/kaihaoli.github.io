@@ -3,23 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Docker | kaihao</title>
+    <title>Tree Path | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="参考资源:  Docker — 从入门到实践 Docker 入门教程 阮一峰  History Docker 最初是 dotCloud 公司创始人 Solomon Hykes 在法国期间发起的一个公司内部项目，它是基于 dotCloud 公司多年云服务技术的一次革新，并于 2013 年 3 月以 Apache 2.0 授权协议开源，主要项目代码在 GitHub 上进行维护。Docker 项目后来还">
+    <meta name="description" content="543. Diameter of Binary Tree DFS + maxDepth postorder to deal with the value returned from left and right subtree  1234567891011121314class Solution(object):    def diameterOfBinaryTree(self, root):">
+<meta name="keywords" content="tree">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Docker">
-<meta property="og:url" content="http://kaihaoli.github.io/2018/04/21/docker/index.html">
+<meta property="og:title" content="Tree Path">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/08/30/tree-path/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="参考资源:  Docker — 从入门到实践 Docker 入门教程 阮一峰  History Docker 最初是 dotCloud 公司创始人 Solomon Hykes 在法国期间发起的一个公司内部项目，它是基于 dotCloud 公司多年云服务技术的一次革新，并于 2013 年 3 月以 Apache 2.0 授权协议开源，主要项目代码在 GitHub 上进行维护。Docker 项目后来还">
+<meta property="og:description" content="543. Diameter of Binary Tree DFS + maxDepth postorder to deal with the value returned from left and right subtree  1234567891011121314class Solution(object):    def diameterOfBinaryTree(self, root):">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://kaihaoli.github.io/2018/04/21/docker/docker-containers-vm.png">
-<meta property="og:image" content="http://kaihaoli.github.io/2018/04/21/docker/docker-unionfilesystem.jpg">
-<meta property="og:image" content="http://kaihaoli.github.io/2018/04/21/docker/docker-component.jpg">
-<meta property="og:updated_time" content="2018-04-22T01:57:45.616Z">
+<meta property="og:updated_time" content="2018-09-30T19:53:45.129Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Docker">
-<meta name="twitter:description" content="参考资源:  Docker — 从入门到实践 Docker 入门教程 阮一峰  History Docker 最初是 dotCloud 公司创始人 Solomon Hykes 在法国期间发起的一个公司内部项目，它是基于 dotCloud 公司多年云服务技术的一次革新，并于 2013 年 3 月以 Apache 2.0 授权协议开源，主要项目代码在 GitHub 上进行维护。Docker 项目后来还">
-<meta name="twitter:image" content="http://kaihaoli.github.io/2018/04/21/docker/docker-containers-vm.png">
+<meta name="twitter:title" content="Tree Path">
+<meta name="twitter:description" content="543. Diameter of Binary Tree DFS + maxDepth postorder to deal with the value returned from left and right subtree  1234567891011121314class Solution(object):    def diameterOfBinaryTree(self, root):">
     
 
     
@@ -195,7 +192,7 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-docker" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-tree-path" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -203,7 +200,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            Docker
+            Tree Path
         </h1>
     
 
@@ -212,8 +209,8 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2018/04/21/docker/">
-            <time datetime="2018-04-22T00:31:44.000Z" itemprop="datePublished">2018-04-21</time>
+        <a href="/2018/08/30/tree-path/">
+            <time datetime="2018-08-30T15:17:12.000Z" itemprop="datePublished">2018-08-30</time>
         </a>
     </div>
 
@@ -221,10 +218,15 @@ ga('send', 'pageview');
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Full-Stack/">Full Stack</a>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
     </div>
 
                         
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/tree/">tree</a>
+    </div>
+
                     </div>
                 
             </header>
@@ -235,86 +237,15 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#History"><span class="toc-number">1.</span> <span class="toc-text">History</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-use-Docker"><span class="toc-number">2.</span> <span class="toc-text">Why use Docker?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-vs-VM"><span class="toc-number">2.1.</span> <span class="toc-text">Docker vs VM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#What-is-Docker"><span class="toc-number">3.</span> <span class="toc-text">What is Docker?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker的三个概念"><span class="toc-number">3.1.</span> <span class="toc-text">Docker的三个概念</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Union-File-System"><span class="toc-number">3.2.</span> <span class="toc-text">Union File System</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Docker-Components"><span class="toc-number">3.3.</span> <span class="toc-text">Docker Components</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#性质"><span class="toc-number">3.4.</span> <span class="toc-text">性质</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Application"><span class="toc-number">4.</span> <span class="toc-text">Application</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Docker-on-Mac"><span class="toc-number">5.</span> <span class="toc-text">Docker on Mac</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Install"><span class="toc-number">5.1.</span> <span class="toc-text">Install</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#543-Diameter-of-Binary-Tree"><span class="toc-number">1.</span> <span class="toc-text">543. Diameter of Binary Tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#104-Maximum-Depth-of-Binary-Tree"><span class="toc-number">2.</span> <span class="toc-text">104. Maximum Depth of Binary Tree</span></a></li></ol>
                 </div>
             
-            <p>参考资源:</p>
-<ul>
-<li><a href="https://yeasy.gitbooks.io/docker_practice/content/" target="_blank" rel="noopener">Docker — 从入门到实践</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html" target="_blank" rel="noopener">Docker 入门教程 阮一峰</a></li>
+            <h3 id="543-Diameter-of-Binary-Tree"><a href="#543-Diameter-of-Binary-Tree" class="headerlink" title="543. Diameter of Binary Tree"></a><a href="https://leetcode.com/problems/diameter-of-binary-tree/" target="_blank" rel="noopener">543. Diameter of Binary Tree</a></h3><ul>
+<li>DFS + maxDepth</li>
+<li>postorder to deal with the value returned from left and right subtree</li>
 </ul>
-<h2 id="History"><a href="#History" class="headerlink" title="History"></a>History</h2><ul>
-<li><p>Docker 最初是 dotCloud 公司创始人 Solomon Hykes 在法国期间发起的一个公司内部项目，它是基于 dotCloud 公司多年云服务技术的一次革新，并于 <strong>2013 年 3 月以 Apache 2.0 授权协议开源</strong>，主要项目代码在 GitHub 上进行维护。Docker 项目后来还加入了 Linux 基金会，并成立推动 开放容器联盟（OCI）。</p>
-</li>
-<li><p>Docker 自开源后受到广泛的关注和讨论，至今其 GitHub 项目已经超过 4 万 6 千个星标和一万多个 fork。甚至由于 Docker 项目的火爆，在 2013 年底，dotCloud 公司决定改名为 Docker。Docker 最初是在 Ubuntu 12.04 上开发实现的；Red Hat 则从 RHEL 6.5 开始对 Docker 进行支持；Google 也在其 PaaS 产品中广泛应用 Docker。</p>
-</li>
-<li><p><strong>Docker 使用 Google 公司推出的 Go 语言 进行开发实现</strong></p>
-</li>
-<li><p><strong>Docker 在容器的基础上，进行了进一步的封装，从文件系统、网络互联到进程隔离等等，极大的简化了容器的创建和维护。使得 Docker 技术比虚拟机技术更为轻便、快捷。</strong></p>
-</li>
-</ul>
-<h2 id="Why-use-Docker"><a href="#Why-use-Docker" class="headerlink" title="Why use Docker?"></a>Why use Docker?</h2><ul>
-<li>Docker - <strong>Build, Ship, and Run Any App, Anywhere</strong></li>
-<li><strong>向服务器部署代码非常困难</strong></li>
-<li>复杂的技术栈, 不同技术栈的版本依赖与冲突</li>
-<li>How to solve it?<h3 id="Docker-vs-VM"><a href="#Docker-vs-VM" class="headerlink" title="Docker vs VM"></a>Docker vs VM</h3><img src="/2018/04/21/docker/docker-containers-vm.png">
-</li>
-</ul>
-<h2 id="What-is-Docker"><a href="#What-is-Docker" class="headerlink" title="What is Docker?"></a>What is Docker?</h2><h3 id="Docker的三个概念"><a href="#Docker的三个概念" class="headerlink" title="Docker的三个概念"></a>Docker的三个概念</h3><ul>
-<li>1 镜像(Image)<ul>
-<li>类似于虚拟机中的镜像，是一个包含有文件系统的面向Docker引擎的只读模板。</li>
-<li>任何应用程序运行都需要环境，而镜像就是用来提供这种运行环境的。例如一个Ubuntu镜像就是一个包含Ubuntu操作系统环境的模板，同理在该镜像上装上Apache软件，就可以称为Apache镜像。</li>
-</ul>
-</li>
-<li>2 容器(Container)<ul>
-<li>类似于一个轻量级的沙盒，可以将其看作一个<strong>极简的Linux系统环境</strong>（包括root权限、进程空间、用户空间和网络空间等），以及运行在其中的应用程序。</li>
-<li><strong>Docker引擎利用容器来运行、隔离各个应用</strong>。容器是镜像创建的应用实例，可以创建、启动、停止、删除容器，<strong>各个容器之间是是相互隔离的，互不影响</strong>。</li>
-<li>注意：镜像本身是只读的，容器从镜像启动时，Docker在镜像的上层创建一个可写层，镜像本身不变。</li>
-</ul>
-</li>
-<li>3 仓库(Repository)<ul>
-<li>类似于代码仓库，这里是镜像仓库，是<strong>Docker用来集中存放镜像文件</strong>的地方。</li>
-<li>注意与注册服务器（Registry）的区别：注册服务器是存放仓库的地方，一般会有多个仓库；而仓库是存放镜像的地方，一般每个仓库存放一类镜像，每个镜像利用tag进行区分，比如Ubuntu仓库存放有多个版本（12.04、14.04等）的Ubuntu镜像。</li>
-</ul>
-</li>
-</ul>
-<h3 id="Union-File-System"><a href="#Union-File-System" class="headerlink" title="Union File System"></a>Union File System</h3><img src="/2018/04/21/docker/docker-unionfilesystem.jpg">
-<h3 id="Docker-Components"><a href="#Docker-Components" class="headerlink" title="Docker Components"></a>Docker Components</h3><img src="/2018/04/21/docker/docker-component.jpg">
-<ul>
-<li>Docker daemon<ul>
-<li>Runs on a host machine. It does <strong>the heavy lifting of building, running, and distributing Docker containers</strong></li>
-</ul>
-</li>
-<li>Docker client<ul>
-<li>The primary user interface to Docker. It accepts commands from the user and communicates back and forth with a Docker daemon</li>
-</ul>
-</li>
-<li>Docker images<ul>
-<li>Docker image is a read-only template, which is used to create containers</li>
-</ul>
-</li>
-<li>Docker registries<ul>
-<li>Docker registries hold images, which are public or private stores from which you upload or download images.</li>
-</ul>
-</li>
-<li>Docker containers<ul>
-<li>Docker containers are similar to a directory.</li>
-</ul>
-</li>
-</ul>
-<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><ul>
-<li>A Docker container holds everything that is needed for an application to run.</li>
-<li><strong>Each container is created from a Docker image</strong>.</li>
-<li>Docker containers can be <strong>run, started, stopped, moved, and deleted</strong>.</li>
-<li>Each container is an isolated and secure application platform.</li>
-</ul>
-<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><p>Docker 的主要用途，目前有三大类。</p>
-<ul>
-<li>1 <strong>提供一次性的环境。</strong>比如，本地测试他人的软件、持续集成的时候提供单元测试和构建的环境。</li>
-<li>2 <strong>提供弹性的云服务。</strong>因为 Docker 容器可以随开随关，很适合动态扩容和缩容。</li>
-<li>3 <strong>组建微服务架构。</strong>通过多个容器，一台机器可以跑多个服务，因此在本机就可以模拟出微服务架构。</li>
-</ul>
-<h2 id="Docker-on-Mac"><a href="#Docker-on-Mac" class="headerlink" title="Docker on Mac"></a>Docker on Mac</h2><h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew cask install docker</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">diameterOfBinaryTree</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        self.res = <span class="number">0</span></span><br><span class="line">        self.maxDepth(root)</span><br><span class="line">        <span class="keyword">return</span> self.res</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxDepth</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        left = self.maxDepth(root.left)</span><br><span class="line">        right = self.maxDepth(root.right)</span><br><span class="line">        self.res = max(self.res, left + right)</span><br><span class="line">        <span class="keyword">return</span> max(left, right) + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="104-Maximum-Depth-of-Binary-Tree"><a href="#104-Maximum-Depth-of-Binary-Tree" class="headerlink" title="104. Maximum Depth of Binary Tree"></a><a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="noopener">104. Maximum Depth of Binary Tree</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxDepth</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> max(self.maxDepth(root.left), self.maxDepth(root.right)) + <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -325,7 +256,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/21/docker/" data-id="cjmuu90mp000j3tu0ri1x3fkr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/30/tree-path/" data-id="cjmuu90n9001m3tu09za258zr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -400,19 +331,19 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2018/04/25/docker-quick-start/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2018/09/18/dp-overview/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    Kafka Quick Start using Docker
+                    Dynamic Programming Overview
                 
             </div>
         </a>
     
     
-        <a href="/2018/04/18/message-queue/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/08/16/linked-list-reverse/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Message Queue 消息队列</div>
+            <div class="article-nav-title">Reverse Linked List</div>
         </a>
     
 </nav>

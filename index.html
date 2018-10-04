@@ -159,11 +159,11 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                21
+                24
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                7
+                8
                 <span>tags</span>
             </div>
         </div>
@@ -188,6 +188,302 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-sort" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/10/02/sort/">Sort</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/10/02/sort/">
+            <time datetime="2018-10-02T20:01:03.000Z" itemprop="datePublished">2018-10-02</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/array/">array</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="Selection-Sort"><a href="#Selection-Sort" class="headerlink" title="Selection Sort"></a>Selection Sort</h2><p>The selection sort algorithm sorts an array by repeatedly <strong>finding the minimum element from unsorted part and putting it at the beginning</strong>.</p>
+<ul>
+<li>Time : O(n^2), as there are two <strong>nested</strong> loops</li>
+<li>Space : O(1) (In-place)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selectionSort</span><span class="params">(nums)</span>:</span></span><br><span class="line">    n = len(nums)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">        minIndex = i</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> xrange(i, n):</span><br><span class="line">            <span class="keyword">if</span> nums[j] &lt; nums[minIndex]:</span><br><span class="line">                minIndex = j</span><br><span class="line">        nums[i], nums[minIndex] = nums[minIndex], nums[i]</span><br></pre></td></tr></table></figure>
+<h2 id="Bubble-Sort"><a href="#Bubble-Sort" class="headerlink" title="Bubble Sort"></a>Bubble Sort</h2><p>Bubble Sort is the simplest sorting algorithm that works by repeatedly <strong>swapping the adjacent elements if they are in wrong order</strong>.</p>
+<ul>
+<li>Time : O(n^2), Best Case : O(n)</li>
+<li>Space : O(1)<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubbleSort</span><span class="params">(nums)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(nums)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> xrange(len(nums)-i<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[j] &gt; nums[j+<span class="number">1</span>]:</span><br><span class="line">                nums[j+<span class="number">1</span>], nums[j] = nums[j], nums[j+<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> nums</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Insertion-Sort"><a href="#Insertion-Sort" class="headerlink" title="Insertion Sort"></a>Insertion Sort</h2><ul>
+<li>Time : O(n^2), Best Case : O(n) when the elements are already sorted!</li>
+<li>Space : O(1)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insertionSort</span><span class="params">(nums)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i, num <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">        j = i</span><br><span class="line">        <span class="keyword">while</span> j &gt; <span class="number">0</span> <span class="keyword">and</span> nums[j<span class="number">-1</span>] &gt; num:</span><br><span class="line">            nums[j] = nums[j<span class="number">-1</span>]</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">        nums[j] = num</span><br><span class="line">    <span class="keyword">return</span> nums</span><br></pre></td></tr></table></figure>
+<h2 id="Merge-sort"><a href="#Merge-sort" class="headerlink" title="Merge sort"></a>Merge sort</h2><p>It divides input array in two halves, calls itself for the two halves and then merges the two sorted halves.</p>
+<ul>
+<li>Time : O(nlogn)</li>
+<li>Space : O(n)</li>
+</ul>
+<h3 id="88-Merge-Sorted-Array"><a href="#88-Merge-Sorted-Array" class="headerlink" title="88. Merge Sorted Array"></a><a href="https://leetcode.com/problems/merge-sorted-array/" target="_blank" rel="noopener">88. Merge Sorted Array</a></h3><p>Merge Two Sorted Array in Merge Sort Algorithms</p>
+<ul>
+<li>Three Pointers: nums1, nums2 and results</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, nums1, m, nums2, n)</span>:</span></span><br><span class="line">        p1, p2 = m<span class="number">-1</span>, n<span class="number">-1</span></span><br><span class="line">        idx = m+n<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> p1 &gt;= <span class="number">0</span> <span class="keyword">and</span> p2 &gt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> nums2[p2] &gt; nums1[p1]:</span><br><span class="line">                nums1[idx] = nums2[p2]</span><br><span class="line">                p2 -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                nums1[idx] = nums1[p1]</span><br><span class="line">                p1 -= <span class="number">1</span></span><br><span class="line">            idx -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> p2 &gt;= <span class="number">0</span>:</span><br><span class="line">            nums1[idx] = nums2[p2]</span><br><span class="line">            p2 -= <span class="number">1</span></span><br><span class="line">            idx -= <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h2 id="Quick-Sort"><a href="#Quick-Sort" class="headerlink" title="Quick Sort"></a>Quick Sort</h2><p>It picks an element as pivot and partitions the given array around the picked pivot.</p>
+<ul>
+<li>The key process in quickSort is <strong>partition()</strong>.<br>Target of partitions is, given an array and an element x of array as pivot, put x at its correct position in sorted array and put all smaller elements (smaller than x) before x, and put all greater elements (greater than x) after x. All this should be done in linear time.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(nums, l, r)</span>:</span></span><br><span class="line">    pivot = nums[r] <span class="comment"># pick last element as pivot</span></span><br><span class="line">    low = l</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(l, r):</span><br><span class="line">        <span class="keyword">if</span> nums[i] &lt; pivot:</span><br><span class="line">            nums[i], nums[low] = nums[low], nums[i]</span><br><span class="line">            low += <span class="number">1</span></span><br><span class="line">    nums[low], nums[r] = nums[r], nums[low]</span><br><span class="line">    <span class="keyword">return</span> low</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quickSort</span><span class="params">(nums, l, r)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> l &gt;= r:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    pivot = partition(nums, l, r)</span><br><span class="line">    quickSort(nums, l, pivot<span class="number">-1</span>)</span><br><span class="line">    quickSort(nums, pivot+<span class="number">1</span>, r)</span><br></pre></td></tr></table></figure>
+<h3 id="215-Kth-Largest-Element-in-an-Array"><a href="#215-Kth-Largest-Element-in-an-Array" class="headerlink" title="215. Kth Largest Element in an Array"></a><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank" rel="noopener">215. Kth Largest Element in an Array</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findKthLargest</span><span class="params">(self, nums, k)</span>:</span></span><br><span class="line">        l, r = <span class="number">0</span>, len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> l &lt;= r:</span><br><span class="line">            idx = self.partition(nums, l, r)</span><br><span class="line">            <span class="keyword">if</span> idx &gt; k<span class="number">-1</span>:</span><br><span class="line">                r = idx - <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> idx &lt; k<span class="number">-1</span>:</span><br><span class="line">                l = idx + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> nums[idx]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Similar to Move Zeros!</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(self, nums, l, r)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> l &gt;= r: <span class="keyword">return</span> l</span><br><span class="line"></span><br><span class="line">        pivot = nums[r]</span><br><span class="line">        low = l</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(l, r):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; pivot:</span><br><span class="line">                nums[i], nums[low] = nums[low], nums[i]</span><br><span class="line">                low += <span class="number">1</span></span><br><span class="line">        nums[low], nums[r] = nums[r], nums[low]</span><br><span class="line">        <span class="keyword">return</span> low</span><br></pre></td></tr></table></figure>
+<h3 id="283-Move-Zeroes"><a href="#283-Move-Zeroes" class="headerlink" title="283. Move Zeroes"></a><a href="https://leetcode.com/problems/move-zeroes/" target="_blank" rel="noopener">283. Move Zeroes</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">moveZeroes</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        non0 = <span class="number">0</span></span><br><span class="line">        n = len(nums)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">            <span class="keyword">if</span> nums[i] != <span class="number">0</span>:</span><br><span class="line">                nums[non0] = nums[i]</span><br><span class="line">                non0 += <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(non0, n):</span><br><span class="line">            nums[i] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">moveZeroes</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        non0 = <span class="number">0</span></span><br><span class="line">        n = len(nums)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">            <span class="keyword">if</span> nums[i] != <span class="number">0</span>:</span><br><span class="line">                nums[non0], nums[i] = nums[i], nums[non0]</span><br><span class="line">                non0 += <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/10/02/sort/" data-id="cjmuu90n5001g3tu0icrscni2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-pramp" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/09/30/pramp/">pramp</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/09/30/pramp/">
+            <time datetime="2018-09-30T19:57:10.000Z" itemprop="datePublished">2018-09-30</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="Sales-Path"><a href="#Sales-Path" class="headerlink" title="Sales Path"></a>Sales Path</h3><ul>
+<li><p>Find the minimal sum cost from root to leaf in a Tree (Not necessarily binary)</p>
+<img src="/2018/09/30/pramp/sales_path.png">
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_cheapest_cost</span><span class="params">(rootNode)</span>:</span></span><br><span class="line">  <span class="keyword">if</span> <span class="keyword">not</span> rootNode.children:</span><br><span class="line">    <span class="keyword">return</span> rootNode.cost</span><br><span class="line"></span><br><span class="line">  minCost = float(<span class="string">'inf'</span>)</span><br><span class="line">  <span class="keyword">for</span> child <span class="keyword">in</span> rootNode.children:</span><br><span class="line">    minCost = min(minCost, get_cheapest_cost(child))</span><br><span class="line">  <span class="keyword">return</span> minCost + rootNode.cost</span><br></pre></td></tr></table></figure>
+</li>
+<li><p><strong>follow up</strong>:</p>
+</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/09/30/pramp/" data-id="cjmuu90n3001e3tu0ce3p9trt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-buy-and-sell-stock" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -264,7 +560,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/09/29/buy-and-sell-stock/" data-id="cjmobc1fc0002z278p0bzf4v8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/09/29/buy-and-sell-stock/" data-id="cjmuu90m000023tu09v2aclc8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -425,7 +721,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/09/25/binary-search-tree/" data-id="cjmobc1fi0006z278yt0ilrge" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/09/25/binary-search-tree/" data-id="cjmuu90lv00003tu0z5kffrcj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -578,7 +874,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/09/19/dp-double-sequence/" data-id="cjmobc1gi001mz2781yzkjg4t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/09/19/dp-double-sequence/" data-id="cjmuu90n7001k3tu0xylyjzl2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -767,7 +1063,142 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/09/18/dp-overview/" data-id="cjmobc1fz000mz278lsy48ecm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/09/18/dp-overview/" data-id="cjmuu90mw00103tu04w5677w3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-tree-path" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/08/30/tree-path/">Tree Path</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/08/30/tree-path/">
+            <time datetime="2018-08-30T15:17:12.000Z" itemprop="datePublished">2018-08-30</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/tree/">tree</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="543-Diameter-of-Binary-Tree"><a href="#543-Diameter-of-Binary-Tree" class="headerlink" title="543. Diameter of Binary Tree"></a><a href="https://leetcode.com/problems/diameter-of-binary-tree/" target="_blank" rel="noopener">543. Diameter of Binary Tree</a></h3><ul>
+<li>DFS + maxDepth</li>
+<li>postorder to deal with the value returned from left and right subtree</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">diameterOfBinaryTree</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        self.res = <span class="number">0</span></span><br><span class="line">        self.maxDepth(root)</span><br><span class="line">        <span class="keyword">return</span> self.res</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxDepth</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        left = self.maxDepth(root.left)</span><br><span class="line">        right = self.maxDepth(root.right)</span><br><span class="line">        self.res = max(self.res, left + right)</span><br><span class="line">        <span class="keyword">return</span> max(left, right) + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h3 id="104-Maximum-Depth-of-Binary-Tree"><a href="#104-Maximum-Depth-of-Binary-Tree" class="headerlink" title="104. Maximum Depth of Binary Tree"></a><a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/" target="_blank" rel="noopener">104. Maximum Depth of Binary Tree</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxDepth</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> max(self.maxDepth(root.left), self.maxDepth(root.right)) + <span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/08/30/tree-path/" data-id="cjmuu90n9001m3tu09za258zr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -933,7 +1364,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/16/linked-list-reverse/" data-id="cjmobc1g6000yz2786xz44fg6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/16/linked-list-reverse/" data-id="cjmuu90mt000t3tu0eyxdws2f" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1116,7 +1547,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/06/linked-list-basic/" data-id="cjmobc1g2000qz278uhxtlsps" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/06/linked-list-basic/" data-id="cjmuu90ms000q3tu0s9ugrefi" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1294,713 +1725,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/01/detect-the-cycle/" data-id="cjmobc1fl0008z278j3d7esbj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-graph" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/08/01/graph/">Graph</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/08/01/graph/">
-            <time datetime="2018-08-02T02:43:25.000Z" itemprop="datePublished">2018-08-01</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/graph/">graph</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>LeetCode 上很多问题都可以抽象成 “图” ，比如搜索类问题，树类问题，迷宫问题，矩阵路径问题，等等。Graph 是非常重要而又涵盖很广的内容，以至于有单独的”图论”研究方向。</p>
-<h2 id="1-图的计算机表示"><a href="#1-图的计算机表示" class="headerlink" title="1 图的计算机表示"></a>1 图的计算机表示</h2><ol>
-<li>Node / State</li>
-<li>Edge / Action</li>
-<li>Directed vs Undirected graph</li>
-<li>Representation of the graph</li>
-</ol>
-<h3 id="Edge-List"><a href="#Edge-List" class="headerlink" title="Edge List"></a>Edge List</h3><p>题目给的Nodes and Edges(Edge List)形式的图</p>
-<ul>
-<li>要么考虑用Union Find，要么考虑重新建立图的表示</li>
-</ul>
-<h3 id="Adjacency-Matrix"><a href="#Adjacency-Matrix" class="headerlink" title="Adjacency Matrix"></a>Adjacency Matrix</h3><img src="/2018/08/01/graph/adjacency_matrix.jpg">
-<ul>
-<li><strong>Pros: Representation is easy to implement. </strong>Edge removal takes O(1) time. Queries like whether there is an edge from vertex ‘u’ to vertec ‘v’ are efficient and can be done O(1)</li>
-<li><strong>Cons: Consumes more space O(V^2)</strong>(V is the number of vertex/node) Even if the graph is sparse(contains less number of edges) == waste of space</li>
-</ul>
-<h3 id="Adjacency-List"><a href="#Adjacency-List" class="headerlink" title="Adjacency List"></a>Adjacency List</h3><img src="/2018/08/01/graph/adjacency-list.png">
-<p>Vertices/Nodes : V, Edges : E</p>
-<ul>
-<li><strong>Pros: Space Complexity = O(V + E)</strong>. Adding a vertex.node to the graph is easier</li>
-<li><strong>Cons: Time Complexity is O(V) </strong>to check wheter there is an edge from a node to the other.(Comprared to O(1) in adjacent matrix)</li>
-</ul>
-<h3 id="Adjacency-“Hash-Set”"><a href="#Adjacency-“Hash-Set”" class="headerlink" title="Adjacency “Hash Set”"></a>Adjacency “Hash Set”</h3><p>用hashset替代list表示相邻的节点，综合了Adjacency Matrix和Adjacency List的优点！</p>
-<h2 id="2-Graph-Search-Algorithm"><a href="#2-Graph-Search-Algorithm" class="headerlink" title="2 Graph Search Algorithm"></a>2 Graph Search Algorithm</h2><h3 id="Breadth-First-Search"><a href="#Breadth-First-Search" class="headerlink" title="Breadth First Search"></a>Breadth First Search</h3><p><strong>How to describe a BFS’s action during an interview?</strong></p>
-<ul>
-<li>Definition 1: expand a node s, 延展一个node</li>
-<li>Definition 2: generate s’s neighbor node: reach out to its neighboring node</li>
-<li><strong>Data Structure</strong> : Maintain a FIFO queue, put all generated nodes in the queue</li>
-<li><strong>Termination condition</strong> : do a loop until the queue is empty</li>
-</ul>
-<p><strong>Discussion</strong></p>
-<ul>
-<li>When we deal with the tree-related problem and in the meantime we need to address the relationship <strong>on the same level</strong></li>
-<li>BFS is <strong>NOT</strong> the right algorithm to find <strong>the shortest path</strong> in the graph</li>
-<li>BFS 的时间空间占用以 <strong>branching factor</strong> 为底, 到解的距离 d 为指数增长；</li>
-<li>BFS 空间占用上 Queue 是不会像 DFS 一样只存一条路径的，而是从起点出发越扩越大，因此会有<strong>空间不够的风险，空间占用为 O(b^d)</strong>。</li>
-</ul>
-<p>Assume Input - graph adjacency “hash set”</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Undirected Graph</span></span><br><span class="line"><span class="comment"># 其实和Tree的BFS traversal是一样的！</span></span><br><span class="line"><span class="comment"># Why visited array? 如果有环的话需要，没有环的话不需要！</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BFS1</span><span class="params">()</span>:</span></span><br><span class="line">    visited = [<span class="number">0</span>] * n</span><br><span class="line">    queue = collections.deque([<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        print(node)</span><br><span class="line">        visited[node] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> graph[node]:</span><br><span class="line">            <span class="keyword">if</span> visited[nei] == <span class="number">0</span>:</span><br><span class="line">                queue.append(nei)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Directed Graph</span></span><br><span class="line"><span class="comment"># 从Indegree == 0 的node开始！</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BFS2</span><span class="params">()</span>:</span></span><br><span class="line">    queue = collections.deque([i <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n) <span class="keyword">if</span> indegree[i] == <span class="number">0</span>]）</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        print(node)</span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> graph[course]:</span><br><span class="line">            indegree[nei] -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> indegree[nei] == <span class="number">0</span>:</span><br><span class="line">                queue.append(nei)</span><br></pre></td></tr></table></figure>
-<h3 id="Dijkstra’s-Algorithm"><a href="#Dijkstra’s-Algorithm" class="headerlink" title="Dijkstra’s Algorithm"></a>Dijkstra’s Algorithm</h3><p>“呆克斯戳” - Best First Search</p>
-<ol>
-<li>Usages: Find the <strong>shortest path cost from a single node (source node) to any other nodes in that graph</strong></li>
-<li>Data Structure: Priority Queue (Min Heap)</li>
-<li><strong>Process</strong><ul>
-<li>Initial state (start node)</li>
-<li>Node expansion/ Generation rule</li>
-<li>Termination condition 所有点计算完毕也是”Queue is empty”</li>
-</ul>
-</li>
-</ol>
-<p><strong>Properties</strong></p>
-<pre><code>- One node can be expanded once and only once
-- One node can be generated more than once. (cost can be reduced over time)
-- all the cost of the nodes that are expanded are monotonically non-decreasing（所有从 priority queue里面pop出来的元素的值是单调非递减-&gt;单调递增）
-- time complexity, for a graph with n node and the connectivity of the node is **O(nlogn)**
-- when a node is popped out for expansion, **its value is fixed which is equal to the shortest distance from the start node** (非负权重)
-</code></pre><h3 id="Depth-First-Search"><a href="#Depth-First-Search" class="headerlink" title="Depth First Search"></a>Depth First Search</h3><ul>
-<li>DFS 的时间占用以 <strong>branching factor</strong> 为底，树的深度 m 为指数增长</li>
-<li>DFS 的空间占用上，却只是 O(bm)，可视化探索过程中只把每个 Node 的所有子节点存在 Stack 上， 探索完了再 pop 出来接着探，因此储存的节点数为 O(bm)。</li>
-</ul>
-<p>可以看到无论是 BFS 还是 DFS，树的 branching factor 都是对空间与时间复杂度影响最大的参数；除此之外，<strong>BFS 中最重要的是到解的距离，而 DFS 看从当前节点的深度。</strong>普遍来讲，DFS 空间上会经济一些，当然也要分情况讨论。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Undirected Graph</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(node)</span>:</span></span><br><span class="line">    visited.add(node)</span><br><span class="line">    <span class="keyword">for</span> nei <span class="keyword">in</span> node.neighbors:</span><br><span class="line">        <span class="keyword">if</span> nei <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">            dfs(nei)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Directed Graph</span></span><br><span class="line">visited 需要 三种状态！<span class="number">0</span>-未访问，<span class="number">1</span>-正在访问，<span class="number">2</span>-已经访问</span><br></pre></td></tr></table></figure>
-<h2 id="3-Application"><a href="#3-Application" class="headerlink" title="3 Application"></a>3 Application</h2><h3 id="133-Clone-Graph"><a href="#133-Clone-Graph" class="headerlink" title="133. Clone Graph"></a><a href="https://leetcode.com/problems/clone-graph/" target="_blank" rel="noopener">133. Clone Graph</a></h3><p>克隆Graph，很多graph都是用HashTable一一映射</p>
-<ul>
-<li>Hash Table 新旧node一一映射，再把关系同样映射！</li>
-<li>DFS，BFS都可以把所有node遍历一遍就好</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cloneGraph</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        gmap = &#123;node:UndirectedGraphNode(node.label)&#125;</span><br><span class="line">        queue = collections.deque([node])</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            nnode = queue.popleft()</span><br><span class="line">            <span class="keyword">for</span> nei <span class="keyword">in</span> nnode.neighbors:</span><br><span class="line">                <span class="keyword">if</span> nei <span class="keyword">not</span> <span class="keyword">in</span> gmap:</span><br><span class="line">                    gmap[nei] = UndirectedGraphNode(nei.label)</span><br><span class="line">                    queue.append(nei)</span><br><span class="line">                gmap[nnode].neighbors.append(gmap[nei])</span><br><span class="line">        <span class="keyword">return</span> gmap[node]</span><br></pre></td></tr></table></figure>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/08/01/graph/" data-id="cjmobc1g4000tz278why5jfg0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-union-find" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/05/22/union-find/">Union Find 并查集</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/05/22/union-find/">
-            <time datetime="2018-05-23T02:32:20.000Z" itemprop="datePublished">2018-05-22</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="What-is-Union-Find"><a href="#What-is-Union-Find" class="headerlink" title="What is Union Find ?"></a>What is Union Find ?</h2><ul>
-<li>Union-Find算法(并查集算法)是解决<strong>动态连通性（Dynamic Conectivity）</strong>问题的一种算法，”人以类聚,物以群分”</li>
-<li>一种用来解决<strong>集合查询合并</strong>的<strong>数据结构</strong>，支持 <strong>O(1)find, O(1)union</strong></li>
-</ul>
-<ol>
-<li>查询 Find<ul>
-<li>确定某个元素x属于哪一个集合</li>
-</ul>
-</li>
-<li>合并 Union<ul>
-<li>将两个集合合并</li>
-</ul>
-</li>
-</ol>
-<h3 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h3><ol>
-<li>Computer Network<ul>
-<li>两个网络节点是否联通</li>
-<li>最小的布线使得整个网络联通</li>
-</ul>
-</li>
-<li>Social Network<ul>
-<li>Linkedin 两个用户可能认识的人</li>
-</ul>
-</li>
-<li>集合论</li>
-</ol>
-<h3 id="Union-Find-vs-DFS"><a href="#Union-Find-vs-DFS" class="headerlink" title="Union Find vs DFS"></a>Union Find vs DFS</h3><p>在对问题进行建模的时候，我们应该尽量想清楚需要解决的问题是什么!<br>因为模型中选择的数据结构和算法显然会根据问题的不同而不同!</p>
-<ul>
-<li>Union Find - 给出两个节点，判断它们是否连通，如果连通，<strong>不需要给出具体的路径</strong></li>
-<li>DFS - 给出两个节点，判断它们是否连通，如果连通，<strong>需要给出具体的路径</strong></li>
-</ul>
-<h2 id="Algorithm"><a href="#Algorithm" class="headerlink" title="Algorithm"></a>Algorithm</h2><h3 id="Quick-Find"><a href="#Quick-Find" class="headerlink" title="Quick-Find"></a>Quick-Find</h3><p>有点类似于染色的过程，每个节点一个颜色，然后相同的节点设置成相同的颜色。<br>quick-find算法十分直观符合简单的思考过程。</p>
-<img src="/2018/05/22/union-find/quick-find.png">
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Time : O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    rootx = root[x]</span><br><span class="line">    rooty = root[y]</span><br><span class="line">    <span class="keyword">if</span> rootx == rooty:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(root)):</span><br><span class="line">        <span class="keyword">if</span> root[i] == rootx:</span><br><span class="line">            root[i] = rooty</span><br></pre></td></tr></table></figure>
-<p>每次添加新路径(Union)就是<strong>“牵一发而动全身”</strong>，想要解决这个问题，关键就是要提高union方法的效率，让它不再需要遍历整个数组。</p>
-<h3 id="Quick-Union"><a href="#Quick-Union" class="headerlink" title="Quick-Union"></a>Quick-Union</h3><ul>
-<li><strong>以树的思想，表示集合</strong>！！！</li>
-<li>这是UF算法里最关键的思路，<strong>以树的形式表示集合</strong>，这样组织正好可是很高效的实现find和union!</li>
-</ul>
-<img src="/2018/05/22/union-find/quick-union.png">
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(Tree Height), Worst Case O(n)</span></span><br><span class="line"><span class="comment"># Recursion</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> root[x] == x:</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    <span class="keyword">return</span> find(root[x])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Iteration</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">while</span> root[x] != x:</span><br><span class="line">        x = root[x]</span><br><span class="line">    <span class="keyword">return</span> x</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(Tree Height), Worst Case O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    rootx = find(x)</span><br><span class="line">    rooty = find(y)</span><br><span class="line">    <span class="keyword">if</span> rootx != rooty: 判断两个Element在不在同一个集合当中</span><br><span class="line">        root[rootx] = rooty</span><br></pre></td></tr></table></figure>
-<h3 id="Weighted-Quick-Union"><a href="#Weighted-Quick-Union" class="headerlink" title="Weighted Quick-Union"></a>Weighted Quick-Union</h3><p><strong>既然树的高度成为制约时间复杂度的瓶颈，我们就想办法让树平衡！</strong></p>
-<img src="/2018/05/22/union-find/weighted-quick-union.png">
-<ul>
-<li>以Quick union为基础，我们<strong>额外利用一个size[]保存每一个联通集中对象的数量</strong>。</li>
-<li>在调用union()的时候，我们总是把<strong>对象数目较少的联通集连接到对象数目较多的联通集</strong>中。</li>
-<li>通过这种方式，我们可以在一定程度上缓解树的高度太大的问题，从而改善Quick union的时间复杂度。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(logn)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> root[x] == x:</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">    <span class="keyword">return</span> find(root[x])</span><br><span class="line"></span><br><span class="line"><span class="comment"># Time : O(logn)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    rootx = find(x)</span><br><span class="line">    rooty = find(y)</span><br><span class="line">    <span class="keyword">if</span> size[rootx] &gt;= size[rooty]:</span><br><span class="line">        root[rooty] = rootx</span><br><span class="line">        size[rootx] += size[rooty]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        root[rootx] = rooty</span><br><span class="line">        size[rooty] += size[rootx]</span><br></pre></td></tr></table></figure>
-<h3 id="Path-Compression"><a href="#Path-Compression" class="headerlink" title="Path Compression"></a>Path Compression</h3><p>随着数据的增加，树的深度不断增加，性能会逐渐变差。这个时候，如果我们在计算一个node的root时，将node为根的树摘下来，挂在当前树的根结点上，会降低树的深度，也就是提高效率，降低时间复杂度。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Path Compression 是在find的过程当中处理的</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> root[x] == x:</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line"></span><br><span class="line">    <span class="comment"># make every other node in path point to its grandparent.</span></span><br><span class="line">    root[x] = find(root[x]) <span class="comment"># Only one extra line</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> root[x]</span><br></pre></td></tr></table></figure></p>
-<h3 id="Weighted-Quick-Union-With-Path-Compression"><a href="#Weighted-Quick-Union-With-Path-Compression" class="headerlink" title="Weighted Quick-Union With Path Compression"></a>Weighted Quick-Union With Path Compression</h3><p><strong>Proof is very difficult, But the algorithm is still simple!</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Weighted 是体现在Union的过程当中</span></span><br><span class="line"><span class="comment"># Time : Very Near to O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(x, y)</span>:</span></span><br><span class="line">    rootx = find(x)</span><br><span class="line">    rooty = find(y)</span><br><span class="line">    <span class="keyword">if</span> size[rootx] &gt;= size[rooty]:</span><br><span class="line">        root[rooty] = rootx</span><br><span class="line">        size[rootx] += size[rooty]</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        root[rootx] = rooty</span><br><span class="line">        size[rooty] += size[rootx]</span><br></pre></td></tr></table></figure>
-<img src="/2018/05/22/union-find/union-find.jpg">
-<h2 id="Connected"><a href="#Connected" class="headerlink" title="Connected"></a>Connected</h2><p>查询两个元素是否在同一个集合内。</p>
-<h3 id="LintCode-589-Connecting-Graph"><a href="#LintCode-589-Connecting-Graph" class="headerlink" title="LintCode 589. Connecting Graph"></a><a href="https://www.lintcode.com/problem/connecting-graph/" target="_blank" rel="noopener">LintCode 589. Connecting Graph</a></h3><p>Given n nodes in a graph labeled from 1 to n. There is no edges in the graph at beginning.</p>
-<p>You need to support the following method:</p>
-<ol>
-<li>connect(a, b), add an edge to connect node a and node b`.</li>
-<li>query(a, b), check if two nodes are connected</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConnectingGraph</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.root = range(n+<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Find the Root of node x</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        root = self.root <span class="comment"># tip1 : root在类里面要加上"self."</span></span><br><span class="line">        <span class="keyword">if</span> root[x] == x:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        root[x] = self.find(root[x])</span><br><span class="line">        <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        rootx = self.find(x) <span class="comment"># tip2 : root[x] vs find(x)</span></span><br><span class="line">        rooty = self.find(y)</span><br><span class="line">        <span class="keyword">if</span> rootx != rooty:</span><br><span class="line">            root[rootx] = rooty</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connect</span><span class="params">(self, a, b)</span>:</span></span><br><span class="line">        self.union(a, b)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">query</span><span class="params">(self, a, b)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.find(a) == self.find(b)</span><br></pre></td></tr></table></figure>
-<h3 id="LintCode-590-Connecting-Graph-II"><a href="#LintCode-590-Connecting-Graph-II" class="headerlink" title="LintCode 590. Connecting Graph II"></a><a href="https://www.lintcode.com/problem/connecting-graph-ii/" target="_blank" rel="noopener">LintCode 590. Connecting Graph II</a></h3><ul>
-<li>统计每个联通块的元素个数</li>
-<li>query(a), Returns the number of connected <strong>component nodes which include node a</strong>.</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConnectingGraph2</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.root = range(n+<span class="number">1</span>)</span><br><span class="line">        self.size = [<span class="number">1</span>] * (n+<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        <span class="keyword">if</span> root[x] == x:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        root[x] = self.find(root[x])</span><br><span class="line">        <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connect</span><span class="params">(self, a, b)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        size = self.size</span><br><span class="line">        roota = self.find(a)</span><br><span class="line">        rootb = self.find(b)</span><br><span class="line">        <span class="keyword">if</span> roota != rootb:</span><br><span class="line">            root[roota] = rootb</span><br><span class="line">            size[rootb] += size[roota]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">query</span><span class="params">(self, a)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.size[self.find(a)]</span><br></pre></td></tr></table></figure>
-<h3 id="130-Surrounded-Regions"><a href="#130-Surrounded-Regions" class="headerlink" title="130. Surrounded Regions"></a><a href="https://leetcode.com/problems/surrounded-regions/" target="_blank" rel="noopener">130. Surrounded Regions</a></h3><ul>
-<li><strong>解法1 DFS</strong></li>
-</ul>
-<p>从边缘的’O’出发，通过DFS，所有能够遍历的’O’都可以暂时被标记为’#’，那么剩下未能被标记的’O’说明被surrounded，需要在遍历结束之后全部转为’X’</p>
-<ul>
-<li><strong>解法2 Union Find</strong></li>
-</ul>
-<p>将与边缘相连通的’O’全部union到一个dummy node（也可以用hasEdge[]来存储，不过内存占用更多,<br>最终将没有和这个dummy node是一个component的’O’点全部标记为’X<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.root = range(n)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        <span class="keyword">if</span> root[x] == x:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        root[x] = self.find(root[x])</span><br><span class="line">        <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        rootx = self.find(x)</span><br><span class="line">        rooty = self.find(y)</span><br><span class="line">        <span class="keyword">if</span> rootx != rooty:</span><br><span class="line">            <span class="comment"># tip : 为了总是以dummy node(total)为父节点</span></span><br><span class="line">            root[min(rootx, rooty)] = max(rootx, rooty)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">solve</span><span class="params">(self, board)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> board:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        m, n = len(board), len(board[<span class="number">0</span>])</span><br><span class="line">        total = m*n</span><br><span class="line">        uf = UnionFind(total+<span class="number">1</span>)</span><br><span class="line">        grid = board</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(n):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="string">'X'</span>:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="comment"># Connect to "total" root</span></span><br><span class="line">                <span class="keyword">if</span> i == <span class="number">0</span> <span class="keyword">or</span> j == <span class="number">0</span> <span class="keyword">or</span> i == m<span class="number">-1</span> <span class="keyword">or</span> j == n<span class="number">-1</span>:</span><br><span class="line">                    uf.union(total, i*n+j)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    d = [(<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>), (<span class="number">-1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">-1</span>)]</span><br><span class="line">                    <span class="keyword">for</span> k <span class="keyword">in</span> xrange(<span class="number">4</span>):</span><br><span class="line">                        ni, nj = i + d[k][<span class="number">0</span>], j + d[k][<span class="number">1</span>]</span><br><span class="line">                        <span class="keyword">if</span> grid[ni][nj] == <span class="string">'O'</span>:</span><br><span class="line">                            uf.union(ni*n + nj, i*n + j)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(n):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="string">'X'</span>:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">if</span> uf.find(i*n + j) != total:</span><br><span class="line">                    grid[i][j] = <span class="string">'X'</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="737-Sentence-Similarity-II"><a href="#737-Sentence-Similarity-II" class="headerlink" title="737. Sentence Similarity II"></a><a href="https://leetcode.com/problems/sentence-similarity-ii/" target="_blank" rel="noopener">737. Sentence Similarity II</a></h3><p>典型的Union Find 应用题，两个单词是不是similarity其实就是两个单词在不在同一个集合内(connected 操作)！</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.root = range(n)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        <span class="keyword">if</span> root[x] == x:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        root[x] = self.find(root[x])</span><br><span class="line">        <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        self.root[self.find(x)] = self.find(y)</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">areSentencesSimilarTwo</span><span class="params">(self, words1, words2, pairs)</span>:</span></span><br><span class="line">        m, n = len(words1), len(words2)</span><br><span class="line">        <span class="keyword">if</span> m != n: <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 建立words到index的映射关系！UnionFind 只支持数字的index！</span></span><br><span class="line">        uf = UnionFind(len(pairs)*<span class="number">2</span>)</span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        pdic = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> w1, w2 <span class="keyword">in</span> pairs:</span><br><span class="line">            <span class="keyword">if</span> w1 <span class="keyword">not</span> <span class="keyword">in</span> pdic:</span><br><span class="line">                pdic[w1] = cnt</span><br><span class="line">                cnt += <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> w2 <span class="keyword">not</span> <span class="keyword">in</span> pdic:</span><br><span class="line">                pdic[w2] = cnt</span><br><span class="line">                cnt += <span class="number">1</span></span><br><span class="line">            uf.union(pdic[w1], pdic[w2])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> w1, w2 <span class="keyword">in</span> zip(words1, words2):</span><br><span class="line">            <span class="keyword">if</span> w1 == w2:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> w1 <span class="keyword">not</span> <span class="keyword">in</span> pdic <span class="keyword">or</span> w2 <span class="keyword">not</span> <span class="keyword">in</span> pdic:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">            <span class="keyword">if</span> uf.find(pdic[w1]) != uf.find(pdic[w2]):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
-<h2 id="统计连通块的个数"><a href="#统计连通块的个数" class="headerlink" title="统计连通块的个数"></a>统计连通块的个数</h2><p>the number of connected components.</p>
-<h3 id="LintCode-591-Connecting-Graph-III"><a href="#LintCode-591-Connecting-Graph-III" class="headerlink" title="LintCode 591. Connecting Graph III"></a><a href="https://www.lintcode.com/problem/connecting-graph-iii/" target="_blank" rel="noopener">LintCode 591. Connecting Graph III</a></h3><ul>
-<li>Query() - Returns <strong>the number of connected component</strong> in the graph</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConnectingGraph3</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.root = range(n+<span class="number">1</span>)</span><br><span class="line">        self.cnt = n</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        <span class="keyword">if</span> root[x] == x:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        root[x] = self.find(root[x])</span><br><span class="line">        <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connect</span><span class="params">(self, a, b)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        roota = self.find(a)</span><br><span class="line">        rootb = self.find(b)</span><br><span class="line">        <span class="keyword">if</span> roota != rootb:</span><br><span class="line">            root[roota] = rootb</span><br><span class="line">            self.cnt -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">query</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.cnt</span><br></pre></td></tr></table></figure>
-<h3 id="323-Number-of-Connected-Components-in-an-Undirected-Graph"><a href="#323-Number-of-Connected-Components-in-an-Undirected-Graph" class="headerlink" title="323. Number of Connected Components in an Undirected Graph"></a><a href="https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/" target="_blank" rel="noopener">323. Number of Connected Components in an Undirected Graph</a></h3><ul>
-<li><strong>解法1. DFS</strong></li>
-</ul>
-<p>将Graph原本的nodes和edges表达形式，改成hash做的邻接表，这个就可以查询从每个节点出发到的节点！<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countComponents</span><span class="params">(self, n, edges)</span>:</span></span><br><span class="line">        visited = [<span class="number">0</span>] * n</span><br><span class="line">        graph = [set() <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(n)] <span class="comment"># Adjacent Table</span></span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> edges:</span><br><span class="line">            graph[i].add(j)</span><br><span class="line">            graph[j].add(i)</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">            <span class="keyword">if</span> visited[i] == <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            self.dfs(i, visited, graph)</span><br><span class="line">            res += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, n, visited, graph)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> visited[n] == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        visited[n] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> graph[n]:</span><br><span class="line">            self.dfs(i, visited, graph)</span><br></pre></td></tr></table></figure></p>
-<ul>
-<li><strong>解法2. Union Find</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countComponents</span><span class="params">(self, n, edges)</span>:</span></span><br><span class="line">        root = range(n)</span><br><span class="line">        self.cnt = n</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root[x] == x:</span><br><span class="line">                <span class="keyword">return</span> x</span><br><span class="line">            root[x] = find(root[x])</span><br><span class="line">            <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(x, y)</span>:</span></span><br><span class="line">            rootx = find(x)</span><br><span class="line">            rooty = find(y)</span><br><span class="line">            <span class="keyword">if</span> rootx != rooty:</span><br><span class="line">                root[rootx] = rooty</span><br><span class="line">                self.cnt -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> edges:</span><br><span class="line">            union(i, j)</span><br><span class="line">        <span class="keyword">return</span> self.cnt</span><br></pre></td></tr></table></figure>
-<h3 id="305-Number-of-Islands-II"><a href="#305-Number-of-Islands-II" class="headerlink" title="305. Number of Islands II"></a><a href="https://leetcode.com/problems/number-of-islands-ii/" target="_blank" rel="noopener">305. Number of Islands II</a></h3><p>实时放入island显示出联通块的个数，算是一个online的算法！</p>
-<ul>
-<li>原始UF算法是一维的，2D坐标和1D坐标的转化</li>
-<li>体现Union Find的Online特性，可以实时添加边！</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(m * n + k)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.root = [<span class="number">-1</span>] * n</span><br><span class="line">        self.cnt = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        <span class="keyword">if</span> root[x] == x:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        root[x] = self.find(root[x])</span><br><span class="line">        <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.root[x] = x</span><br><span class="line">        self.cnt += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(self, x, y)</span>:</span></span><br><span class="line">        root = self.root</span><br><span class="line">        rootx = self.find(x)</span><br><span class="line">        rooty = self.find(y)</span><br><span class="line">        <span class="keyword">if</span> rootx != rooty:</span><br><span class="line">            root[rootx] = rooty</span><br><span class="line">            self.cnt -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numIslands2</span><span class="params">(self, m, n, positions)</span>:</span></span><br><span class="line">        uf = UnionFind(m * n)</span><br><span class="line">        res = []</span><br><span class="line">        d = [(<span class="number">1</span>, <span class="number">0</span>), (<span class="number">-1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>), (<span class="number">0</span>, <span class="number">-1</span>)]</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> positions:</span><br><span class="line">            p = i*n + j</span><br><span class="line">            uf.add(p)</span><br><span class="line">            <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">                ni, nj = i + d[k][<span class="number">0</span>], j + d[k][<span class="number">1</span>]</span><br><span class="line">                q = ni * n + nj</span><br><span class="line">                <span class="keyword">if</span> ( <span class="number">0</span> &lt;= ni &lt;= m<span class="number">-1</span> <span class="keyword">and</span></span><br><span class="line">                     <span class="number">0</span> &lt;= nj &lt;= n<span class="number">-1</span> <span class="keyword">and</span></span><br><span class="line">                     uf.root[q] != <span class="number">-1</span>):</span><br><span class="line">                    uf.union(p, q)</span><br><span class="line">            res.append(uf.cnt)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-<h3 id="547-Friend-Circles"><a href="#547-Friend-Circles" class="headerlink" title="547. Friend Circles"></a><a href="https://leetcode.com/problems/friend-circles/" target="_blank" rel="noopener">547. Friend Circles</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findCircleNum</span><span class="params">(self, M)</span>:</span></span><br><span class="line">        n = len(M)</span><br><span class="line">        root = range(n)</span><br><span class="line">        self.cnt = n</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root[x] == x:</span><br><span class="line">                <span class="keyword">return</span> x</span><br><span class="line">            root[x] = find(root[x])</span><br><span class="line">            <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(x, y)</span>:</span></span><br><span class="line">            rootx = find(x)</span><br><span class="line">            rooty = find(y)</span><br><span class="line">            <span class="keyword">if</span> rootx != rooty:</span><br><span class="line">                root[rootx] = rooty</span><br><span class="line">                self.cnt -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(i+<span class="number">1</span>, n):</span><br><span class="line">                <span class="keyword">if</span> M[i][j]:</span><br><span class="line">                    union(i, j)</span><br><span class="line">        <span class="keyword">return</span> self.cnt</span><br></pre></td></tr></table></figure>
-<h2 id="Redundant-Connection"><a href="#Redundant-Connection" class="headerlink" title="Redundant Connection"></a>Redundant Connection</h2><h3 id="261-Graph-Valid-Tree"><a href="#261-Graph-Valid-Tree" class="headerlink" title="261. Graph Valid Tree"></a><a href="https://leetcode.com/problems/graph-valid-tree/" target="_blank" rel="noopener">261. Graph Valid Tree</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validTree</span><span class="params">(self, n, edges)</span>:</span></span><br><span class="line">        root = range(n)</span><br><span class="line">        self.cnt = n</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root[x] == x:</span><br><span class="line">                <span class="keyword">return</span> x</span><br><span class="line">            root[x] = find(root[x])</span><br><span class="line">            <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(x, y)</span>:</span></span><br><span class="line">            rootx = find(x)</span><br><span class="line">            rooty = find(y)</span><br><span class="line">            <span class="keyword">if</span> rootx != rooty:</span><br><span class="line">                root[rootx] = rooty</span><br><span class="line">                self.cnt -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> edges:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> union(i, j):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> self.cnt == <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<h3 id="684-Redundant-Connection"><a href="#684-Redundant-Connection" class="headerlink" title="684. Redundant Connection"></a><a href="https://leetcode.com/problems/redundant-connection/" target="_blank" rel="noopener">684. Redundant Connection</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findRedundantConnection</span><span class="params">(self, edges)</span>:</span></span><br><span class="line">        root = range(<span class="number">1001</span>)</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root[x] == x:</span><br><span class="line">                <span class="keyword">return</span> x</span><br><span class="line">            root[x] = find(root[x])</span><br><span class="line">            <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> edges:</span><br><span class="line">            rooti = find(i)</span><br><span class="line">            rootj = find(j)</span><br><span class="line">            <span class="keyword">if</span> rooti == rootj:</span><br><span class="line">                <span class="keyword">return</span> [i, j]</span><br><span class="line">            root[rooti] = rootj</span><br></pre></td></tr></table></figure>
-<h3 id="685-Redundant-Connection-II"><a href="#685-Redundant-Connection-II" class="headerlink" title="685. Redundant Connection II"></a><a href="https://leetcode.com/problems/redundant-connection-ii/" target="_blank" rel="noopener">685. Redundant Connection II</a></h3><ul>
-<li>Case1: There is a <strong>loop</strong> in the graph, and no vertex has more than 1 parent.<ul>
-<li>有环，且没有入度大于1的node <strong>=&gt; Union Find</strong></li>
-</ul>
-</li>
-<li>Case2: A vertex has more than 1 parent, but there isn’t a loop in the graph.<ul>
-<li>无环，且有入度大于2的node <strong>=&gt; last node (indegree &gt; 1)</strong></li>
-</ul>
-</li>
-<li>Case3: A vertex has more than 1 parent, and is part of a loop.<ul>
-<li>有环，且有入度大于2的node</li>
-<li>这种复杂的情况怎么筛选?</li>
-<li><strong>Delete the second edge!</strong></li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findRedundantDirectedConnection</span><span class="params">(self, edges)</span>:</span></span><br><span class="line">        n = len(edges)</span><br><span class="line">        parent = [<span class="number">0</span>] * (n+<span class="number">1</span>)</span><br><span class="line">        ans = <span class="keyword">None</span></span><br><span class="line">        <span class="comment"># Step1 : calculate indegree &gt; 1 node</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">            u, v  = edges[i]</span><br><span class="line">            <span class="keyword">if</span> parent[v] == <span class="number">0</span>:</span><br><span class="line">                parent[v] = u</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                ans = [[parent[v], v], [u, v]]</span><br><span class="line">                <span class="comment"># !!! Delete the second Edge</span></span><br><span class="line">                edges[i][<span class="number">1</span>] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Step2 : Union Find detect cycle</span></span><br><span class="line">        root = range(n+<span class="number">1</span>)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root[x] == x:</span><br><span class="line">                <span class="keyword">return</span> x</span><br><span class="line">            <span class="keyword">return</span> find(root[x])</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> u, v <span class="keyword">in</span> edges:</span><br><span class="line">            rootu = find(u)</span><br><span class="line">            rootv = find(v)</span><br><span class="line">            <span class="keyword">if</span> rootu == rootv: <span class="comment"># Detect Cycle</span></span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> ans:</span><br><span class="line">                    <span class="keyword">return</span> [u, v]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> ans[<span class="number">0</span>]</span><br><span class="line">            root[rootu] = rootv</span><br><span class="line">        <span class="keyword">return</span> ans[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/05/22/union-find/" data-id="cjmobc1gl001sz2780etebyfn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-ood-in-interview" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/05/18/ood-in-interview/">OOD in Interview</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/05/18/ood-in-interview/">
-            <time datetime="2018-05-19T01:46:38.000Z" itemprop="datePublished">2018-05-18</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/OOD/">OOD</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>总结自:<a href="https://www.jiuzhang.com/course/10/" target="_blank" rel="noopener">九章算法 - OOD1</a></p>
-<h2 id="OOD-in-Interview"><a href="#OOD-in-Interview" class="headerlink" title="OOD in Interview"></a>OOD in Interview</h2><p>Everything is an object, Usable!!!</p>
-<ul>
-<li>面试频率<ul>
-<li>Phone interview 低</li>
-<li><strong>Onsite interview</strong> 中高频</li>
-</ul>
-</li>
-<li>高频公司<ul>
-<li><strong>Amazon, Bloomberg, TripAdvisor</strong>, EMC, Uber…</li>
-</ul>
-</li>
-<li>主要考察CS设计的基本素养，属于开放型设计类题目，能用上OOD的常见的一些设计思想！</li>
-</ul>
-<img src="/2018/05/18/ood-in-interview/oodvssd.jpg">
-<p>OOA(Analysis) -&gt; OOD(Design) -&gt; OOP(Programming)</p>
-<ul>
-<li>OOD问法<ul>
-<li>Can you design a … system? <strong>little amount of coding</strong></li>
-<li>Can you … for … system? <strong>need implementation</strong></li>
-</ul>
-</li>
-</ul>
-<h3 id="OOD要避免的情况"><a href="#OOD要避免的情况" class="headerlink" title="OOD要避免的情况"></a>OOD要避免的情况</h3><ul>
-<li>1 不问清需求就开始设计，一定要和面试官!<strong>沟通”甲方”的需求</strong>！<ul>
-<li>Communication</li>
-</ul>
-</li>
-<li>2 没有理解面试官想要问<strong>System Design，还是OOD，还是算法</strong>！<ul>
-<li>Think loud</li>
-</ul>
-</li>
-<li>3 思路混乱，反复更改之前的设计！<strong>Usable！！！</strong>就好<ul>
-<li>Correctness &amp; Reasonable</li>
-</ul>
-</li>
-<li>use case</li>
-</ul>
-<h3 id="“SOLOD”原则"><a href="#“SOLOD”原则" class="headerlink" title="“SOLOD”原则"></a>“SOLOD”原则</h3><ul>
-<li>S - Single responsibility principle<ul>
-<li>一个类应该有且只有一个去改变它的理由，这意味着<strong>一个类应该只有一项工作</strong>。</li>
-</ul>
-</li>
-<li>O – Open close principle<ul>
-<li>对象或实体应该对扩展开放，对修改封闭 (Open to extension, close to modification)</li>
-</ul>
-</li>
-<li>L - Liskov substitution principle 里氏替换原则<ul>
-<li>任何一个子类或派生类应该可以替换它们的基类或父类</li>
-</ul>
-</li>
-<li>I - Interface segregation principle 接口分离原则<ul>
-<li>不应该强迫一个类实现它用不上的接口 Implement</li>
-</ul>
-</li>
-<li>D - Dependency inversion principle 依赖反转原则<ul>
-<li>抽象不应该依赖于具体实现，具体实现应该依赖于抽象</li>
-<li>只能class 依赖于Abstract, Imterface</li>
-</ul>
-</li>
-</ul>
-<h2 id="Design-an-elevator-system"><a href="#Design-an-elevator-system" class="headerlink" title="Design an elevator system"></a>Design an elevator system</h2><p>Clarify : 通过和面试官交流，去除题目中的歧义，确定答题范围</p>
-<h3 id="What-什么"><a href="#What-什么" class="headerlink" title="What? - 什么?"></a>What? - 什么?</h3><ul>
-<li>针对题目中的<strong>关键字</strong>来􏰁问，帮助自己更好的确定答题范围</li>
-<li>大多数的关键字为<strong>名词</strong>，通过名词的属性来考虑</li>
-<li>Elevator, Building</li>
-</ul>
-<h3 id="How-怎样"><a href="#How-怎样" class="headerlink" title="How? - 怎样?"></a>How? - 怎样?</h3><ul>
-<li>针对问题<strong>主题的规则</strong>来􏰁问，帮助自己明确解题方向。</li>
-<li>此类问题没有标准答案，你可以􏰁出一些解决方法，通过面试官的反应， 选择一个你比较有信心(简单)的方案</li>
-<li><strong>Rule</strong><ul>
-<li>同向 &gt; 静止 &gt; 反向，当运行时不能按下反向的楼层</li>
-<li>电梯至少需要三种状态，并且要知道当前在哪一层</li>
-</ul>
-</li>
-</ul>
-<h3 id="Who-谁"><a href="#Who-谁" class="headerlink" title="Who? - 谁?"></a>Who? - 谁?</h3><ul>
-<li>设计由人主导 VS. 设计由系统主导?</li>
-<li>(Optional)通过思考题目当中<strong>是否有人的出现</strong>，来帮助确定解题范围</li>
-<li>一般可以考虑人的角色以及人的属性，看是否题目需要</li>
-</ul>
-<h3 id="When-什么时间"><a href="#When-什么时间" class="headerlink" title="When? - 什么时间?"></a>When? - 什么时间?</h3><ul>
-<li>(Optional)通过思考题目当中和<strong>时间相关的属性</strong>，来帮助确定解题范围</li>
-<li>和<strong>时间相关的问题</strong>一般都比较细节，可能会有意想不到的帮助</li>
-</ul>
-<h2 id="Think-Process"><a href="#Think-Process" class="headerlink" title="Think Process"></a>Think Process</h2><h3 id="Core-Object"><a href="#Core-Object" class="headerlink" title="Core Object"></a>Core Object</h3><p>为了完成设计，需要哪些class？</p>
-<ul>
-<li>以一个Object为基础，往往就是需要设计的system！</li>
-<li>确定objects之间的映射关系(4~5个Object)</li>
-</ul>
-<h3 id="Access-modifier"><a href="#Access-modifier" class="headerlink" title="Access modifier"></a>Access modifier</h3><ul>
-<li>package<ul>
-<li>如果<strong>什么都不声明</strong>，变量和函数都是package level visible的，在同一个package内的其他类都可以访问</li>
-</ul>
-</li>
-<li>public<ul>
-<li>如果声明为public，变量和函数都是public level visible的，任何其他的类都可以访问</li>
-<li>用”+”表示一个变量或者函数为public</li>
-</ul>
-</li>
-<li>private<ul>
-<li>如果声明为private，变量和函数都是class level visible的，这是所有access modifier中限制最多的一个。</li>
-<li>仅有定义这些变量和函数的类自己可以访问。</li>
-<li>在类图中，用”-”表示一个变量或者函数为private</li>
-</ul>
-</li>
-<li>protected<ul>
-<li>如果声明为protected，变量和函数在能被定义他们的类访问的基础上，还能够被该类的子类所访问。</li>
-<li>protected也是OOD当中实现继承的重要手段</li>
-<li>在类图中，用”#”表示一个变量或者函数为protected</li>
-</ul>
-</li>
-</ul>
-<h3 id="Use-Cases"><a href="#Use-Cases" class="headerlink" title="Use Cases"></a>Use Cases</h3><p>e.g. Elevator</p>
-<ul>
-<li>Take external request</li>
-<li>Take internal request</li>
-<li>Open gate</li>
-<li>Close gate</li>
-<li>Check weight</li>
-</ul>
-<h3 id="Class-diagram-类图"><a href="#Class-diagram-类图" class="headerlink" title="Class diagram 类图"></a>Class diagram 类图</h3><ul>
-<li>为什么要画类图?<ul>
-<li>可交付，MinimalViableProduct</li>
-<li>节省时间，不容易在Coding上挣扎</li>
-<li>建立在Usecase上，和之前的步骤层层递进，条例清晰，便于交流和修改</li>
-<li>如果时间允许/面试官要求，便于转化成Code</li>
-</ul>
-</li>
-<li>怎么画类图?<ul>
-<li>遍历你所列出的usecases</li>
-<li>对于每一个usecase，更加详细的􏰀述这个usecase在做什么事情 (例如:take external request -&gt; ElevatorSystem takes an external request, and decide to push this request to an appropriate elevator)</li>
-<li>针对这个􏰀述，在已有的Coreobjects里填充进所需要的信息</li>
-</ul>
-</li>
-</ul>
-<img src="/2018/05/18/ood-in-interview/ood_elevator.jpg">
-<h3 id="Challenge"><a href="#Challenge" class="headerlink" title="Challenge"></a>Challenge</h3><ul>
-<li>What if I want to apply different ways to handle external requests during different time of a day?<ul>
-<li>Solution 1: if - else</li>
-<li>Solution 2: Strategy design pattern</li>
-</ul>
-</li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/05/18/ood-in-interview/" data-id="cjmobc1gb0018z278wo8llfzi" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/01/detect-the-cycle/" data-id="cjmuu90mg000a3tu0y9nz2mmv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2094,6 +1819,24 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/02/sort/" class="title">Sort</a></p>
+                            <p class="item-date"><time datetime="2018-10-02T20:01:03.000Z" itemprop="datePublished">2018-10-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/09/30/pramp/" class="title">pramp</a></p>
+                            <p class="item-date"><time datetime="2018-09-30T19:57:10.000Z" itemprop="datePublished">2018-09-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/09/29/buy-and-sell-stock/" class="title">Buy and Sell Stock</a></p>
                             <p class="item-date"><time datetime="2018-09-29T22:19:21.000Z" itemprop="datePublished">2018-09-29</time></p>
                         </div>
@@ -2117,24 +1860,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/09/18/dp-overview/" class="title">Dynamic Programming Overview</a></p>
-                            <p class="item-date"><time datetime="2018-09-18T15:52:12.000Z" itemprop="datePublished">2018-09-18</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/08/16/linked-list-reverse/" class="title">Reverse Linked List</a></p>
-                            <p class="item-date"><time datetime="2018-08-16T14:14:50.000Z" itemprop="datePublished">2018-08-16</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -2144,7 +1869,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">18</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -2153,7 +1878,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -2162,7 +1887,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/segment-tree/">segment tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">4</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/segment-tree/">segment tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">5</span></li></ul>
         </div>
     </div>
 
@@ -2171,7 +1896,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/binary-indexed-tree/" style="font-size: 10px;">binary indexed tree</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/dynamic-programming/" style="font-size: 16.67px;">dynamic programming</a> <a href="/tags/graph/" style="font-size: 13.33px;">graph</a> <a href="/tags/linked-list/" style="font-size: 13.33px;">linked list</a> <a href="/tags/segment-tree/" style="font-size: 10px;">segment tree</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
+            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-indexed-tree/" style="font-size: 10px;">binary indexed tree</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/dynamic-programming/" style="font-size: 16.67px;">dynamic programming</a> <a href="/tags/graph/" style="font-size: 13.33px;">graph</a> <a href="/tags/linked-list/" style="font-size: 13.33px;">linked list</a> <a href="/tags/segment-tree/" style="font-size: 10px;">segment tree</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
         </div>
     </div>
 

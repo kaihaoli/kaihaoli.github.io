@@ -3,19 +3,15 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Kafka Quick Start using Docker | kaihao</title>
+    <title>Archive: 2018/10 | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Reference : Kafka Quick Start Guide Pre-RequisitesDocker 1 Create Virtual MachineGet the env for docker-machine, 2CPU, 2G1&amp;gt; docker-machine create --driver virtualbox --virtualbox-cpu-count 2 --virt">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Kafka Quick Start using Docker">
-<meta property="og:url" content="http://kaihaoli.github.io/2018/04/25/docker-quick-start/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="kaihao">
+<meta property="og:url" content="http://kaihaoli.github.io/archives/2018/10/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="Reference : Kafka Quick Start Guide Pre-RequisitesDocker 1 Create Virtual MachineGet the env for docker-machine, 2CPU, 2G1&amp;gt; docker-machine create --driver virtualbox --virtualbox-cpu-count 2 --virt">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-04-26T01:24:35.459Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Kafka Quick Start using Docker">
-<meta name="twitter:description" content="Reference : Kafka Quick Start Guide Pre-RequisitesDocker 1 Create Virtual MachineGet the env for docker-machine, 2CPU, 2G1&amp;gt; docker-machine create --driver virtualbox --virtualbox-cpu-count 2 --virt">
+<meta name="twitter:title" content="kaihao">
     
 
     
@@ -191,204 +187,50 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-docker-quick-start" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
+            <section id="main"><div class="timeline timeline-wrap">
+    
+            <div class="timeline-row timeline-row-major">
+                <span class="node"><i class="fa fa-calendar"></i></span>
+                <h1 class="title">2018</h1>
+            </div>
         
-        
-            <header class="article-header">
+        <div class="timeline-row">
+            <span class="node"></span>
+            <div class="content">
                 
     
-        <h1 class="article-title" itemprop="name">
-            Kafka Quick Start using Docker
+        <h1 itemprop="name">
+            <a class="timeline-article-title" href="/2018/10/02/sort/">Sort</a>
         </h1>
     
 
-                
-                    <div class="article-meta">
-                        
+                <div class="article-meta">
+                    
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2018/04/25/docker-quick-start/">
-            <time datetime="2018-04-26T01:20:22.000Z" itemprop="datePublished">2018-04-25</time>
+        <a href="/2018/10/02/sort/">
+            <time datetime="2018-10-02T20:01:03.000Z" itemprop="datePublished">2018-10-02</time>
         </a>
     </div>
 
 
-                        
+                    
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
     </div>
 
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>Reference : <a href="https://sookocheff.com/post/kafka/kafka-quick-start/" target="_blank" rel="noopener">Kafka Quick Start Guide</a></p>
-<h3 id="Pre-Requisites"><a href="#Pre-Requisites" class="headerlink" title="Pre-Requisites"></a>Pre-Requisites</h3><p>Docker</p>
-<h3 id="1-Create-Virtual-Machine"><a href="#1-Create-Virtual-Machine" class="headerlink" title="1 Create Virtual Machine"></a>1 Create Virtual Machine</h3><p>Get the env for docker-machine, 2CPU, 2G<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker-machine create --driver virtualbox --virtualbox-cpu-count 2 --virtualbox-memory 2048 bigdata</span><br></pre></td></tr></table></figure></p>
-<blockquote>
-<p>This command downloads a <strong>lightweight Linux distribution (boot2docker)</strong> with the Docker daemon installed, and creates and starts a VirtualBox VM with Docker running.</p>
-<ul>
-<li>docker-machine create 创建一个Docker主机</li>
-<li><strong>–driver virtualbox</strong> flag to indicate which provider (VirtualBox, DigitalOcean, AWS, etc.) the machine should be created on.</li>
-<li>‘bigdata’ is <strong>an argument</strong> to indicate the n<strong>ame of the created machine</strong>.</li>
-</ul>
-</blockquote>
-<p>list available machines.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker-machine ls</span><br></pre></td></tr></table></figure></p>
-<p>Get the IP address of one or more machines.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker-machine ip bigdata</span><br></pre></td></tr></table></figure></p>
-<h3 id="2-Connect-your-shell-to-the-machine"><a href="#2-Connect-your-shell-to-the-machine" class="headerlink" title="2 Connect your shell to the machine"></a>2 Connect your shell to the machine</h3><ul>
-<li><p>Show the virtual machine environment variable</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker-machine env bigdata</span><br><span class="line"><span class="built_in">export</span> DOCKER_TLS_VERIFY=<span class="string">"1"</span></span><br><span class="line"><span class="built_in">export</span> DOCKER_HOST=<span class="string">"tcp://192.168.99.100:2376"</span></span><br><span class="line"><span class="built_in">export</span> DOCKER_CERT_PATH=<span class="string">"/Users/yourhostname/.docker/machine/machines/bigdata"</span></span><br><span class="line"><span class="built_in">export</span> DOCKER_MACHINE_NAME=<span class="string">"bigdata"</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>Run this command to configure your shell</strong></p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Each time you want to use this virtual machine, you should run this command first!</span></span><br><span class="line">&gt; <span class="built_in">eval</span> $(docker-machine env bigdata)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="3-Pull-Images"><a href="#3-Pull-Images" class="headerlink" title="3 Pull Images"></a>3 Pull Images</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker pull wurstmeister/zookeeper    </span><br><span class="line">&gt; docker pull wurstmeister/kafka</span><br></pre></td></tr></table></figure>
-<h3 id="4-Run-Images"><a href="#4-Run-Images" class="headerlink" title="4 Run Images"></a>4 Run Images</h3><ul>
-<li><p>Start zookeeper container</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker run \</span><br><span class="line">        -d \</span><br><span class="line">        -p 2181:2181 \</span><br><span class="line">        -p 2888:2888 \</span><br><span class="line">        -p 3888:3888 \</span><br><span class="line">        --name zookeeper \</span><br><span class="line">        wurstmeister/zookeeper</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Start kafka container</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&gt; docker run \</span><br><span class="line">        -d \</span><br><span class="line">        -p 9092:9092 \</span><br><span class="line">        <span class="comment"># IP=$(docker-machine ip $&#123;MACHINE_NAME&#125;)</span></span><br><span class="line">        -e KAFKA_ADVERTISED_HOST_NAME=<span class="string">"<span class="variable">$&#123;IP&#125;</span>"</span> \</span><br><span class="line">        -e KAFKA_ADVERTISED_PORT=9092 \</span><br><span class="line">        --name kafka \</span><br><span class="line">        --link zookeeper:zookeeper \</span><br><span class="line">        -e KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181 \</span><br><span class="line">        wurstmeister/kafka</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="5-Kafka-Test"><a href="#5-Kafka-Test" class="headerlink" title="5 Kafka Test"></a>5 Kafka Test</h3><ul>
-<li><p>Enter the Kafka container</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># here CONTAINER ID = kafka</span></span><br><span class="line">&gt; docker <span class="built_in">exec</span> -it <span class="variable">$&#123;CONTAINER ID&#125;</span> /bin/bash</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Change to kafka default directory</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="built_in">cd</span> opt/kafka_2.xx-x.xx.x.x/</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Create a Topic</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; bin/kafka-topics.sh --create --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1 --topic mykafka</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Run a Producer</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; bin/kafka-console-producer.sh --broker-list localhost:9092 --topic mykafka</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Run a Consumer(in another terminal!)</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; bin/kafka-console-consumer.sh --zookeeper zookeeper:2181 --topic mykafka --from-beginning</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>TEST<br>When you type in some words in producer, it will appear in the consumer terminal. Kafka will replay the messages you have sent as a producer.</p>
-</li>
-</ul>
-<p>All Done! :)</p>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/04/25/docker-quick-start/" data-id="cjmuu90ml000e3tu07jfixgfw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
+                    
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/array/">array</a>
     </div>
-    
-        
-<nav id="article-nav">
-    
-        <a href="/2018/04/29/bit-manipulation/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    Bit Manipulation 位运算
-                
+
+                </div>
             </div>
-        </a>
+        </div>
     
-    
-        <a href="/2018/04/21/docker/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Docker</div>
-        </a>
-    
-</nav>
-
-
-    
-</article>
-
-
-    
-    
-
+</div>
 </section>
             
                 
