@@ -5,18 +5,18 @@
     
     <title>Linked List Basic | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="IntroductionPrerequisite 同样是线性结构, Array是物理连续的, Linked List 是由Pointer连起来的，不一定是物理连续的！ 链表的题目往往算不上“算法性”题，只是一种模拟操作的题 考察的重点在于bug free，是否对写代码有熟练度！  Key Point 1 When you want to de-reference a List Node, make">
+    <meta name="description" content="IntroductionPrerequisite Linear Structure : Array:Phisical, Linked List:是由Pointer连起来的，不一定是物理连续的！ 链表的题目往往算不上“算法性”题，只是一种模拟操作的题 考察的重点在于bug free，是否对写代码有熟练度！  Key Point 1 When you want to de-reference a Li">
 <meta name="keywords" content="linked list">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linked List Basic">
 <meta property="og:url" content="http://kaihaoli.github.io/2018/08/06/linked-list-basic/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="IntroductionPrerequisite 同样是线性结构, Array是物理连续的, Linked List 是由Pointer连起来的，不一定是物理连续的！ 链表的题目往往算不上“算法性”题，只是一种模拟操作的题 考察的重点在于bug free，是否对写代码有熟练度！  Key Point 1 When you want to de-reference a List Node, make">
+<meta property="og:description" content="IntroductionPrerequisite Linear Structure : Array:Phisical, Linked List:是由Pointer连起来的，不一定是物理连续的！ 链表的题目往往算不上“算法性”题，只是一种模拟操作的题 考察的重点在于bug free，是否对写代码有熟练度！  Key Point 1 When you want to de-reference a Li">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-09-26T14:09:00.107Z">
+<meta property="og:updated_time" content="2018-10-05T14:31:30.554Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linked List Basic">
-<meta name="twitter:description" content="IntroductionPrerequisite 同样是线性结构, Array是物理连续的, Linked List 是由Pointer连起来的，不一定是物理连续的！ 链表的题目往往算不上“算法性”题，只是一种模拟操作的题 考察的重点在于bug free，是否对写代码有熟练度！  Key Point 1 When you want to de-reference a List Node, make">
+<meta name="twitter:description" content="IntroductionPrerequisite Linear Structure : Array:Phisical, Linked List:是由Pointer连起来的，不一定是物理连续的！ 链表的题目往往算不上“算法性”题，只是一种模拟操作的题 考察的重点在于bug free，是否对写代码有熟练度！  Key Point 1 When you want to de-reference a Li">
     
 
     
@@ -164,7 +164,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                25
+                26
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -237,28 +237,27 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Prerequisite"><span class="toc-number">1.1.</span> <span class="toc-text">Prerequisite</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Key-Point"><span class="toc-number">1.2.</span> <span class="toc-text">Key Point</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tips"><span class="toc-number">1.3.</span> <span class="toc-text">Tips</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#203-Remove-Linked-List-Elements"><span class="toc-number">2.</span> <span class="toc-text">203. Remove Linked List Elements</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-Remove-Nth-Node-From-End-of-List"><span class="toc-number">3.</span> <span class="toc-text">19. Remove Nth Node From End of List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#237-Delete-Node-in-a-Linked-List"><span class="toc-number">4.</span> <span class="toc-text">237. Delete Node in a Linked List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#83-Remove-Duplicates-from-Sorted-List"><span class="toc-number">5.</span> <span class="toc-text">83. Remove Duplicates from Sorted List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#82-Remove-Duplicates-from-Sorted-List-II"><span class="toc-number">6.</span> <span class="toc-text">82. Remove Duplicates from Sorted List II</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Introduction"><span class="toc-number">1.</span> <span class="toc-text">Introduction</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Prerequisite"><span class="toc-number">1.1.</span> <span class="toc-text">Prerequisite</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Key-Point"><span class="toc-number">1.2.</span> <span class="toc-text">Key Point</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tips"><span class="toc-number">1.3.</span> <span class="toc-text">Tips</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Basic-Function"><span class="toc-number">2.</span> <span class="toc-text">Basic Function</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Find-the-middle-node-of-a-linked-List"><span class="toc-number">2.1.</span> <span class="toc-text">Find the middle node of a linked List</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Insert-a-node-in-a-sorted-linked-list"><span class="toc-number">2.2.</span> <span class="toc-text">Insert a node in a sorted linked list</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#203-Remove-Linked-List-Elements"><span class="toc-number">3.</span> <span class="toc-text">203. Remove Linked List Elements</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#19-Remove-Nth-Node-From-End-of-List"><span class="toc-number">4.</span> <span class="toc-text">19. Remove Nth Node From End of List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#237-Delete-Node-in-a-Linked-List"><span class="toc-number">5.</span> <span class="toc-text">237. Delete Node in a Linked List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#83-Remove-Duplicates-from-Sorted-List"><span class="toc-number">6.</span> <span class="toc-text">83. Remove Duplicates from Sorted List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#82-Remove-Duplicates-from-Sorted-List-II"><span class="toc-number">7.</span> <span class="toc-text">82. Remove Duplicates from Sorted List II</span></a></li></ol>
                 </div>
             
             <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><h4 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite"></a><strong>Prerequisite</strong></h4><ul>
-<li>同样是线性结构, <strong>Array是物理连续的</strong>, Linked List 是由Pointer连起来的，<strong>不一定是物理连续的</strong>！</li>
+<li>Linear Structure : <strong>Array:Phisical</strong>, Linked List:是由Pointer连起来的，<strong>不一定是物理连续的</strong>！</li>
 <li>链表的题目往往算不上“算法性”题，只是一种模拟操作的题</li>
 <li>考察的重点在于bug free，是否对写代码有熟练度！</li>
 </ul>
 <h4 id="Key-Point"><a href="#Key-Point" class="headerlink" title="Key Point"></a><strong>Key Point</strong></h4><ul>
 <li>1 When you want to <strong>de-reference a List Node</strong>, make sure it is not a <strong>NULL Pointer</strong>.<ul>
-<li>任何使用用<strong>“.”</strong>这个符号的时候，一定要注意判断前面的Reference是否为空！！！</li>
+<li>No matter when you use <strong>“.”</strong>, 一定要注意判断前面的Reference是否为空！！！</li>
 </ul>
 </li>
 <li>2 Never ever lost <strong>the control of the head pointer</strong> of the Linked List.<ul>
-<li>经常需要缓存nxt指针或者prev指针都是因为当你改变链表结构的时候很容易丢失之前或者之后的信息！</li>
+<li>经常需要缓存nxt指针或者prev指针,都是因为当你改变链表结构的时候很容易丢失之前或者之后的信息！</li>
 </ul>
 </li>
 </ul>
 <h4 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h4><ul>
-<li><p><strong>DummyNode</strong></p>
+<li><p><strong>DummyNode</strong>, <strong>Why or When should we use a dummy Node?</strong></p>
 <ul>
-<li><strong>Why or When should we use a dummy Node?</strong></li>
 <li>When we want to append new elements to an initially empty linkedlist, we do not have an initial head node. In this case, we can new a dummy node to act as a head node.</li>
 <li>链表的结构发生变化</li>
 </ul>
@@ -269,7 +268,11 @@ ga('send', 'pageview');
 </ul>
 </li>
 </ul>
-<h3 id="203-Remove-Linked-List-Elements"><a href="#203-Remove-Linked-List-Elements" class="headerlink" title="203. Remove Linked List Elements"></a><a href="https://leetcode.com/problems/remove-linked-list-elements/" target="_blank" rel="noopener">203. Remove Linked List Elements</a></h3><ul>
+<h3 id="Basic-Function"><a href="#Basic-Function" class="headerlink" title="Basic Function"></a>Basic Function</h3><h4 id="Find-the-middle-node-of-a-linked-List"><a href="#Find-the-middle-node-of-a-linked-List" class="headerlink" title="Find the middle node of a linked List"></a>Find the middle node of a linked List</h4><ul>
+<li>Odd, Even<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findMiddleNode</span><span class="params">(head)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> head: <span class="keyword">return</span> head</span><br><span class="line">    fast = slow = head</span><br><span class="line">    <span class="keyword">while</span> fast.next <span class="keyword">and</span> fast.next.next:</span><br><span class="line">        fast = fast.next.next</span><br><span class="line">        slow = slow.next</span><br><span class="line">    <span class="keyword">return</span> fast</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Insert-a-node-in-a-sorted-linked-list"><a href="#Insert-a-node-in-a-sorted-linked-list" class="headerlink" title="Insert a node in a sorted linked list"></a>Insert a node in a <strong>sorted</strong> linked list</h4><h3 id="203-Remove-Linked-List-Elements"><a href="#203-Remove-Linked-List-Elements" class="headerlink" title="203. Remove Linked List Elements"></a><a href="https://leetcode.com/problems/remove-linked-list-elements/" target="_blank" rel="noopener">203. Remove Linked List Elements</a></h3><ul>
 <li>Two pointers : prev, cur</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeElements</span><span class="params">(self, head, val)</span>:</span></span><br><span class="line">        dummyNode = ListNode(<span class="number">0</span>)</span><br><span class="line">        dummyNode.next = head</span><br><span class="line">        prev, cur = dummyNode, head</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            <span class="keyword">if</span> cur.val == val:</span><br><span class="line">                prev.next = cur.next</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                prev = cur</span><br><span class="line">            cur = cur.next</span><br><span class="line">        <span class="keyword">return</span> dummyNode.next</span><br></pre></td></tr></table></figure>
@@ -304,7 +307,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/06/linked-list-basic/" data-id="cjmvgkezc000qxo78m383sk6b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/06/linked-list-basic/" data-id="cjmw7gglj000m2078gjv6u0ml" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -469,7 +472,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -478,7 +481,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -487,7 +490,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/segment-tree/">segment tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">5</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/segment-tree/">segment tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">5</span></li></ul>
         </div>
     </div>
 
@@ -496,7 +499,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-indexed-tree/" style="font-size: 10px;">binary indexed tree</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/dynamic-programming/" style="font-size: 16.67px;">dynamic programming</a> <a href="/tags/graph/" style="font-size: 13.33px;">graph</a> <a href="/tags/linked-list/" style="font-size: 13.33px;">linked list</a> <a href="/tags/segment-tree/" style="font-size: 10px;">segment tree</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
+            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-indexed-tree/" style="font-size: 10px;">binary indexed tree</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/dynamic-programming/" style="font-size: 16.67px;">dynamic programming</a> <a href="/tags/graph/" style="font-size: 13.33px;">graph</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/segment-tree/" style="font-size: 10px;">segment tree</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
         </div>
     </div>
 

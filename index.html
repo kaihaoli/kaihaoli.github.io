@@ -159,7 +159,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                25
+                26
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -230,14 +230,38 @@ ga('send', 'pageview');
 <h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><ul>
 <li>FIFO == First In First Out, e.g. waith in a line</li>
 <li><strong>Usages</strong><ul>
-<li>BFS related problems, Tree printout by levels</li>
+<li><strong>BFS</strong> related problems, Tree printout by levels</li>
 <li>Sliding Window problems(Deque)</li>
 </ul>
+</li>
+</ul>
+<h3 id="225-Implement-Stack-using-Queues"><a href="#225-Implement-Stack-using-Queues" class="headerlink" title="225. Implement Stack using Queues"></a><a href="https://leetcode.com/problems/implement-stack-using-queues/" target="_blank" rel="noopener">225. Implement Stack using Queues</a></h3><ul>
+<li>Only use one Queue, O(n)push, O(1)pop</li>
+<li>Two Queues, O(1)push, O(n)pop<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">queue = collections.deque()</span><br><span class="line">queue.append(<span class="number">1</span>)</span><br><span class="line">queue.appendleft(<span class="number">2</span>)</span><br><span class="line">queue.pop()</span><br><span class="line">queue.popleft()</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><ul>
 <li>LIFO == Last in First Out, e.g. like a box</li>
 <li>All operation available: push(), pop(), top()</li>
+<li>Iterative DFS </li>
+</ul>
+<h3 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h3><ul>
+<li>When do we consider “stack” in our algorithm?</li>
+<li><strong>Answer</strong>: when we linear scan an array/a string from left to right, and we need to look back the top element!<ul>
+<li><ol>
+<li>Find the biggest Rectangle in Histogram</li>
+</ol>
+</li>
+<li><ol start="2">
+<li>Reverse Polish notation, a <em> (b + c) -&gt; abc+</em></li>
+</ol>
+</li>
+<li><ol start="3">
+<li>String repeatedly deduplication. cabba -&gt; caa -&gt; c</li>
+</ol>
+</li>
+</ul>
+</li>
 </ul>
 <h3 id="232-Implement-Queue-using-Stacks"><a href="#232-Implement-Queue-using-Stacks" class="headerlink" title="232.Implement Queue using Stacks"></a><a href="https://leetcode.com/problems/implement-queue-using-stacks/" target="_blank" rel="noopener">232.Implement Queue using Stacks</a></h3><p>Implement a Queue by using two stacks</p>
 <ul>
@@ -245,11 +269,11 @@ ga('send', 'pageview');
 <li>Time : pop(),<strong>amortized O(1)</strong>; push(),O(1)</li>
 <li>Space : O(n)</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyQueue</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Initialize your data structure here.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.stack1 = [] <span class="comment"># Buffer all the new elements</span></span><br><span class="line">        self.stack2 = [] <span class="comment"># Pop out the 1st element</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Push element x to the back of queue.</span></span><br><span class="line"><span class="string">        :type x: int</span></span><br><span class="line"><span class="string">        :rtype: void</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.stack1.append(x)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Removes the element from in front of queue and returns that element.</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(self.stack2) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">while</span> self.stack1:</span><br><span class="line">                self.stack2.append(self.stack1.pop())</span><br><span class="line">        <span class="keyword">return</span> self.stack2.pop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peek</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Get the front element.</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">if</span> len(self.stack2) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">while</span> self.stack1:</span><br><span class="line">                self.stack2.append(self.stack1.pop())</span><br><span class="line">        <span class="keyword">return</span> self.stack2[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        Returns whether the queue is empty.</span></span><br><span class="line"><span class="string">        :rtype: bool</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> len(self.stack1) == <span class="number">0</span> <span class="keyword">and</span> len(self.stack2) == <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyQueue</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.stack1 = [] <span class="comment"># Buffer all the new elements</span></span><br><span class="line">        self.stack2 = [] <span class="comment"># Pop out the 1st element</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.stack1.append(x)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(self.stack2) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">while</span> self.stack1:</span><br><span class="line">                self.stack2.append(self.stack1.pop())</span><br><span class="line">        <span class="keyword">return</span> self.stack2.pop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peek</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(self.stack2) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">while</span> self.stack1:</span><br><span class="line">                self.stack2.append(self.stack1.pop())</span><br><span class="line">        <span class="keyword">return</span> self.stack2[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(self.stack1) == <span class="number">0</span> <span class="keyword">and</span> len(self.stack2) == <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <h3 id="155-Min-Stack"><a href="#155-Min-Stack" class="headerlink" title="155. Min Stack"></a><a href="https://leetcode.com/problems/min-stack/" target="_blank" rel="noopener">155. Min Stack</a></h3><ul>
 <li>Two Stack: original stack &amp; min stack</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Keep the push and pop function in sync between two stacks</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        initialize your data structure here.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.stack = []</span><br><span class="line">        self.minstack = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type x: int</span></span><br><span class="line"><span class="string">        :rtype: void</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.stack.append(x)</span><br><span class="line">        cmin = min(x, self.minstack[<span class="number">-1</span>]) <span class="keyword">if</span> self.minstack <span class="keyword">else</span> x</span><br><span class="line">        self.minstack.append(cmin)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: void</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.stack.pop()</span><br><span class="line">        self.minstack.pop()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">top</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.stack[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getMin</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.minstack[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Keep the push and pop function in sync between two stacks</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.stack = []</span><br><span class="line">        self.minstack = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.stack.append(x)</span><br><span class="line">        cmin = min(x, self.minstack[<span class="number">-1</span>]) <span class="keyword">if</span> self.minstack <span class="keyword">else</span> x</span><br><span class="line">        self.minstack.append(cmin)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.stack.pop()</span><br><span class="line">        self.minstack.pop()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">top</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.stack[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getMin</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.minstack[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
 <h3 id="Min-Stack-Follow-Up"><a href="#Min-Stack-Follow-Up" class="headerlink" title="Min Stack Follow Up"></a>Min Stack Follow Up</h3><ul>
 <li>How to optimize the space usage of minstack? (Assume there are a lot of duplicates)<br>Try to make the elements in stack2 a descending order and store an element in stack2 &lt;value, size of the stack1 when elements add to stack2&gt;</li>
 </ul>
@@ -257,7 +281,10 @@ ga('send', 'pageview');
 <li><strong>popMax()</strong> – Retrieve the maximum element in the stack, and remove it. If you find more than one maximum elements, only remove the top-most one.</li>
 <li>TreeMap in Java!!!</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MaxStack</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        initialize your data structure here.</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.stack = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type x: int</span></span><br><span class="line"><span class="string">        :rtype: void</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.stack.append((x, max(x, self.stack[<span class="number">-1</span>][<span class="number">1</span>] <span class="keyword">if</span> self.stack <span class="keyword">else</span> <span class="keyword">None</span>)))        </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.stack.pop()[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">top</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.stack[<span class="number">-1</span>][<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peekMax</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        <span class="keyword">return</span> self.stack[<span class="number">-1</span>][<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">popMax</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :rtype: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        m = self.stack[<span class="number">-1</span>][<span class="number">1</span>]</span><br><span class="line">        temp = []</span><br><span class="line">        <span class="keyword">while</span> self.stack[<span class="number">-1</span>][<span class="number">0</span>] != m:</span><br><span class="line">            temp.append(self.pop())</span><br><span class="line">            <span class="comment"># temp.insert(0, self.stack.pop())</span></span><br><span class="line">        self.stack.pop()</span><br><span class="line">        map(self.push, reversed(temp))</span><br><span class="line">        <span class="keyword">return</span> m</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MaxStack</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.stack = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.stack.append((x, max(x, self.stack[<span class="number">-1</span>][<span class="number">1</span>] <span class="keyword">if</span> self.stack <span class="keyword">else</span> <span class="keyword">None</span>)))        </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.stack.pop()[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">top</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.stack[<span class="number">-1</span>][<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peekMax</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.stack[<span class="number">-1</span>][<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">popMax</span><span class="params">(self)</span>:</span></span><br><span class="line">        m = self.stack[<span class="number">-1</span>][<span class="number">1</span>]</span><br><span class="line">        temp = []</span><br><span class="line">        <span class="keyword">while</span> self.stack[<span class="number">-1</span>][<span class="number">0</span>] != m:</span><br><span class="line">            temp.append(self.pop()) <span class="comment"># temp.insert(0, self.stack.pop())</span></span><br><span class="line">        self.stack.pop()</span><br><span class="line">        map(self.push, reversed(temp))</span><br><span class="line">        <span class="keyword">return</span> m</span><br></pre></td></tr></table></figure>
+<ul>
+<li>TODO : Using Stack for Selection Sort; Implement Deque using stacks</li>
+</ul>
 
         
         </div>
@@ -268,7 +295,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/04/queue-stack/" data-id="cjmvgkezp001cxo78odjz9u5i" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/04/queue-stack/" data-id="cjmw7ggm0001d20787btq6zk5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -434,7 +461,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/02/sort/" data-id="cjmvgkf02001nxo780irnhnab" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/02/sort/" data-id="cjmw7ggm8001n2078am8xrn24" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -566,7 +593,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/09/30/pramp/" data-id="cjmvgkezv001fxo781k7ed695" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/09/30/pramp/" data-id="cjmw7ggly001a2078x9h1pdjp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -718,7 +745,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/09/29/buy-and-sell-stock/" data-id="cjmvgkexp0003xo780m3v8bdw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/09/29/buy-and-sell-stock/" data-id="cjmw7ggky00042078y94fw337" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -879,7 +906,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/09/25/binary-search-tree/" data-id="cjmvgkex80001xo78s6i10m9p" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/09/25/binary-search-tree/" data-id="cjmw7ggko000020781885nvoy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1032,7 +1059,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/09/19/dp-double-sequence/" data-id="cjmvgkeze000txo783h01q592" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/09/19/dp-double-sequence/" data-id="cjmw7gglu00122078rdp0p0kr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1221,7 +1248,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/09/18/dp-overview/" data-id="cjmvgkezg000xxo78c1d6smaj" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/09/18/dp-overview/" data-id="cjmw7gglr000w2078lezo34dc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1356,7 +1383,168 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/30/tree-path/" data-id="cjmvgkf05001rxo78xcgz75yr" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/30/tree-path/" data-id="cjmw7ggma001p2078qv8c8ni5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-linked-list-cycle" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/08/25/linked-list-cycle/">Linked List Cycle</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/08/25/linked-list-cycle/">
+            <time datetime="2018-08-25T14:38:12.000Z" itemprop="datePublished">2018-08-25</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/linked-list/">linked list</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <ul>
+<li>单链表检测是否有环，如果有，返回环交点。</li>
+<li>这种题主要考察这个知识点作为一种common sense是否了解了，如果没做过这类题型恐怕很难想到空间最优的快慢指针解法！</li>
+</ul>
+<h3 id="141-Linked-List-Cycle"><a href="#141-Linked-List-Cycle" class="headerlink" title="141. Linked List Cycle"></a><a href="https://leetcode.com/problems/linked-list-cycle/" target="_blank" rel="noopener">141. Linked List Cycle</a></h3><p>单链表求是否存在环？</p>
+<h4 id="Sol1-HashSet"><a href="#Sol1-HashSet" class="headerlink" title="Sol1. HashSet"></a>Sol1. HashSet</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(n)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hasCycle</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        visited = set()</span><br><span class="line">        <span class="keyword">while</span> head:</span><br><span class="line">            <span class="keyword">if</span> head <span class="keyword">in</span> visited:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            visited.add(head)</span><br><span class="line">            head = head.next</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h4 id="Sol2-快慢指针"><a href="#Sol2-快慢指针" class="headerlink" title="Sol2. 快慢指针"></a>Sol2. 快慢指针</h4><blockquote>
+<p>小trick : 如果有环，快指针一定会追上慢指针</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hasCycle</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        slow = fast = head</span><br><span class="line">        <span class="keyword">while</span> fast <span class="keyword">and</span> fast.next:</span><br><span class="line">            slow = slow.next</span><br><span class="line">            fast = fast.next.next</span><br><span class="line">            <span class="keyword">if</span> slow == fast:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h3 id="142-Linked-List-Cycle-II"><a href="#142-Linked-List-Cycle-II" class="headerlink" title="142. Linked List Cycle II"></a><a href="https://leetcode.com/problems/linked-list-cycle-ii/" target="_blank" rel="noopener">142. Linked List Cycle II</a></h3><p>单链表是否存在环，如果存在返回环交点</p>
+<h4 id="Sol1-HashSet-1"><a href="#Sol1-HashSet-1" class="headerlink" title="Sol1. HashSet"></a>Sol1. HashSet</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(n)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">detectCycle</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        visited = set()</span><br><span class="line">        <span class="keyword">while</span> head:</span><br><span class="line">            <span class="keyword">if</span> head <span class="keyword">in</span> visited:</span><br><span class="line">                <span class="keyword">return</span> head</span><br><span class="line">            visited.add(head)</span><br><span class="line">            head = head.next</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<h4 id="Sol2-快慢指针-1"><a href="#Sol2-快慢指针-1" class="headerlink" title="Sol2. 快慢指针"></a>Sol2. 快慢指针</h4><blockquote>
+<p>小trick : 关于长度的证明，相遇点到交点的距离=起点到交点的距离！</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">detectCycle</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head: <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">        fast = slow = head</span><br><span class="line">        <span class="keyword">while</span> fast <span class="keyword">and</span> fast.next:</span><br><span class="line">            slow = slow.next</span><br><span class="line">            fast = fast.next.next</span><br><span class="line">            <span class="keyword">if</span> slow == fast: <span class="comment"># Detect Cycle</span></span><br><span class="line">                fast = head</span><br><span class="line">                <span class="keyword">while</span> slow != fast:</span><br><span class="line">                    fast = fast.next</span><br><span class="line">                    slow = slow.next</span><br><span class="line">                <span class="keyword">return</span> fast</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<h3 id="287-Find-the-Duplicate-Number"><a href="#287-Find-the-Duplicate-Number" class="headerlink" title="287. Find the Duplicate Number"></a><a href="https://leetcode.com/problems/find-the-duplicate-number/" target="_blank" rel="noopener">287. Find the Duplicate Number</a></h3><ul>
+<li>解1.<strong>HashSet(T:O(n),S:O(n))</strong>, 解2. <strong>Sort(T:O(nlogn),S:O(1))</strong>;</li>
+<li>但是又要求 <strong>Time : O(n), Space : O(1), Input Array Read only</strong>，只能考虑其他解法！</li>
+<li>(比较难想到)Array里index, value中把value当作”next”的index，就可以把问题转化成了Linked List II</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findDuplicate</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        slow = fast = nums[<span class="number">0</span>] <span class="comment"># Start from index 0!</span></span><br><span class="line">        <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">            slow = nums[slow]</span><br><span class="line">            fast = nums[nums[fast]]</span><br><span class="line">            <span class="keyword">if</span> slow == fast:</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">        fast = nums[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">while</span> fast != slow:</span><br><span class="line">            fast = nums[fast]</span><br><span class="line">            slow = nums[slow]</span><br><span class="line">        <span class="keyword">return</span> fast</span><br></pre></td></tr></table></figure>
+<h3 id="160-Intersection-of-Two-Linked-Lists"><a href="#160-Intersection-of-Two-Linked-Lists" class="headerlink" title="160. Intersection of Two Linked Lists"></a><a href="https://leetcode.com/problems/intersection-of-two-linked-lists/" target="_blank" rel="noopener">160. Intersection of Two Linked Lists</a></h3><h4 id="Sol1-HashSet-2"><a href="#Sol1-HashSet-2" class="headerlink" title="Sol1. HashSet"></a>Sol1. HashSet</h4><ul>
+<li>挺喜欢这种解法，简单易懂，but空间复杂度略高，会让你优化空间！<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(m+n), Space : O(m)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getIntersectionNode</span><span class="params">(self, headA, headB)</span>:</span></span><br><span class="line">        visited = set()</span><br><span class="line">        <span class="keyword">while</span> headA:</span><br><span class="line">            visited.add(headA)</span><br><span class="line">            headA = headA.next</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> headB:</span><br><span class="line">            <span class="keyword">if</span> headB <span class="keyword">in</span> visited:</span><br><span class="line">                <span class="keyword">return</span> headB</span><br><span class="line">            headB = headB.next</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Sol2-Two-Pointer"><a href="#Sol2-Two-Pointer" class="headerlink" title="Sol2. Two Pointer"></a>Sol2. Two Pointer</h4><ul>
+<li>这个解法灰常魔幻，不管有没有intersection都成立</li>
+<li>链表走到tail了就去另一个链表，不相交那么会在None点走到</li>
+<li>充分利用了两个链表的长度特性</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(m+n), Space : O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getIntersectionNode</span><span class="params">(self, headA, headB)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> headA <span class="keyword">or</span> <span class="keyword">not</span> headB:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        pA, pB = headA, headB</span><br><span class="line">        <span class="keyword">while</span> pA <span class="keyword">is</span> <span class="keyword">not</span> pB:</span><br><span class="line">            pA = pA.next <span class="keyword">if</span> pA <span class="keyword">else</span> headB</span><br><span class="line">            pB = pB.next <span class="keyword">if</span> pB <span class="keyword">else</span> headA</span><br><span class="line">        <span class="keyword">return</span> pA</span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/08/25/linked-list-cycle/" data-id="cjmw7ggll000p2078yp4snh44" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1482,7 +1670,7 @@ ga('send', 'pageview');
 <li>其实就是<strong>双指针prev, cur</strong>同步移动修改链表结构</li>
 <li>nxt指针暂存下一个指针的位置，最后prev到cur，cur到nxt</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseList</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        prev, cur = <span class="keyword">None</span>, head</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Step1. Save the node, do not lost any control!</span></span><br><span class="line">            nxt = cur.next</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Step2. Modifying</span></span><br><span class="line">            cur.next = prev</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Step3. Iterative traverse next node</span></span><br><span class="line">            prev = cur</span><br><span class="line">            cur = nxt</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> prev</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Iteration</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseList</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        prev, cur = <span class="keyword">None</span>, head</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Step1. Save the node, do not lost any control!</span></span><br><span class="line">            nxt = cur.next</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Step2. Modifying</span></span><br><span class="line">            cur.next = prev</span><br><span class="line"></span><br><span class="line">            <span class="comment"># Step3. Iterative traverse next node</span></span><br><span class="line">            prev = cur</span><br><span class="line">            cur = nxt</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> prev</span><br><span class="line"></span><br><span class="line"><span class="comment"># Recursion</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseList</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> <span class="keyword">not</span> head.next:</span><br><span class="line">            <span class="keyword">return</span> head</span><br><span class="line"></span><br><span class="line">        newhead = self.reverseList(head.next)</span><br><span class="line">        head.next.next = head</span><br><span class="line">        head.next = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> newhead</span><br></pre></td></tr></table></figure>
 <h4 id="Recursion"><a href="#Recursion" class="headerlink" title="Recursion"></a>Recursion</h4><ul>
 <li>求n个node的情况，找n-1个node的情况如何拼起来<ul>
 <li>next-&gt;next = curr (subproblem head指向current node)</li>
@@ -1512,6 +1700,12 @@ ga('send', 'pageview');
 <li>算是Recursion的写法，Case 2 当中这个previous指针的赋值十分巧妙！正好需要翻转的链表第一个要连接的位置是后面链表的头！完美拼接！</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseKGroup</span><span class="params">(self, head, k)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head <span class="keyword">or</span> <span class="keyword">not</span> head.next:</span><br><span class="line">            <span class="keyword">return</span> head</span><br><span class="line"></span><br><span class="line">        cur = head</span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> cur <span class="keyword">and</span> cnt &lt; k:</span><br><span class="line">            cur = cur.next</span><br><span class="line">            cnt += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># case 1 : less than k nodes</span></span><br><span class="line">        <span class="keyword">if</span> cnt &lt; k:</span><br><span class="line">            <span class="keyword">return</span> head</span><br><span class="line"></span><br><span class="line">        <span class="comment"># case 2 : reverse the k nodes</span></span><br><span class="line">        prev = self.reverseKGroup(cur, k)</span><br><span class="line">        cur = head</span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(k):</span><br><span class="line">            nxt = cur.next</span><br><span class="line">            cur.next = prev</span><br><span class="line">            prev = cur</span><br><span class="line">            cur = nxt</span><br><span class="line">        <span class="keyword">return</span> prev</span><br></pre></td></tr></table></figure>
+<h3 id="Convert-a-linked-list"><a href="#Convert-a-linked-list" class="headerlink" title="Convert a linked list"></a>Convert a linked list</h3><p>N1-&gt;N2-&gt;N3-&gt;N4-&gt;N5-&gt;N6-&gt;….-&gt;Nn-&gt;null (convert to) N1-&gt;Nn-&gt;N2-&gt;Nn-1-&gt;….</p>
+<ul>
+<li>Step1. Find the middle node of the linked List</li>
+<li>Step2. reverse the 2nd half</li>
+<li>Step3. Merge two linked list into one long</li>
+</ul>
 
         
         </div>
@@ -1522,190 +1716,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/16/linked-list-reverse/" data-id="cjmvgkezj0010xo781icv5wdv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-linked-list-basic" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/08/06/linked-list-basic/">Linked List Basic</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/08/06/linked-list-basic/">
-            <time datetime="2018-08-06T12:42:40.000Z" itemprop="datePublished">2018-08-06</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/linked-list/">linked list</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h3 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h3><h4 id="Prerequisite"><a href="#Prerequisite" class="headerlink" title="Prerequisite"></a><strong>Prerequisite</strong></h4><ul>
-<li>同样是线性结构, <strong>Array是物理连续的</strong>, Linked List 是由Pointer连起来的，<strong>不一定是物理连续的</strong>！</li>
-<li>链表的题目往往算不上“算法性”题，只是一种模拟操作的题</li>
-<li>考察的重点在于bug free，是否对写代码有熟练度！</li>
-</ul>
-<h4 id="Key-Point"><a href="#Key-Point" class="headerlink" title="Key Point"></a><strong>Key Point</strong></h4><ul>
-<li>1 When you want to <strong>de-reference a List Node</strong>, make sure it is not a <strong>NULL Pointer</strong>.<ul>
-<li>任何使用用<strong>“.”</strong>这个符号的时候，一定要注意判断前面的Reference是否为空！！！</li>
-</ul>
-</li>
-<li>2 Never ever lost <strong>the control of the head pointer</strong> of the Linked List.<ul>
-<li>经常需要缓存nxt指针或者prev指针都是因为当你改变链表结构的时候很容易丢失之前或者之后的信息！</li>
-</ul>
-</li>
-</ul>
-<h4 id="Tips"><a href="#Tips" class="headerlink" title="Tips"></a>Tips</h4><ul>
-<li><p><strong>DummyNode</strong></p>
-<ul>
-<li><strong>Why or When should we use a dummy Node?</strong></li>
-<li>When we want to append new elements to an initially empty linkedlist, we do not have an initial head node. In this case, we can new a dummy node to act as a head node.</li>
-<li>链表的结构发生变化</li>
-</ul>
-</li>
-<li><p><strong>Two or More Pointers</strong></p>
-<ul>
-<li>We usually use many pointer to manipulate the node of the linked list</li>
-</ul>
-</li>
-</ul>
-<h3 id="203-Remove-Linked-List-Elements"><a href="#203-Remove-Linked-List-Elements" class="headerlink" title="203. Remove Linked List Elements"></a><a href="https://leetcode.com/problems/remove-linked-list-elements/" target="_blank" rel="noopener">203. Remove Linked List Elements</a></h3><ul>
-<li>Two pointers : prev, cur</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeElements</span><span class="params">(self, head, val)</span>:</span></span><br><span class="line">        dummyNode = ListNode(<span class="number">0</span>)</span><br><span class="line">        dummyNode.next = head</span><br><span class="line">        prev, cur = dummyNode, head</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            <span class="keyword">if</span> cur.val == val:</span><br><span class="line">                prev.next = cur.next</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                prev = cur</span><br><span class="line">            cur = cur.next</span><br><span class="line">        <span class="keyword">return</span> dummyNode.next</span><br></pre></td></tr></table></figure>
-<h3 id="19-Remove-Nth-Node-From-End-of-List"><a href="#19-Remove-Nth-Node-From-End-of-List" class="headerlink" title="19. Remove Nth Node From End of List"></a><a href="https://leetcode.com/problems/remove-nth-node-from-end-of-list/" target="_blank" rel="noopener">19. Remove Nth Node From End of List</a></h3><ul>
-<li>快慢指针维护一个长度为n的滑动窗口</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeNthFromEnd</span><span class="params">(self, head, n)</span>:</span></span><br><span class="line">        dummyNode = ListNode(<span class="number">0</span>)</span><br><span class="line">        dummyNode.next = head</span><br><span class="line">        slow = fast = dummyNode</span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(n):</span><br><span class="line">            fast = fast.next</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> fast.next:</span><br><span class="line">            fast = fast.next</span><br><span class="line">            slow = slow.next</span><br><span class="line">        slow.next = slow.next.next</span><br><span class="line">        <span class="keyword">return</span> dummyNode.next</span><br></pre></td></tr></table></figure>
-<h3 id="237-Delete-Node-in-a-Linked-List"><a href="#237-Delete-Node-in-a-Linked-List" class="headerlink" title="237. Delete Node in a Linked List"></a><a href="https://leetcode.com/problems/delete-node-in-a-linked-list/" target="_blank" rel="noopener">237. Delete Node in a Linked List</a></h3><ul>
-<li>很奇怪的一道题，做法也很奇怪</li>
-<li>往往删除单链表的一个节点，需要有头节点或者前一个节点来绕过删除的节点，这道题只给了要删除的节点(单链表拿不到previous的节点)，只能通过<strong>节点覆盖</strong>来做。</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deleteNode</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        node.val = node.next.val</span><br><span class="line">        node.next = node.next.next</span><br></pre></td></tr></table></figure>
-<h3 id="83-Remove-Duplicates-from-Sorted-List"><a href="#83-Remove-Duplicates-from-Sorted-List" class="headerlink" title="83. Remove Duplicates from Sorted List"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list/" target="_blank" rel="noopener">83. Remove Duplicates from Sorted List</a></h3><ul>
-<li>和Remove Duplicate from Array一毛一样同样是同向双指针</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deleteDuplicates</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head: <span class="keyword">return</span> head</span><br><span class="line"></span><br><span class="line">        prev = head</span><br><span class="line">        cur = head.next</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            <span class="keyword">if</span> cur.val == prev.val:</span><br><span class="line">                prev.next = cur.next</span><br><span class="line">                cur = cur.next</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                prev = cur</span><br><span class="line">                cur = cur.next</span><br><span class="line">        <span class="keyword">return</span> head</span><br></pre></td></tr></table></figure>
-<h3 id="82-Remove-Duplicates-from-Sorted-List-II"><a href="#82-Remove-Duplicates-from-Sorted-List-II" class="headerlink" title="82. Remove Duplicates from Sorted List II"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-list-ii/" target="_blank" rel="noopener">82. Remove Duplicates from Sorted List II</a></h3><ul>
-<li>删除所有的duplicate，只保留distinct的元素！<ul>
-<li>1 找到重复的元素</li>
-<li>2 用while循环删除掉所有</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deleteDuplicates</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        dummyNode = ListNode(<span class="number">-1</span>)</span><br><span class="line">        dummyNode.next = head</span><br><span class="line">        prev = dummyNode</span><br><span class="line">        cur = head</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            <span class="keyword">if</span> cur.next <span class="keyword">and</span> cur.val == cur.next.val:</span><br><span class="line">                <span class="keyword">while</span> cur.next <span class="keyword">and</span> cur.val == cur.next.val:</span><br><span class="line">                    cur = cur.next</span><br><span class="line">                prev.next = cur.next</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                prev = cur</span><br><span class="line">            cur = cur.next</span><br><span class="line">        <span class="keyword">return</span> dummyNode.next</span><br></pre></td></tr></table></figure>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/08/06/linked-list-basic/" data-id="cjmvgkezc000qxo78m383sk6b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/16/linked-list-reverse/" data-id="cjmw7gglo000t2078unr0jcun" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1849,7 +1860,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">20</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1858,7 +1869,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -1867,7 +1878,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/segment-tree/">segment tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">5</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/segment-tree/">segment tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">5</span></li></ul>
         </div>
     </div>
 
@@ -1876,7 +1887,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-indexed-tree/" style="font-size: 10px;">binary indexed tree</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/dynamic-programming/" style="font-size: 16.67px;">dynamic programming</a> <a href="/tags/graph/" style="font-size: 13.33px;">graph</a> <a href="/tags/linked-list/" style="font-size: 13.33px;">linked list</a> <a href="/tags/segment-tree/" style="font-size: 10px;">segment tree</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
+            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-indexed-tree/" style="font-size: 10px;">binary indexed tree</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/dynamic-programming/" style="font-size: 16.67px;">dynamic programming</a> <a href="/tags/graph/" style="font-size: 13.33px;">graph</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/segment-tree/" style="font-size: 10px;">segment tree</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
         </div>
     </div>
 
