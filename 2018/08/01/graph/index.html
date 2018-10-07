@@ -15,7 +15,7 @@
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://kaihaoli.github.io/2018/08/01/graph/adjacency_matrix.jpg">
 <meta property="og:image" content="http://kaihaoli.github.io/2018/08/01/graph/adjacency-list.png">
-<meta property="og:updated_time" content="2018-09-26T12:43:50.961Z">
+<meta property="og:updated_time" content="2018-10-07T16:38:15.261Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Graph">
 <meta name="twitter:description" content="LeetCode 上很多问题都可以抽象成 “图” ，比如搜索类问题，树类问题，迷宫问题，矩阵路径问题，等等。Graph 是非常重要而又涵盖很广的内容，以至于有单独的”图论”研究方向。 1 图的计算机表示 Node / State Edge / Action Directed vs Undirected graph Representation of the graph  Edge List题目给的">
@@ -167,7 +167,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                27
+                29
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -240,7 +240,7 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-图的计算机表示"><span class="toc-number">1.</span> <span class="toc-text">1 图的计算机表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Edge-List"><span class="toc-number">1.1.</span> <span class="toc-text">Edge List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adjacency-Matrix"><span class="toc-number">1.2.</span> <span class="toc-text">Adjacency Matrix</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adjacency-List"><span class="toc-number">1.3.</span> <span class="toc-text">Adjacency List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adjacency-“Hash-Set”"><span class="toc-number">1.4.</span> <span class="toc-text">Adjacency “Hash Set”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Graph-Search-Algorithm"><span class="toc-number">2.</span> <span class="toc-text">2 Graph Search Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Breadth-First-Search"><span class="toc-number">2.1.</span> <span class="toc-text">Breadth First Search</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dijkstra’s-Algorithm"><span class="toc-number">2.2.</span> <span class="toc-text">Dijkstra’s Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Depth-First-Search"><span class="toc-number">2.3.</span> <span class="toc-text">Depth First Search</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Application"><span class="toc-number">3.</span> <span class="toc-text">3 Application</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#133-Clone-Graph"><span class="toc-number">3.1.</span> <span class="toc-text">133. Clone Graph</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-图的计算机表示"><span class="toc-number">1.</span> <span class="toc-text">1 图的计算机表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Edge-List"><span class="toc-number">1.1.</span> <span class="toc-text">Edge List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adjacency-Matrix"><span class="toc-number">1.2.</span> <span class="toc-text">Adjacency Matrix</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adjacency-List"><span class="toc-number">1.3.</span> <span class="toc-text">Adjacency List</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Adjacency-“Hash-Set”"><span class="toc-number">1.4.</span> <span class="toc-text">Adjacency “Hash Set”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Graph-Search-Algorithm"><span class="toc-number">2.</span> <span class="toc-text">2 Graph Search Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Breadth-First-Search"><span class="toc-number">2.1.</span> <span class="toc-text">Breadth First Search</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Undirected-Graph"><span class="toc-number">2.1.1.</span> <span class="toc-text">Undirected Graph</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Directed-Graph"><span class="toc-number">2.1.2.</span> <span class="toc-text">Directed Graph</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Dijkstra’s-Algorithm"><span class="toc-number">2.2.</span> <span class="toc-text">Dijkstra’s Algorithm</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#743-Network-Delay-Time"><span class="toc-number">2.2.1.</span> <span class="toc-text">743. Network Delay Time</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#378-Kth-Smallest-Element-in-a-Sorted-Matrix"><span class="toc-number">2.2.2.</span> <span class="toc-text">378. Kth Smallest Element in a Sorted Matrix</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Depth-First-Search"><span class="toc-number">2.3.</span> <span class="toc-text">Depth First Search</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Undirected-Graph-1"><span class="toc-number">2.3.1.</span> <span class="toc-text">Undirected Graph</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Directed-Graph-1"><span class="toc-number">2.3.2.</span> <span class="toc-text">Directed Graph</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Application"><span class="toc-number">3.</span> <span class="toc-text">3 Application</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#133-Clone-Graph"><span class="toc-number">3.1.</span> <span class="toc-text">133. Clone Graph</span></a></li></ol></li></ol>
                 </div>
             
             <p>LeetCode 上很多问题都可以抽象成 “图” ，比如搜索类问题，树类问题，迷宫问题，矩阵路径问题，等等。Graph 是非常重要而又涵盖很广的内容，以至于有单独的”图论”研究方向。</p>
@@ -256,14 +256,14 @@ ga('send', 'pageview');
 </ul>
 <h3 id="Adjacency-Matrix"><a href="#Adjacency-Matrix" class="headerlink" title="Adjacency Matrix"></a>Adjacency Matrix</h3><img src="/2018/08/01/graph/adjacency_matrix.jpg">
 <ul>
-<li><strong>Pros: Representation is easy to implement. </strong>Edge removal takes O(1) time. Queries like whether there is an edge from vertex ‘u’ to vertec ‘v’ are efficient and can be done O(1)</li>
+<li><strong>Pros: Representation is easy to implement.</strong> Edge removal takes O(1) time. Queries like whether there is an edge from vertex ‘u’ to vertec ‘v’ are efficient and can be done O(1)</li>
 <li><strong>Cons: Consumes more space O(V^2)</strong>(V is the number of vertex/node) Even if the graph is sparse(contains less number of edges) == waste of space</li>
 </ul>
 <h3 id="Adjacency-List"><a href="#Adjacency-List" class="headerlink" title="Adjacency List"></a>Adjacency List</h3><img src="/2018/08/01/graph/adjacency-list.png">
 <p>Vertices/Nodes : V, Edges : E</p>
 <ul>
 <li><strong>Pros: Space Complexity = O(V + E)</strong>. Adding a vertex.node to the graph is easier</li>
-<li><strong>Cons: Time Complexity is O(V) </strong>to check wheter there is an edge from a node to the other.(Comprared to O(1) in adjacent matrix)</li>
+<li><strong>Cons: Time Complexity is O(V)</strong> to check wheter there is an edge from a node to the other.(Comprared to O(1) in adjacent matrix)</li>
 </ul>
 <h3 id="Adjacency-“Hash-Set”"><a href="#Adjacency-“Hash-Set”" class="headerlink" title="Adjacency “Hash Set”"></a>Adjacency “Hash Set”</h3><p>用hashset替代list表示相邻的节点，综合了Adjacency Matrix和Adjacency List的优点！</p>
 <h2 id="2-Graph-Search-Algorithm"><a href="#2-Graph-Search-Algorithm" class="headerlink" title="2 Graph Search Algorithm"></a>2 Graph Search Algorithm</h2><h3 id="Breadth-First-Search"><a href="#Breadth-First-Search" class="headerlink" title="Breadth First Search"></a>Breadth First Search</h3><p><strong>How to describe a BFS’s action during an interview?</strong></p>
@@ -278,12 +278,18 @@ ga('send', 'pageview');
 <li>When we deal with the tree-related problem and in the meantime we need to address the relationship <strong>on the same level</strong></li>
 <li>BFS is <strong>NOT</strong> the right algorithm to find <strong>the shortest path</strong> in the graph</li>
 <li>BFS 的时间空间占用以 <strong>branching factor</strong> 为底, 到解的距离 d 为指数增长；</li>
-<li>BFS 空间占用上 Queue 是不会像 DFS 一样只存一条路径的，而是从起点出发越扩越大，因此会有<strong>空间不够的风险，空间占用为 O(b^d)</strong>。</li>
+<li>BFS 空间占用上 Queue 是不会像 DFS 一样只存一条路径的，而是从起点出发越扩越大，因此会有空间不够的风险，空间占用为 <strong>O(b^d)</strong>。</li>
 </ul>
 <p>Assume Input - graph adjacency “hash set”</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Undirected Graph</span></span><br><span class="line"><span class="comment"># 其实和Tree的BFS traversal是一样的！</span></span><br><span class="line"><span class="comment"># Why visited array? 如果有环的话需要，没有环的话不需要！</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BFS1</span><span class="params">()</span>:</span></span><br><span class="line">    visited = [<span class="number">0</span>] * n</span><br><span class="line">    queue = collections.deque([<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        print(node)</span><br><span class="line">        visited[node] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> graph[node]:</span><br><span class="line">            <span class="keyword">if</span> visited[nei] == <span class="number">0</span>:</span><br><span class="line">                queue.append(nei)</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Directed Graph</span></span><br><span class="line"><span class="comment"># 从Indegree == 0 的node开始！</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BFS2</span><span class="params">()</span>:</span></span><br><span class="line">    queue = collections.deque([i <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n) <span class="keyword">if</span> indegree[i] == <span class="number">0</span>]）</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        print(node)</span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> graph[course]:</span><br><span class="line">            indegree[nei] -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> indegree[nei] == <span class="number">0</span>:</span><br><span class="line">                queue.append(nei)</span><br></pre></td></tr></table></figure>
-<h3 id="Dijkstra’s-Algorithm"><a href="#Dijkstra’s-Algorithm" class="headerlink" title="Dijkstra’s Algorithm"></a>Dijkstra’s Algorithm</h3><p>“呆克斯戳” - Best First Search</p>
+<h4 id="Undirected-Graph"><a href="#Undirected-Graph" class="headerlink" title="Undirected Graph"></a>Undirected Graph</h4><ul>
+<li>Queue, visited</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 其实和Tree的BFS traversal是一样的！</span></span><br><span class="line"><span class="comment"># Why visited array? 如果有环的话需要，没有环的话就是tree了，所以不需要！</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BFS1</span><span class="params">()</span>:</span></span><br><span class="line">    visited = [<span class="number">0</span>] * n</span><br><span class="line">    queue = collections.deque([<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        print(node)</span><br><span class="line">        visited[node] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> graph[node]:</span><br><span class="line">            <span class="keyword">if</span> visited[nei] == <span class="number">0</span>:</span><br><span class="line">                queue.append(nei)</span><br></pre></td></tr></table></figure>
+<h4 id="Directed-Graph"><a href="#Directed-Graph" class="headerlink" title="Directed Graph"></a>Directed Graph</h4><ul>
+<li>Only directed graph has indegree and outdegree!</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从Indegree == 0 的node开始！</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BFS2</span><span class="params">()</span>:</span></span><br><span class="line">    queue = collections.deque([i <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n) <span class="keyword">if</span> indegree[i] == <span class="number">0</span>]）</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        print(node)</span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> graph[course]:</span><br><span class="line">            indegree[nei] -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> indegree[nei] == <span class="number">0</span>:</span><br><span class="line">                queue.append(nei)</span><br></pre></td></tr></table></figure>
+<h3 id="Dijkstra’s-Algorithm"><a href="#Dijkstra’s-Algorithm" class="headerlink" title="Dijkstra’s Algorithm"></a>Dijkstra’s Algorithm</h3><p>“呆克斯戳” - Best First Search, 也是BFS</p>
 <ol>
 <li>Usages: Find the <strong>shortest path cost from a single node (source node) to any other nodes in that graph</strong></li>
 <li>Data Structure: Priority Queue (Min Heap)</li>
@@ -293,19 +299,30 @@ ga('send', 'pageview');
 <li>Termination condition 所有点计算完毕也是”Queue is empty”</li>
 </ul>
 </li>
+<li><strong>Properties</strong><ul>
+<li>One node can be expanded once and only once</li>
+<li>One node can be generated more than once. (cost can be reduced over time)</li>
+<li>all the cost of the nodes that are expanded are monotonically non-decreasing（所有从 priority queue里面pop出来的元素的值是单调非递减-&gt;单调递增）</li>
+<li>time complexity, for a graph with n node and the connectivity of the node is <strong>O(nlogn)</strong></li>
+<li>when a node is popped out for expansion, <strong>its value is fixed which is equal to the shortest distance from the start node</strong> (非负权重)</li>
+</ul>
+</li>
 </ol>
-<p><strong>Properties</strong></p>
-<pre><code>- One node can be expanded once and only once
-- One node can be generated more than once. (cost can be reduced over time)
-- all the cost of the nodes that are expanded are monotonically non-decreasing（所有从 priority queue里面pop出来的元素的值是单调非递减-&gt;单调递增）
-- time complexity, for a graph with n node and the connectivity of the node is **O(nlogn)**
-- when a node is popped out for expansion, **its value is fixed which is equal to the shortest distance from the start node** (非负权重)
-</code></pre><h3 id="Depth-First-Search"><a href="#Depth-First-Search" class="headerlink" title="Depth First Search"></a>Depth First Search</h3><ul>
+<h4 id="743-Network-Delay-Time"><a href="#743-Network-Delay-Time" class="headerlink" title="743. Network Delay Time"></a><a href="https://leetcode.com/problems/network-delay-time/" target="_blank" rel="noopener">743. Network Delay Time</a></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">networkDelayTime</span><span class="params">(self, times, N, K)</span>:</span></span><br><span class="line">      graph = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(N+<span class="number">1</span>)]</span><br><span class="line">      <span class="keyword">for</span> u, v, w <span class="keyword">in</span> times:</span><br><span class="line">          graph[u].append((v, w))</span><br><span class="line"></span><br><span class="line">      dis = [<span class="number">0</span>] + [<span class="number">-1</span>] * N  </span><br><span class="line">      pq = [(<span class="number">0</span>, K)]</span><br><span class="line"></span><br><span class="line">      <span class="keyword">while</span> pq:</span><br><span class="line">          w, s = heapq.heappop(pq)</span><br><span class="line">          <span class="keyword">if</span> dis[s] &gt;= <span class="number">0</span>:</span><br><span class="line">              <span class="keyword">continue</span></span><br><span class="line">          dis[s] = w</span><br><span class="line">          <span class="keyword">for</span> nxt, nw <span class="keyword">in</span> graph[s]:</span><br><span class="line">              heapq.heappush(pq, (w+nw, nxt))</span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span> <span class="keyword">if</span> <span class="number">-1</span> <span class="keyword">in</span> dis <span class="keyword">else</span> max(dis)</span><br></pre></td></tr></table></figure>
+<h4 id="378-Kth-Smallest-Element-in-a-Sorted-Matrix"><a href="#378-Kth-Smallest-Element-in-a-Sorted-Matrix" class="headerlink" title="378. Kth Smallest Element in a Sorted Matrix"></a><a href="https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/" target="_blank" rel="noopener">378. Kth Smallest Element in a Sorted Matrix</a></h4><ul>
+<li>Time : O(klogk), Space : O(k)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kthSmallest</span><span class="params">(self, matrix, k)</span>:</span></span><br><span class="line">        n = len(matrix)</span><br><span class="line">        visited = set([(<span class="number">0</span>, <span class="number">0</span>)])</span><br><span class="line">        heap = [(matrix[<span class="number">0</span>][<span class="number">0</span>], <span class="number">0</span>, <span class="number">0</span>)]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(k):</span><br><span class="line">            val, x, y = heapq.heappop(heap)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># next row</span></span><br><span class="line">            <span class="keyword">if</span> x+<span class="number">1</span> &lt;= n<span class="number">-1</span> <span class="keyword">and</span> (x+<span class="number">1</span>, y) <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                heapq.heappush(heap, (matrix[x+<span class="number">1</span>][y], x+<span class="number">1</span>, y))</span><br><span class="line">                visited.add((x+<span class="number">1</span>,y))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># next col</span></span><br><span class="line">            <span class="keyword">if</span> y+<span class="number">1</span> &lt;= n<span class="number">-1</span> <span class="keyword">and</span> (x, y+<span class="number">1</span>) <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                heapq.heappush(heap, (matrix[x][y+<span class="number">1</span>], x, y+<span class="number">1</span>))</span><br><span class="line">                visited.add((x,y+<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> val</span><br></pre></td></tr></table></figure>
+<h3 id="Depth-First-Search"><a href="#Depth-First-Search" class="headerlink" title="Depth First Search"></a>Depth First Search</h3><p>Backtracking is just a behavior of DFS</p>
+<ul>
 <li>DFS 的时间占用以 <strong>branching factor</strong> 为底，树的深度 m 为指数增长</li>
 <li>DFS 的空间占用上，却只是 O(bm)，可视化探索过程中只把每个 Node 的所有子节点存在 Stack 上， 探索完了再 pop 出来接着探，因此储存的节点数为 O(bm)。</li>
 </ul>
 <p>可以看到无论是 BFS 还是 DFS，树的 branching factor 都是对空间与时间复杂度影响最大的参数；除此之外，<strong>BFS 中最重要的是到解的距离，而 DFS 看从当前节点的深度。</strong>普遍来讲，DFS 空间上会经济一些，当然也要分情况讨论。</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Undirected Graph</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(node)</span>:</span></span><br><span class="line">    visited.add(node)</span><br><span class="line">    <span class="keyword">for</span> nei <span class="keyword">in</span> node.neighbors:</span><br><span class="line">        <span class="keyword">if</span> nei <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">            dfs(nei)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Directed Graph</span></span><br><span class="line">visited 需要 三种状态！<span class="number">0</span>-未访问，<span class="number">1</span>-正在访问，<span class="number">2</span>-已经访问</span><br></pre></td></tr></table></figure>
+<h4 id="Undirected-Graph-1"><a href="#Undirected-Graph-1" class="headerlink" title="Undirected Graph"></a>Undirected Graph</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(node)</span>:</span></span><br><span class="line">    visited.add(node)</span><br><span class="line">    <span class="keyword">for</span> nei <span class="keyword">in</span> node.neighbors:</span><br><span class="line">        <span class="keyword">if</span> nei <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">            dfs(nei)</span><br></pre></td></tr></table></figure>
+<h4 id="Directed-Graph-1"><a href="#Directed-Graph-1" class="headerlink" title="Directed Graph"></a>Directed Graph</h4><ul>
+<li>visited 需要 三种状态!!! 0-未访问，1-正在访问，2-已经访问</li>
+</ul>
 <h2 id="3-Application"><a href="#3-Application" class="headerlink" title="3 Application"></a>3 Application</h2><h3 id="133-Clone-Graph"><a href="#133-Clone-Graph" class="headerlink" title="133. Clone Graph"></a><a href="https://leetcode.com/problems/clone-graph/" target="_blank" rel="noopener">133. Clone Graph</a></h3><p>克隆Graph，很多graph都是用HashTable一一映射</p>
 <ul>
 <li>Hash Table 新旧node一一映射，再把关系同样映射！</li>
@@ -322,7 +339,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/01/graph/" data-id="cjmwuem0a000uxo7819bxyj5i" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/01/graph/" data-id="cjmzbtyxr000tvy789sax6u4b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -401,7 +418,7 @@ ga('send', 'pageview');
             <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    Graph1 - Detect the Cycle
+                    Graph - Detect the Cycle
                 
             </div>
         </a>
@@ -437,6 +454,24 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/07/dfs/" class="title">Depth First Search</a></p>
+                            <p class="item-date"><time datetime="2018-10-07T18:35:05.000Z" itemprop="datePublished">2018-10-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/06/heap/" class="title">Heap</a></p>
+                            <p class="item-date"><time datetime="2018-10-07T00:23:25.000Z" itemprop="datePublished">2018-10-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/10/04/queue-stack/" class="title">Queue &amp; Stack</a></p>
                             <p class="item-date"><time datetime="2018-10-04T17:33:39.000Z" itemprop="datePublished">2018-10-04</time></p>
                         </div>
@@ -460,24 +495,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/09/29/buy-and-sell-stock/" class="title">Buy and Sell Stock</a></p>
-                            <p class="item-date"><time datetime="2018-09-29T22:19:21.000Z" itemprop="datePublished">2018-09-29</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/09/25/binary-search-tree/" class="title">Binary Search Tree</a></p>
-                            <p class="item-date"><time datetime="2018-09-25T15:43:15.000Z" itemprop="datePublished">2018-09-25</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -487,7 +504,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">23</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -496,7 +513,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -505,7 +522,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-indexed-tree/">binary indexed tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/segment-tree/">segment tree</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">5</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">6</span></li></ul>
         </div>
     </div>
 
@@ -514,7 +531,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-indexed-tree/" style="font-size: 10px;">binary indexed tree</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/dynamic-programming/" style="font-size: 16.67px;">dynamic programming</a> <a href="/tags/graph/" style="font-size: 13.33px;">graph</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/recursion/" style="font-size: 10px;">recursion</a> <a href="/tags/segment-tree/" style="font-size: 10px;">segment tree</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
+            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/dynamic-programming/" style="font-size: 16.67px;">dynamic programming</a> <a href="/tags/graph/" style="font-size: 13.33px;">graph</a> <a href="/tags/heap/" style="font-size: 10px;">heap</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/recursion/" style="font-size: 10px;">recursion</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
         </div>
     </div>
 
