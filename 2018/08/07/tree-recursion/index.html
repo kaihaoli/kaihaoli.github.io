@@ -6,14 +6,14 @@
     <title>Tree Recursion | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="Basic Binary tree 往往是最常见的，和recursion结合最紧密的面试题目类型  树本身就是Recursive的结构！ 每层的node具备的性质，传递的值和下一层的性质往往一致。比较容易定义recursive rule Base case(generally):null pointer under the leaf node, Base case usually refers t">
-<meta name="keywords" content="tree">
+<meta name="keywords" content="tree,recursion">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tree Recursion">
 <meta property="og:url" content="http://kaihaoli.github.io/2018/08/07/tree-recursion/index.html">
 <meta property="og:site_name" content="kaihao">
 <meta property="og:description" content="Basic Binary tree 往往是最常见的，和recursion结合最紧密的面试题目类型  树本身就是Recursive的结构！ 每层的node具备的性质，传递的值和下一层的性质往往一致。比较容易定义recursive rule Base case(generally):null pointer under the leaf node, Base case usually refers t">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-08T03:38:18.360Z">
+<meta property="og:updated_time" content="2018-10-08T14:23:01.499Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Tree Recursion">
 <meta name="twitter:description" content="Basic Binary tree 往往是最常见的，和recursion结合最紧密的面试题目类型  树本身就是Recursive的结构！ 每层的node具备的性质，传递的值和下一层的性质往往一致。比较容易定义recursive rule Base case(generally):null pointer under the leaf node, Base case usually refers t">
@@ -164,11 +164,11 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                30
+                34
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                9
+                13
                 <span>tags</span>
             </div>
         </div>
@@ -224,7 +224,7 @@ ga('send', 'pageview');
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/tree/">tree</a>
+        <a class="tag-link" href="/tags/recursion/">recursion</a>, <a class="tag-link" href="/tags/tree/">tree</a>
     </div>
 
                     </div>
@@ -237,7 +237,7 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic"><span class="toc-number">1.</span> <span class="toc-text">Basic</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#104-Maximum-Depth-of-Binary-Tree"><span class="toc-number">1.1.</span> <span class="toc-text">104. Maximum Depth of Binary Tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#111-Minimum-Depth-of-Binary-Tree"><span class="toc-number">1.2.</span> <span class="toc-text">111. Minimum Depth of Binary Tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#110-Balanced-Binary-Tree"><span class="toc-number">1.3.</span> <span class="toc-text">110. Balanced Binary Tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#101-Symmetric-Tree"><span class="toc-number">1.4.</span> <span class="toc-text">101. Symmetric Tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#226-Invert-Binary-Tree"><span class="toc-number">1.5.</span> <span class="toc-text">226. Invert Binary Tree</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Basic"><span class="toc-number">1.</span> <span class="toc-text">Basic</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#104-Maximum-Depth-of-Binary-Tree"><span class="toc-number">1.1.</span> <span class="toc-text">104. Maximum Depth of Binary Tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#111-Minimum-Depth-of-Binary-Tree"><span class="toc-number">1.2.</span> <span class="toc-text">111. Minimum Depth of Binary Tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#110-Balanced-Binary-Tree"><span class="toc-number">1.3.</span> <span class="toc-text">110. Balanced Binary Tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#101-Symmetric-Tree"><span class="toc-number">1.4.</span> <span class="toc-text">101. Symmetric Tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#226-Invert-Binary-Tree"><span class="toc-number">1.5.</span> <span class="toc-text">226. Invert Binary Tree</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#100-Same-Tree"><span class="toc-number">1.6.</span> <span class="toc-text">100. Same Tree</span></a></li></ol></li></ol>
                 </div>
             
             <h2 id="Basic"><a href="#Basic" class="headerlink" title="Basic"></a>Basic</h2><ul>
@@ -269,19 +269,25 @@ ga('send', 'pageview');
 <li>有一个孩子 - not left child OR not right child</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minDepth</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root.left <span class="keyword">or</span> <span class="keyword">not</span> root.right:</span><br><span class="line">            <span class="keyword">return</span> self.minDepth(root.left) + self.minDepth(root.right) + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> min(self.minDepth(root.left), self.minDepth(root.right)) + <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<pre><code>* 从下往上反值 - 统计tree里每个node的左子树有多少个node？
-* 从下往上返值 - Find the node with **max difference** in the total number of descendents in its left subtree and right subtree
-</code></pre><h3 id="110-Balanced-Binary-Tree"><a href="#110-Balanced-Binary-Tree" class="headerlink" title="110. Balanced Binary Tree"></a><a href="https://leetcode.com/problems/balanced-binary-tree/" target="_blank" rel="noopener">110. Balanced Binary Tree</a></h3><p>A binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p>
+<ul>
+<li>从下往上反值 - 统计tree里每个node的左子树有多少个node？</li>
+<li>从下往上返值 - Find the node with <strong>max difference</strong> in the total number of descendents in its left subtree and right subtree</li>
+</ul>
+<h3 id="110-Balanced-Binary-Tree"><a href="#110-Balanced-Binary-Tree" class="headerlink" title="110. Balanced Binary Tree"></a><a href="https://leetcode.com/problems/balanced-binary-tree/" target="_blank" rel="noopener">110. Balanced Binary Tree</a></h3><p>A binary tree in which the depth of the two subtrees of every node never differ by more than 1.</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(nlogn), Space : O(n)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">height</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> max(self.height(root.left), self.height(root.right)) + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isBalanced</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        left = self.height(root.left)</span><br><span class="line">        right = self.height(root.right)</span><br><span class="line">        <span class="keyword">if</span> abs(left-right) &gt; <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> self.isBalanced(root.left) <span class="keyword">and</span> self.isBalanced(root.right)</span><br></pre></td></tr></table></figure>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(n)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isBalanced</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.dfs(root) != <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        left = self.dfs(root.left)</span><br><span class="line">        <span class="keyword">if</span> left == <span class="number">-1</span>:  <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">        right = self.dfs(root.right)</span><br><span class="line">        <span class="keyword">if</span> right == <span class="number">-1</span>: <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> abs(left - right) &gt; <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        <span class="keyword">return</span> max(left, right) + <span class="number">1</span></span><br></pre></td></tr></table></figure>
 <h3 id="101-Symmetric-Tree"><a href="#101-Symmetric-Tree" class="headerlink" title="101. Symmetric Tree"></a><a href="https://leetcode.com/problems/symmetric-tree/" target="_blank" rel="noopener">101. Symmetric Tree</a></h3><ul>
 <li>判断空间复杂度的时候一定要注意<strong>树不一定是balanced的</strong>！！！</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(n)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isSymmetric</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.isMirror(root, root)</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isMirror</span><span class="params">(self, root1, root2)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root1 <span class="keyword">and</span> <span class="keyword">not</span> root2:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="keyword">not</span> root1 <span class="keyword">or</span> <span class="keyword">not</span> root2:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> ( root1.val == root2.val</span><br><span class="line">                <span class="keyword">and</span> self.isMirror(root1.left, root2.right)</span><br><span class="line">                <span class="keyword">and</span> self.isMirror(root1.right, root2.left))</span><br></pre></td></tr></table></figure>
-<h3 id="226-Invert-Binary-Tree"><a href="#226-Invert-Binary-Tree" class="headerlink" title="226. Invert Binary Tree"></a><a href="https://leetcode.com/problems/invert-binary-tree/" target="_blank" rel="noopener">226. Invert Binary Tree</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">invertTree</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">        root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)</span><br><span class="line">        <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
+<h3 id="226-Invert-Binary-Tree"><a href="#226-Invert-Binary-Tree" class="headerlink" title="226. Invert Binary Tree"></a><a href="https://leetcode.com/problems/invert-binary-tree/" target="_blank" rel="noopener">226. Invert Binary Tree</a></h3><ul>
+<li>注意赋值的过程已经有改变结构，用temp来swap！</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">invertTree</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">        root.left, root.right = self.invertTree(root.right), self.invertTree(root.left)</span><br><span class="line">        <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>Google: 90% of our engineers use the software you wrote (Homebrew), but you can’t invert a binary tree on a whiteboard so f*** off.</p>
 </blockquote>
+<h3 id="100-Same-Tree"><a href="#100-Same-Tree" class="headerlink" title="100. Same Tree"></a><a href="https://leetcode.com/problems/same-tree/" target="_blank" rel="noopener">100. Same Tree</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isSameTree</span><span class="params">(self, p, q)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> p <span class="keyword">and</span> <span class="keyword">not</span> q:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="keyword">not</span> p <span class="keyword">or</span> <span class="keyword">not</span> q:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> (p.val == q.val <span class="keyword">and</span></span><br><span class="line">                   self.isSameTree(p.left, q.left) <span class="keyword">and</span></span><br><span class="line">                   self.isSameTree(p.right, q.right))</span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -292,7 +298,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/07/tree-recursion/" data-id="cjmzqy8zp001uqwu0ldulnh9l" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/07/tree-recursion/" data-id="cjn2ll5d800282su0pyu65chk" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -407,6 +413,24 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/09/greedy-schedule/" class="title">Greedy Schedule</a></p>
+                            <p class="item-date"><time datetime="2018-10-09T12:44:13.000Z" itemprop="datePublished">2018-10-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/08/hash-table/" class="title">Hash Table</a></p>
+                            <p class="item-date"><time datetime="2018-10-08T14:48:07.000Z" itemprop="datePublished">2018-10-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/10/07/dfs/" class="title">Depth First Search</a></p>
                             <p class="item-date"><time datetime="2018-10-07T18:35:05.000Z" itemprop="datePublished">2018-10-07</time></p>
                         </div>
@@ -425,26 +449,8 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/04/queue-stack/" class="title">Queue &amp; Stack</a></p>
-                            <p class="item-date"><time datetime="2018-10-04T17:33:39.000Z" itemprop="datePublished">2018-10-04</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/02/sort/" class="title">Sort</a></p>
-                            <p class="item-date"><time datetime="2018-10-02T20:01:03.000Z" itemprop="datePublished">2018-10-02</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/09/30/pramp/" class="title">pramp</a></p>
-                            <p class="item-date"><time datetime="2018-09-30T19:57:10.000Z" itemprop="datePublished">2018-09-30</time></p>
+                            <p class="item-title"><a href="/2018/10/05/string-basic/" class="title">String Basic</a></p>
+                            <p class="item-date"><time datetime="2018-10-05T15:26:11.000Z" itemprop="datePublished">2018-10-05</time></p>
                         </div>
                     </li>
                 
@@ -457,7 +463,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">24</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -466,7 +472,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -475,7 +481,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">7</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -484,7 +490,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/dynamic-programming/" style="font-size: 16.67px;">dynamic programming</a> <a href="/tags/graph/" style="font-size: 13.33px;">graph</a> <a href="/tags/heap/" style="font-size: 10px;">heap</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/recursion/" style="font-size: 10px;">recursion</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
+            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/dynamic-programming/" style="font-size: 16.67px;">dynamic programming</a> <a href="/tags/graph/" style="font-size: 16.67px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 10px;">hash table</a> <a href="/tags/heap/" style="font-size: 10px;">heap</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/recursion/" style="font-size: 13.33px;">recursion</a> <a href="/tags/string/" style="font-size: 10px;">string</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a> <a href="/tags/union-find/" style="font-size: 10px;">union find</a>
         </div>
     </div>
 

@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>String Basic | kaihao</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="Popular representation of characters:  ASCII representation of a letter: A==65, a==97 Unicode : the latest version of Unicode contains a repertoire of more than 110,000 charaters covering 100 scripts">
+<meta name="keywords" content="string">
+<meta property="og:type" content="article">
+<meta property="og:title" content="String Basic">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/10/05/string-basic/index.html">
+<meta property="og:site_name" content="kaihao">
+<meta property="og:description" content="Popular representation of characters:  ASCII representation of a letter: A==65, a==97 Unicode : the latest version of Unicode contains a repertoire of more than 110,000 charaters covering 100 scripts">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-10-09T19:38:34.954Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="String Basic">
+<meta name="twitter:description" content="Popular representation of characters:  ASCII representation of a letter: A==65, a==97 Unicode : the latest version of Unicode contains a repertoire of more than 110,000 charaters covering 100 scripts">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-117906283-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">kaihao</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/algorithms">Algorithms</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/about">About me</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/algorithms">Algorithms</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About me</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Kaihao(Chris) Li</h2>
+            <h3 id="title">I am the Bone of my Sword!</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Stony Brook, New York, USA</span>
+            <a id="follow" target="_blank" href="https://github.com/kaihaoli/">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                34
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                13
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/kaihaoli" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-string-basic" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            String Basic
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/10/05/string-basic/">
+            <time datetime="2018-10-05T15:26:11.000Z" itemprop="datePublished">2018-10-05</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/string/">string</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Removol"><span class="toc-number">1.</span> <span class="toc-text">Removol</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Char-Removal"><span class="toc-number">1.1.</span> <span class="toc-text">Char Removal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#27-Remove-Element"><span class="toc-number">1.2.</span> <span class="toc-text">27. Remove Element</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Char-Removal-II"><span class="toc-number">1.3.</span> <span class="toc-text">Char Removal II</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#De-duplication"><span class="toc-number">2.</span> <span class="toc-text">De-duplication</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#26-Remove-Duplicates-from-Sorted-Array"><span class="toc-number">2.1.</span> <span class="toc-text">26. Remove Duplicates from Sorted Array</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#80-Remove-Duplicates-from-Sorted-Array-II"><span class="toc-number">2.2.</span> <span class="toc-text">80. Remove Duplicates from Sorted Array II</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Remove-adjacent-letters-repeatedly"><span class="toc-number">2.3.</span> <span class="toc-text">Remove adjacent letters repeatedly</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Substring-Matching"><span class="toc-number">3.</span> <span class="toc-text">Substring Matching</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#28-Implement-strStr"><span class="toc-number">3.1.</span> <span class="toc-text">28. Implement strStr()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reversal"><span class="toc-number">4.</span> <span class="toc-text">Reversal</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#344-Reverse-String"><span class="toc-number">4.1.</span> <span class="toc-text">344. Reverse String</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#557-Reverse-Words-in-a-String-III"><span class="toc-number">4.2.</span> <span class="toc-text">557. Reverse Words in a String III</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#“I-love-Google”-“Google-love-I”"><span class="toc-number">4.3.</span> <span class="toc-text">“I love Google” - “Google love I”</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Char-Replace"><span class="toc-number">5.</span> <span class="toc-text">Char Replace</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Word-Replacement"><span class="toc-number">5.1.</span> <span class="toc-text">Word Replacement</span></a></li></ol></li></ol>
+                </div>
+            
+            <p>Popular representation of characters:</p>
+<ol>
+<li>ASCII representation of a letter: A==65, a==97</li>
+<li>Unicode : the latest version of Unicode contains a repertoire of more than 110,000 charaters covering 100 scripts and various symbols.</li>
+</ol>
+<h2 id="Removol"><a href="#Removol" class="headerlink" title="Removol"></a>Removol</h2><h3 id="Char-Removal"><a href="#Char-Removal" class="headerlink" title="Char Removal"></a>Char Removal</h3><p>Remove a/some particular chars from a String. Example: string input = “student”, remove “u and n” -&gt; output:”stdet”</p>
+<ul>
+<li>Attention : String and Array erase API!!!</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">charRemoval</span><span class="params">(self, s, ch)</span>:</span></span><br><span class="line">        chs = list(s)</span><br><span class="line">        start = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(chs)):</span><br><span class="line">            <span class="keyword">if</span> chs[i] <span class="keyword">not</span> <span class="keyword">in</span> ch:</span><br><span class="line">                chs[start] = chs[i]</span><br><span class="line">            start += <span class="number">1</span></span><br><span class="line">        retrun <span class="string">''</span>.join(chs[:start])</span><br></pre></td></tr></table></figure>
+<h3 id="27-Remove-Element"><a href="#27-Remove-Element" class="headerlink" title="27. Remove Element"></a><a href="https://leetcode.com/problems/remove-element/" target="_blank" rel="noopener">27. Remove Element</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeElement</span><span class="params">(self, nums, val)</span>:</span></span><br><span class="line">        start = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] != val:</span><br><span class="line">                nums[start] = nums[i]</span><br><span class="line">                start += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> start</span><br></pre></td></tr></table></figure>
+<h3 id="Char-Removal-II"><a href="#Char-Removal-II" class="headerlink" title="Char Removal II"></a>Char Removal II</h3><p>Remove all leading/trailing and duplicate empty spaces(only leave one empty space if duplicated spaces happen) from the input string.</p>
+<h2 id="De-duplication"><a href="#De-duplication" class="headerlink" title="De-duplication"></a>De-duplication</h2><h3 id="26-Remove-Duplicates-from-Sorted-Array"><a href="#26-Remove-Duplicates-from-Sorted-Array" class="headerlink" title="26. Remove Duplicates from Sorted Array"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">26. Remove Duplicates from Sorted Array</a></h3><ul>
+<li>What’s the phisical definition of the two pointers???</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        start = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] != nums[start<span class="number">-1</span>]:</span><br><span class="line">                nums[start] = nums[i]</span><br><span class="line">                start += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> start</span><br></pre></td></tr></table></figure>
+<h3 id="80-Remove-Duplicates-from-Sorted-Array-II"><a href="#80-Remove-Duplicates-from-Sorted-Array-II" class="headerlink" title="80. Remove Duplicates from Sorted Array II"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/" target="_blank" rel="noopener">80. Remove Duplicates from Sorted Array II</a></h3><ul>
+<li>counter 也可以最好的方式是直接和slow-2比较！</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(nums) &lt;= <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> len(nums)</span><br><span class="line"></span><br><span class="line">        slow = <span class="number">2</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">2</span>, len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] != nums[slow<span class="number">-2</span>]:</span><br><span class="line">                nums[slow] = nums[i]</span><br><span class="line">                slow += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> slow</span><br></pre></td></tr></table></figure>
+<h3 id="Remove-adjacent-letters-repeatedly"><a href="#Remove-adjacent-letters-repeatedly" class="headerlink" title="Remove adjacent letters repeatedly"></a>Remove adjacent letters repeatedly</h3><ul>
+<li>Stack or Two pointers</li>
+</ul>
+<h2 id="Substring-Matching"><a href="#Substring-Matching" class="headerlink" title="Substring Matching"></a>Substring Matching</h2><h3 id="28-Implement-strStr"><a href="#28-Implement-strStr" class="headerlink" title="28. Implement strStr()"></a><a href="https://leetcode.com/problems/implement-strstr/" target="_blank" rel="noopener">28. Implement strStr()</a></h3><ul>
+<li>Time : O(m * n)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">strStr</span><span class="params">(self, haystack, needle)</span>:</span></span><br><span class="line">        m, n = len(needle), len(haystack)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n-m+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> haystack[i:i+m] == needle:</span><br><span class="line">                <span class="keyword">return</span> i</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
+<h2 id="Reversal"><a href="#Reversal" class="headerlink" title="Reversal"></a>Reversal</h2><h3 id="344-Reverse-String"><a href="#344-Reverse-String" class="headerlink" title="344. Reverse String"></a><a href="https://leetcode.com/problems/reverse-string/" target="_blank" rel="noopener">344. Reverse String</a></h3><ul>
+<li>two pointers : left, right or start, end<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseString</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        chs = list(s)</span><br><span class="line">        s, e = <span class="number">0</span>, len(s)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> s &lt; e:</span><br><span class="line">            chs[s], chs[e] = chs[e], chs[s]</span><br><span class="line">            s += <span class="number">1</span></span><br><span class="line">            e -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span>.join(chs)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="557-Reverse-Words-in-a-String-III"><a href="#557-Reverse-Words-in-a-String-III" class="headerlink" title="557. Reverse Words in a String III"></a><a href="https://leetcode.com/problems/reverse-words-in-a-string-iii/" target="_blank" rel="noopener">557. Reverse Words in a String III</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseWords</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        words = s.split()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(words)):</span><br><span class="line">            words[i] = words[i][::<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">return</span> <span class="string">' '</span>.join(words)</span><br></pre></td></tr></table></figure>
+<h3 id="“I-love-Google”-“Google-love-I”"><a href="#“I-love-Google”-“Google-love-I”" class="headerlink" title="“I love Google” - “Google love I”"></a>“I love Google” - “Google love I”</h3><ul>
+<li>sol1. split and reverse</li>
+<li>sol2. reverse twice(trick)</li>
+</ul>
+<ol>
+<li>reverse each words “I love Google” - “I evol elgooG”</li>
+<li>reverse the string “Google love I”</li>
+</ol>
+<ul>
+<li><strong>Dicussion</strong></li>
+</ul>
+<ol>
+<li>The idea for “I LOVE GOOGLE” can be combined to form more complex prblem. e.g., if we have empty/leading/trailing spaces in the input.</li>
+<li>The idea can be extended to other probem as well!<ul>
+<li>“abcdef” sift to the left by two steps “cdefab”</li>
+<li>step1. seperate reverse “bafedc”</li>
+<li>step2. reverse the word “cdefab”</li>
+</ul>
+</li>
+</ol>
+<h2 id="Char-Replace"><a href="#Char-Replace" class="headerlink" title="Char Replace"></a>Char Replace</h2><h3 id="Word-Replacement"><a href="#Word-Replacement" class="headerlink" title="Word Replacement"></a>Word Replacement</h3><p>“student” -&gt; “stuXXt”(den -&gt; XX)</p>
+<ul>
+<li><strong>Two Pointers</strong></li>
+</ul>
+<ol>
+<li>slow: all letters to the left hand side of slow are the results to return</li>
+<li>fast: fast index to scan the whole string</li>
+</ol>
+<ul>
+<li><strong>follow up</strong><br>s1 = “_“, s2 = “20%”</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/10/05/string-basic/" data-id="cjn2ll5d400222su0kmqsh329" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+        <a href="/2018/10/06/heap/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Heap
+                
+            </div>
+        </a>
+    
+    
+        <a href="/2018/10/04/queue-stack/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">Queue &amp; Stack</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/09/greedy-schedule/" class="title">Greedy Schedule</a></p>
+                            <p class="item-date"><time datetime="2018-10-09T12:44:13.000Z" itemprop="datePublished">2018-10-09</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/08/hash-table/" class="title">Hash Table</a></p>
+                            <p class="item-date"><time datetime="2018-10-08T14:48:07.000Z" itemprop="datePublished">2018-10-08</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/07/dfs/" class="title">Depth First Search</a></p>
+                            <p class="item-date"><time datetime="2018-10-07T18:35:05.000Z" itemprop="datePublished">2018-10-07</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/06/heap/" class="title">Heap</a></p>
+                            <p class="item-date"><time datetime="2018-10-07T00:23:25.000Z" itemprop="datePublished">2018-10-06</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/05/string-basic/" class="title">String Basic</a></p>
+                            <p class="item-date"><time datetime="2018-10-05T15:26:11.000Z" itemprop="datePublished">2018-10-05</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">28</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dynamic-programming/">dynamic programming</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a><span class="tag-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 10px;">binary search</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/dynamic-programming/" style="font-size: 16.67px;">dynamic programming</a> <a href="/tags/graph/" style="font-size: 16.67px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 10px;">hash table</a> <a href="/tags/heap/" style="font-size: 10px;">heap</a> <a href="/tags/linked-list/" style="font-size: 16.67px;">linked list</a> <a href="/tags/recursion/" style="font-size: 13.33px;">recursion</a> <a href="/tags/string/" style="font-size: 10px;">string</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a> <a href="/tags/union-find/" style="font-size: 10px;">union find</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://leetcode.com/">LeetCode</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 Kaihao Li
+            <span id="busuanzi_container_site_uv">
+                ,  Visitors : <span id="busuanzi_value_site_uv"></span>
+            </span> <br>
+        </div>
+    </div>
+</footer>
+
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>
