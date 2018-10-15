@@ -3,15 +3,19 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Category: Algorithms | kaihao</title>
+    <title>Sampling &amp; Randomization | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta property="og:type" content="website">
-<meta property="og:title" content="kaihao">
-<meta property="og:url" content="http://kaihaoli.github.io/categories/Algorithms/index.html">
+    <meta name="description" content="Reservoir SamplingShuffling Algorithmpokers(spades, hearts, diamonds, clubs)  Iteration 1Call random(0-51), lets say, random_numbers1 = 5P(every card can showup in position 51) = 1/52  Iteration 2Call">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Sampling &amp; Randomization">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/10/14/sampling-randomization/index.html">
 <meta property="og:site_name" content="kaihao">
+<meta property="og:description" content="Reservoir SamplingShuffling Algorithmpokers(spades, hearts, diamonds, clubs)  Iteration 1Call random(0-51), lets say, random_numbers1 = 5P(every card can showup in position 51) = 1/52  Iteration 2Call">
 <meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-10-14T20:54:09.997Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="kaihao">
+<meta name="twitter:title" content="Sampling &amp; Randomization">
+<meta name="twitter:description" content="Reservoir SamplingShuffling Algorithmpokers(spades, hearts, diamonds, clubs)  Iteration 1Call random(0-51), lets say, random_numbers1 = 5P(every card can showup in position 51) = 1/52  Iteration 2Call">
     
 
     
@@ -187,25 +191,21 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-folder"></i></span>
-        <h1 class="title">Algorithms</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-sampling-randomization" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/10/14/sampling-randomization/">Sampling &amp; Randomization</a>
+        <h1 class="article-title" itemprop="name">
+            Sampling &amp; Randomization
         </h1>
     
 
-                <div class="article-meta">
-                    
+                
+                    <div class="article-meta">
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/2018/10/14/sampling-randomization/">
@@ -214,408 +214,154 @@ ga('send', 'pageview');
     </div>
 
 
-                    
+                        
     <div class="article-category">
     	<i class="fa fa-folder"></i>
         <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
     </div>
 
-                    
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+                        
+                    </div>
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/10/11/string-advanced/">String Advanced</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/10/11/string-advanced/">
-            <time datetime="2018-10-11T23:31:29.000Z" itemprop="datePublished">2018-10-11</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/sliding-window/">sliding window</a>, <a class="tag-link" href="/tags/string/">string</a>
-    </div>
-
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Reservoir-Sampling"><span class="toc-number">1.</span> <span class="toc-text">Reservoir Sampling</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Shuffling-Algorithm"><span class="toc-number">1.1.</span> <span class="toc-text">Shuffling Algorithm</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sampling-for-an-unlimited-data-flow"><span class="toc-number">1.2.</span> <span class="toc-text">Sampling for an unlimited data flow</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Return-k-out-of-n-log"><span class="toc-number">1.3.</span> <span class="toc-text">Return k out of n log</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#398-Random-Pick-Index"><span class="toc-number">1.4.</span> <span class="toc-text">398. Random Pick Index</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Randomization"><span class="toc-number">2.</span> <span class="toc-text">Randomization</span></a></li></ol>
                 </div>
-            </div>
+            
+            <h2 id="Reservoir-Sampling"><a href="#Reservoir-Sampling" class="headerlink" title="Reservoir Sampling"></a>Reservoir Sampling</h2><h3 id="Shuffling-Algorithm"><a href="#Shuffling-Algorithm" class="headerlink" title="Shuffling Algorithm"></a>Shuffling Algorithm</h3><p>pokers(spades, hearts, diamonds, clubs)</p>
+<ol>
+<li><p>Iteration 1<br>Call random(0-51), lets say, random_numbers1 = 5<br>P(every card can showup in position 51) = 1/52</p>
+</li>
+<li><p>Iteration 2<br>Call random(0-50), lets say, random_numbers2 = 8<br>Every card was NOT selected during previous iteration = 1 - 1/52<br>P(every card showup in position 50) = <strong>(1-1/52) * 1/51 = 1/52</strong></p>
+</li>
+<li><p>Iteration 3<br>Every card was NOT selected during previous iteration = 1 - 1/52<br>Every card was NOT selected during previous iteration = 1 - 1/51<br>P(every card showup in position 50) = <strong>(1-1/52) <em> (1-1/51) </em> 1/50 = 1/52</strong></p>
+</li>
+</ol>
+<p>…..</p>
+<ul>
+<li>Select random k elements in an array of size n</li>
+</ul>
+<h3 id="Sampling-for-an-unlimited-data-flow"><a href="#Sampling-for-an-unlimited-data-flow" class="headerlink" title="Sampling for an unlimited data flow"></a>Sampling for an unlimited data flow</h3><p>How to do sampling for an unlimited data flow and when reading the n-th element we are required to return one random number among all numbers read so far, such that the probability of returning any element read so far is 1/n.</p>
+<ul>
+<li>O(1) sapce complexity</li>
+</ul>
+<ol>
+<li>t = 0 call random[0-0] = random_num1, if random_num1 == 0 -&gt; solu = input[0]<br>P(input[0] will be returned as the solu) = 100%</li>
+<li>t = 1 call random[0-1] = random_num2, if random_num2 == 0 -&gt; solu = input[1]<br>P(input[0] will be returned as the solu) = 1 - 50%<br>P(input[1] will be returned as the solu) = 50%</li>
+<li>t = 2 call random[0-2] = random_num3, if random_num3 == 0 -&gt; solu = input[2]<br>P(input[0] will be returned as the solu) = 1/2 <em> (1 - 1/3) = 1/3<br>P(input[1] will be returned as the solu) = 1/2 </em> (1 - 1/3) = 1/3<br>P(input[2] will be returned as the solu) = 1/3<br>….</li>
+</ol>
+<h3 id="Return-k-out-of-n-log"><a href="#Return-k-out-of-n-log" class="headerlink" title="Return k out of n log"></a>Return k out of n log</h3><p>same thing as above!</p>
+<ul>
+<li>Return a <strong>random</strong> largest number’s index</li>
+</ul>
+<h3 id="398-Random-Pick-Index"><a href="#398-Random-Pick-Index" class="headerlink" title="398. Random Pick Index"></a><a href="https://leetcode.com/problems/random-pick-index/" target="_blank" rel="noopener">398. Random Pick Index</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        self.nums = nums</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pick</span><span class="params">(self, target)</span>:</span></span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(self.nums)):</span><br><span class="line">            <span class="keyword">if</span> self.nums[i] != target:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> random.randint(<span class="number">0</span>, cnt) == <span class="number">0</span>:</span><br><span class="line">                res = i</span><br><span class="line">            cnt += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h2 id="Randomization"><a href="#Randomization" class="headerlink" title="Randomization"></a>Randomization</h2>
+        
         </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/10/10/binary-search-advanced/">Binary Search Advanced</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/10/10/binary-search-advanced/">
-            <time datetime="2018-10-10T19:40:49.000Z" itemprop="datePublished">2018-10-10</time>
-        </a>
-    </div>
+        <footer class="article-footer">
+            <div class="share-container">
 
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
 
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/binary-search/">binary search</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/10/09/greedy-schedule/">Greedy Schedule</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/10/09/greedy-schedule/">
-            <time datetime="2018-10-09T12:44:13.000Z" itemprop="datePublished">2018-10-09</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/greedy/">greedy</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/10/08/hash-table/">Hash Table</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/10/08/hash-table/">
-            <time datetime="2018-10-08T14:48:07.000Z" itemprop="datePublished">2018-10-08</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/hash-table/">hash table</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/10/07/dfs/">Depth First Search</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/10/07/dfs/">
-            <time datetime="2018-10-07T18:35:05.000Z" itemprop="datePublished">2018-10-07</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/dfs/">dfs</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/10/06/heap/">Heap</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/10/06/heap/">
-            <time datetime="2018-10-07T00:23:25.000Z" itemprop="datePublished">2018-10-06</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/heap/">heap</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/10/05/string-basic/">String Basic</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/10/05/string-basic/">
-            <time datetime="2018-10-05T15:26:11.000Z" itemprop="datePublished">2018-10-05</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/string/">string</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/10/04/queue-stack/">Queue &amp; Stack</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/10/04/queue-stack/">
-            <time datetime="2018-10-04T17:33:39.000Z" itemprop="datePublished">2018-10-04</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                    
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/10/02/sort/">Sort</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/10/02/sort/">
-            <time datetime="2018-10-02T20:01:03.000Z" itemprop="datePublished">2018-10-02</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/array/">array</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/09/30/pramp/">pramp</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/09/30/pramp/">
-            <time datetime="2018-09-30T19:57:10.000Z" itemprop="datePublished">2018-09-30</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                    
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
-                
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/2018/09/29/buy-and-sell-stock/">Buy and Sell Stock</a>
-        </h1>
-    
-
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/09/29/buy-and-sell-stock/">
-            <time datetime="2018-09-29T22:19:21.000Z" itemprop="datePublished">2018-09-29</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/dynamic-programming/">dynamic programming</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
 </div>
 
-    <nav id="page-nav">
-        <span class="page-number current">1</span><a class="page-number" href="/categories/Algorithms/page/2/">2</a><a class="page-number" href="/categories/Algorithms/page/3/">3</a><a class="extend next" rel="next" href="/categories/Algorithms/page/2/">Next &raquo;</a>
-    </nav>
+    <a data-url="http://kaihaoli.github.io/2018/10/14/sampling-randomization/" data-id="cjnaedpnn002t9ou0z8na8dcm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/10/11/string-advanced/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">String Advanced</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
 </section>
             
                 

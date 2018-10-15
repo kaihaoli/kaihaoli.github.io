@@ -159,7 +159,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                37
+                38
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -188,6 +188,215 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-dp-sequence" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/08/13/dp-sequence/">DP - Sequence</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/08/13/dp-sequence/">
+            <time datetime="2018-08-13T15:55:16.000Z" itemprop="datePublished">2018-08-13</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/dp/">dp</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>Input is a single sequence, we should get the <strong>properties of previous i elements</strong></p>
+<ul>
+<li>state : dp[i] is <strong>previous i elements</strong> position/numbers/charaters</li>
+<li>function : dp[i] = dp[j]… (j &lt; i)</li>
+<li>initialize : dp[0] … (means no element in the array)</li>
+<li>answer : dp[n] …</li>
+</ul>
+<h2 id="Longest-Maximum-Sequence"><a href="#Longest-Maximum-Sequence" class="headerlink" title="Longest/Maximum Sequence"></a>Longest/Maximum Sequence</h2><ul>
+<li><strong>Sub-array</strong>: <strong>contiguous</strong> elements in an array，number is $n^2$</li>
+<li><strong>Sub-sequence</strong>: not necessarily contiguous，number is n!</li>
+</ul>
+<h3 id="674-Longest-Continuous-Increasing-Subsequence"><a href="#674-Longest-Continuous-Increasing-Subsequence" class="headerlink" title="674. Longest Continuous Increasing Subsequence"></a><a href="https://leetcode.com/problems/longest-continuous-increasing-subsequence/" target="_blank" rel="noopener">674. Longest Continuous Increasing Subsequence</a></h3><ul>
+<li>dp[i] = dp[i-1] + 1 if nums[i] &gt; nums[i-1] else 1</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(n)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findLengthOfLCIS</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        n = len(nums)</span><br><span class="line">        dp = [<span class="number">0</span>] * n</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, n):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; nums[i<span class="number">-1</span>]:</span><br><span class="line">                dp[i] = dp[i<span class="number">-1</span>] + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                dp[i] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> max(dp)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findLengthOfLCIS</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        n = len(nums)</span><br><span class="line">        res = <span class="number">1</span></span><br><span class="line">        cur = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, n):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; nums[i<span class="number">-1</span>]:</span><br><span class="line">                cur += <span class="number">1</span></span><br><span class="line">                res = max(res, cur)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                cur = <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h3 id="53-Maximum-Subarray"><a href="#53-Maximum-Subarray" class="headerlink" title="53. Maximum Subarray"></a><a href="https://leetcode.com/problems/maximum-subarray/" target="_blank" rel="noopener">53. Maximum Subarray</a></h3><ul>
+<li>State : dp[i] represents [from the 0-th element to the i-the element] the maximum sum of a subarray, including the i-th element.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        n = len(nums)</span><br><span class="line">        dp = [<span class="number">0</span>] * n</span><br><span class="line">        res = dp[<span class="number">0</span>] = nums[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, n):</span><br><span class="line">            dp[i] = max(nums[i], nums[i] + dp[i<span class="number">-1</span>])</span><br><span class="line">            res = max(res, dp[i])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Improve Space Complexity</li>
+</ol>
+<ul>
+<li>what if we want to optimize the space complexity?<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSubArray</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        n = len(nums)</span><br><span class="line">        res = cur = nums[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, n):</span><br><span class="line">            cur = max(nums[i], nums[i] + cur)</span><br><span class="line">            res = max(res, cur)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ol start="2">
+<li>What if we want you to return the start and end indices of the solution array?</li>
+</ol>
+<ul>
+<li>when to move the start and end?</li>
+<li>need another two variables sol_start, sol_end, instead of global max length</li>
+</ul>
+<h2 id="Path-Search"><a href="#Path-Search" class="headerlink" title="Path Search"></a>Path Search</h2><ul>
+<li>State : dp[i] means ending with i</li>
+</ul>
+<h3 id="70-Climbing-Stairs"><a href="#70-Climbing-Stairs" class="headerlink" title="70. Climbing Stairs"></a><a href="https://leetcode.com/problems/climbing-stairs/" target="_blank" rel="noopener">70. Climbing Stairs</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">climbStairs</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        dp = [<span class="number">0</span>] * (n + <span class="number">1</span>)</span><br><span class="line">        dp[<span class="number">0</span>] = dp[<span class="number">1</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, n):</span><br><span class="line">            dp[i+<span class="number">1</span>] = dp[i] + dp[i<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="746-Min-Cost-Climbing-Stairs"><a href="#746-Min-Cost-Climbing-Stairs" class="headerlink" title="746. Min Cost Climbing Stairs"></a><a href="https://leetcode.com/problems/min-cost-climbing-stairs/" target="_blank" rel="noopener">746. Min Cost Climbing Stairs</a></h3><ul>
+<li>State : dp[i] means the min cost to get stair[i]</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minCostClimbingStairs</span><span class="params">(self, cost)</span>:</span></span><br><span class="line">        n = len(cost)</span><br><span class="line">        dp = [<span class="number">0</span>] * (n + <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">2</span>, n+<span class="number">1</span>):</span><br><span class="line">            dp[i] = min(dp[i<span class="number">-1</span>] + cost[i<span class="number">-1</span>], dp[i<span class="number">-2</span>] + cost[i<span class="number">-2</span>])</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<h2 id="Prefix-Sum"><a href="#Prefix-Sum" class="headerlink" title="Prefix Sum"></a>Prefix Sum</h2><p>Given Array A[1..n]，Prefix Sum Array PrefixSum[1..n] defined as：<br>PrefixSum[i] = A[0]+A[1]+…+A[i-1]；</p>
+<p>e.g. A[5,6,7,8] –&gt; PrefixSum[5,11,18,26]<br>PrefixSum[0] =A[0] ;<br>PrefixSum[1] =A[0] + A[1] ;<br>PrefixSum[2] =A[0] + A[1] + A[2] ;<br>PrefixSum[3] =A[0] + A[1] + A[2] + A[3] ;</p>
+<h3 id="303-Range-Sum-Query-Immutable"><a href="#303-Range-Sum-Query-Immutable" class="headerlink" title="303. Range Sum Query - Immutable"></a><a href="https://leetcode.com/problems/range-sum-query-immutable/" target="_blank" rel="noopener">303. Range Sum Query - Immutable</a></h3><p>Given an immutable array, call rangeSum multiple times!</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumArray</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="comment"># Time : O(n), Space : O(n)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        self.preSum = [<span class="number">0</span>]</span><br><span class="line">        n = len(nums)</span><br><span class="line">        s = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">            s += nums[i]</span><br><span class="line">            self.preSum.append(s)</span><br><span class="line">    <span class="comment"># Time : O(1)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sumRange</span><span class="params">(self, i, j)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.preSum[j+<span class="number">1</span>] - self.preSum[i]</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Follow up : What if the array is mutable?</li>
+</ul>
+<h3 id="304-Range-Sum-Query-2D-Immutable"><a href="#304-Range-Sum-Query-2D-Immutable" class="headerlink" title="304. Range Sum Query 2D - Immutable"></a><a href="https://leetcode.com/problems/range-sum-query-2d-immutable/" target="_blank" rel="noopener">304. Range Sum Query 2D - Immutable</a></h3><ul>
+<li>We use preSum trick in the array! How about the matrix?</li>
+</ul>
+<p><img src="/assets/sum_od.png" alt=""></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumMatrix</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="comment"># Time : O(mn), Space : O(mn)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, matrix)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> matrix:</span><br><span class="line">            self.dp = []</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        m, n = len(matrix), len(matrix[<span class="number">0</span>])</span><br><span class="line">        self.dp = [[<span class="number">0</span>] * (n+<span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(m+<span class="number">1</span>)]</span><br><span class="line">        dp = self.dp</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, m+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">                dp[i][j] = dp[i<span class="number">-1</span>][j] + dp[i][j<span class="number">-1</span>] - dp[i<span class="number">-1</span>][j<span class="number">-1</span>] + matrix[i<span class="number">-1</span>][j<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Time : O(1)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sumRegion</span><span class="params">(self, row1, col1, row2, col2)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.dp:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">return</span> self.dp[row2+<span class="number">1</span>][col2+<span class="number">1</span>] - self.dp[row2+<span class="number">1</span>][col1] - self.dp[row1][col2+<span class="number">1</span>] + self.dp[row1][col1]</span><br></pre></td></tr></table></figure>
+<h3 id="363-Max-Sum-of-Rectangle-No-Larger-Than-K"><a href="#363-Max-Sum-of-Rectangle-No-Larger-Than-K" class="headerlink" title="363. Max Sum of Rectangle No Larger Than K"></a><a href="https://leetcode.com/problems/max-sum-of-rectangle-no-larger-than-k/" target="_blank" rel="noopener">363. Max Sum of Rectangle No Larger Than K</a></h3><ul>
+<li>How many sub-matrix are there in the matrix?</li>
+<li>O($n^2$ * $n^2$) = O($n^4$)</li>
+</ul>
+<h4 id="解法1-Naive"><a href="#解法1-Naive" class="headerlink" title="解法1.Naive"></a>解法1.Naive</h4><p>计算矩阵和O($n^2$), 总Time:O($n^6$)</p>
+<h4 id="解法2-PreSum优化矩阵和计算"><a href="#解法2-PreSum优化矩阵和计算" class="headerlink" title="解法2.PreSum优化矩阵和计算"></a>解法2.PreSum优化矩阵和计算</h4><p>计算矩阵和O(1), 总Time:O($n^4$)<br>Space:O($n^2$)用来存左上角(0,0)-&gt;右下角(i,j)的矩阵和<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span> <span class="comment"># TLE</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSumSubmatrix</span><span class="params">(self, matrix, k)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> matrix: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        m, n = len(matrix), len(matrix[<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">        <span class="comment"># PreSum matrix</span></span><br><span class="line">        dp = [[<span class="number">0</span>] * (n+<span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(m+<span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, m+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">                dp[i][j] = dp[i<span class="number">-1</span>][j] + dp[i][j<span class="number">-1</span>] - dp[i<span class="number">-1</span>][j<span class="number">-1</span>] + matrix[i<span class="number">-1</span>][j<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">sumRegion</span><span class="params">(row1, col1, row2, col2)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> dp[row2+<span class="number">1</span>][col2+<span class="number">1</span>] - dp[row2+<span class="number">1</span>][col1] - dp[row1][col2+<span class="number">1</span>] + dp[row1][col1]</span><br><span class="line"></span><br><span class="line">        res = -float(<span class="string">'inf'</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(n):</span><br><span class="line">                <span class="keyword">for</span> li <span class="keyword">in</span> xrange(i, m):</span><br><span class="line">                    <span class="keyword">for</span> lj <span class="keyword">in</span> xrange(j, n):</span><br><span class="line">                        s = sumRegion(i, j, li, lj)</span><br><span class="line">                        <span class="keyword">if</span> s &lt;= k:</span><br><span class="line">                            res = max(res, s)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></p>
+<h4 id="解法3-极其巧妙！"><a href="#解法3-极其巧妙！" class="headerlink" title="解法3.极其巧妙！"></a>解法3.极其巧妙！</h4><h5 id="1-pre-processing-预处理-1D"><a href="#1-pre-processing-预处理-1D" class="headerlink" title="1 pre-processing 预处理 1D"></a>1 pre-processing 预处理 1D</h5><p>从上到下做1D的preSum, O($n^2$)</p>
+<h5 id="2-任意取两行压缩成一个Array"><a href="#2-任意取两行压缩成一个Array" class="headerlink" title="2 任意取两行压缩成一个Array"></a>2 任意取两行压缩成一个Array</h5><p>瞬间把一个2D的matrix经过O($n^2$)转化成了1D的array</p>
+<h5 id="3-求一个Array里不大于k的连续subarray"><a href="#3-求一个Array里不大于k的连续subarray" class="headerlink" title="3 求一个Array里不大于k的连续subarray"></a>3 求一个Array里不大于k的连续subarray</h5><p>新问题：求数组里不大于k的连续subarray O(nlogn)</p>
+<blockquote>
+<p>TODO : python没有treeset的怎么搞？</p>
+</blockquote>
+<h3 id="560-Subarray-Sum-Equals-K"><a href="#560-Subarray-Sum-Equals-K" class="headerlink" title="560. Subarray Sum Equals K"></a><a href="https://leetcode.com/problems/subarray-sum-equals-k/" target="_blank" rel="noopener">560. Subarray Sum Equals K</a></h3><ul>
+<li>Brute Force : $n^2$ subarray，Sum O($n$), Total O($n^3$)</li>
+</ul>
+<h4 id="Sol1-preSum"><a href="#Sol1-preSum" class="headerlink" title="Sol1. preSum"></a>Sol1. preSum</h4><p>Improve Sum O($n^2$) to O(n)，but still O($n^2$), TLE</p>
+<h4 id="Sol2-HashTable-O-n"><a href="#Sol2-HashTable-O-n" class="headerlink" title="Sol2. HashTable, O(n)"></a>Sol2. HashTable, O(n)</h4><p>A[0] + A[1] + … + A[j] = V</p>
+<ul>
+<li>preSum[j] - preSum[i] = V similar to the Two Sum Problem，Query wether another part in preSum Array?</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">subarraySum</span><span class="params">(self, nums, k)</span>:</span></span><br><span class="line">        preSum = defaultdict(int)</span><br><span class="line">        s = count = <span class="number">0</span></span><br><span class="line">        preSum[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> n <span class="keyword">in</span> nums:</span><br><span class="line">            s += n</span><br><span class="line">            <span class="keyword">if</span> (s - k) <span class="keyword">in</span> preSum:</span><br><span class="line">                count += preSum[s - k]</span><br><span class="line">            sums[s] += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> count</span><br></pre></td></tr></table></figure>
+<h3 id="325-Maximum-Size-Subarray-Sum-Equals-k"><a href="#325-Maximum-Size-Subarray-Sum-Equals-k" class="headerlink" title="325. Maximum Size Subarray Sum Equals k"></a><a href="https://leetcode.com/problems/maximum-size-subarray-sum-equals-k/" target="_blank" rel="noopener">325. Maximum Size Subarray Sum Equals k</a></h3><p>longest subarray sum equals to k</p>
+<ul>
+<li>preSum + HashTable</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSubArrayLen</span><span class="params">(self, nums, k)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        preSum = &#123;&#125;</span><br><span class="line">        preSum[<span class="number">0</span>] = <span class="number">-1</span></span><br><span class="line">        s = res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i, n <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">            s += n</span><br><span class="line">            pre = s - k</span><br><span class="line">            <span class="keyword">if</span> pre <span class="keyword">in</span> preSum:</span><br><span class="line">                res = max(res, i-preSum[pre])</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> s <span class="keyword">not</span> <span class="keyword">in</span> preSum:</span><br><span class="line">                preSum[s] = i</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/08/13/dp-sequence/" data-id="cjnaedpjw000z9ou066d4s92z" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-tree-recursion" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -289,7 +498,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/07/tree-recursion/" data-id="cjn8bzzm0002oucu00whfkt6b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/07/tree-recursion/" data-id="cjnaedpnt00309ou0hh652hm2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -479,7 +688,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/06/linked-list-basic/" data-id="cjn8bzzl1001hucu0gjwh6600" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/06/linked-list-basic/" data-id="cjnaedpk6001g9ou0o1b1lp1t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -657,7 +866,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/01/detect-the-cycle/" data-id="cjn8bzzke000gucu0bq6wlp65" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/01/detect-the-cycle/" data-id="cjnaedpjb000a9ou0b2jzgcju" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -877,7 +1086,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/01/graph/" data-id="cjn8bzzkv0017ucu07x33veg3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/01/graph/" data-id="cjnaedpjy00129ou03e6ymgdo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1122,7 +1331,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/22/union-find/" data-id="cjn8bzzm4002vucu0x9aj25sp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/22/union-find/" data-id="cjnaedpo0003e9ou0u3qbz2qq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1390,7 +1599,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/18/ood-in-interview/" data-id="cjn8bzzlb001tucu0tte9hy72" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/18/ood-in-interview/" data-id="cjnaedpmv00259ou0mvixv7lc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1611,7 +1820,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/16/binary-indexed-tree/" data-id="cjn8bzzje0000ucu0o1fhz88b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/16/binary-indexed-tree/" data-id="cjnaedpiq00059ou0bsfqmhin" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1747,7 +1956,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/09/tree-traversal-bfs/" data-id="cjn8bzzlx002lucu0koy29sjh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/09/tree-traversal-bfs/" data-id="cjnaedpny003b9ou034phwbwm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2004,205 +2213,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/08/tree-traversal-dfs/" data-id="cjn8bzzm6002zucu0cq6lbn9v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-spark-quick-start" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/05/01/spark-quick-start/">Spark Quick Start</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/05/01/spark-quick-start/">
-            <time datetime="2018-05-01T18:24:06.000Z" itemprop="datePublished">2018-05-01</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p><strong>Apache Spark™</strong> is a <strong>unified analytics engine</strong> for <strong>large-scale data processing</strong>.</p>
-<ul>
-<li>Speed<ul>
-<li>Computation optimization (DAG, thread-based)</li>
-<li><strong>In memory computing </strong></li>
-</ul>
-</li>
-<li>Easy to Use &amp; Generality<ul>
-<li>Interactive Shell with the Scala, Python, R, and SQL shells.</li>
-<li>80 <strong>high-level operators</strong> that make it easy to build parallel apps.</li>
-<li>Combine SQL, streaming, and complex analytics.(多个框架的学习成本)</li>
-</ul>
-</li>
-<li>Runs Everywhere<ul>
-<li>Spark runs on Hadoop, Apache Mesos, Kubernetes, standalone, or in the cloud.</li>
-<li>技术选型！Access data in HDFS, Apache Cassandra, Apache HBase, Apache Hive, and hundreds of other data sources.</li>
-</ul>
-</li>
-</ul>
-<hr>
-<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><img src="/2018/05/01/spark-quick-start/spark-architecture.png">
-<h2 id="History"><a href="#History" class="headerlink" title="History"></a>History</h2><img src="/2018/05/01/spark-quick-start/SparkStreaming.jpg">
-<p>Quick Start Reference : <a href="https://spark.apache.org/docs/latest/quick-start.html" target="_blank" rel="noopener">Quick Start Spark</a></p>
-<h2 id="Install-Spark-without-Hadoop"><a href="#Install-Spark-without-Hadoop" class="headerlink" title="Install Spark without Hadoop"></a>Install Spark without Hadoop</h2><ul>
-<li>Download a packaged release of Spark from the <a href="http://spark.apache.org/downloads.html" target="_blank" rel="noopener">Spark website</a>.</li>
-<li>Since we won’t be using HDFS, you can download a package for any version of Hadoop.</li>
-<li>下载即可用</li>
-</ul>
-<h2 id="Interact-with-the-Spark-Shell"><a href="#Interact-with-the-Spark-Shell" class="headerlink" title="Interact with the Spark Shell"></a>Interact with the Spark Shell</h2><p>Spark’s shell provides a simple way to learn the API, as well as <strong>a powerful tool to analyze data interactively</strong>. It is available in either <strong>Scala or Python</strong>.</p>
-<h3 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h3><ul>
-<li>Start it by running pyspark in the Spark directory</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/pyspark</span><br></pre></td></tr></table></figure>
-<h3 id="DataSet"><a href="#DataSet" class="headerlink" title="DataSet"></a>DataSet</h3><p>Spark’s primary abstraction is a <strong>distributed collection of items called a Dataset</strong>.(Before Spark2.x, it called Resilient Distributed Dataset (RDD)) Datasets can be created from Hadoop InputFormats (such as HDFS files) or by transforming other Datasets.</p>
-<p>Due to Python’s dynamic nature, we don’t need the Dataset to be strongly-typed in Python. As a result, all Datasets in Python are Dataset[Row], and we call it <strong>DataFrame</strong> to be consistent with the data frame concept in Pandas and R.</p>
-<ul>
-<li>Make a new DataFrame from the text of the README file</li>
-</ul>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; textFile = spark.read.text(<span class="string">"README.md"</span>)</span><br><span class="line">&gt;&gt;&gt; textFile.count()  <span class="comment"># Number of rows in this DataFrame</span></span><br><span class="line">103</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; textFile.first()  <span class="comment"># First row in this DataFrame</span></span><br><span class="line">Row(value=u<span class="string">'# Apache Spark'</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Transform this DataFrame to a new one<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># We call filter to return a new DataFrame with a subset of the lines in the file.</span></span><br><span class="line">&gt;&gt;&gt; linesWithSpark = textFile.filter(textFile.value.contains(<span class="string">"Spark"</span>))</span><br><span class="line"><span class="comment"># How many lines contain "Spark"?</span></span><br><span class="line">&gt;&gt;&gt; textFile.filter(textFile.value.contains(<span class="string">"Spark"</span>)).count()  </span><br><span class="line">20</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h2 id="Self-Contained-Applications"><a href="#Self-Contained-Applications" class="headerlink" title="Self-Contained Applications"></a>Self-Contained Applications</h2><p><strong>Scala (with sbt), Java (with Maven), and Python (pip).</strong></p>
-<ul>
-<li>This program just counts the number of lines containing ‘a’ and the number containing ‘b’ in a text file.</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""spark-test.py"""</span></span><br><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> SparkSession</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO : YOUR_SPARK_HOME</span></span><br><span class="line">logFile = <span class="string">"/Users/kaihaoli/Downloads/spark-2.3.0-bin-hadoop2.7/README.md"</span></span><br><span class="line">spark = SparkSession.builder.appName(<span class="string">"SimpleApp"</span>).getOrCreate()</span><br><span class="line">logData = spark.read.text(logFile).cache()</span><br><span class="line"></span><br><span class="line">numAs = logData.filter(logData.value.contains(<span class="string">'a'</span>)).count()</span><br><span class="line">numBs = logData.filter(logData.value.contains(<span class="string">'b'</span>)).count()</span><br><span class="line"></span><br><span class="line">print(<span class="string">"Lines with a: %i, lines with b: %i"</span> % (numAs, numBs))</span><br><span class="line"></span><br><span class="line">spark.stop()</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>Install pySpark</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; pip install pyspark</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Run the simple application</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; python spark-test.py</span><br><span class="line">........</span><br><span class="line">Lines with a: 61, lines with b: 30</span><br><span class="line">.......</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<hr>
-<h2 id="Spark-Streaming-With-Kafka"><a href="#Spark-Streaming-With-Kafka" class="headerlink" title="Spark Streaming With Kafka"></a>Spark Streaming With Kafka</h2><h3 id="SparkContext"><a href="#SparkContext" class="headerlink" title="SparkContext"></a><strong>SparkContext</strong></h3><ul>
-<li>Main entry point for <strong>Spark functionality</strong>.</li>
-<li>A SparkContext represents the connection to a Spark cluster, and can be used to create RDD and broadcast variables on that cluster.</li>
-<li>master = “local[2]”, appName = “StockAveragePrice“<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line">sc = SparkContext(<span class="string">"local[2]"</span>, <span class="string">"StockAveragePrice"</span>)</span><br><span class="line">sc.setLogLevel(<span class="string">'ERROR'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="StreamingContext"><a href="#StreamingContext" class="headerlink" title="StreamingContext"></a><strong>StreamingContext</strong></h3><ul>
-<li>Main entry point for <strong>Spark Streaming functionality</strong>.</li>
-<li>A StreamingContext represents the connection to a Spark cluster, and can be used to create <strong>DStream various input sources</strong>.<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.streaming <span class="keyword">import</span> StreamingContext</span><br><span class="line">ssc = StreamingContext(sc, <span class="number">5</span>)</span><br><span class="line"><span class="comment"># sparkContext = sc, batchDuration = 5</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="KafkaUtils"><a href="#KafkaUtils" class="headerlink" title="KafkaUtils"></a><strong>KafkaUtils</strong></h3><ul>
-<li>KafkaUtils.createDirectStream(ssc, topics, kafkaParams,…)</li>
-<li>Create an input stream that directly pulls messages from a Kafka Broker and specific offset.<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.streaming.kafka <span class="keyword">import</span> KafkaUtils</span><br><span class="line">topic = <span class="string">"test"</span></span><br><span class="line">brokers = <span class="string">"192.168.99.100:9092"</span></span><br><span class="line"><span class="comment"># Kafka Consumer</span></span><br><span class="line">directKafkaStream = KafkaUtils.createDirectStream(</span><br><span class="line">                            ssc,</span><br><span class="line">                            [topic],</span><br><span class="line">                            &#123;<span class="string">'metadata.broker.list'</span>: brokers&#125;)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/05/01/spark-quick-start/" data-id="cjn8bzzlj0029ucu01cqmps8q" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/08/tree-traversal-dfs/" data-id="cjnaedpnv00349ou0cxv6w09b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2296,8 +2307,8 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/13/dp-sequence/" class="title">DP Sequence</a></p>
-                            <p class="item-date"><time datetime="2018-10-13T15:55:16.000Z" itemprop="datePublished">2018-10-13</time></p>
+                            <p class="item-title"><a href="/2018/10/14/sampling-randomization/" class="title">Sampling &amp; Randomization</a></p>
+                            <p class="item-date"><time datetime="2018-10-14T15:35:31.000Z" itemprop="datePublished">2018-10-14</time></p>
                         </div>
                     </li>
                 
@@ -2346,7 +2357,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">31</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">32</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -2355,7 +2366,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
