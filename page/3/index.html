@@ -290,7 +290,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/16/linked-list-reverse/" data-id="cjnb352u7001jjou0k0lh5n93" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/16/linked-list-reverse/" data-id="cjncnc5nx001lgku0rtemtisn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -499,7 +499,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/13/dp-sequence/" data-id="cjnb352tu000qjou0g3v5z4ib" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/13/dp-sequence/" data-id="cjncnc5nl0011gku0cl9top4x" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -676,7 +676,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/07/tree-recursion/" data-id="cjnb352vu0036jou07av8not0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/07/tree-recursion/" data-id="cjncnc5pz0031gku0kp4er19t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -856,6 +856,15 @@ ga('send', 'pageview');
 <li>DummyNode的使用</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mergeTwoLists</span><span class="params">(self, l1, l2)</span>:</span></span><br><span class="line">        dummyNode = ListNode(<span class="number">-1</span>)</span><br><span class="line">        cur = dummyNode</span><br><span class="line">        <span class="keyword">while</span> l1 <span class="keyword">and</span> l2:</span><br><span class="line">            <span class="keyword">if</span> l1.val &lt; l2.val:</span><br><span class="line">                cur.next = l1</span><br><span class="line">                l1 = l1.next</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                cur.next = l2</span><br><span class="line">                l2 = l2.next</span><br><span class="line">            cur = cur.next</span><br><span class="line">        cur.next = l1 <span class="keyword">if</span> l1 <span class="keyword">else</span> l2</span><br><span class="line">        <span class="keyword">return</span> dummyNode.next</span><br></pre></td></tr></table></figure>
+<h3 id="23-Merge-k-Sorted-Lists"><a href="#23-Merge-k-Sorted-Lists" class="headerlink" title="23. Merge k Sorted Lists"></a><a href="https://leetcode.com/problems/merge-k-sorted-lists/" target="_blank" rel="noopener">23. Merge k Sorted Lists</a></h3><ul>
+<li>heap</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(nlogk), Space : (k)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mergeKLists</span><span class="params">(self, lists)</span>:</span></span><br><span class="line">        heap = []</span><br><span class="line">        <span class="keyword">for</span> head <span class="keyword">in</span> lists:</span><br><span class="line">            <span class="keyword">if</span> head:</span><br><span class="line">                heapq.heappush(heap, (head.val, head))</span><br><span class="line"></span><br><span class="line">        DummyNode = ListNode(<span class="number">-1</span>)</span><br><span class="line">        cur = DummyNode</span><br><span class="line">        <span class="keyword">while</span> heap:</span><br><span class="line">            val, node = heapq.heappop(heap)</span><br><span class="line">            <span class="keyword">if</span> node.next:</span><br><span class="line">                heapq.heappush(heap, (node.next.val, node.next))</span><br><span class="line">            cur.next = node</span><br><span class="line">            cur = cur.next</span><br><span class="line">        <span class="keyword">return</span> DummyNode.next</span><br></pre></td></tr></table></figure>
+<h3 id="138-Copy-List-with-Random-Pointer"><a href="#138-Copy-List-with-Random-Pointer" class="headerlink" title="138. Copy List with Random Pointer"></a><a href="https://leetcode.com/problems/copy-list-with-random-pointer/" target="_blank" rel="noopener">138. Copy List with Random Pointer</a></h3><ul>
+<li>Hash Table <node> = NewNode</node></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">copyRandomList</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> head:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Step1. copy New Node</span></span><br><span class="line">        cur = head</span><br><span class="line">        nodeMap = &#123;&#125;</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            nodeMap[cur] = RandomListNode(cur.label)</span><br><span class="line">            cur = cur.next</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Step2. link the next and random pointer</span></span><br><span class="line">        cur = head</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            node = nodeMap[cur]</span><br><span class="line">            node.next = nodeMap[cur.next] <span class="keyword">if</span> cur.next <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">            node.random = nodeMap[cur.random] <span class="keyword">if</span> cur.random <span class="keyword">else</span> <span class="keyword">None</span></span><br><span class="line">            cur = cur.next</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> nodeMap[head]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Recursion</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">copyRandomList</span><span class="params">(self, head)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">copyNode</span><span class="params">(node, cache)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> node <span class="keyword">in</span> cache:</span><br><span class="line">                <span class="keyword">return</span> cache[node]</span><br><span class="line"></span><br><span class="line">            copy = RandomListNode(node.label)</span><br><span class="line">            cache[node] = copy</span><br><span class="line"></span><br><span class="line">            copy.next = copyNode(node.next, cache)</span><br><span class="line">            copy.random = copyNode(node.random, cache)</span><br><span class="line">            <span class="keyword">return</span> copy</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> copyNode(head, &#123;&#125;)</span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -866,7 +875,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/06/linked-list-basic/" data-id="cjnb352u6001hjou0mumrm0d5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/06/linked-list-basic/" data-id="cjncnc5nu001hgku0xhvsru5m" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1044,7 +1053,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/01/detect-the-cycle/" data-id="cjnb352tc0006jou09bzsu3sd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/01/detect-the-cycle/" data-id="cjncnc5mw0006gku0wm2cd045" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1209,25 +1218,27 @@ ga('send', 'pageview');
 <li>Only directed graph has indegree and outdegree!</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从Indegree == 0 的node开始！</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BFS2</span><span class="params">()</span>:</span></span><br><span class="line">    queue = collections.deque([i <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n) <span class="keyword">if</span> indegree[i] == <span class="number">0</span>]）</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        print(node)</span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> graph[course]:</span><br><span class="line">            indegree[nei] -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> indegree[nei] == <span class="number">0</span>:</span><br><span class="line">                queue.append(nei)</span><br></pre></td></tr></table></figure>
-<h3 id="Dijkstra’s-Algorithm"><a href="#Dijkstra’s-Algorithm" class="headerlink" title="Dijkstra’s Algorithm"></a>Dijkstra’s Algorithm</h3><p>“呆克斯戳” - Best First Search, 也是BFS</p>
+<h3 id="Dijkstra’s-Algorithm"><a href="#Dijkstra’s-Algorithm" class="headerlink" title="Dijkstra’s Algorithm"></a>Dijkstra’s Algorithm</h3><p>“呆克斯戳” Best First Search, 也是BFS</p>
 <ol>
 <li>Usages: Find the <strong>shortest path cost from a single node (source node) to any other nodes in that graph</strong></li>
 <li>Data Structure: Priority Queue (Min Heap)</li>
-<li><strong>Process</strong><ul>
+<li><strong>Process</strong></li>
+</ol>
+<ul>
 <li>Initial state (start node)</li>
 <li>Node expansion/ Generation rule</li>
 <li>Termination condition 所有点计算完毕也是”Queue is empty”</li>
 </ul>
-</li>
-<li><strong>Properties</strong><ul>
+<ol start="4">
+<li><strong>Properties</strong></li>
+</ol>
+<ul>
 <li>One node can be expanded once and only once</li>
 <li>One node can be generated more than once. (cost can be reduced over time)</li>
 <li>all the cost of the nodes that are expanded are monotonically non-decreasing（所有从 priority queue里面pop出来的元素的值是单调非递减-&gt;单调递增）</li>
 <li>time complexity, for a graph with n node and the connectivity of the node is <strong>O(nlogn)</strong></li>
 <li>when a node is popped out for expansion, <strong>its value is fixed which is equal to the shortest distance from the start node</strong> (非负权重)</li>
 </ul>
-</li>
-</ol>
 <h4 id="743-Network-Delay-Time"><a href="#743-Network-Delay-Time" class="headerlink" title="743. Network Delay Time"></a><a href="https://leetcode.com/problems/network-delay-time/" target="_blank" rel="noopener">743. Network Delay Time</a></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">networkDelayTime</span><span class="params">(self, times, N, K)</span>:</span></span><br><span class="line">      graph = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(N+<span class="number">1</span>)]</span><br><span class="line">      <span class="keyword">for</span> u, v, w <span class="keyword">in</span> times:</span><br><span class="line">          graph[u].append((v, w))</span><br><span class="line"></span><br><span class="line">      dis = [<span class="number">0</span>] + [<span class="number">-1</span>] * N  </span><br><span class="line">      pq = [(<span class="number">0</span>, K)]</span><br><span class="line"></span><br><span class="line">      <span class="keyword">while</span> pq:</span><br><span class="line">          w, s = heapq.heappop(pq)</span><br><span class="line">          <span class="keyword">if</span> dis[s] &gt;= <span class="number">0</span>:</span><br><span class="line">              <span class="keyword">continue</span></span><br><span class="line">          dis[s] = w</span><br><span class="line">          <span class="keyword">for</span> nxt, nw <span class="keyword">in</span> graph[s]:</span><br><span class="line">              heapq.heappush(pq, (w+nw, nxt))</span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span> <span class="keyword">if</span> <span class="number">-1</span> <span class="keyword">in</span> dis <span class="keyword">else</span> max(dis)</span><br></pre></td></tr></table></figure>
 <h4 id="378-Kth-Smallest-Element-in-a-Sorted-Matrix"><a href="#378-Kth-Smallest-Element-in-a-Sorted-Matrix" class="headerlink" title="378. Kth Smallest Element in a Sorted Matrix"></a><a href="https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/" target="_blank" rel="noopener">378. Kth Smallest Element in a Sorted Matrix</a></h4><ul>
 <li>Time : O(klogk), Space : O(k)</li>
@@ -1253,7 +1264,7 @@ ga('send', 'pageview');
 <li>Hash Table 新旧node一一映射，再把关系同样映射！</li>
 <li>DFS，BFS都可以把所有node遍历一遍就好</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cloneGraph</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        gmap = &#123;node:UndirectedGraphNode(node.label)&#125;</span><br><span class="line">        queue = collections.deque([node])</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            nnode = queue.popleft()</span><br><span class="line">            <span class="keyword">for</span> nei <span class="keyword">in</span> nnode.neighbors:</span><br><span class="line">                <span class="keyword">if</span> nei <span class="keyword">not</span> <span class="keyword">in</span> gmap:</span><br><span class="line">                    gmap[nei] = UndirectedGraphNode(nei.label)</span><br><span class="line">                    queue.append(nei)</span><br><span class="line">                gmap[nnode].neighbors.append(gmap[nei])</span><br><span class="line">        <span class="keyword">return</span> gmap[node]</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># BFS</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cloneGraph</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        gmap = &#123;node:UndirectedGraphNode(node.label)&#125;</span><br><span class="line">        queue = collections.deque([node])</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            nnode = queue.popleft()</span><br><span class="line">            <span class="keyword">for</span> nei <span class="keyword">in</span> nnode.neighbors:</span><br><span class="line">                <span class="keyword">if</span> nei <span class="keyword">not</span> <span class="keyword">in</span> gmap:</span><br><span class="line">                    gmap[nei] = UndirectedGraphNode(nei.label)</span><br><span class="line">                    queue.append(nei)</span><br><span class="line">                gmap[nnode].neighbors.append(gmap[nei])</span><br><span class="line">        <span class="keyword">return</span> gmap[node]</span><br><span class="line"></span><br><span class="line"><span class="comment"># DFS</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cloneGraph</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.dfs(node, &#123;&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, node, cache)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> node <span class="keyword">in</span> cache:</span><br><span class="line">            <span class="keyword">return</span> cache[node]</span><br><span class="line"></span><br><span class="line">        copy = UndirectedGraphNode(node.label)</span><br><span class="line">        cache[node] = copy</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> node.neighbors:</span><br><span class="line">            nnei = self.dfs(nei, cache)</span><br><span class="line">            copy.neighbors.append(nnei)</span><br><span class="line">        <span class="keyword">return</span> copy</span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -1264,7 +1275,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/01/graph/" data-id="cjnb352ty0010jou0c7v8i9sx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/08/01/graph/" data-id="cjncnc5nn0018gku09neifw0l" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1509,7 +1520,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/22/union-find/" data-id="cjnb352w5003kjou0dqslmnvc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/22/union-find/" data-id="cjncnc5q6003cgku0lop7e53h" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1777,7 +1788,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/18/ood-in-interview/" data-id="cjnb352ud001vjou0pgdh9nxl" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/18/ood-in-interview/" data-id="cjncnc5ow0026gku0e6uc54xu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1998,7 +2009,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/16/binary-indexed-tree/" data-id="cjnb352sp0000jou02g98hmpy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/16/binary-indexed-tree/" data-id="cjncnc5ml0001gku0nt6y2utn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2148,7 +2159,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/09/tree-traversal-bfs/" data-id="cjnb352vz003djou0uczm4egf" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/09/tree-traversal-bfs/" data-id="cjncnc5px002zgku0k0a7q3hg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
