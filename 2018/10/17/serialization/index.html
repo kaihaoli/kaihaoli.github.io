@@ -3,22 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Dynamic Programming Overview | kaihao</title>
+    <title>Serialization | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Overview Big Name 公司必考，难度中上 题目类型多，没有固定模板  1 问题引入Fibonacci F(n) = F(n-1) + F(n-1) Base Case : F(0) = 0, F(1) = 1  1234public int fibN(int n) &amp;#123;    if (n == 0 || n == 1) return n; // base case    re">
-<meta name="keywords" content="dp">
+    <meta name="description" content="Tree Serialization426. Convert Binary Search Tree to Sorted Doubly Linked List O(n) extra space 1234567891011121314151617181920# Time : O(n), Space : O(n)class Solution(object):    def treeToDoublyLis">
+<meta name="keywords" content="tree,recursion">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Dynamic Programming Overview">
-<meta property="og:url" content="http://kaihaoli.github.io/2018/09/18/dp-overview/index.html">
+<meta property="og:title" content="Serialization">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/10/17/serialization/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="Overview Big Name 公司必考，难度中上 题目类型多，没有固定模板  1 问题引入Fibonacci F(n) = F(n-1) + F(n-1) Base Case : F(0) = 0, F(1) = 1  1234public int fibN(int n) &amp;#123;    if (n == 0 || n == 1) return n; // base case    re">
+<meta property="og:description" content="Tree Serialization426. Convert Binary Search Tree to Sorted Doubly Linked List O(n) extra space 1234567891011121314151617181920# Time : O(n), Space : O(n)class Solution(object):    def treeToDoublyLis">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://kaihaoli.github.io/2018/09/18/dp-overview/fibN.png">
-<meta property="og:updated_time" content="2018-10-14T14:48:20.845Z">
+<meta property="og:updated_time" content="2018-10-17T22:01:55.526Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Dynamic Programming Overview">
-<meta name="twitter:description" content="Overview Big Name 公司必考，难度中上 题目类型多，没有固定模板  1 问题引入Fibonacci F(n) = F(n-1) + F(n-1) Base Case : F(0) = 0, F(1) = 1  1234public int fibN(int n) &amp;#123;    if (n == 0 || n == 1) return n; // base case    re">
-<meta name="twitter:image" content="http://kaihaoli.github.io/2018/09/18/dp-overview/fibN.png">
+<meta name="twitter:title" content="Serialization">
+<meta name="twitter:description" content="Tree Serialization426. Convert Binary Search Tree to Sorted Doubly Linked List O(n) extra space 1234567891011121314151617181920# Time : O(n), Space : O(n)class Solution(object):    def treeToDoublyLis">
     
 
     
@@ -194,7 +192,7 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-dp-overview" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-serialization" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -202,7 +200,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            Dynamic Programming Overview
+            Serialization
         </h1>
     
 
@@ -211,8 +209,8 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2018/09/18/dp-overview/">
-            <time datetime="2018-09-18T15:52:12.000Z" itemprop="datePublished">2018-09-18</time>
+        <a href="/2018/10/17/serialization/">
+            <time datetime="2018-10-17T15:56:03.000Z" itemprop="datePublished">2018-10-17</time>
         </a>
     </div>
 
@@ -226,7 +224,7 @@ ga('send', 'pageview');
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/dp/">dp</a>
+        <a class="tag-link" href="/tags/recursion/">recursion</a>, <a class="tag-link" href="/tags/tree/">tree</a>
     </div>
 
                     </div>
@@ -239,69 +237,26 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Overview"><span class="toc-number">1.</span> <span class="toc-text">Overview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-问题引入Fibonacci"><span class="toc-number">1.1.</span> <span class="toc-text">1 问题引入Fibonacci</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-核心思想"><span class="toc-number">1.2.</span> <span class="toc-text">2 核心思想</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-动态规划题目特点"><span class="toc-number">1.3.</span> <span class="toc-text">3 动态规划题目特点</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-动态规划组成部分"><span class="toc-number">1.4.</span> <span class="toc-text">4 动态规划组成部分</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Tree-Serialization"><span class="toc-number">1.</span> <span class="toc-text">Tree Serialization</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#426-Convert-Binary-Search-Tree-to-Sorted-Doubly-Linked-List"><span class="toc-number">1.1.</span> <span class="toc-text">426. Convert Binary Search Tree to Sorted Doubly Linked List</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tree-De-Serialization"><span class="toc-number">2.</span> <span class="toc-text">Tree De-Serialization</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal"><span class="toc-number">2.1.</span> <span class="toc-text">106. Construct Binary Tree from Inorder and Postorder Traversal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal"><span class="toc-number">2.2.</span> <span class="toc-text">105. Construct Binary Tree from Preorder and Inorder Traversal</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Construct-Binary-Tree-from-Inorder-and-level-Order"><span class="toc-number">2.3.</span> <span class="toc-text">Construct Binary Tree from Inorder and level Order</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#114-Flatten-Binary-Tree-to-Linked-List"><span class="toc-number">2.4.</span> <span class="toc-text">114. Flatten Binary Tree to Linked List</span></a></li></ol></li></ol>
                 </div>
             
-            <h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><ul>
-<li>Big Name 公司必考，<strong>难度中上</strong></li>
-<li>题目类型多，没有固定模板</li>
-</ul>
-<h3 id="1-问题引入Fibonacci"><a href="#1-问题引入Fibonacci" class="headerlink" title="1 问题引入Fibonacci"></a>1 问题引入Fibonacci</h3><ul>
-<li><strong>F(n) = F(n-1) + F(n-1)</strong></li>
-<li>Base Case : F(0) = 0, F(1) = 1</li>
-</ul>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fibN</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span> || n == <span class="number">1</span>) <span class="keyword">return</span> n; <span class="comment">// base case</span></span><br><span class="line">    <span class="keyword">return</span> fibN(n-<span class="number">1</span>) + fibN(n-<span class="number">2</span>); <span class="comment">// recursice rule</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<img src="/2018/09/18/dp-overview/fibN.png">
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">fibN</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span>[] dp = <span class="keyword">new</span> <span class="keyword">int</span>[n+<span class="number">1</span>];</span><br><span class="line">    dp[<span class="number">0</span>] = <span class="number">0</span>; <span class="comment">// base case</span></span><br><span class="line">    dp[<span class="number">1</span>] = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        dp[i] = dp[i-<span class="number">1</span>] + dp[i-<span class="number">2</span>];</span><br><span class="line">        <span class="comment">// dp[2] = dp[0] + dp[1]</span></span><br><span class="line">        <span class="comment">// dp[2] = dp[1] + dp[2];</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> dp[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="2-核心思想"><a href="#2-核心思想" class="headerlink" title="2 核心思想"></a>2 核心思想</h3><p>类似于高中学习的<strong>数学归纳法</strong>   </p>
-<ol>
-<li>把一个大问题(size == n)的解决方案用比他小的问题(问题们)来解决，也就是思考从问题size=n-1增加到size=n的时候，如何用小问题的solution构建大问题的solution</li>
-<li><strong>与Recursion的关系</strong><ul>
-<li>Recursion, 从大到小解决问题(自顶至下)，<strong>不记录任何sub-solution只考虑Base Case和Recursive Rule</strong></li>
-<li>DP, 从小到大解决问题(自底至上)，<strong>记录sub-solution</strong></li>
-</ul>
+            <h2 id="Tree-Serialization"><a href="#Tree-Serialization" class="headerlink" title="Tree Serialization"></a>Tree Serialization</h2><h3 id="426-Convert-Binary-Search-Tree-to-Sorted-Doubly-Linked-List"><a href="#426-Convert-Binary-Search-Tree-to-Sorted-Doubly-Linked-List" class="headerlink" title="426. Convert Binary Search Tree to Sorted Doubly Linked List"></a><a href="https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/" target="_blank" rel="noopener">426. Convert Binary Search Tree to Sorted Doubly Linked List</a></h3><ul>
+<li><p>O(n) extra space</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(n)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">treeToDoublyList</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        res = []</span><br><span class="line">        self.inOrder(root, res)</span><br><span class="line">        n = len(res)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">            res[i].right = res[i+<span class="number">1</span>] <span class="keyword">if</span> i &lt; n<span class="number">-1</span> <span class="keyword">else</span> res[<span class="number">0</span>]</span><br><span class="line">            res[i].left = res[i<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">return</span> res[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inOrder</span><span class="params">(self, root, res)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        self.inOrder(root.left, res)</span><br><span class="line">        res.append(root)</span><br><span class="line">        self.inOrder(root.right, res)</span><br></pre></td></tr></table></figure>
 </li>
-<li>将计算中间结果保存下来，并改变计算顺序！</li>
-</ol>
-<h3 id="3-动态规划题目特点"><a href="#3-动态规划题目特点" class="headerlink" title="3 动态规划题目特点"></a>3 动态规划题目特点</h3><ol>
-<li><strong>计数</strong><ul>
-<li>有多少种方式走到右下角</li>
-<li>有多少种发发选出k个数使得和是Sum</li>
-</ul>
+<li><p>in-place</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">treeToDoublyList</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        self.prev = <span class="keyword">None</span></span><br><span class="line">        self.head = <span class="keyword">None</span></span><br><span class="line">        self.inOrder(root)</span><br><span class="line">        self.prev.right = self.head</span><br><span class="line">        self.head.left = self.prev</span><br><span class="line">        <span class="keyword">return</span> self.head</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inOrder</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        self.inOrder(root.left)</span><br><span class="line">        <span class="keyword">if</span> self.prev:</span><br><span class="line">            root.left = self.prev</span><br><span class="line">            self.prev.right = root</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.head = root</span><br><span class="line">        self.prev = root</span><br><span class="line">        self.inOrder(root.right)</span><br></pre></td></tr></table></figure>
 </li>
-<li><strong>求最大最小值</strong><ul>
-<li>从左上角走到右下角路径的最大数字和</li>
-<li>最长上升子序列长度</li>
 </ul>
-</li>
-<li><strong>求存在性</strong><ul>
-<li>取石子游戏，先手是否必胜</li>
-<li>能不能选出k个数使得和是Sum</li>
+<h2 id="Tree-De-Serialization"><a href="#Tree-De-Serialization" class="headerlink" title="Tree De-Serialization"></a>Tree De-Serialization</h2><ul>
+<li>We can NOT construct a Binary Tree using postorder and preorder</li>
 </ul>
-</li>
-</ol>
-<h3 id="4-动态规划组成部分"><a href="#4-动态规划组成部分" class="headerlink" title="4 动态规划组成部分"></a>4 动态规划组成部分</h3><ol>
-<li><strong>确定状态</strong><ul>
-<li>解决动态规划的时候往往需要开一个数组，数组的每个元素f[i]或者f[i][j]代表什么物理意义(状态)</li>
+<h3 id="106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal"><a href="#106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal" class="headerlink" title="106. Construct Binary Tree from Inorder and Postorder Traversal"></a><a href="https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/" target="_blank" rel="noopener">106. Construct Binary Tree from Inorder and Postorder Traversal</a></h3><ul>
+<li>Global Question divide to sub problem</li>
 </ul>
-<ul>
-<li><strong>研究最优策略的最后一步</strong></li>
-<li><strong>子问题</strong></li>
-</ul>
-</li>
-<li><strong>递推公式(转移方程)</strong><ul>
-<li>根据子问题定义直接得到</li>
-</ul>
-</li>
-<li><strong>初始条件和边界情况</strong><ul>
-<li>细心，考虑周期</li>
-</ul>
-</li>
-<li><strong>计算顺序</strong><ul>
-<li>利用之前的计算结果</li>
-</ul>
-</li>
-</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">buildTree</span><span class="params">(self, inorder, postorder)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> inorder <span class="keyword">or</span> <span class="keyword">not</span> postorder:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        root = TreeNode(postorder.pop())</span><br><span class="line">        inorderindex = inorder.index(root.val)</span><br><span class="line">        root.right= self.buildTree(inorder[inorderindex+<span class="number">1</span>:], postorder)</span><br><span class="line">        root.left = self.buildTree(inorder[:inorderindex], postorder)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
+<h3 id="105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal"><a href="#105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal" class="headerlink" title="105. Construct Binary Tree from Preorder and Inorder Traversal"></a><a href="https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="noopener">105. Construct Binary Tree from Preorder and Inorder Traversal</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">buildTree</span><span class="params">(self, preorder, inorder)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">not</span> preorder) <span class="keyword">or</span> (<span class="keyword">not</span> inorder):</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">        root=TreeNode(preorder.pop(<span class="number">0</span>))</span><br><span class="line">        ro=inorder.index(root.val)</span><br><span class="line">        root.left=self.buildTree(preorder,inorder[:ro])</span><br><span class="line">        root.right=self.buildTree(preorder,inorder[ro+<span class="number">1</span>:])</span><br><span class="line">        <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
+<h3 id="Construct-Binary-Tree-from-Inorder-and-level-Order"><a href="#Construct-Binary-Tree-from-Inorder-and-level-Order" class="headerlink" title="Construct Binary Tree from Inorder and level Order"></a>Construct Binary Tree from Inorder and level Order</h3><h3 id="114-Flatten-Binary-Tree-to-Linked-List"><a href="#114-Flatten-Binary-Tree-to-Linked-List" class="headerlink" title="114. Flatten Binary Tree to Linked List"></a><a href="https://leetcode.com/problems/flatten-binary-tree-to-linked-list/" target="_blank" rel="noopener">114. Flatten Binary Tree to Linked List</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">flatten</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root.left:</span><br><span class="line">            self.flatten(root.right)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        self.flatten(root.left)</span><br><span class="line">        self.flatten(root.right)</span><br><span class="line"></span><br><span class="line">        cur = root.left</span><br><span class="line">        <span class="keyword">while</span> cur.right:</span><br><span class="line">            cur = cur.right</span><br><span class="line">        cur.right = root.right</span><br><span class="line">        root.right = root.left</span><br><span class="line">        root.left = <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -312,7 +267,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/09/18/dp-overview/" data-id="cjnemk1xs000pimu008volbnn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/17/serialization/" data-id="cjnemk1z1002eimu0ssrq813w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -387,19 +342,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2018/09/19/dp-double-sequence/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    DP - Double Sequence
-                
-            </div>
-        </a>
     
-    
-        <a href="/2018/09/08/graph-topological-sort/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/10/15/tree-lca/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Graph Topological Sort</div>
+            <div class="article-nav-title">Tree - Lowest Common Ancestor</div>
         </a>
     
 </nav>
