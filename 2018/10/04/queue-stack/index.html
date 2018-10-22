@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="kaihao">
 <meta property="og:description" content="Logic Data Structure Queue FIFO == First In First Out, e.g. waith in a line Usages BFS related problems, Tree printout by levels Sliding Window problems(Deque)    225. Implement Stack using Queues Onl">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-05T13:24:18.026Z">
+<meta property="og:updated_time" content="2018-10-20T13:44:25.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Queue &amp; Stack">
 <meta name="twitter:description" content="Logic Data Structure Queue FIFO == First In First Out, e.g. waith in a line Usages BFS related problems, Tree printout by levels Sliding Window problems(Deque)    225. Implement Stack using Queues Onl">
@@ -163,11 +163,11 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                40
+                42
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                14
+                16
                 <span>tags</span>
             </div>
         </div>
@@ -231,7 +231,7 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Queue"><span class="toc-number">1.</span> <span class="toc-text">Queue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#225-Implement-Stack-using-Queues"><span class="toc-number">1.1.</span> <span class="toc-text">225. Implement Stack using Queues</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stack"><span class="toc-number">2.</span> <span class="toc-text">Stack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Discussion"><span class="toc-number">2.1.</span> <span class="toc-text">Discussion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#232-Implement-Queue-using-Stacks"><span class="toc-number">2.2.</span> <span class="toc-text">232.Implement Queue using Stacks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#155-Min-Stack"><span class="toc-number">2.3.</span> <span class="toc-text">155. Min Stack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Min-Stack-Follow-Up"><span class="toc-number">2.4.</span> <span class="toc-text">Min Stack Follow Up</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#716-Max-Stack"><span class="toc-number">2.5.</span> <span class="toc-text">716. Max Stack</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Queue"><span class="toc-number">1.</span> <span class="toc-text">Queue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#225-Implement-Stack-using-Queues"><span class="toc-number">1.1.</span> <span class="toc-text">225. Implement Stack using Queues</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stack"><span class="toc-number">2.</span> <span class="toc-text">Stack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Discussion"><span class="toc-number">2.1.</span> <span class="toc-text">Discussion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#232-Implement-Queue-using-Stacks"><span class="toc-number">2.2.</span> <span class="toc-text">232.Implement Queue using Stacks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-Valid-Parentheses"><span class="toc-number">2.3.</span> <span class="toc-text">20. Valid Parentheses</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#155-Min-Stack"><span class="toc-number">2.4.</span> <span class="toc-text">155. Min Stack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Min-Stack-Follow-Up"><span class="toc-number">2.5.</span> <span class="toc-text">Min Stack Follow Up</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#716-Max-Stack"><span class="toc-number">2.6.</span> <span class="toc-text">716. Max Stack</span></a></li></ol></li></ol>
                 </div>
             
             <p>Logic Data Structure</p>
@@ -251,7 +251,7 @@ ga('send', 'pageview');
 <h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><ul>
 <li>LIFO == Last in First Out, e.g. like a box</li>
 <li>All operation available: push(), pop(), top()</li>
-<li>Iterative DFS </li>
+<li>Iterative DFS</li>
 </ul>
 <h3 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h3><ul>
 <li>When do we consider “stack” in our algorithm?</li>
@@ -278,6 +278,7 @@ ga('send', 'pageview');
 <li>Space : O(n)</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyQueue</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.stack1 = [] <span class="comment"># Buffer all the new elements</span></span><br><span class="line">        self.stack2 = [] <span class="comment"># Pop out the 1st element</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.stack1.append(x)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(self.stack2) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">while</span> self.stack1:</span><br><span class="line">                self.stack2.append(self.stack1.pop())</span><br><span class="line">        <span class="keyword">return</span> self.stack2.pop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peek</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(self.stack2) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">while</span> self.stack1:</span><br><span class="line">                self.stack2.append(self.stack1.pop())</span><br><span class="line">        <span class="keyword">return</span> self.stack2[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(self.stack1) == <span class="number">0</span> <span class="keyword">and</span> len(self.stack2) == <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h3 id="20-Valid-Parentheses"><a href="#20-Valid-Parentheses" class="headerlink" title="20. Valid Parentheses"></a><a href="https://leetcode.com/problems/valid-parentheses/" target="_blank" rel="noopener">20. Valid Parentheses</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValid</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        stack = []</span><br><span class="line">        pdic = &#123;<span class="string">'('</span>:<span class="string">')'</span>, <span class="string">'&#123;'</span>:<span class="string">'&#125;'</span>, <span class="string">'['</span>:<span class="string">']'</span>&#125;</span><br><span class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> ch <span class="keyword">in</span> <span class="string">"(&#123;["</span>:</span><br><span class="line">                stack.append(pdic[ch])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> len(stack) == <span class="number">0</span> <span class="keyword">or</span> stack[<span class="number">-1</span>] != ch:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">                stack.pop()</span><br><span class="line">        <span class="keyword">return</span> len(stack) == <span class="number">0</span></span><br></pre></td></tr></table></figure>
 <h3 id="155-Min-Stack"><a href="#155-Min-Stack" class="headerlink" title="155. Min Stack"></a><a href="https://leetcode.com/problems/min-stack/" target="_blank" rel="noopener">155. Min Stack</a></h3><ul>
 <li>Two Stack: original stack &amp; min stack</li>
 </ul>
@@ -303,7 +304,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/04/queue-stack/" data-id="cjnemk1yv0025imu08r8fsz2o" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/04/queue-stack/" data-id="cjnjr0u5b0029jg78zx71m83k" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -418,6 +419,24 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/21/bfs/" class="title">Breadth First Search</a></p>
+                            <p class="item-date"><time datetime="2018-10-22T02:29:29.000Z" itemprop="datePublished">2018-10-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/20/k-sum/" class="title">K Sum</a></p>
+                            <p class="item-date"><time datetime="2018-10-20T14:02:10.000Z" itemprop="datePublished">2018-10-20</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/10/17/serialization/" class="title">Serialization</a></p>
                             <p class="item-date"><time datetime="2018-10-17T15:56:03.000Z" itemprop="datePublished">2018-10-17</time></p>
                         </div>
@@ -441,24 +460,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/11/string-advanced/" class="title">String Advanced</a></p>
-                            <p class="item-date"><time datetime="2018-10-11T23:31:29.000Z" itemprop="datePublished">2018-10-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/10/binary-search-advanced/" class="title">Binary Search Advanced</a></p>
-                            <p class="item-date"><time datetime="2018-10-10T19:40:49.000Z" itemprop="datePublished">2018-10-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -468,7 +469,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">34</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -477,7 +478,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -486,7 +487,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -495,7 +496,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 12.5px;">binary search</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/dp/" style="font-size: 17.5px;">dp</a> <a href="/tags/graph/" style="font-size: 15px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 10px;">hash table</a> <a href="/tags/heap/" style="font-size: 10px;">heap</a> <a href="/tags/linked-list/" style="font-size: 15px;">linked list</a> <a href="/tags/recursion/" style="font-size: 17.5px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/string/" style="font-size: 12.5px;">string</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a> <a href="/tags/union-find/" style="font-size: 10px;">union find</a>
+            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bfs/" style="font-size: 12.5px;">bfs</a> <a href="/tags/binary-search/" style="font-size: 12.5px;">binary search</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/dp/" style="font-size: 17.5px;">dp</a> <a href="/tags/graph/" style="font-size: 15px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 10px;">hash table</a> <a href="/tags/heap/" style="font-size: 10px;">heap</a> <a href="/tags/linked-list/" style="font-size: 15px;">linked list</a> <a href="/tags/recursion/" style="font-size: 17.5px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/string/" style="font-size: 12.5px;">string</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a> <a href="/tags/union-find/" style="font-size: 10px;">union find</a>
         </div>
     </div>
 

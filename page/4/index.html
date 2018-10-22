@@ -159,11 +159,11 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                40
+                42
                 <span>posts</span>
             </div>
             <div class="article-info-block">
-                14
+                16
                 <span>tags</span>
             </div>
         </div>
@@ -188,6 +188,495 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-ood-in-interview" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/05/18/ood-in-interview/">OOD in Interview</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/18/ood-in-interview/">
+            <time datetime="2018-05-19T01:46:38.000Z" itemprop="datePublished">2018-05-18</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/OOD/">OOD</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>总结自:<a href="https://www.jiuzhang.com/course/10/" target="_blank" rel="noopener">九章算法 - OOD1</a></p>
+<h2 id="OOD-in-Interview"><a href="#OOD-in-Interview" class="headerlink" title="OOD in Interview"></a>OOD in Interview</h2><p>Everything is an object, Usable!!!</p>
+<ul>
+<li>面试频率<ul>
+<li>Phone interview 低</li>
+<li><strong>Onsite interview</strong> 中高频</li>
+</ul>
+</li>
+<li>高频公司<ul>
+<li><strong>Amazon, Bloomberg, TripAdvisor</strong>, EMC, Uber…</li>
+</ul>
+</li>
+<li>主要考察CS设计的基本素养，属于开放型设计类题目，能用上OOD的常见的一些设计思想！</li>
+</ul>
+<img src="/2018/05/18/ood-in-interview/oodvssd.jpg">
+<p>OOA(Analysis) -&gt; OOD(Design) -&gt; OOP(Programming)</p>
+<ul>
+<li>OOD问法<ul>
+<li>Can you design a … system? <strong>little amount of coding</strong></li>
+<li>Can you … for … system? <strong>need implementation</strong></li>
+</ul>
+</li>
+</ul>
+<h3 id="OOD要避免的情况"><a href="#OOD要避免的情况" class="headerlink" title="OOD要避免的情况"></a>OOD要避免的情况</h3><ul>
+<li>1 不问清需求就开始设计，一定要和面试官!<strong>沟通”甲方”的需求</strong>！<ul>
+<li>Communication</li>
+</ul>
+</li>
+<li>2 没有理解面试官想要问<strong>System Design，还是OOD，还是算法</strong>！<ul>
+<li>Think loud</li>
+</ul>
+</li>
+<li>3 思路混乱，反复更改之前的设计！<strong>Usable！！！</strong>就好<ul>
+<li>Correctness &amp; Reasonable</li>
+</ul>
+</li>
+<li>use case</li>
+</ul>
+<h3 id="“SOLOD”原则"><a href="#“SOLOD”原则" class="headerlink" title="“SOLOD”原则"></a>“SOLOD”原则</h3><ul>
+<li>S - Single responsibility principle<ul>
+<li>一个类应该有且只有一个去改变它的理由，这意味着<strong>一个类应该只有一项工作</strong>。</li>
+</ul>
+</li>
+<li>O – Open close principle<ul>
+<li>对象或实体应该对扩展开放，对修改封闭 (Open to extension, close to modification)</li>
+</ul>
+</li>
+<li>L - Liskov substitution principle 里氏替换原则<ul>
+<li>任何一个子类或派生类应该可以替换它们的基类或父类</li>
+</ul>
+</li>
+<li>I - Interface segregation principle 接口分离原则<ul>
+<li>不应该强迫一个类实现它用不上的接口 Implement</li>
+</ul>
+</li>
+<li>D - Dependency inversion principle 依赖反转原则<ul>
+<li>抽象不应该依赖于具体实现，具体实现应该依赖于抽象</li>
+<li>只能class 依赖于Abstract, Imterface</li>
+</ul>
+</li>
+</ul>
+<h2 id="Design-an-elevator-system"><a href="#Design-an-elevator-system" class="headerlink" title="Design an elevator system"></a>Design an elevator system</h2><p>Clarify : 通过和面试官交流，去除题目中的歧义，确定答题范围</p>
+<h3 id="What-什么"><a href="#What-什么" class="headerlink" title="What? - 什么?"></a>What? - 什么?</h3><ul>
+<li>针对题目中的<strong>关键字</strong>来􏰁问，帮助自己更好的确定答题范围</li>
+<li>大多数的关键字为<strong>名词</strong>，通过名词的属性来考虑</li>
+<li>Elevator, Building</li>
+</ul>
+<h3 id="How-怎样"><a href="#How-怎样" class="headerlink" title="How? - 怎样?"></a>How? - 怎样?</h3><ul>
+<li>针对问题<strong>主题的规则</strong>来􏰁问，帮助自己明确解题方向。</li>
+<li>此类问题没有标准答案，你可以􏰁出一些解决方法，通过面试官的反应， 选择一个你比较有信心(简单)的方案</li>
+<li><strong>Rule</strong><ul>
+<li>同向 &gt; 静止 &gt; 反向，当运行时不能按下反向的楼层</li>
+<li>电梯至少需要三种状态，并且要知道当前在哪一层</li>
+</ul>
+</li>
+</ul>
+<h3 id="Who-谁"><a href="#Who-谁" class="headerlink" title="Who? - 谁?"></a>Who? - 谁?</h3><ul>
+<li>设计由人主导 VS. 设计由系统主导?</li>
+<li>(Optional)通过思考题目当中<strong>是否有人的出现</strong>，来帮助确定解题范围</li>
+<li>一般可以考虑人的角色以及人的属性，看是否题目需要</li>
+</ul>
+<h3 id="When-什么时间"><a href="#When-什么时间" class="headerlink" title="When? - 什么时间?"></a>When? - 什么时间?</h3><ul>
+<li>(Optional)通过思考题目当中和<strong>时间相关的属性</strong>，来帮助确定解题范围</li>
+<li>和<strong>时间相关的问题</strong>一般都比较细节，可能会有意想不到的帮助</li>
+</ul>
+<h2 id="Think-Process"><a href="#Think-Process" class="headerlink" title="Think Process"></a>Think Process</h2><h3 id="Core-Object"><a href="#Core-Object" class="headerlink" title="Core Object"></a>Core Object</h3><p>为了完成设计，需要哪些class？</p>
+<ul>
+<li>以一个Object为基础，往往就是需要设计的system！</li>
+<li>确定objects之间的映射关系(4~5个Object)</li>
+</ul>
+<h3 id="Access-modifier"><a href="#Access-modifier" class="headerlink" title="Access modifier"></a>Access modifier</h3><ul>
+<li>package<ul>
+<li>如果<strong>什么都不声明</strong>，变量和函数都是package level visible的，在同一个package内的其他类都可以访问</li>
+</ul>
+</li>
+<li>public<ul>
+<li>如果声明为public，变量和函数都是public level visible的，任何其他的类都可以访问</li>
+<li>用”+”表示一个变量或者函数为public</li>
+</ul>
+</li>
+<li>private<ul>
+<li>如果声明为private，变量和函数都是class level visible的，这是所有access modifier中限制最多的一个。</li>
+<li>仅有定义这些变量和函数的类自己可以访问。</li>
+<li>在类图中，用”-”表示一个变量或者函数为private</li>
+</ul>
+</li>
+<li>protected<ul>
+<li>如果声明为protected，变量和函数在能被定义他们的类访问的基础上，还能够被该类的子类所访问。</li>
+<li>protected也是OOD当中实现继承的重要手段</li>
+<li>在类图中，用”#”表示一个变量或者函数为protected</li>
+</ul>
+</li>
+</ul>
+<h3 id="Use-Cases"><a href="#Use-Cases" class="headerlink" title="Use Cases"></a>Use Cases</h3><p>e.g. Elevator</p>
+<ul>
+<li>Take external request</li>
+<li>Take internal request</li>
+<li>Open gate</li>
+<li>Close gate</li>
+<li>Check weight</li>
+</ul>
+<h3 id="Class-diagram-类图"><a href="#Class-diagram-类图" class="headerlink" title="Class diagram 类图"></a>Class diagram 类图</h3><ul>
+<li>为什么要画类图?<ul>
+<li>可交付，MinimalViableProduct</li>
+<li>节省时间，不容易在Coding上挣扎</li>
+<li>建立在Usecase上，和之前的步骤层层递进，条例清晰，便于交流和修改</li>
+<li>如果时间允许/面试官要求，便于转化成Code</li>
+</ul>
+</li>
+<li>怎么画类图?<ul>
+<li>遍历你所列出的usecases</li>
+<li>对于每一个usecase，更加详细的􏰀述这个usecase在做什么事情 (例如:take external request -&gt; ElevatorSystem takes an external request, and decide to push this request to an appropriate elevator)</li>
+<li>针对这个􏰀述，在已有的Coreobjects里填充进所需要的信息</li>
+</ul>
+</li>
+</ul>
+<img src="/2018/05/18/ood-in-interview/ood_elevator.jpg">
+<h3 id="Challenge"><a href="#Challenge" class="headerlink" title="Challenge"></a>Challenge</h3><ul>
+<li>What if I want to apply different ways to handle external requests during different time of a day?<ul>
+<li>Solution 1: if - else</li>
+<li>Solution 2: Strategy design pattern</li>
+</ul>
+</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/05/18/ood-in-interview/" data-id="cjnjr0u56001zjg78tjc0qt6i" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-binary-indexed-tree" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/05/16/binary-indexed-tree/">Binary Indexed Tree 树状数组</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/16/binary-indexed-tree/">
+            <time datetime="2018-05-17T00:56:24.000Z" itemprop="datePublished">2018-05-16</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/tree/">tree</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>A Fenwick tree or binary indexed tree is a data structure that can efficiently <strong>update elements and calculate prefix sums</strong> in a table of numbers.</p>
+<h2 id="What-is-树状数组？"><a href="#What-is-树状数组？" class="headerlink" title="What is 树状数组？"></a>What is 树状数组？</h2><p>也就是说，所谓树状数组，或称Binary Indexed Tree, Fenwick Tree，是一种用于<strong>高效处理对一个存储数字的列表进行更新及求前缀和的数据结构</strong>。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string"> Simple Prefix Sum Array</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line">PrefixSum <span class="comment"># 前缀和数组</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(idx, n)</span>:</span></span><br><span class="line"><span class="comment"># O(n), update idx-th num in the array</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">rangeSum</span><span class="params">(idx1, idx2)</span>:</span></span><br><span class="line"><span class="comment"># O(1), calculate the sum from idx1-th to idx2-th in the arrayk</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>传统的数组单点修改的复杂度为 O(1)，查询子段和的复杂度为 O(n)<br>前缀和数组单点修改的复杂度为 O(n)，查询子段和的复杂度为 O(1)</p>
+</blockquote>
+<ul>
+<li>树状数组的<strong>修改和查询子段和复杂度均为 O(logn)</strong></li>
+<li>所以在多组查询或动态查询时，用树状数组可以有效减小耗时，提高程序效率。</li>
+</ul>
+<h3 id="树状数组vs线段树"><a href="#树状数组vs线段树" class="headerlink" title="树状数组vs线段树"></a>树状数组vs线段树</h3><ul>
+<li>树状数组<strong>容易实现，代码量小，时间复杂度低</strong>，并且经过数学处理后也可以实现成段更新。线段树也可以做到和树状数组一样的效果，但是代码要复杂得多。</li>
+<li>不过要注意，一般情况下<strong>树状数组能解决的问题线段树都能解决，反之有些线段树能解决的问题树状数组却不行</strong>。</li>
+</ul>
+<h2 id="树状数组的创建"><a href="#树状数组的创建" class="headerlink" title="树状数组的创建"></a>树状数组的创建</h2><p>从已知数组构建树状数组就是把线性的数组变成一棵树。那么，树状数组是如何把线性结构的数组变成一棵树的呢？以下以一个长度为8的数组为例：</p>
+<p>原始数组：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">A[1], A[2], A[3], A[4], A[5], A[6], A[7], A[8]</span><br></pre></td></tr></table></figure></p>
+<p>在修改和查询子段和时，很容易想到一种类似二分的想法来构建一棵树状的数组来保存原数组的所有信息。<br><img src="/2018/05/16/binary-indexed-tree/BIT.png"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">C1 = A1</span><br><span class="line">C2 = C1 + A2 = A1 + A2</span><br><span class="line">C3 = A3</span><br><span class="line">C4 = C2 + C3 + A4 = A1 + A2 + A3 + A4</span><br><span class="line">C5 = A5</span><br><span class="line">C6 = C5 + A6 = A5 + A6</span><br><span class="line">C7 = A7</span><br><span class="line">C8 = C4 + C6 + C7 + A8 = A1 + A2 + A3 + A4 + A5 + A6 + A7 + A8</span><br></pre></td></tr></table></figure></p>
+<p>从中可以发现，若结点的标号为 n ，则该结点的求和区域长度为 2k ，此处的 k 为 n 的二进制表示的末尾 0 的个数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 只保留n的二进制里最低位的1</span><br><span class="line">2^k = n &amp; (n ^ (n-1)) = n &amp; (-n)</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>前n项和分别保存在n二进制表示的每个“1”表示</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">i</th>
+<th style="text-align:center">二进制</th>
+<th style="text-align:center">包含A的个数</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">0001</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">0010</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">0011</td>
+<td style="text-align:center">3</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">0100</td>
+<td style="text-align:center">4</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">0101</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">6</td>
+<td style="text-align:center">0110</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">7</td>
+<td style="text-align:center">0111</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">8</td>
+<td style="text-align:center">1000</td>
+<td style="text-align:center">8</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(nlogn)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">build</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">    n = len(nums)</span><br><span class="line">    <span class="comment"># BIT 数组比原数组多一位！</span></span><br><span class="line">    A, C = nums, [<span class="number">0</span>] * (n + <span class="number">1</span>)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">        k = i + <span class="number">1</span> <span class="comment"># Start From i+1</span></span><br><span class="line">        <span class="keyword">while</span> k &lt;= n:</span><br><span class="line">            C[k] += A[i]</span><br><span class="line">            k += (k &amp; -k) <span class="comment"># Next Parent Node</span></span><br></pre></td></tr></table></figure>
+<h2 id="树状数组的更新"><a href="#树状数组的更新" class="headerlink" title="树状数组的更新"></a>树状数组的更新</h2><ul>
+<li><strong>C[i]的父节点为C[i + i &amp; (-i)]</strong></li>
+</ul>
+<p>当我们修改A[i]的值时，记录变化，可以<strong>从C[i]往根节点一路上溯，调整这条路上的所有C[p]即可</strong>，这个操作的复杂度在最坏情况下就是树的高度即O(logn)。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(self, i, val)</span>:</span></span><br><span class="line">    diff, self.A[i] = val - self.A[i], val</span><br><span class="line">    i += <span class="number">1</span> <span class="comment"># Start From i+1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt;= self.n:</span><br><span class="line">        self.C[i] += diff</span><br><span class="line">        i += (i &amp; -i) <span class="comment"># Next Parent Node</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="树状数组求和"><a href="#树状数组求和" class="headerlink" title="树状数组求和"></a>树状数组求和</h2><ul>
+<li>而对于求数列的前n项和S[n]，只需找到C[n]以前（包括C[n]）的所有最大子树，把其根节点的C[c]加起来即可。</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">sumRange</span><span class="params">(self, i, j)</span>:</span></span><br><span class="line">    res, j = <span class="number">0</span>, j + <span class="number">1</span></span><br><span class="line">    <span class="keyword">while</span> j: <span class="comment"># 前j项和(j=j+1了,数组是从0开始index的！)</span></span><br><span class="line">        res += self.C[j]</span><br><span class="line">        j -= (j &amp; -j) <span class="comment"># Next Sum Node</span></span><br><span class="line">    <span class="keyword">while</span> i: <span class="comment"># 前i-1项和</span></span><br><span class="line">        res -= self.C[i]</span><br><span class="line">        i -= (i &amp; -i)</span><br><span class="line">    <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h2 id="树状数组的应用"><a href="#树状数组的应用" class="headerlink" title="树状数组的应用"></a>树状数组的应用</h2><h3 id="307-Range-Sum-Query-Mutable"><a href="#307-Range-Sum-Query-Mutable" class="headerlink" title="307. Range Sum Query - Mutable"></a><a href="https://leetcode.com/problems/range-sum-query-mutable/" target="_blank" rel="noopener">307. Range Sum Query - Mutable</a></h3><p>树状数组的经典应用，支持更新数值的求区间和！<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumArray</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        self.n = n = len(nums)</span><br><span class="line">        self.A, self.C = nums, [<span class="number">0</span>] *(n + <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">            k = i + <span class="number">1</span> <span class="comment"># tip1:BIT index from 1</span></span><br><span class="line">            <span class="keyword">while</span> k &lt;= n:</span><br><span class="line">                self.C[k] += nums[i]</span><br><span class="line">                k += k &amp; (-k)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(self, i, val)</span>:</span></span><br><span class="line">        diff = val - self.A[i]</span><br><span class="line">        self.A[i] = val <span class="comment"># tip2 : remember to update original array</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> i &lt;= self.n:</span><br><span class="line">            self.C[i] += diff</span><br><span class="line">            i += i &amp; (-i)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sumRange</span><span class="params">(self, i, j)</span>:</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        j += <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> j:</span><br><span class="line">            res += self.C[j]</span><br><span class="line">            j -= j &amp; (-j)</span><br><span class="line">        <span class="keyword">while</span> i: <span class="comment"># tip3 : excluding i, so i do not need to +1</span></span><br><span class="line">            res -= self.C[i]</span><br><span class="line">            i -= i &amp; (-i)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure></p>
+<h3 id="308-Range-Sum-Query-2D-Mutable"><a href="#308-Range-Sum-Query-2D-Mutable" class="headerlink" title="308. Range Sum Query 2D - Mutable"></a><a href="https://leetcode.com/problems/range-sum-query-2d-mutable/" target="_blank" rel="noopener">308. Range Sum Query 2D - Mutable</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">NumMatrix</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, matrix)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> matrix:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        m, n = len(matrix), len(matrix[<span class="number">0</span>])</span><br><span class="line">        self.m, self.n = m, n</span><br><span class="line">        self.matrix = matrix</span><br><span class="line">        self.bit = [[<span class="number">0</span>] * (n+<span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(m+<span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(n):</span><br><span class="line">                self.build(i, j)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">build</span><span class="params">(self, row, col)</span>:</span></span><br><span class="line">        val = self.matrix[row][col]</span><br><span class="line">        i = row+<span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> i &lt;= self.m:</span><br><span class="line">            j = col + <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> j &lt;= self.n:</span><br><span class="line">                self.bit[i][j] += val</span><br><span class="line">                j += j &amp; (-j)</span><br><span class="line">            i += i &amp; (-i)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">update</span><span class="params">(self, row, col, val)</span>:</span></span><br><span class="line">        diff = val - self.matrix[row][col]</span><br><span class="line">        self.matrix[row][col] = val</span><br><span class="line">        i = row+<span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> i &lt;= self.m:</span><br><span class="line">            j = col + <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> j &lt;= self.n:</span><br><span class="line">                self.bit[i][j] += diff</span><br><span class="line">                j += j &amp; (-j)</span><br><span class="line">            i += i &amp; (-i)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getSum</span><span class="params">(self, row, col)</span>:</span></span><br><span class="line">        i = row+<span class="number">1</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i:</span><br><span class="line">            j = col + <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> j:</span><br><span class="line">                res += self.bit[i][j]</span><br><span class="line">                j -= j &amp; (-j)</span><br><span class="line">            i -= i &amp; (-i)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sumRegion</span><span class="params">(self, row1, col1, row2, col2)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.getSum(row2, col2) - self.getSum(row1<span class="number">-1</span>, col2) - self.getSum(row2, col1<span class="number">-1</span>) + self.getSum(row1<span class="number">-1</span>, col1<span class="number">-1</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="315-Count-of-Smaller-Numbers-After-Self"><a href="#315-Count-of-Smaller-Numbers-After-Self" class="headerlink" title="315. Count of Smaller Numbers After Self"></a><a href="https://leetcode.com/problems/count-of-smaller-numbers-after-self/" target="_blank" rel="noopener">315. Count of Smaller Numbers After Self</a></h3><p><strong>Binary Indexed Tree &amp; Fenwick Tree</strong></p>
+<ul>
+<li>对原数组nums进行<strong>离散化处理（排序+去重）</strong>，将nums从实数范围映射到 [1, len(set(nums))]，记得到的新数组为iNums</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">idxes = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> k, v <span class="keyword">in</span> enumerate(sorted(set(nums))):</span><br><span class="line">    idxes[v] = k + <span class="number">1</span></span><br><span class="line">iNums = [idxes[x] <span class="keyword">for</span> x <span class="keyword">in</span> nums]</span><br><span class="line"><span class="comment"># iNums 相当于重新映射后的Array，其间数值的相对大小没有改变，</span></span><br><span class="line"><span class="comment"># 但是值总的范围映射到了[0, n]这样就可以作为BIT的index了！！</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>从右向左遍历iNums，对树状数组的iNums[i]位置执行+1操作，然后统计(0, iNums[i])的区间和,也可以用线段树</li>
+<li>把计数问题转化成了求区间和的问题！</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">FenwickTree</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.n = n</span><br><span class="line">        self.BIT = [<span class="number">0</span>] * (n+<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, i, val)</span>:</span></span><br><span class="line">        <span class="keyword">while</span> i &lt;= self.n:</span><br><span class="line">            self.BIT[i] += val</span><br><span class="line">            i += i &amp; -i</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sum</span><span class="params">(self, i)</span>:</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i:</span><br><span class="line">            res += self.BIT[i]</span><br><span class="line">            i -= i &amp; -i</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countSmaller</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> []</span><br><span class="line">        idxs = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> k, v <span class="keyword">in</span> enumerate(sorted(set(nums))):</span><br><span class="line">            idxs[v] = k + <span class="number">1</span></span><br><span class="line">        n = len(nums)</span><br><span class="line">        ftree = FenwickTree(n)</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n<span class="number">-1</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            res.append(ftree.sum(idxs[nums[i]]<span class="number">-1</span>))</span><br><span class="line">            ftree.add(idxs[nums[i]], <span class="number">1</span>)</span><br><span class="line">        <span class="keyword">return</span> res[::<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/05/16/binary-indexed-tree/" data-id="cjnjr0u3d0001jg78r6bxxj80" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-tree-traversal-bfs" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -220,7 +709,7 @@ ga('send', 'pageview');
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/tree/">tree</a>
+        <a class="tag-link" href="/tags/bfs/">bfs</a>, <a class="tag-link" href="/tags/tree/">tree</a>
     </div>
 
                     </div>
@@ -262,7 +751,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/09/tree-traversal-bfs/" data-id="cjnemk1zu003dimu034rhftz7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/09/tree-traversal-bfs/" data-id="cjnjr0u5x0036jg78khnqpb6g" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -519,7 +1008,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/08/tree-traversal-dfs/" data-id="cjnemk1zo003aimu0alfy4aor" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/08/tree-traversal-dfs/" data-id="cjnjr0u840041jg781y0iiice" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -717,7 +1206,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/01/spark-quick-start/" data-id="cjnemk1z6002limu0rwf0cstp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/01/spark-quick-start/" data-id="cjnjr0u5j002kjg783wvyiqis" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1008,7 +1497,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/29/bit-manipulation/" data-id="cjnemk1xe000aimu0fz9vw925" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/29/bit-manipulation/" data-id="cjnjr0u3t0006jg78fv5943zc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1182,7 +1671,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/25/docker-quick-start/" data-id="cjnemk1xq000mimu0j0h97x70" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/25/docker-quick-start/" data-id="cjnjr0u4c000mjg78jgzcnvas" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1383,7 +1872,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/21/docker/" data-id="cjnemk1y90010imu095a1exi0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/21/docker/" data-id="cjnjr0u4i000ujg783mp9h5wm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1565,7 +2054,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/18/message-queue/" data-id="cjnemk1yq001yimu0s8wfdb20" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/18/message-queue/" data-id="cjnjr0u55001wjg78whojf7e2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1768,420 +2257,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/17/redis/" data-id="cjnemk1yx0028imu0151hcwra" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-binary-search" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/04/15/binary-search/">Binary Search</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/04/15/binary-search/">
-            <time datetime="2018-04-16T03:31:10.000Z" itemprop="datePublished">2018-04-15</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/binary-search/">binary search</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>Given a <strong>sorted array</strong> of n elements, write a function to search a given element x in array.</p>
-<ul>
-<li>Search算法里的入门算法，其实很多高级算法的思路都是以二分查找为基本思想引出的，特别是那些和logn相关的算法，比如说自平衡二叉树</li>
-</ul>
-<h2 id="经典二分查找"><a href="#经典二分查找" class="headerlink" title="经典二分查找"></a>经典二分查找</h2><hr>
-<h3 id="LintCode-457-Classical-Binary-Search"><a href="#LintCode-457-Classical-Binary-Search" class="headerlink" title="LintCode 457. Classical Binary Search"></a><a href="http://www.lintcode.com/en/problem/classical-binary-search/" target="_blank" rel="noopener">LintCode 457. Classical Binary Search</a></h3><ul>
-<li>有序, 数组</li>
-<li>Why 链表不可以？Why 无序不可以？</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findPosition</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 1 Two Pointers 指向可行解的范围</span></span><br><span class="line">        start, end = <span class="number">0</span>, len(nums)<span class="number">-1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> start &lt;= end:</span><br><span class="line">            <span class="comment"># 2 Median Index</span></span><br><span class="line">            mid = start + (end - start) // <span class="number">2</span></span><br><span class="line"></span><br><span class="line">            <span class="comment"># 3 Check Median Index Val</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] == target:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">elif</span> nums[mid] &gt; target:</span><br><span class="line">                end = mid - <span class="number">1</span>   <span class="comment"># Adjust end</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                start = mid + <span class="number">1</span> <span class="comment"># Adjust start</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
-<h3 id="74-Search-a-2D-Matrix"><a href="#74-Search-a-2D-Matrix" class="headerlink" title="74. Search a 2D Matrix"></a><a href="https://leetcode.com/problems/search-a-2d-matrix/" target="_blank" rel="noopener">74. Search a 2D Matrix</a></h3><ul>
-<li>一维Array和二维Matrix的转换<ul>
-<li>index =&gt; (x, y)</li>
-<li>x = index / col</li>
-<li>y = index % col</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchMatrix</span><span class="params">(self, matrix, target)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> matrix:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        m, n = len(matrix), len(matrix[<span class="number">0</span>])</span><br><span class="line">        start, end = <span class="number">0</span>, m*n<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> start &lt;= end:</span><br><span class="line">            mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">            row, col = mid / n, mid % n</span><br><span class="line">            <span class="keyword">if</span> matrix[row][col] &lt; target:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> matrix[row][col] &gt; target:</span><br><span class="line">                end = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
-<h3 id="九章算法二分查找模板"><a href="#九章算法二分查找模板" class="headerlink" title="九章算法二分查找模板"></a>九章算法二分查找模板</h3><ul>
-<li>while 循环 ?<ul>
-<li>while start + 1 &lt; end, 留两个值做post processing</li>
-<li>while start &lt; end, 留一个值做post processing</li>
-<li>while start &lt; = end, 不留值</li>
-</ul>
-</li>
-<li>缩小查找范围 ?<ul>
-<li>start = mid 还是 start = mid + 1</li>
-<li>end = mid 还是 end = mid + 1</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">findPosition</span><span class="params">(self, A, target)</span>:</span></span><br><span class="line">    <span class="keyword">if</span>(len(A) == <span class="number">0</span>):</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">    start = <span class="number">0</span></span><br><span class="line">    end = len(A) - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">while</span>(start + <span class="number">1</span> &lt; end):</span><br><span class="line">        mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">        <span class="keyword">if</span>(A[mid] == target):</span><br><span class="line">            <span class="keyword">return</span> mid</span><br><span class="line">        <span class="keyword">if</span>(A[mid] &lt; target):</span><br><span class="line">            start = mid</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            end = mid</span><br><span class="line"></span><br><span class="line">    <span class="comment">#post processing</span></span><br><span class="line">    <span class="keyword">if</span> (A[start] == target):</span><br><span class="line">        <span class="keyword">return</span> start</span><br><span class="line">    <span class="keyword">elif</span> (A[end] == target):</span><br><span class="line">        <span class="keyword">return</span> end</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>Double Check 小技巧</strong>:<ul>
-<li>当前这个mid对应的值是不是 <strong>可能是要找的结果</strong>，mid + 1 还是 mid ?</li>
-<li><strong>start = mid</strong> 一定要用 while start + 1 &lt; end !!!</li>
-<li>要找的结果是不是一定在数组当中！start &lt; end 还是 start &lt; = end</li>
-</ul>
-</li>
-</ul>
-<h2 id="边界系列"><a href="#边界系列" class="headerlink" title="边界系列"></a>边界系列</h2><hr>
-<ul>
-<li>Input是标准的 <strong>Sorted Array</strong>（单调增或者单调减）<ul>
-<li><strong>First or Last of Occrance</strong>!</li>
-<li>大于等于，小于等于，大于，小于，等于</li>
-</ul>
-</li>
-<li><strong>每次淘汰的空间要确定是不属于结果范围的！</strong></li>
-</ul>
-<h3 id="278-First-Bad-Version"><a href="#278-First-Bad-Version" class="headerlink" title="278. First Bad Version"></a><a href="https://leetcode.com/problems/first-bad-version/" target="_blank" rel="noopener">278. First Bad Version</a></h3><ul>
-<li>000000011111111</li>
-<li>Find The First Occrance of an Element<ul>
-<li>找的元素在不在数组里？while start &lt; end 还是 while start &lt; = end</li>
-<li>How about Last Good Version?</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 写法1. 这种写法条件是target存在，且start = mid + 1</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">firstBadVersion</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        start, end = <span class="number">1</span>, n</span><br><span class="line">        <span class="keyword">while</span> start &lt; end:</span><br><span class="line">            mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">            ret = isBadVersion(mid)</span><br><span class="line">            <span class="keyword">if</span> ret:</span><br><span class="line">                end = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> start</span><br><span class="line"></span><br><span class="line"><span class="comment"># 写法2. 九章算法模板 - 预留两位做post processing</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">firstBadVersion</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        start, end = <span class="number">1</span>, n</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 预留两位最后处理</span></span><br><span class="line">        <span class="keyword">while</span> start + <span class="number">1</span> &lt; end:</span><br><span class="line">            mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">            ret = isBadVersion(mid)</span><br><span class="line">            <span class="keyword">if</span> ret:</span><br><span class="line">                end = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Post Processing</span></span><br><span class="line">        <span class="keyword">if</span> isBadVersion(start):</span><br><span class="line">            <span class="keyword">return</span> start</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> end</span><br></pre></td></tr></table></figure>
-<h3 id="35-Search-Insert-Position"><a href="#35-Search-Insert-Position" class="headerlink" title="35. Search Insert Position"></a><a href="https://leetcode.com/problems/search-insert-position/" target="_blank" rel="noopener">35. Search Insert Position</a></h3><ul>
-<li>找 &gt; = target 的 first occrence</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchInsert</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        <span class="keyword">if</span> target &gt; nums[<span class="number">-1</span>]:</span><br><span class="line">            <span class="keyword">return</span> len(nums)</span><br><span class="line"></span><br><span class="line">        start, end = <span class="number">0</span>, len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> start + <span class="number">1</span> &lt; end:</span><br><span class="line">            mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &gt;= target:</span><br><span class="line">                end = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Post Precessing</span></span><br><span class="line">        <span class="keyword">if</span> nums[start] &gt;= target:</span><br><span class="line">            <span class="keyword">return</span> start</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> end</span><br></pre></td></tr></table></figure>
-<h3 id="34-Search-for-a-Range"><a href="#34-Search-for-a-Range" class="headerlink" title="34. Search for a Range"></a><a href="https://leetcode.com/problems/search-for-a-range/" target="_blank" rel="noopener">34. Search for a Range</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">searchRange</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">-1</span>, <span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># First Occurance</span></span><br><span class="line">        start, end = <span class="number">0</span> , len(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> start + <span class="number">1</span> &lt; end:</span><br><span class="line">            mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &gt;= target:</span><br><span class="line">                end = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> nums[start] == target:</span><br><span class="line">            first = start</span><br><span class="line">        <span class="keyword">elif</span> nums[end] == target:</span><br><span class="line">            first = end</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> [<span class="number">-1</span>, <span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Last Occurance</span></span><br><span class="line">        start, end = <span class="number">0</span>, len(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> start + <span class="number">1</span> &lt; end:</span><br><span class="line">            mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &lt;= target:</span><br><span class="line">                start = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end = mid - <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> nums[end] == target:</span><br><span class="line">            <span class="keyword">return</span> [first, end]</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> [first, start]</span><br></pre></td></tr></table></figure>
-<h2 id="旋转数组系列"><a href="#旋转数组系列" class="headerlink" title="旋转数组系列"></a>旋转数组系列</h2><hr>
-<ul>
-<li><strong>只有Sorted Array才能做Binary Search</strong>？<ul>
-<li>Input数组不再是单调递增或者单调递减</li>
-</ul>
-</li>
-<li><strong>每次淘汰的空间要确定是不属于结果范围的！</strong></li>
-</ul>
-<h3 id="162-Find-Peak-Element"><a href="#162-Find-Peak-Element" class="headerlink" title="162. Find Peak Element"></a><a href="https://leetcode.com/problems/find-peak-element/" target="_blank" rel="noopener">162. Find Peak Element</a></h3><ul>
-<li>根据要找的Target条件缩小Search的范围！</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 模版解法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findPeakElement</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(nums) &lt;= <span class="number">1</span>: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        start, end = <span class="number">0</span> , len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> start + <span class="number">1</span> &lt; end:</span><br><span class="line">            mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &lt; nums[mid+<span class="number">1</span>]:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end = mid</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> nums[start] &gt; nums[end]:</span><br><span class="line">            <span class="keyword">return</span> start</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> end</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findPeakElement</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(nums) &lt;= <span class="number">1</span>: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        start, end = <span class="number">0</span> , len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> start &lt; end:</span><br><span class="line">            mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &lt; nums[mid+<span class="number">1</span>]:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end = mid</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> start</span><br></pre></td></tr></table></figure>
-<h3 id="153-Find-Minimum-in-Rotated-Sorted-Array"><a href="#153-Find-Minimum-in-Rotated-Sorted-Array" class="headerlink" title="153. Find Minimum in Rotated Sorted Array"></a><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/" target="_blank" rel="noopener">153. Find Minimum in Rotated Sorted Array</a></h3><ul>
-<li>Why nums[mid] 和 nums[end]比较？</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 模版解法</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMin</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        start, end = <span class="number">0</span>, len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> start + <span class="number">1</span> &lt; end:</span><br><span class="line">            mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &gt; nums[end]:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end = mid</span><br><span class="line">        <span class="keyword">return</span> min(nums[start], nums[end])</span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMin</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        start, end = <span class="number">0</span>, len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> start &lt; end:</span><br><span class="line">            mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &gt; nums[end]:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end = mid</span><br><span class="line">        <span class="keyword">return</span> nums[start]</span><br></pre></td></tr></table></figure>
-<h3 id="154-Find-Minimum-in-Rotated-Sorted-Array-II"><a href="#154-Find-Minimum-in-Rotated-Sorted-Array-II" class="headerlink" title="154. Find Minimum in Rotated Sorted Array II"></a><a href="https://leetcode.com/problems/find-minimum-in-rotated-sorted-array-ii/" target="_blank" rel="noopener">154. Find Minimum in Rotated Sorted Array II</a></h3><ul>
-<li>What if duplicates are allowed?</li>
-<li>Worst Case O(n)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># nums[mid] == nums[end] ?</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMin</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        start, end = <span class="number">0</span>, len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> start &lt; end:</span><br><span class="line">            mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &lt; nums[end]:</span><br><span class="line">                end = mid</span><br><span class="line">            <span class="keyword">elif</span> nums[mid] &gt; nums[end]:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> nums[start]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 套模板</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMin</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        start, end = <span class="number">0</span>, len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> start + <span class="number">1</span> &lt; end:</span><br><span class="line">            mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &lt; nums[end]:</span><br><span class="line">                end = mid</span><br><span class="line">            <span class="keyword">elif</span> nums[mid] &gt; nums[end]:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> min(nums[start], nums[end])</span><br></pre></td></tr></table></figure>
-<h3 id="33-Search-in-Rotated-Sorted-Array"><a href="#33-Search-in-Rotated-Sorted-Array" class="headerlink" title="33. Search in Rotated Sorted Array"></a><a href="https://leetcode.com/problems/search-in-rotated-sorted-array/" target="_blank" rel="noopener">33. Search in Rotated Sorted Array</a></h3><ul>
-<li>1 把Array先根据nums[end]分成在前段还是后段</li>
-<li>2 再根据nums[mid]的大小</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        start, end = <span class="number">0</span>, len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> start &lt;= end:</span><br><span class="line">            mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] == target:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="comment"># 前还是后，根据 num[end] 根据nums[start]也行</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &lt;= nums[end]:</span><br><span class="line">                <span class="keyword">if</span> nums[mid] &lt; target &lt;= nums[end]:</span><br><span class="line">                    start = mid + <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    end = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> nums[start] &lt;= target &lt; nums[mid]:</span><br><span class="line">                    end = mid - <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    start = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
-<h3 id="81-Search-in-Rotated-Sorted-Array-II"><a href="#81-Search-in-Rotated-Sorted-Array-II" class="headerlink" title="81. Search in Rotated Sorted Array II"></a><a href="https://leetcode.com/problems/search-in-rotated-sorted-array-ii/" target="_blank" rel="noopener">81. Search in Rotated Sorted Array II</a></h3><ul>
-<li>nums may contain <strong>duplicates</strong></li>
-<li>nums[mid] == nums[start] 或者 nums[mid] == nums[end]的时候<strong>无法判断nums[mid]是在前段还是后段</strong>！<ul>
-<li>start += 1 缩减范围, Worst Case : O(n)</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        start, end = <span class="number">0</span>, len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> start &lt;= end:</span><br><span class="line">            mid = (start + end) / <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] == target:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &lt; nums[start]:</span><br><span class="line">                <span class="keyword">if</span> nums[mid] &lt; target &lt;= nums[end]:</span><br><span class="line">                    start = mid + <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    end = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[mid] &gt; nums[start]:</span><br><span class="line">                <span class="keyword">if</span> nums[start] &lt;= target &lt; nums[mid]:</span><br><span class="line">                    end = mid - <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    start = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                start += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
-<h2 id="数值二分型"><a href="#数值二分型" class="headerlink" title="数值二分型"></a>数值二分型</h2><hr>
-<ul>
-<li>典型的二分法: 输入是数组，双指针分别是数组的index</li>
-<li><strong>Input不再是Array，不再以index，而是以value来做二分</strong></li>
-</ul>
-<h3 id="374-Guess-Number-Higher-or-Lower"><a href="#374-Guess-Number-Higher-or-Lower" class="headerlink" title="374. Guess Number Higher or Lower"></a><a href="https://leetcode.com/problems/guess-number-higher-or-lower/" target="_blank" rel="noopener">374. Guess Number Higher or Lower</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">guessNumber</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        start, end = <span class="number">1</span>, n</span><br><span class="line">        <span class="keyword">while</span> start &lt; end:</span><br><span class="line">            mid = start + (end - start) // <span class="number">2</span></span><br><span class="line">            ret = guess(mid)</span><br><span class="line">            <span class="keyword">if</span> ret == <span class="number">0</span>:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line">            <span class="keyword">elif</span> ret &lt; <span class="number">0</span>:</span><br><span class="line">                end = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> start</span><br></pre></td></tr></table></figure>
-<h3 id="367-Valid-Perfect-Square"><a href="#367-Valid-Perfect-Square" class="headerlink" title="367. Valid Perfect Square"></a><a href="https://leetcode.com/problems/valid-perfect-square/" target="_blank" rel="noopener">367. Valid Perfect Square</a></h3><ul>
-<li>ret = mid * mid 来判断范围</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isPerfectSquare</span><span class="params">(self, num)</span>:</span></span><br><span class="line">        start, end = <span class="number">1</span>, num</span><br><span class="line">        <span class="keyword">while</span> start &lt;= end:</span><br><span class="line">            mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">            ret = mid * mid</span><br><span class="line">            <span class="keyword">if</span> ret &gt; num:</span><br><span class="line">                end = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> ret &lt; num:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
-<h3 id="69-Sqrt-x"><a href="#69-Sqrt-x" class="headerlink" title="69. Sqrt(x)"></a><a href="https://leetcode.com/problems/sqrtx/" target="_blank" rel="noopener">69. Sqrt(x)</a></h3><ul>
-<li>在0～x中找最大的数r，满足r * r &lt; = x</li>
-<li>Why start + 1 &lt; end ?</li>
-<li><strong>剩余的搜索范围都是满足搜索条件的！</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">mySqrt</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        start, end = <span class="number">0</span>, x</span><br><span class="line">        <span class="keyword">while</span> start + <span class="number">1</span> &lt; end:</span><br><span class="line">            mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">            ret = mid * mid</span><br><span class="line">            <span class="keyword">if</span> ret &gt; x:</span><br><span class="line">                end = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> ret &lt; x:</span><br><span class="line">                start = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> mid</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> end * end &lt;= x:</span><br><span class="line">            <span class="keyword">return</span> end</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> start</span><br></pre></td></tr></table></figure>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/04/15/binary-search/" data-id="cjnemk1x00002imu0xkorhujz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-segment-tree" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/04/10/segment-tree/">Segment Tree</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/04/10/segment-tree/">
-            <time datetime="2018-04-10T18:13:18.000Z" itemprop="datePublished">2018-04-10</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/tree/">tree</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>Segment Tree 线段树<br>线段树参考整理自：<a href="https://www.jiuzhang.com/tutorial/segment-tree/86" target="_blank" rel="noopener">九章算法线段树教程</a></p>
-<h2 id="1-线段树是什么？"><a href="#1-线段树是什么？" class="headerlink" title="1 线段树是什么？"></a>1 线段树是什么？</h2><p>Google常考数据结构，国内也经常问这个。</p>
-<ul>
-<li>线段树是一种高级数据结构，也是一种树结构，准确的说是二叉树，它能够高效的处理<strong>区间</strong>修改查询等问题。</li>
-<li>线段树是一种<strong>二叉搜索树</strong>，与区间树相似，它将一个区间划分成一些单元区间，<strong>每个单元区间对应线段树中的一个叶结点</strong>。</li>
-<li>线段树中的每一个非叶子节点[a,b]，它的<strong>左儿子表示的区间为[a,(a+b)/2]</strong>，<strong>右儿子表示的区间为[(a+b)/2+1,b]</strong>。因此线段树是<strong>平衡二叉树</strong>，最后的子节点数目为N，即整个线段区间的长度。</li>
-</ul>
-<h2 id="2-线段树的创建"><a href="#2-线段树的创建" class="headerlink" title="2 线段树的创建"></a>2 线段树的创建</h2><p>因为每次将区间的长度一分为二,所有创造的节点个数，即底层有n个节点，那么倒数第二次约n/2个节点，倒数第三次约n/4个节点，依次类推：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">n + 1/2 * n + 1/4 * n + 1/8 * n + ...</span><br><span class="line">= (1 + 1/2 + 1/4 + 1/8 + ...) * n</span><br><span class="line">= 2n</span><br></pre></td></tr></table></figure></p>
-<p>所以构造线段树的<strong>时间复杂度和空间复杂度都为O(n)</strong></p>
-<h3 id="LintCode-201-Segment-Tree-Build"><a href="#LintCode-201-Segment-Tree-Build" class="headerlink" title="LintCode 201. Segment Tree Build"></a><a href="http://www.lintcode.com/en/problem/segment-tree-build/" target="_blank" rel="noopener">LintCode 201. Segment Tree Build</a></h3><p>线段树的创建，其实就是按照区间的index进行二分,然后Recursion的定义！</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Definition of SegmentTreeNode:</span></span><br><span class="line"><span class="string">class SegmentTreeNode:</span></span><br><span class="line"><span class="string">def __init__(self, start, end):</span></span><br><span class="line"><span class="string">	self.start, self.end = start, end</span></span><br><span class="line"><span class="string">	self.left, self.right = None, None</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">build</span><span class="params">(self, start, end)</span>:</span></span><br><span class="line">  	<span class="keyword">if</span> start &gt; end: <span class="keyword">return</span></span><br><span class="line">  	root = SegmentTreeNode(start, end)</span><br><span class="line">  	<span class="keyword">if</span> start == end: <span class="keyword">return</span> root</span><br><span class="line">  	mid = (start + end ) / <span class="number">2</span></span><br><span class="line">  	root.left = self.build(start, mid)</span><br><span class="line">  	root.right = self.build(mid + <span class="number">1</span>, end)</span><br><span class="line">    <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
-<h3 id="LintCode-439-Segment-Tree-Build-II"><a href="#LintCode-439-Segment-Tree-Build-II" class="headerlink" title="LintCode 439. Segment Tree Build II"></a><a href="http://www.lintcode.com/en/problem/segment-tree-build-ii/" target="_blank" rel="noopener">LintCode 439. Segment Tree Build II</a></h3><p>每个节点node除了有区间index的信息外，还包括其他信息，比如区间内的最大值。Node<strong>(start, end, val)</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Definition of SegmentTreeNode:</span></span><br><span class="line"><span class="string">class SegmentTreeNode:</span></span><br><span class="line"><span class="string">def __init__(self, start, end, max):</span></span><br><span class="line"><span class="string">	self.start, self.end, self.max = start, end, max</span></span><br><span class="line"><span class="string">	self.left, self.right = None, None</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">build</span><span class="params">(self, A)</span>:</span></span><br><span class="line">		<span class="keyword">if</span> <span class="keyword">not</span> A: <span class="keyword">return</span></span><br><span class="line">		<span class="keyword">return</span> self.buildTree(<span class="number">0</span>, len(A)<span class="number">-1</span>, A)</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">buildTree</span><span class="params">(self, start, end, A)</span>:</span></span><br><span class="line">		<span class="keyword">if</span> start &gt; end: <span class="keyword">return</span></span><br><span class="line">		root = SegmentTreeNode(start, end, A[start])</span><br><span class="line">		<span class="keyword">if</span> start == end: <span class="keyword">return</span> root</span><br><span class="line">		mid = (start + end) / <span class="number">2</span></span><br><span class="line">		root.left = self.buildTree(start, mid, A)</span><br><span class="line">		root.right = self.buildTree(mid+<span class="number">1</span>, end, A)</span><br><span class="line">		<span class="comment"># Post Order update Max</span></span><br><span class="line">		<span class="keyword">if</span> root.left <span class="keyword">and</span> root.left.max &gt; root.max:</span><br><span class="line">		root.max = root.left.max</span><br><span class="line">		<span class="keyword">if</span> root.right <span class="keyword">and</span> root.right.max &gt; root.max:</span><br><span class="line">		root.max = root.right.max</span><br><span class="line">		<span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
-<p>如果需要区间的最小值:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root.min = Math.min(root.left.min, root.right.min);</span><br></pre></td></tr></table></figure></p>
-<p>如果需要区间的和:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">root.sum = root.left.sum + root.right.sum;</span><br></pre></td></tr></table></figure></p>
-<h2 id="3-线段树的更新"><a href="#3-线段树的更新" class="headerlink" title="3 线段树的更新"></a>3 线段树的更新</h2><p>更新是<strong>从叶子节点一路走到根节点</strong>, 去更新线段树上的值。因为线段树的高度为log(n),所以更新序列中一个节点的复杂度为log(n)。</p>
-<h3 id="LintCode-203-Segment-Tree-Modify"><a href="#LintCode-203-Segment-Tree-Modify" class="headerlink" title="LintCode 203. Segment Tree Modify"></a><a href="http://www.lintcode.com/en/problem/segment-tree-modify/" target="_blank" rel="noopener">LintCode 203. Segment Tree Modify</a></h3><p>给一个Maximum Segment Tree, 更新某个index的value。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">	<span class="function"><span class="keyword">def</span> <span class="title">modify</span><span class="params">(self, root, index, value)</span>:</span></span><br><span class="line">		<span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span></span><br><span class="line">		<span class="keyword">if</span> root.start == root.end:</span><br><span class="line">			root.val = value</span><br><span class="line">			root.max = value</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		mid = (root.start + root.end) / <span class="number">2</span></span><br><span class="line">		<span class="keyword">if</span> index &lt;= mid:</span><br><span class="line">			self.modify(root.left, index, value)</span><br><span class="line">		<span class="keyword">else</span>:</span><br><span class="line">			self.modify(root.right, index, value)</span><br><span class="line">		<span class="keyword">if</span> root.right <span class="keyword">and</span> root.left:</span><br><span class="line">			root.max = max(root.right.max, root.left.max)</span><br></pre></td></tr></table></figure></p>
-<h2 id="4-线段树的查询"><a href="#4-线段树的查询" class="headerlink" title="4 线段树的查询"></a>4 线段树的查询</h2><p>构造线段树的目的就是为了更快的<strong>查询</strong>。</p>
-<ul>
-<li>给定一个区间，要求区间中最大的值。线段树的区间查询操作就是将<strong>当前区间分解为较小的子区间</strong>,然后由子区间的最大值就可以快速得到需要查询区间的最大值。</li>
-<li>任意长度的线段，最多被拆分成logn条线段树上存在的线段，所以查询的时间复杂度为O(log(n))</li>
-</ul>
-<h3 id="LintCode-202-Segment-Tree-Query"><a href="#LintCode-202-Segment-Tree-Query" class="headerlink" title="LintCode 202. Segment Tree Query"></a><a href="http://www.lintcode.com/en/problem/segment-tree-query/" target="_blank" rel="noopener">LintCode 202. Segment Tree Query</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">query</span><span class="params">(self, root, start, end)</span>:</span></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">not</span> root: <span class="keyword">return</span></span><br><span class="line">	<span class="keyword">if</span> root.start == start <span class="keyword">and</span> root.end == end:</span><br><span class="line">		<span class="keyword">return</span> root.max</span><br><span class="line">	mid = (root.start + root.end) / <span class="number">2</span></span><br><span class="line">	<span class="keyword">if</span> start &gt; mid:</span><br><span class="line">		<span class="keyword">return</span> self.query(root.right, start, end)</span><br><span class="line">	<span class="keyword">elif</span> end &lt;= mid:</span><br><span class="line">		<span class="keyword">return</span> self.query(root.left, start, end)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="keyword">return</span> max(self.query(root.left, start, mid),</span><br><span class="line">					self.query(root.right, mid+<span class="number">1</span>, end))</span><br></pre></td></tr></table></figure>
-<h2 id="5-线段树的应用"><a href="#5-线段树的应用" class="headerlink" title="5 线段树的应用"></a>5 线段树的应用</h2><h3 id="线段树的基本应用"><a href="#线段树的基本应用" class="headerlink" title="线段树的基本应用"></a>线段树的基本应用</h3><ul>
-<li>支持动态更改数组一个元素的值 O(logn)</li>
-<li>求<strong>区间的和、最大值、最小值</strong> O(logn)</li>
-<li>创建，更新，求和或者求最大最小，只有这三个function！</li>
-</ul>
-<h3 id="307-Range-Sum-Query-Mutable"><a href="#307-Range-Sum-Query-Mutable" class="headerlink" title="307. Range Sum Query - Mutable"></a><a href="https://leetcode.com/problems/range-sum-query-mutable/" target="_blank" rel="noopener">307. Range Sum Query - Mutable</a></h3><p>区间求和，如果原序列不变的话直接用preSum前缀和就可以了，但是如果序列可变的话update前缀和的复杂度就变成O(n)</p>
-<h3 id="LintCode-249-Count-of-Smaller-Number-before-itsel"><a href="#LintCode-249-Count-of-Smaller-Number-before-itsel" class="headerlink" title="LintCode 249. Count of Smaller Number before itsel"></a><a href="http://www.lintcode.com/en/problem/count-of-smaller-number-before-itself/" target="_blank" rel="noopener">LintCode 249. Count of Smaller Number before itsel</a></h3><p>统计数组中每个元素后面比自己小的数。</p>
-<ul>
-<li>初始化[0, max(nums)]的数组全部都是0</li>
-<li>把数组中的数值当作index，统计数量就转化成了求区间和</li>
-</ul>
-<p>其他解法：Binary Indexed Tree，Binary Search Tree</p>
-<h3 id="315-Count-of-Smaller-Numbers-After-Self"><a href="#315-Count-of-Smaller-Numbers-After-Self" class="headerlink" title="315. Count of Smaller Numbers After Self"></a><a href="https://leetcode.com/problems/count-of-smaller-numbers-after-self/" target="_blank" rel="noopener">315. Count of Smaller Numbers After Self</a></h3><ul>
-<li>值为负数或者最大值特别大的时候用Segment Tree，val无法作为index，导致 非常不合适！</li>
-<li>所以这个题得考虑别的解决方案</li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/04/10/segment-tree/" data-id="cjnemk1z8002pimu0di639oy6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/17/redis/" data-id="cjnjr0u5a0026jg7870j0ppji" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2258,7 +2334,7 @@ ga('send', 'pageview');
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+        <a class="extend prev" rel="prev" href="/page/3/">&laquo; Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">Next &raquo;</a>
     </nav>
 </section>
             
@@ -2270,6 +2346,24 @@ ga('send', 'pageview');
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/21/bfs/" class="title">Breadth First Search</a></p>
+                            <p class="item-date"><time datetime="2018-10-22T02:29:29.000Z" itemprop="datePublished">2018-10-21</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/20/k-sum/" class="title">K Sum</a></p>
+                            <p class="item-date"><time datetime="2018-10-20T14:02:10.000Z" itemprop="datePublished">2018-10-20</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -2298,24 +2392,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/11/string-advanced/" class="title">String Advanced</a></p>
-                            <p class="item-date"><time datetime="2018-10-11T23:31:29.000Z" itemprop="datePublished">2018-10-11</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/10/binary-search-advanced/" class="title">Binary Search Advanced</a></p>
-                            <p class="item-date"><time datetime="2018-10-10T19:40:49.000Z" itemprop="datePublished">2018-10-10</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -2325,7 +2401,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">34</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -2334,7 +2410,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -2343,7 +2419,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a><span class="tag-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -2352,7 +2428,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/binary-search/" style="font-size: 12.5px;">binary search</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/dp/" style="font-size: 17.5px;">dp</a> <a href="/tags/graph/" style="font-size: 15px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 10px;">hash table</a> <a href="/tags/heap/" style="font-size: 10px;">heap</a> <a href="/tags/linked-list/" style="font-size: 15px;">linked list</a> <a href="/tags/recursion/" style="font-size: 17.5px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/string/" style="font-size: 12.5px;">string</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a> <a href="/tags/union-find/" style="font-size: 10px;">union find</a>
+            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bfs/" style="font-size: 12.5px;">bfs</a> <a href="/tags/binary-search/" style="font-size: 12.5px;">binary search</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/dp/" style="font-size: 17.5px;">dp</a> <a href="/tags/graph/" style="font-size: 15px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 10px;">hash table</a> <a href="/tags/heap/" style="font-size: 10px;">heap</a> <a href="/tags/linked-list/" style="font-size: 15px;">linked list</a> <a href="/tags/recursion/" style="font-size: 17.5px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/string/" style="font-size: 12.5px;">string</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a> <a href="/tags/union-find/" style="font-size: 10px;">union find</a>
         </div>
     </div>
 
