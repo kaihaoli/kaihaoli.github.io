@@ -3,22 +3,19 @@
 <head>
     <meta charset="utf-8">
     
-    <title>OOD in Interview | kaihao</title>
+    <title>Cache | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="总结自:九章算法 - OOD1 OOD in InterviewEverything is an object, Usable!!!  面试频率 Phone interview 低 Onsite interview 中高频   高频公司 Amazon, Bloomberg, TripAdvisor, EMC, Uber…   主要考察CS设计的基本素养，属于开放型设计类题目，能用上OOD的常见的一">
+    <meta name="description" content="Design + Operatin System + Data Structure 146. LRU CacheDesign and implement a data structure for Least Recently Used (LRU) cache. Solution1. Built-In python built-in datastructure OrderedDict!!! reco">
 <meta property="og:type" content="article">
-<meta property="og:title" content="OOD in Interview">
-<meta property="og:url" content="http://kaihaoli.github.io/2018/05/18/ood-in-interview/index.html">
+<meta property="og:title" content="Cache">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/10/22/cache/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="总结自:九章算法 - OOD1 OOD in InterviewEverything is an object, Usable!!!  面试频率 Phone interview 低 Onsite interview 中高频   高频公司 Amazon, Bloomberg, TripAdvisor, EMC, Uber…   主要考察CS设计的基本素养，属于开放型设计类题目，能用上OOD的常见的一">
+<meta property="og:description" content="Design + Operatin System + Data Structure 146. LRU CacheDesign and implement a data structure for Least Recently Used (LRU) cache. Solution1. Built-In python built-in datastructure OrderedDict!!! reco">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="http://kaihaoli.github.io/2018/05/18/ood-in-interview/oodvssd.jpg">
-<meta property="og:image" content="http://kaihaoli.github.io/2018/05/18/ood-in-interview/ood_elevator.jpg">
-<meta property="og:updated_time" content="2018-05-19T02:25:53.692Z">
+<meta property="og:updated_time" content="2018-10-23T02:14:42.713Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="OOD in Interview">
-<meta name="twitter:description" content="总结自:九章算法 - OOD1 OOD in InterviewEverything is an object, Usable!!!  面试频率 Phone interview 低 Onsite interview 中高频   高频公司 Amazon, Bloomberg, TripAdvisor, EMC, Uber…   主要考察CS设计的基本素养，属于开放型设计类题目，能用上OOD的常见的一">
-<meta name="twitter:image" content="http://kaihaoli.github.io/2018/05/18/ood-in-interview/oodvssd.jpg">
+<meta name="twitter:title" content="Cache">
+<meta name="twitter:description" content="Design + Operatin System + Data Structure 146. LRU CacheDesign and implement a data structure for Least Recently Used (LRU) cache. Solution1. Built-In python built-in datastructure OrderedDict!!! reco">
     
 
     
@@ -194,7 +191,7 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-ood-in-interview" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-cache" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -202,7 +199,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            OOD in Interview
+            Cache
         </h1>
     
 
@@ -211,8 +208,8 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2018/05/18/ood-in-interview/">
-            <time datetime="2018-05-19T01:46:38.000Z" itemprop="datePublished">2018-05-18</time>
+        <a href="/2018/10/22/cache/">
+            <time datetime="2018-10-22T13:41:19.000Z" itemprop="datePublished">2018-10-22</time>
         </a>
     </div>
 
@@ -220,7 +217,7 @@ ga('send', 'pageview');
                         
     <div class="article-category">
     	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/OOD/">OOD</a>
+        <a class="article-category-link" href="/categories/Design/">Design</a>
     </div>
 
                         
@@ -234,153 +231,24 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#OOD-in-Interview"><span class="toc-number">1.</span> <span class="toc-text">OOD in Interview</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#OOD要避免的情况"><span class="toc-number">1.1.</span> <span class="toc-text">OOD要避免的情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#“SOLOD”原则"><span class="toc-number">1.2.</span> <span class="toc-text">“SOLOD”原则</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Design-an-elevator-system"><span class="toc-number">2.</span> <span class="toc-text">Design an elevator system</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#What-什么"><span class="toc-number">2.1.</span> <span class="toc-text">What? - 什么?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#How-怎样"><span class="toc-number">2.2.</span> <span class="toc-text">How? - 怎样?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Who-谁"><span class="toc-number">2.3.</span> <span class="toc-text">Who? - 谁?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#When-什么时间"><span class="toc-number">2.4.</span> <span class="toc-text">When? - 什么时间?</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Think-Process"><span class="toc-number">3.</span> <span class="toc-text">Think Process</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Core-Object"><span class="toc-number">3.1.</span> <span class="toc-text">Core Object</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Access-modifier"><span class="toc-number">3.2.</span> <span class="toc-text">Access modifier</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Use-Cases"><span class="toc-number">3.3.</span> <span class="toc-text">Use Cases</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Class-diagram-类图"><span class="toc-number">3.4.</span> <span class="toc-text">Class diagram 类图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Challenge"><span class="toc-number">3.5.</span> <span class="toc-text">Challenge</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#146-LRU-Cache"><span class="toc-number">1.</span> <span class="toc-text">146. LRU Cache</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution1-Built-In"><span class="toc-number">1.1.</span> <span class="toc-text">Solution1. Built-In</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution2-Doublely-Linked-List-Hash-map"><span class="toc-number">1.2.</span> <span class="toc-text">Solution2. Doublely Linked List + Hash map</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#460-LFU-Cache"><span class="toc-number">2.</span> <span class="toc-text">460. LFU Cache</span></a></li></ol>
                 </div>
             
-            <p>总结自:<a href="https://www.jiuzhang.com/course/10/" target="_blank" rel="noopener">九章算法 - OOD1</a></p>
-<h2 id="OOD-in-Interview"><a href="#OOD-in-Interview" class="headerlink" title="OOD in Interview"></a>OOD in Interview</h2><p>Everything is an object, Usable!!!</p>
-<ul>
-<li>面试频率<ul>
-<li>Phone interview 低</li>
-<li><strong>Onsite interview</strong> 中高频</li>
+            <p>Design + Operatin System + Data Structure</p>
+<h3 id="146-LRU-Cache"><a href="#146-LRU-Cache" class="headerlink" title="146. LRU Cache"></a><a href="https://leetcode.com/problems/lru-cache/" target="_blank" rel="noopener">146. LRU Cache</a></h3><p>Design and implement a data structure for <strong>Least Recently Used (LRU) cache</strong>.</p>
+<h4 id="Solution1-Built-In"><a href="#Solution1-Built-In" class="headerlink" title="Solution1. Built-In"></a>Solution1. Built-In</h4><ul>
+<li>python built-in datastructure OrderedDict!!! record the order when they put in the dictionary</li>
 </ul>
-</li>
-<li>高频公司<ul>
-<li><strong>Amazon, Bloomberg, TripAdvisor</strong>, EMC, Uber…</li>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LRUCache</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, capacity)</span>:</span></span><br><span class="line">        self.cap = capacity</span><br><span class="line">        self.cache = collections.OrderedDict()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, key)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> self.cache:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        val = self.cache.pop(key)</span><br><span class="line">        self.cache[key] = val</span><br><span class="line">        <span class="keyword">return</span> val</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span><span class="params">(self, key, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">in</span> self.cache:</span><br><span class="line">            self.cache.pop(key)</span><br><span class="line">            self.cache[key] = value</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> len(self.cache) &gt;= self.cap:</span><br><span class="line">                self.cache.popitem(last=<span class="keyword">False</span>)</span><br><span class="line">            self.cache[key] = value</span><br></pre></td></tr></table></figure>
+<h4 id="Solution2-Doublely-Linked-List-Hash-map"><a href="#Solution2-Doublely-Linked-List-Hash-map" class="headerlink" title="Solution2. Doublely Linked List + Hash map"></a>Solution2. Doublely Linked List + Hash map</h4><ul>
+<li>Key Point</li>
 </ul>
-</li>
-<li>主要考察CS设计的基本素养，属于开放型设计类题目，能用上OOD的常见的一些设计思想！</li>
-</ul>
-<img src="/2018/05/18/ood-in-interview/oodvssd.jpg">
-<p>OOA(Analysis) -&gt; OOD(Design) -&gt; OOP(Programming)</p>
-<ul>
-<li>OOD问法<ul>
-<li>Can you design a … system? <strong>little amount of coding</strong></li>
-<li>Can you … for … system? <strong>need implementation</strong></li>
-</ul>
-</li>
-</ul>
-<h3 id="OOD要避免的情况"><a href="#OOD要避免的情况" class="headerlink" title="OOD要避免的情况"></a>OOD要避免的情况</h3><ul>
-<li>1 不问清需求就开始设计，一定要和面试官!<strong>沟通”甲方”的需求</strong>！<ul>
-<li>Communication</li>
-</ul>
-</li>
-<li>2 没有理解面试官想要问<strong>System Design，还是OOD，还是算法</strong>！<ul>
-<li>Think loud</li>
-</ul>
-</li>
-<li>3 思路混乱，反复更改之前的设计！<strong>Usable！！！</strong>就好<ul>
-<li>Correctness &amp; Reasonable</li>
-</ul>
-</li>
-<li>use case</li>
-</ul>
-<h3 id="“SOLOD”原则"><a href="#“SOLOD”原则" class="headerlink" title="“SOLOD”原则"></a>“SOLOD”原则</h3><ul>
-<li>S - Single responsibility principle<ul>
-<li>一个类应该有且只有一个去改变它的理由，这意味着<strong>一个类应该只有一项工作</strong>。</li>
-</ul>
-</li>
-<li>O – Open close principle<ul>
-<li>对象或实体应该对扩展开放，对修改封闭 (Open to extension, close to modification)</li>
-</ul>
-</li>
-<li>L - Liskov substitution principle 里氏替换原则<ul>
-<li>任何一个子类或派生类应该可以替换它们的基类或父类</li>
-</ul>
-</li>
-<li>I - Interface segregation principle 接口分离原则<ul>
-<li>不应该强迫一个类实现它用不上的接口 Implement</li>
-</ul>
-</li>
-<li>D - Dependency inversion principle 依赖反转原则<ul>
-<li>抽象不应该依赖于具体实现，具体实现应该依赖于抽象</li>
-<li>只能class 依赖于Abstract, Imterface</li>
-</ul>
-</li>
-</ul>
-<h2 id="Design-an-elevator-system"><a href="#Design-an-elevator-system" class="headerlink" title="Design an elevator system"></a>Design an elevator system</h2><p>Clarify : 通过和面试官交流，去除题目中的歧义，确定答题范围</p>
-<h3 id="What-什么"><a href="#What-什么" class="headerlink" title="What? - 什么?"></a>What? - 什么?</h3><ul>
-<li>针对题目中的<strong>关键字</strong>来􏰁问，帮助自己更好的确定答题范围</li>
-<li>大多数的关键字为<strong>名词</strong>，通过名词的属性来考虑</li>
-<li>Elevator, Building</li>
-</ul>
-<h3 id="How-怎样"><a href="#How-怎样" class="headerlink" title="How? - 怎样?"></a>How? - 怎样?</h3><ul>
-<li>针对问题<strong>主题的规则</strong>来􏰁问，帮助自己明确解题方向。</li>
-<li>此类问题没有标准答案，你可以􏰁出一些解决方法，通过面试官的反应， 选择一个你比较有信心(简单)的方案</li>
-<li><strong>Rule</strong><ul>
-<li>同向 &gt; 静止 &gt; 反向，当运行时不能按下反向的楼层</li>
-<li>电梯至少需要三种状态，并且要知道当前在哪一层</li>
-</ul>
-</li>
-</ul>
-<h3 id="Who-谁"><a href="#Who-谁" class="headerlink" title="Who? - 谁?"></a>Who? - 谁?</h3><ul>
-<li>设计由人主导 VS. 设计由系统主导?</li>
-<li>(Optional)通过思考题目当中<strong>是否有人的出现</strong>，来帮助确定解题范围</li>
-<li>一般可以考虑人的角色以及人的属性，看是否题目需要</li>
-</ul>
-<h3 id="When-什么时间"><a href="#When-什么时间" class="headerlink" title="When? - 什么时间?"></a>When? - 什么时间?</h3><ul>
-<li>(Optional)通过思考题目当中和<strong>时间相关的属性</strong>，来帮助确定解题范围</li>
-<li>和<strong>时间相关的问题</strong>一般都比较细节，可能会有意想不到的帮助</li>
-</ul>
-<h2 id="Think-Process"><a href="#Think-Process" class="headerlink" title="Think Process"></a>Think Process</h2><h3 id="Core-Object"><a href="#Core-Object" class="headerlink" title="Core Object"></a>Core Object</h3><p>为了完成设计，需要哪些class？</p>
-<ul>
-<li>以一个Object为基础，往往就是需要设计的system！</li>
-<li>确定objects之间的映射关系(4~5个Object)</li>
-</ul>
-<h3 id="Access-modifier"><a href="#Access-modifier" class="headerlink" title="Access modifier"></a>Access modifier</h3><ul>
-<li>package<ul>
-<li>如果<strong>什么都不声明</strong>，变量和函数都是package level visible的，在同一个package内的其他类都可以访问</li>
-</ul>
-</li>
-<li>public<ul>
-<li>如果声明为public，变量和函数都是public level visible的，任何其他的类都可以访问</li>
-<li>用”+”表示一个变量或者函数为public</li>
-</ul>
-</li>
-<li>private<ul>
-<li>如果声明为private，变量和函数都是class level visible的，这是所有access modifier中限制最多的一个。</li>
-<li>仅有定义这些变量和函数的类自己可以访问。</li>
-<li>在类图中，用”-”表示一个变量或者函数为private</li>
-</ul>
-</li>
-<li>protected<ul>
-<li>如果声明为protected，变量和函数在能被定义他们的类访问的基础上，还能够被该类的子类所访问。</li>
-<li>protected也是OOD当中实现继承的重要手段</li>
-<li>在类图中，用”#”表示一个变量或者函数为protected</li>
-</ul>
-</li>
-</ul>
-<h3 id="Use-Cases"><a href="#Use-Cases" class="headerlink" title="Use Cases"></a>Use Cases</h3><p>e.g. Elevator</p>
-<ul>
-<li>Take external request</li>
-<li>Take internal request</li>
-<li>Open gate</li>
-<li>Close gate</li>
-<li>Check weight</li>
-</ul>
-<h3 id="Class-diagram-类图"><a href="#Class-diagram-类图" class="headerlink" title="Class diagram 类图"></a>Class diagram 类图</h3><ul>
-<li>为什么要画类图?<ul>
-<li>可交付，MinimalViableProduct</li>
-<li>节省时间，不容易在Coding上挣扎</li>
-<li>建立在Usecase上，和之前的步骤层层递进，条例清晰，便于交流和修改</li>
-<li>如果时间允许/面试官要求，便于转化成Code</li>
-</ul>
-</li>
-<li>怎么画类图?<ul>
-<li>遍历你所列出的usecases</li>
-<li>对于每一个usecase，更加详细的􏰀述这个usecase在做什么事情 (例如:take external request -&gt; ElevatorSystem takes an external request, and decide to push this request to an appropriate elevator)</li>
-<li>针对这个􏰀述，在已有的Coreobjects里填充进所需要的信息</li>
-</ul>
-</li>
-</ul>
-<img src="/2018/05/18/ood-in-interview/ood_elevator.jpg">
-<h3 id="Challenge"><a href="#Challenge" class="headerlink" title="Challenge"></a>Challenge</h3><ul>
-<li>What if I want to apply different ways to handle external requests during different time of a day?<ul>
-<li>Solution 1: if - else</li>
-<li>Solution 2: Strategy design pattern</li>
-</ul>
-</li>
-</ul>
+<ol>
+<li>DummyNode, head and tail</li>
+<li>helper function, remove and addHead</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, key, val)</span>:</span></span><br><span class="line">        self.key = key</span><br><span class="line">        self.val = val</span><br><span class="line">        self.prev = <span class="keyword">None</span></span><br><span class="line">        self.next = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LRUCache</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, capacity)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type capacity: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.cap = capacity</span><br><span class="line">        self.cache = &#123;&#125;</span><br><span class="line">        self.head = Node(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">        self.tail = Node(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">        self.head.next = self.tail</span><br><span class="line">        self.tail.prev = self.head</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_addHead</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        nxt = self.head.next</span><br><span class="line">        self.head.next = node</span><br><span class="line">        node.prev = self.head</span><br><span class="line">        node.next = nxt</span><br><span class="line">        nxt.prev = node</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_remove</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        prev = node.prev</span><br><span class="line">        nxt = node.next</span><br><span class="line">        prev.next = nxt</span><br><span class="line">        nxt.prev = prev</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, key)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> self.cache:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        node = self.cache[key]</span><br><span class="line">        self._remove(node)</span><br><span class="line">        self._addHead(node)</span><br><span class="line">        self.cache[key] = node</span><br><span class="line">        <span class="keyword">return</span> node.val</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span><span class="params">(self, key, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">in</span> self.cache:</span><br><span class="line">            node = self.cache[key]</span><br><span class="line">            node.val = value</span><br><span class="line">            self._remove(node)</span><br><span class="line">            self._addHead(node)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> len(self.cache) &gt;= self.cap:</span><br><span class="line">                lastKey = self.tail.prev.key</span><br><span class="line">                self._remove(self.tail.prev)</span><br><span class="line">                <span class="keyword">del</span> self.cache[lastKey]</span><br><span class="line">            node = Node(key, value)</span><br><span class="line">            self.cache[key] = node</span><br><span class="line">            self._addHead(node)</span><br></pre></td></tr></table></figure>
+<h3 id="460-LFU-Cache"><a href="#460-LFU-Cache" class="headerlink" title="460. LFU Cache"></a><a href="https://leetcode.com/problems/lfu-cache/" target="_blank" rel="noopener">460. LFU Cache</a></h3><p>TODO!!!</p>
 
         
         </div>
@@ -391,7 +259,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/18/ood-in-interview/" data-id="cjnmn4ipm002bjs78tglr3frv" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/22/cache/" data-id="cjnmn4ioa000ajs78isv0kg2s" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -466,19 +334,10 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2018/05/22/union-find/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
-            <div class="article-nav-title">
-                
-                    Union Find 并查集
-                
-            </div>
-        </a>
     
-    
-        <a href="/2018/05/16/binary-indexed-tree/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/10/21/bfs/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Binary Indexed Tree 树状数组</div>
+            <div class="article-nav-title">Breadth First Search</div>
         </a>
     
 </nav>

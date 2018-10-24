@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="kaihao">
 <meta property="og:description" content="Best First Search Init state expansion/generation rule termination  317. Shortest Distance from All Buildings Key idea : people to building or building to people ?1234567891011121314151617181920212223">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-22T03:35:36.371Z">
+<meta property="og:updated_time" content="2018-10-23T01:27:46.335Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Breadth First Search">
 <meta name="twitter:description" content="Best First Search Init state expansion/generation rule termination  317. Shortest Distance from All Buildings Key idea : people to building or building to people ?1234567891011121314151617181920212223">
@@ -164,7 +164,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                42
+                43
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -237,7 +237,7 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Best-First-Search"><span class="toc-number">1.</span> <span class="toc-text">Best First Search</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#317-Shortest-Distance-from-All-Buildings"><span class="toc-number">1.1.</span> <span class="toc-text">317. Shortest Distance from All Buildings</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Best-First-Search"><span class="toc-number">1.</span> <span class="toc-text">Best First Search</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#317-Shortest-Distance-from-All-Buildings"><span class="toc-number">1.1.</span> <span class="toc-text">317. Shortest Distance from All Buildings</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#301-Remove-Invalid-Parentheses"><span class="toc-number">1.2.</span> <span class="toc-text">301. Remove Invalid Parentheses</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution1-BFS"><span class="toc-number">1.2.1.</span> <span class="toc-text">Solution1. BFS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution2-DFS-pruning"><span class="toc-number">1.2.2.</span> <span class="toc-text">Solution2. DFS + pruning</span></a></li></ol></li></ol></li></ol>
                 </div>
             
             <h2 id="Best-First-Search"><a href="#Best-First-Search" class="headerlink" title="Best First Search"></a>Best First Search</h2><ol>
@@ -247,6 +247,18 @@ ga('send', 'pageview');
 </ol>
 <h3 id="317-Shortest-Distance-from-All-Buildings"><a href="#317-Shortest-Distance-from-All-Buildings" class="headerlink" title="317. Shortest Distance from All Buildings"></a><a href="https://leetcode.com/problems/shortest-distance-from-all-buildings/" target="_blank" rel="noopener">317. Shortest Distance from All Buildings</a></h3><ul>
 <li>Key idea : people to building or building to people ?<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shortestDistance</span><span class="params">(self, grid)</span>:</span></span><br><span class="line">        m, n = len(grid), len(grid[<span class="number">0</span>])</span><br><span class="line">        sums = collections.defaultdict(int)</span><br><span class="line">        bcnt = collections.defaultdict(int)</span><br><span class="line">        total = <span class="number">0</span></span><br><span class="line">        directions = [(<span class="number">-1</span>,<span class="number">0</span>), (<span class="number">0</span>,<span class="number">-1</span>), (<span class="number">0</span>,<span class="number">1</span>), (<span class="number">1</span>,<span class="number">0</span>)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(n):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="number">1</span>: <span class="comment"># Run BFS</span></span><br><span class="line">                    total += <span class="number">1</span></span><br><span class="line">                    visited = set()</span><br><span class="line">                    queue = [(i,j,<span class="number">0</span>)]</span><br><span class="line">                    <span class="keyword">while</span> queue:</span><br><span class="line">                        x, y, val = queue.pop(<span class="number">0</span>)</span><br><span class="line">                        <span class="keyword">for</span> dx, dy <span class="keyword">in</span> directions:</span><br><span class="line">                            <span class="keyword">if</span> <span class="number">0</span> &lt;= x+dx &lt;= m<span class="number">-1</span> <span class="keyword">and</span> <span class="number">0</span> &lt;= y+dy &lt;= n<span class="number">-1</span> <span class="keyword">and</span> (x+dx, y+dy) <span class="keyword">not</span> <span class="keyword">in</span> visited <span class="keyword">and</span> grid[x+dx][y+dy] == <span class="number">0</span>:</span><br><span class="line">                                visited.add((x+dx, y+dy))</span><br><span class="line">                                queue.append((x+dx, y+dy, val+<span class="number">1</span>))</span><br><span class="line">                                sums[(x+dx, y+dy)] += val+<span class="number">1</span></span><br><span class="line">                                bcnt[(x+dx, y+dy)] += <span class="number">1</span></span><br><span class="line">        res = float(<span class="string">'inf'</span>)</span><br><span class="line">        <span class="keyword">for</span> x, y <span class="keyword">in</span> bcnt.keys():</span><br><span class="line">            <span class="keyword">if</span> bcnt[(x, y)] == total:</span><br><span class="line">                res = min(res, sums[(x, y)])</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span> <span class="keyword">if</span> res == float(<span class="string">'inf'</span>) <span class="keyword">else</span> res</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="301-Remove-Invalid-Parentheses"><a href="#301-Remove-Invalid-Parentheses" class="headerlink" title="301. Remove Invalid Parentheses"></a><a href="https://leetcode.com/problems/remove-invalid-parentheses/" target="_blank" rel="noopener">301. Remove Invalid Parentheses</a></h3><ul>
+<li>BFS - level order traversal</li>
+<li>remove the minimum number</li>
+</ul>
+<h4 id="Solution1-BFS"><a href="#Solution1-BFS" class="headerlink" title="Solution1. BFS"></a>Solution1. BFS</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeInvalidParentheses</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        visited = set([s])</span><br><span class="line">        queue = [s]</span><br><span class="line">        res = []</span><br><span class="line">        found = <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            <span class="keyword">for</span> st <span class="keyword">in</span> queue:</span><br><span class="line">                <span class="keyword">if</span> self.isValid(st):</span><br><span class="line">                    found = <span class="keyword">True</span></span><br><span class="line">                    res.append(st)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> found: <span class="keyword">break</span></span><br><span class="line">            nqueue = []</span><br><span class="line">            <span class="keyword">for</span> st <span class="keyword">in</span> queue:</span><br><span class="line">                <span class="keyword">for</span> i, ch <span class="keyword">in</span> enumerate(st):</span><br><span class="line">                    <span class="keyword">if</span> ch <span class="keyword">in</span> <span class="string">"()"</span>:</span><br><span class="line">                        nst = st[:i]+st[i+<span class="number">1</span>:]</span><br><span class="line">                        <span class="keyword">if</span> nst <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                            nqueue.append(nst)</span><br><span class="line">                            visited.add(nst)</span><br><span class="line">            queue = nqueue</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValid</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        left = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> ch == <span class="string">'('</span>:</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> ch == <span class="string">')'</span>:</span><br><span class="line">                left -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> left &lt; <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> left == <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>We can also use <strong>dfs with pruning</strong> to solve this problem!</li>
+</ul>
+<h4 id="Solution2-DFS-pruning"><a href="#Solution2-DFS-pruning" class="headerlink" title="Solution2. DFS + pruning"></a>Solution2. DFS + pruning</h4><ul>
+<li>Backtracking<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeInvalidParentheses</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        lp = rp = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> ch == <span class="string">'('</span>:</span><br><span class="line">                lp += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> ch == <span class="string">')'</span>:</span><br><span class="line">                <span class="keyword">if</span> lp &gt; <span class="number">0</span>:</span><br><span class="line">                    lp -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    rp += <span class="number">1</span></span><br><span class="line">        res = set()</span><br><span class="line">        self.dfs(lp, rp, <span class="number">0</span>, s, [], res)</span><br><span class="line">        <span class="keyword">return</span> list(res)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, lp, rp, pairs, s, path, res)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> lp &lt; <span class="number">0</span> <span class="keyword">or</span> rp &lt; <span class="number">0</span> <span class="keyword">or</span> pairs &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> len(s) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> lp == <span class="number">0</span> <span class="keyword">and</span> rp == <span class="number">0</span> <span class="keyword">and</span> pairs == <span class="number">0</span>:</span><br><span class="line">                res.add(<span class="string">''</span>.join(path))</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> s[<span class="number">0</span>] == <span class="string">'('</span>:</span><br><span class="line">            self.dfs(lp<span class="number">-1</span>, rp, pairs, s[<span class="number">1</span>:], path, res)</span><br><span class="line">            self.dfs(lp, rp, pairs+<span class="number">1</span>, s[<span class="number">1</span>:], path + [s[<span class="number">0</span>]], res)</span><br><span class="line">        <span class="keyword">elif</span> s[<span class="number">0</span>] == <span class="string">')'</span>:</span><br><span class="line">            self.dfs(lp, rp<span class="number">-1</span>, pairs, s[<span class="number">1</span>:], path, res)</span><br><span class="line">            self.dfs(lp, rp, pairs<span class="number">-1</span>, s[<span class="number">1</span>:], path + [s[<span class="number">0</span>]], res)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.dfs(lp, rp, pairs, s[<span class="number">1</span>:], path + [s[<span class="number">0</span>]], res)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -259,7 +271,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/21/bfs/" data-id="cjnjr0u360000jg78tv048cks" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/21/bfs/" data-id="cjnmn4inr0000js78lv5le1po" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -334,6 +346,15 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
+        <a href="/2018/10/22/cache/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Newer</strong>
+            <div class="article-nav-title">
+                
+                    Cache
+                
+            </div>
+        </a>
+    
     
         <a href="/2018/10/20/k-sum/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
@@ -360,6 +381,15 @@ ga('send', 'pageview');
         <h3 class="widget-title">recent</h3>
         <div class="widget">
             <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Design/">Design</a></p>
+                            <p class="item-title"><a href="/2018/10/22/cache/" class="title">Cache</a></p>
+                            <p class="item-date"><time datetime="2018-10-22T13:41:19.000Z" itemprop="datePublished">2018-10-22</time></p>
+                        </div>
+                    </li>
                 
                     <li>
                         
@@ -397,15 +427,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/14/sampling-randomization/" class="title">Sampling &amp; Randomization</a></p>
-                            <p class="item-date"><time datetime="2018-10-14T15:35:31.000Z" itemprop="datePublished">2018-10-14</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -415,7 +436,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -424,7 +445,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 

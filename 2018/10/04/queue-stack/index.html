@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="kaihao">
 <meta property="og:description" content="Logic Data Structure Queue FIFO == First In First Out, e.g. waith in a line Usages BFS related problems, Tree printout by levels Sliding Window problems(Deque)    225. Implement Stack using Queues Onl">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-20T13:44:25.749Z">
+<meta property="og:updated_time" content="2018-10-24T04:10:00.435Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Queue &amp; Stack">
 <meta name="twitter:description" content="Logic Data Structure Queue FIFO == First In First Out, e.g. waith in a line Usages BFS related problems, Tree printout by levels Sliding Window problems(Deque)    225. Implement Stack using Queues Onl">
@@ -163,7 +163,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                42
+                43
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -231,7 +231,7 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Queue"><span class="toc-number">1.</span> <span class="toc-text">Queue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#225-Implement-Stack-using-Queues"><span class="toc-number">1.1.</span> <span class="toc-text">225. Implement Stack using Queues</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stack"><span class="toc-number">2.</span> <span class="toc-text">Stack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Discussion"><span class="toc-number">2.1.</span> <span class="toc-text">Discussion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#232-Implement-Queue-using-Stacks"><span class="toc-number">2.2.</span> <span class="toc-text">232.Implement Queue using Stacks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-Valid-Parentheses"><span class="toc-number">2.3.</span> <span class="toc-text">20. Valid Parentheses</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#155-Min-Stack"><span class="toc-number">2.4.</span> <span class="toc-text">155. Min Stack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Min-Stack-Follow-Up"><span class="toc-number">2.5.</span> <span class="toc-text">Min Stack Follow Up</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#716-Max-Stack"><span class="toc-number">2.6.</span> <span class="toc-text">716. Max Stack</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Queue"><span class="toc-number">1.</span> <span class="toc-text">Queue</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#225-Implement-Stack-using-Queues"><span class="toc-number">1.1.</span> <span class="toc-text">225. Implement Stack using Queues</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Stack"><span class="toc-number">2.</span> <span class="toc-text">Stack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Discussion"><span class="toc-number">2.1.</span> <span class="toc-text">Discussion</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#232-Implement-Queue-using-Stacks"><span class="toc-number">2.2.</span> <span class="toc-text">232.Implement Queue using Stacks</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#20-Valid-Parentheses"><span class="toc-number">2.3.</span> <span class="toc-text">20. Valid Parentheses</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#155-Min-Stack"><span class="toc-number">2.4.</span> <span class="toc-text">155. Min Stack</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Min-Stack-Follow-Up"><span class="toc-number">2.5.</span> <span class="toc-text">Min Stack Follow Up</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#716-Max-Stack"><span class="toc-number">2.6.</span> <span class="toc-text">716. Max Stack</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Remove-Duplicates"><span class="toc-number">3.</span> <span class="toc-text">Remove Duplicates</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Remove-3-or-more-duplicates-repeatedly"><span class="toc-number">3.1.</span> <span class="toc-text">Remove 3 or more duplicates repeatedly</span></a></li></ol></li></ol>
                 </div>
             
             <p>Logic Data Structure</p>
@@ -294,6 +294,14 @@ ga('send', 'pageview');
 <ul>
 <li>TODO : Using Stack for Selection Sort; Implement Deque using stacks</li>
 </ul>
+<h2 id="Remove-Duplicates"><a href="#Remove-Duplicates" class="headerlink" title="Remove Duplicates"></a>Remove Duplicates</h2><h3 id="Remove-3-or-more-duplicates-repeatedly"><a href="#Remove-3-or-more-duplicates-repeatedly" class="headerlink" title="Remove 3 or more duplicates repeatedly"></a>Remove 3 or more duplicates repeatedly</h3><ul>
+<li>Stack + traversal pointer</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(s)</span>:</span></span><br><span class="line">    stack = []</span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    print(s)</span><br><span class="line">    <span class="keyword">while</span> i &lt; len(s):</span><br><span class="line">        <span class="keyword">if</span> len(stack) &gt; <span class="number">1</span> <span class="keyword">and</span> s[i] == stack[<span class="number">-1</span>] == stack[<span class="number">-2</span>]:</span><br><span class="line">            <span class="keyword">while</span> i &lt; len(s) <span class="keyword">and</span> s[i] == stack[<span class="number">-1</span>]:</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">            stack.pop()</span><br><span class="line">            stack.pop()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            stack.append(s[i])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> stack</span><br><span class="line"></span><br><span class="line"><span class="comment"># TEST</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    string = raw_input()</span><br><span class="line">    res = removeDuplicates(string)</span><br><span class="line">    print(res)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Use Two pointers to imitate the stack!<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(s)</span>:</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    slow = <span class="number">-1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; len(s):</span><br><span class="line">        <span class="keyword">if</span> slow &gt; <span class="number">0</span>  <span class="keyword">and</span> s[i] == s[slow] == s[slow<span class="number">-1</span>]:</span><br><span class="line">            <span class="keyword">while</span> i &lt; len(s) <span class="keyword">and</span> s[i] == s[slow]:</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">            slow -= <span class="number">2</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            slow += <span class="number">1</span></span><br><span class="line">            s[i], s[slow] = s[slow], s[i]</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> s[:slow+<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># TEST</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    string = raw_input()</span><br><span class="line">    res = removeDuplicates(list(string))</span><br><span class="line">    print(res)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
         
         </div>
@@ -304,7 +312,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/04/queue-stack/" data-id="cjnjr0u5b0029jg78zx71m83k" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/04/queue-stack/" data-id="cjnmn4ipk0028js78vjhw8hot" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -418,6 +426,15 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Design/">Design</a></p>
+                            <p class="item-title"><a href="/2018/10/22/cache/" class="title">Cache</a></p>
+                            <p class="item-date"><time datetime="2018-10-22T13:41:19.000Z" itemprop="datePublished">2018-10-22</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/10/21/bfs/" class="title">Breadth First Search</a></p>
                             <p class="item-date"><time datetime="2018-10-22T02:29:29.000Z" itemprop="datePublished">2018-10-21</time></p>
@@ -451,15 +468,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/14/sampling-randomization/" class="title">Sampling &amp; Randomization</a></p>
-                            <p class="item-date"><time datetime="2018-10-14T15:35:31.000Z" itemprop="datePublished">2018-10-14</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -469,7 +477,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">36</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -478,7 +486,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
