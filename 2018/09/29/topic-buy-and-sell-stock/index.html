@@ -5,18 +5,18 @@
     
     <title>Buy and Sell Stock | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="AnalysisQuestion Type Seperate an sequence to several nonoverlapping subarray no limit or limited k on the number of the subarray Each subarray meet or meet some requirement!  Solution Type Normally,">
-<meta name="keywords" content="dp">
+    <meta name="description" content="121. Best Time to Buy and Sell Stock Complete at most one transaction We can get max profit when we buy on the lowest price and sell on the highest price! we need to find $max(prices[j] - prices[i])$,">
+<meta name="keywords" content="dp,topic">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Buy and Sell Stock">
-<meta property="og:url" content="http://kaihaoli.github.io/2018/09/29/buy-and-sell-stock/index.html">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/09/29/topic-buy-and-sell-stock/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="AnalysisQuestion Type Seperate an sequence to several nonoverlapping subarray no limit or limited k on the number of the subarray Each subarray meet or meet some requirement!  Solution Type Normally,">
+<meta property="og:description" content="121. Best Time to Buy and Sell Stock Complete at most one transaction We can get max profit when we buy on the lowest price and sell on the highest price! we need to find $max(prices[j] - prices[i])$,">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-15T14:55:02.346Z">
+<meta property="og:updated_time" content="2018-10-29T03:21:24.722Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Buy and Sell Stock">
-<meta name="twitter:description" content="AnalysisQuestion Type Seperate an sequence to several nonoverlapping subarray no limit or limited k on the number of the subarray Each subarray meet or meet some requirement!  Solution Type Normally,">
+<meta name="twitter:description" content="121. Best Time to Buy and Sell Stock Complete at most one transaction We can get max profit when we buy on the lowest price and sell on the highest price! we need to find $max(prices[j] - prices[i])$,">
     
 
     
@@ -164,7 +164,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                47
+                51
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -192,7 +192,7 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-buy-and-sell-stock" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-topic-buy-and-sell-stock" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -209,8 +209,8 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2018/09/29/buy-and-sell-stock/">
-            <time datetime="2018-09-29T22:19:21.000Z" itemprop="datePublished">2018-09-29</time>
+        <a href="/2018/09/29/topic-buy-and-sell-stock/">
+            <time datetime="2018-09-30T00:08:40.000Z" itemprop="datePublished">2018-09-29</time>
         </a>
     </div>
 
@@ -224,7 +224,7 @@ ga('send', 'pageview');
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/dp/">dp</a>
+        <a class="tag-link" href="/tags/dp/">dp</a>, <a class="tag-link" href="/tags/topic/">topic</a>
     </div>
 
                     </div>
@@ -237,23 +237,15 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#Analysis"><span class="toc-number">1.</span> <span class="toc-text">Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Question-Type"><span class="toc-number">1.1.</span> <span class="toc-text">Question Type</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution-Type"><span class="toc-number">1.2.</span> <span class="toc-text">Solution Type</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#121-Best-Time-to-Buy-and-Sell-Stock"><span class="toc-number">2.</span> <span class="toc-text">121. Best Time to Buy and Sell Stock</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#122-Best-Time-to-Buy-and-Sell-Stock-II"><span class="toc-number">3.</span> <span class="toc-text">122. Best Time to Buy and Sell Stock II</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#122-Best-Time-to-Buy-and-Sell-Stock-III"><span class="toc-number">4.</span> <span class="toc-text">122. Best Time to Buy and Sell Stock III</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#121-Best-Time-to-Buy-and-Sell-Stock"><span class="toc-number">1.</span> <span class="toc-text">121. Best Time to Buy and Sell Stock</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#122-Best-Time-to-Buy-and-Sell-Stock-II"><span class="toc-number">2.</span> <span class="toc-text">122. Best Time to Buy and Sell Stock II</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#122-Best-Time-to-Buy-and-Sell-Stock-III"><span class="toc-number">3.</span> <span class="toc-text">122. Best Time to Buy and Sell Stock III</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#188-Best-Time-to-Buy-and-Sell-Stock-IV"><span class="toc-number">4.</span> <span class="toc-text">188. Best Time to Buy and Sell Stock IV</span></a></li></ol>
                 </div>
             
-            <h3 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h3><h4 id="Question-Type"><a href="#Question-Type" class="headerlink" title="Question Type"></a>Question Type</h4><ul>
-<li>Seperate an sequence to several <strong>nonoverlapping subarray</strong></li>
-<li>no limit or limited k on the number of the subarray</li>
-<li>Each subarray meet or meet some requirement!</li>
-</ul>
-<h4 id="Solution-Type"><a href="#Solution-Type" class="headerlink" title="Solution Type"></a>Solution Type</h4><ul>
-<li>Normally, dp[i][j]represents previous i elements seperate k subarray</li>
-<li><strong>最后一步，最后一段从后往前看</strong>！</li>
-</ul>
-<h3 id="121-Best-Time-to-Buy-and-Sell-Stock"><a href="#121-Best-Time-to-Buy-and-Sell-Stock" class="headerlink" title="121. Best Time to Buy and Sell Stock"></a><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="noopener">121. Best Time to Buy and Sell Stock</a></h3><ul>
+            <h3 id="121-Best-Time-to-Buy-and-Sell-Stock"><a href="#121-Best-Time-to-Buy-and-Sell-Stock" class="headerlink" title="121. Best Time to Buy and Sell Stock"></a><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" target="_blank" rel="noopener">121. Best Time to Buy and Sell Stock</a></h3><ul>
 <li>Complete <strong>at most one transaction</strong></li>
-<li>We can get max profi when we buy on the lowest price and sell on the highest price!</li>
+<li>We can get max profit when we buy on the lowest price and sell on the highest price!</li>
+<li>we need to find $max(prices[j] - prices[i])$, for every i and j such that j &gt; ij&gt;i.<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> prices:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        minp = prices[<span class="number">0</span>]</span><br><span class="line">        maxProfit = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, len(prices)):</span><br><span class="line">            minp = min(minp, prices[i])</span><br><span class="line">            maxProfit = max(maxProfit, prices[i] - minp)</span><br><span class="line">        <span class="keyword">return</span> maxProfit</span><br></pre></td></tr></table></figure>
+</li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> prices:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        minp = prices[<span class="number">0</span>]</span><br><span class="line">        maxProfit = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, len(prices)):</span><br><span class="line">            minp = min(minp, prices[i])</span><br><span class="line">            maxProfit = max(maxProfit, prices[i] - minp)</span><br><span class="line">        <span class="keyword">return</span> maxProfit</span><br></pre></td></tr></table></figure>
 <h3 id="122-Best-Time-to-Buy-and-Sell-Stock-II"><a href="#122-Best-Time-to-Buy-and-Sell-Stock-II" class="headerlink" title="122. Best Time to Buy and Sell Stock II"></a><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/" target="_blank" rel="noopener">122. Best Time to Buy and Sell Stock II</a></h3><ul>
 <li>Complete <strong>as many transactions</strong> as you like</li>
 <li>Greedy Algorithms</li>
@@ -263,6 +255,7 @@ ga('send', 'pageview');
 <li>Complete <strong>at most two transactions</strong></li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, prices)</span>:</span></span><br><span class="line">        n = len(prices)</span><br><span class="line">        <span class="keyword">if</span> n &lt;= <span class="number">0</span>: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        left = [<span class="number">0</span>] * n</span><br><span class="line">        minp = prices[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, len(prices)):</span><br><span class="line">            minp = min(minp, prices[i])</span><br><span class="line">            left[i] = max(left[i<span class="number">-1</span>], prices[i] - minp)</span><br><span class="line"></span><br><span class="line">        maxp = prices[<span class="number">-1</span>]</span><br><span class="line">        right = [<span class="number">0</span>] * (n)</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(prices)<span class="number">-2</span>, <span class="number">-1</span>, <span class="number">-1</span>):</span><br><span class="line">            maxp = max(maxp, prices[i])</span><br><span class="line">            right[i] = max(maxp - prices[i], right[i+<span class="number">1</span>])</span><br><span class="line">            res = max(res, right[i] + (left[i<span class="number">-1</span>] <span class="keyword">if</span> i &gt; <span class="number">1</span> <span class="keyword">else</span> <span class="number">0</span>))</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h3 id="188-Best-Time-to-Buy-and-Sell-Stock-IV"><a href="#188-Best-Time-to-Buy-and-Sell-Stock-IV" class="headerlink" title="188. Best Time to Buy and Sell Stock IV"></a><a href="https://leetcode.com/problems/best-time-to-buy-and-sell-stock-iv/" target="_blank" rel="noopener">188. Best Time to Buy and Sell Stock IV</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxProfit</span><span class="params">(self, k, prices)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> prices <span class="keyword">or</span> k == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        n = len(prices)</span><br><span class="line">        <span class="keyword">if</span> k &gt; n // <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> self.helper(prices)</span><br><span class="line"></span><br><span class="line">        glob  = [[<span class="number">0</span>] * (k+<span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)]</span><br><span class="line">        local = [[<span class="number">0</span>] * (k+<span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n):</span><br><span class="line">            diff = prices[i] - prices[i<span class="number">-1</span>]</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(<span class="number">1</span>, k+<span class="number">1</span>):</span><br><span class="line">                local[i][j] = max(glob[i<span class="number">-1</span>][j<span class="number">-1</span>], local[i<span class="number">-1</span>][j]) + diff</span><br><span class="line">                glob[i][j] = max(glob[i<span class="number">-1</span>][j], local[i][j])</span><br><span class="line">        <span class="keyword">return</span> glob[<span class="number">-1</span>][<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">helper</span><span class="params">(self, prices)</span>:</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(prices)):</span><br><span class="line">            res += max(<span class="number">0</span>, prices[i] - prices[i<span class="number">-1</span>])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -273,7 +266,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/09/29/buy-and-sell-stock/" data-id="cjnqqpgke000cv0782c18shvw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/09/29/topic-buy-and-sell-stock/" data-id="cjntqnkqc003bwu78v8vm4o12" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -388,44 +381,44 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/30/dp-sequence-cut/" class="title">DP - Cut Sequence</a></p>
+                            <p class="item-date"><time datetime="2018-10-30T21:27:03.000Z" itemprop="datePublished">2018-10-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/29/dfs-matrix/" class="title">DFS - Matrix</a></p>
+                            <p class="item-date"><time datetime="2018-10-29T19:57:53.000Z" itemprop="datePublished">2018-10-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/28/trie/" class="title">Trie</a></p>
+                            <p class="item-date"><time datetime="2018-10-28T15:21:34.000Z" itemprop="datePublished">2018-10-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/27/dp-game/" class="title">DP - Game</a></p>
+                            <p class="item-date"><time datetime="2018-10-27T21:32:26.000Z" itemprop="datePublished">2018-10-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/10/26/topic-data-stream/" class="title">Data Stream</a></p>
                             <p class="item-date"><time datetime="2018-10-26T20:42:38.000Z" itemprop="datePublished">2018-10-26</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/25/monotone-stack/" class="title">Monotone Stack</a></p>
-                            <p class="item-date"><time datetime="2018-10-25T14:11:55.000Z" itemprop="datePublished">2018-10-25</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/10/24/math/" class="title">Math</a></p>
-                            <p class="item-date"><time datetime="2018-10-24T13:45:51.000Z" itemprop="datePublished">2018-10-24</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/23/topic-voting-algorithm/" class="title">Boyer-Moore Voting Algorithm</a></p>
-                            <p class="item-date"><time datetime="2018-10-24T00:03:49.000Z" itemprop="datePublished">2018-10-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Design/">Design</a></p>
-                            <p class="item-title"><a href="/2018/10/22/topic-cache/" class="title">Cache</a></p>
-                            <p class="item-date"><time datetime="2018-10-22T13:41:19.000Z" itemprop="datePublished">2018-10-22</time></p>
                         </div>
                     </li>
                 
@@ -438,7 +431,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">39</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">43</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -447,7 +440,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -456,7 +449,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/queue/">queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/queue/">queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/topic/">topic</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">10</span></li></ul>
         </div>
     </div>
 
@@ -465,7 +458,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bfs/" style="font-size: 12.5px;">bfs</a> <a href="/tags/binary-search/" style="font-size: 12.5px;">binary search</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/dp/" style="font-size: 17.5px;">dp</a> <a href="/tags/graph/" style="font-size: 15px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 12.5px;">hash table</a> <a href="/tags/heap/" style="font-size: 12.5px;">heap</a> <a href="/tags/linked-list/" style="font-size: 17.5px;">linked list</a> <a href="/tags/queue/" style="font-size: 10px;">queue</a> <a href="/tags/recursion/" style="font-size: 17.5px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/stack/" style="font-size: 12.5px;">stack</a> <a href="/tags/string/" style="font-size: 12.5px;">string</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a> <a href="/tags/union-find/" style="font-size: 10px;">union find</a>
+            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bfs/" style="font-size: 12px;">bfs</a> <a href="/tags/binary-search/" style="font-size: 12px;">binary search</a> <a href="/tags/dfs/" style="font-size: 14px;">dfs</a> <a href="/tags/dp/" style="font-size: 18px;">dp</a> <a href="/tags/graph/" style="font-size: 16px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 12px;">hash table</a> <a href="/tags/heap/" style="font-size: 12px;">heap</a> <a href="/tags/linked-list/" style="font-size: 16px;">linked list</a> <a href="/tags/queue/" style="font-size: 10px;">queue</a> <a href="/tags/recursion/" style="font-size: 16px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/stack/" style="font-size: 12px;">stack</a> <a href="/tags/string/" style="font-size: 12px;">string</a> <a href="/tags/topic/" style="font-size: 16px;">topic</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
         </div>
     </div>
 

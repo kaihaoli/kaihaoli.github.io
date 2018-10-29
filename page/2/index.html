@@ -159,7 +159,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                47
+                51
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -188,6 +188,704 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-k-sum" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/10/20/k-sum/">K Sum</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/10/20/k-sum/">
+            <time datetime="2018-10-20T14:02:10.000Z" itemprop="datePublished">2018-10-20</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/sort/">sort</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <ul>
+<li>Assumption</li>
+</ul>
+<ol>
+<li>unsorted or sorted</li>
+<li>return index ? or value ?</li>
+<li>duplicate ?</li>
+<li>size, data type, data range ?</li>
+<li>optimize time or space ?</li>
+<li>How many time are we going to call this function?</li>
+</ol>
+<h2 id="2-Sum"><a href="#2-Sum" class="headerlink" title="2 Sum"></a>2 Sum</h2><p>$O(n^2)$</p>
+<p>###<a href="https://leetcode.com/problems/two-sum/" target="_blank" rel="noopener">1.Two Sum</a><br>Given an array of integers, return <strong>indices of the two numbers</strong> such that they add up to a specific target.<br>You may assume that each input would have <strong>exactly one solution</strong>, and <strong>you may not use the same element twice</strong>.</p>
+<ul>
+<li><strong>HashTable</strong><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(n)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        coml = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(nums)):</span><br><span class="line">            c = target-nums[i]</span><br><span class="line">            <span class="keyword">if</span> c <span class="keyword">in</span> coml:</span><br><span class="line">                <span class="keyword">return</span> [coml[c], i]</span><br><span class="line">            coml[nums[i]] = i</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li>Why not Sort + Two Pointers ?<ul>
+<li>after sort, lost the information of indices</li>
+<li>return indice instead of values</li>
+</ul>
+</li>
+</ul>
+<h3 id="167-Two-Sum-II-Input-array-is-sorted"><a href="#167-Two-Sum-II-Input-array-is-sorted" class="headerlink" title="167. Two Sum II - Input array is sorted"></a><a href="https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" target="_blank" rel="noopener">167. Two Sum II - Input array is sorted</a></h3><ul>
+<li>Not Zero-Based Index<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">twoSum</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        l = <span class="number">0</span></span><br><span class="line">        r = len(nums) - <span class="number">1</span></span><br><span class="line">        <span class="keyword">while</span> l &lt; r:</span><br><span class="line">            s = nums[l] + nums[r]</span><br><span class="line">            <span class="keyword">if</span> s &gt; target:</span><br><span class="line">                r -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> s &lt; target:</span><br><span class="line">                l += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> [l+<span class="number">1</span>, r+<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="170-Two-Sum-III-Data-structure-design"><a href="#170-Two-Sum-III-Data-structure-design" class="headerlink" title="170. Two Sum III - Data structure design"></a><a href="https://leetcode.com/problems/two-sum-iii-data-structure-design/" target="_blank" rel="noopener">170. Two Sum III - Data structure design</a></h3><ol>
+<li>HashTable, consider duplicates</li>
+<li>Trade Off, quick add or quick find ?</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TwoSum</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.nums = collections.defaultdict(int)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, number)</span>:</span></span><br><span class="line">        self.nums[number] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(self, value)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> self.nums.keys():</span><br><span class="line">            <span class="keyword">if</span> value - num <span class="keyword">in</span> self.nums <span class="keyword">and</span> (value - num != num <span class="keyword">or</span> self.nums[num] &gt; <span class="number">1</span>):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h3 id="653-Two-Sum-IV-Input-is-a-BST"><a href="#653-Two-Sum-IV-Input-is-a-BST" class="headerlink" title="653. Two Sum IV - Input is a BST﻿"></a><a href="https://leetcode.com/problems/two-sum-iv-input-is-a-bst/" target="_blank" rel="noopener">653. Two Sum IV - Input is a BST﻿</a></h3><ul>
+<li>This is a general idea for binary tree instead of BST!!!</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findTarget</span><span class="params">(self, root, k)</span>:</span></span><br><span class="line">        self.visited = set()</span><br><span class="line">        <span class="keyword">return</span> self.dfs(root, k)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, root, k)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.dfs(root.left, k):</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> k - root.val <span class="keyword">in</span> self.visited:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        self.visited.add(root.val)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.dfs(root.right, k):</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+<h2 id="3-Sum"><a href="#3-Sum" class="headerlink" title="3 Sum"></a>3 Sum</h2><p>$O(n^3)$</p>
+<h3 id="15-3Sum"><a href="#15-3Sum" class="headerlink" title="15. 3Sum"></a><a href="https://leetcode.com/problems/3sum/" target="_blank" rel="noopener">15. 3Sum</a></h3><ul>
+<li>only one results ? no</li>
+<li>duplicates ? yes</li>
+<li>The solution set must not contain duplicate triplets.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSum</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        nums.sort()</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(nums)<span class="number">-2</span>):</span><br><span class="line">            <span class="comment"># Skip Duplicate nums at 1st place</span></span><br><span class="line">            <span class="keyword">if</span> i &gt; <span class="number">0</span> <span class="keyword">and</span> nums[i] == nums[i<span class="number">-1</span>]:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            l = i + <span class="number">1</span></span><br><span class="line">            r = len(nums)<span class="number">-1</span></span><br><span class="line">            <span class="keyword">while</span> l &lt; r:</span><br><span class="line">                s = nums[i] + nums[l] + nums[r]</span><br><span class="line">                <span class="keyword">if</span> s &gt; <span class="number">0</span>:</span><br><span class="line">                    r -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> s &lt; <span class="number">0</span>:</span><br><span class="line">                    l += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    res.append([nums[i], nums[l], nums[r]])</span><br><span class="line">                    <span class="comment"># Remove Dupilcate Results</span></span><br><span class="line">                    <span class="keyword">while</span> l &lt; r <span class="keyword">and</span> nums[l] == nums[l+<span class="number">1</span>]:</span><br><span class="line">                        l += <span class="number">1</span></span><br><span class="line">                    <span class="keyword">while</span> l &lt; r <span class="keyword">and</span> nums[r] == nums[r<span class="number">-1</span>]:</span><br><span class="line">                        r -= <span class="number">1</span></span><br><span class="line">                    <span class="comment"># Forget to add following 2 lines =.=</span></span><br><span class="line">                    l += <span class="number">1</span></span><br><span class="line">                    r -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h3 id="16-3Sum-Closest"><a href="#16-3Sum-Closest" class="headerlink" title="16. 3Sum Closest"></a><a href="https://leetcode.com/problems/3sum-closest/" target="_blank" rel="noopener">16. 3Sum Closest</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">threeSumClosest</span><span class="params">(self, nums, target)</span>:</span></span><br><span class="line">        res = float(<span class="string">'inf'</span>)</span><br><span class="line">        nums.sort()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(nums)<span class="number">-2</span>):</span><br><span class="line">            l = i + <span class="number">1</span></span><br><span class="line">            r = len(nums) - <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> l &lt; r:</span><br><span class="line">                s = nums[i] + nums[l] + nums[r]</span><br><span class="line">                <span class="comment"># only append this line</span></span><br><span class="line">                <span class="keyword">if</span> abs(s - target) &lt; abs(res - target):</span><br><span class="line">                    res = s</span><br><span class="line">                <span class="keyword">if</span> s &gt; target:</span><br><span class="line">                    r -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">elif</span> s &lt; target:</span><br><span class="line">                    l += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> target</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h2 id="4-Sum"><a href="#4-Sum" class="headerlink" title="4 Sum"></a>4 Sum</h2><p>$O(n^4)$</p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/10/20/k-sum/" data-id="cjntqnkpk0020wu78yvdi3mp4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-serialization" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/10/17/serialization/">Serialization</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/10/17/serialization/">
+            <time datetime="2018-10-17T15:56:03.000Z" itemprop="datePublished">2018-10-17</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/recursion/">recursion</a>, <a class="tag-link" href="/tags/tree/">tree</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="Tree-Serialization"><a href="#Tree-Serialization" class="headerlink" title="Tree Serialization"></a>Tree Serialization</h2><h3 id="426-Convert-Binary-Search-Tree-to-Sorted-Doubly-Linked-List"><a href="#426-Convert-Binary-Search-Tree-to-Sorted-Doubly-Linked-List" class="headerlink" title="426. Convert Binary Search Tree to Sorted Doubly Linked List"></a><a href="https://leetcode.com/problems/convert-binary-search-tree-to-sorted-doubly-linked-list/" target="_blank" rel="noopener">426. Convert Binary Search Tree to Sorted Doubly Linked List</a></h3><ul>
+<li><p>O(n) extra space</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(n)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">treeToDoublyList</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        res = []</span><br><span class="line">        self.inOrder(root, res)</span><br><span class="line">        n = len(res)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">            res[i].right = res[i+<span class="number">1</span>] <span class="keyword">if</span> i &lt; n<span class="number">-1</span> <span class="keyword">else</span> res[<span class="number">0</span>]</span><br><span class="line">            res[i].left = res[i<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">return</span> res[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inOrder</span><span class="params">(self, root, res)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        self.inOrder(root.left, res)</span><br><span class="line">        res.append(root)</span><br><span class="line">        self.inOrder(root.right, res)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>in-place</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(1)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">treeToDoublyList</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        self.prev = <span class="keyword">None</span></span><br><span class="line">        self.head = <span class="keyword">None</span></span><br><span class="line">        self.inOrder(root)</span><br><span class="line">        self.prev.right = self.head</span><br><span class="line">        self.head.left = self.prev</span><br><span class="line">        <span class="keyword">return</span> self.head</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">inOrder</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line">        self.inOrder(root.left)</span><br><span class="line">        <span class="keyword">if</span> self.prev:</span><br><span class="line">            root.left = self.prev</span><br><span class="line">            self.prev.right = root</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            self.head = root</span><br><span class="line">        self.prev = root</span><br><span class="line">        self.inOrder(root.right)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Tree-De-Serialization"><a href="#Tree-De-Serialization" class="headerlink" title="Tree De-Serialization"></a>Tree De-Serialization</h2><ul>
+<li>We can NOT construct a Binary Tree using postorder and preorder</li>
+</ul>
+<h3 id="106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal"><a href="#106-Construct-Binary-Tree-from-Inorder-and-Postorder-Traversal" class="headerlink" title="106. Construct Binary Tree from Inorder and Postorder Traversal"></a><a href="https://leetcode.com/problems/construct-binary-tree-from-inorder-and-postorder-traversal/" target="_blank" rel="noopener">106. Construct Binary Tree from Inorder and Postorder Traversal</a></h3><ul>
+<li>Global Question divide to sub problem</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">buildTree</span><span class="params">(self, inorder, postorder)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> inorder <span class="keyword">or</span> <span class="keyword">not</span> postorder:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        root = TreeNode(postorder.pop())</span><br><span class="line">        inorderindex = inorder.index(root.val)</span><br><span class="line">        root.right= self.buildTree(inorder[inorderindex+<span class="number">1</span>:], postorder)</span><br><span class="line">        root.left = self.buildTree(inorder[:inorderindex], postorder)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
+<h3 id="105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal"><a href="#105-Construct-Binary-Tree-from-Preorder-and-Inorder-Traversal" class="headerlink" title="105. Construct Binary Tree from Preorder and Inorder Traversal"></a><a href="https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" target="_blank" rel="noopener">105. Construct Binary Tree from Preorder and Inorder Traversal</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">buildTree</span><span class="params">(self, preorder, inorder)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">not</span> preorder) <span class="keyword">or</span> (<span class="keyword">not</span> inorder):</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">        root=TreeNode(preorder.pop(<span class="number">0</span>))</span><br><span class="line">        ro=inorder.index(root.val)</span><br><span class="line">        root.left=self.buildTree(preorder,inorder[:ro])</span><br><span class="line">        root.right=self.buildTree(preorder,inorder[ro+<span class="number">1</span>:])</span><br><span class="line">        <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
+<h3 id="Construct-Binary-Tree-from-Inorder-and-level-Order"><a href="#Construct-Binary-Tree-from-Inorder-and-level-Order" class="headerlink" title="Construct Binary Tree from Inorder and level Order"></a>Construct Binary Tree from Inorder and level Order</h3><h3 id="114-Flatten-Binary-Tree-to-Linked-List"><a href="#114-Flatten-Binary-Tree-to-Linked-List" class="headerlink" title="114. Flatten Binary Tree to Linked List"></a><a href="https://leetcode.com/problems/flatten-binary-tree-to-linked-list/" target="_blank" rel="noopener">114. Flatten Binary Tree to Linked List</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">flatten</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root.left:</span><br><span class="line">            self.flatten(root.right)</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        self.flatten(root.left)</span><br><span class="line">        self.flatten(root.right)</span><br><span class="line"></span><br><span class="line">        cur = root.left</span><br><span class="line">        <span class="keyword">while</span> cur.right:</span><br><span class="line">            cur = cur.right</span><br><span class="line">        cur.right = root.right</span><br><span class="line">        root.right = root.left</span><br><span class="line">        root.left = <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/10/17/serialization/" data-id="cjntqnkqa0038wu78hgs6bo8l" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-tree-lca" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/10/15/tree-lca/">Tree - Lowest Common Ancestor</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/10/15/tree-lca/">
+            <time datetime="2018-10-15T15:04:12.000Z" itemprop="datePublished">2018-10-15</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/tree/">tree</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree"><a href="#235-Lowest-Common-Ancestor-of-a-Binary-Search-Tree" class="headerlink" title="235. Lowest Common Ancestor of a Binary Search Tree"></a><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/" target="_blank" rel="noopener">235. Lowest Common Ancestor of a Binary Search Tree</a></h3><ul>
+<li>Use the Definition of BST !!!</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(h)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lowestCommonAncestor</span><span class="params">(self, root, p, q)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root <span class="keyword">or</span> root == p <span class="keyword">or</span> root == q:</span><br><span class="line">            <span class="keyword">return</span> root</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> root.val &gt; p.val <span class="keyword">and</span> root.val &gt; q.val:</span><br><span class="line">            <span class="keyword">return</span> self.lowestCommonAncestor(root.left, p, q)</span><br><span class="line">        <span class="keyword">elif</span> root.val &lt; p.val <span class="keyword">and</span> root.val &lt; q.val:</span><br><span class="line">            <span class="keyword">return</span> self.lowestCommonAncestor(root.right, p, q)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> root</span><br></pre></td></tr></table></figure>
+<h3 id="236-Lowest-Common-Ancestor-of-a-Binary-Tree"><a href="#236-Lowest-Common-Ancestor-of-a-Binary-Tree" class="headerlink" title="236. Lowest Common Ancestor of a Binary Tree"></a><a href="https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-tree/" target="_blank" rel="noopener">236. Lowest Common Ancestor of a Binary Tree</a></h3><p>“The lowest common ancestor is defined between two nodes v and w as the lowest node in T that has both v and w as descendants (where we allow a node to be a descendant of itself).”</p>
+<ul>
+<li>Case1 if a is NOT the ancestor of b</li>
+</ul>
+<ol>
+<li>if left subtree returns None and right subtree returns None, return None</li>
+<li>if left subtree AND right subtree return NOT NULL, return c</li>
+<li>either left or right returns NOT null, return not null</li>
+</ol>
+<ul>
+<li>Case2 if a is the ancestor of b (same thing)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lowestCommonAncestor</span><span class="params">(self, root, p, q)</span>:</span></span><br><span class="line">        <span class="comment"># 1 Base case : root is q or p</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root <span class="keyword">or</span> root <span class="keyword">is</span> q <span class="keyword">or</span> root <span class="keyword">is</span> p:</span><br><span class="line">            <span class="keyword">return</span> root</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 2 Recursion : ask value from left and right subtree</span></span><br><span class="line">        left = self.lowestCommonAncestor(root.left, p, q)</span><br><span class="line">        right = self.lowestCommonAncestor(root.right, p, q)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Case: return c</span></span><br><span class="line">        <span class="keyword">if</span> left <span class="keyword">and</span> right:</span><br><span class="line">            <span class="keyword">return</span> root</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> left <span class="keyword">if</span> left <span class="keyword">else</span> right</span><br></pre></td></tr></table></figure>
+<h3 id="Follow-up-1-Not-Exist"><a href="#Follow-up-1-Not-Exist" class="headerlink" title="Follow up 1 Not Exist"></a>Follow up 1 Not Exist</h3><ul>
+<li>What if the node p or q is <strong>NOT</strong> in the tree ?</li>
+</ul>
+<ol>
+<li>case1: if return c, no worries! a and b are in the tree</li>
+<li>case2: if return None, both a and b not in the tree</li>
+<li>case3: <strong>if sol == p or sol == q</strong> FindNode in B or A</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sol = LowestCommonAncestor(root, p, q)</span><br><span class="line"><span class="keyword">if</span> sol <span class="keyword">is</span> <span class="keyword">None</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"><span class="keyword">elif</span> sol != p <span class="keyword">and</span> sol != q:</span><br><span class="line">    <span class="keyword">return</span> sol</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">return</span> LowestCommonAncestor(sol, q, q) <span class="keyword">if</span> sol == p <span class="keyword">else</span> LowestCommonAncestor(sol, p, p)</span><br></pre></td></tr></table></figure>
+<h3 id="Follow-up-2-Parent-Pointer"><a href="#Follow-up-2-Parent-Pointer" class="headerlink" title="Follow up 2 Parent Pointer"></a>Follow up 2 Parent Pointer</h3><p>What if we have parent pointers ?</p>
+<ul>
+<li>Method1:</li>
+</ul>
+<ol>
+<li>step1. keep looking up from a and b, to find height(a) and height(b)</li>
+<li>step2. move the one with larger height value by abs(height(a)-height(b))</li>
+<li>step3. move a and b together one step by one step until a == b</li>
+</ol>
+<ul>
+<li>Method2: HashSet<br>=&gt; interaction of two linked list</li>
+</ul>
+<h3 id="Follow-up-3-k-Nodes-No-parent-pointers"><a href="#Follow-up-3-k-Nodes-No-parent-pointers" class="headerlink" title="Follow up 3 k Nodes (No parent pointers)"></a>Follow up 3 k Nodes (No parent pointers)</h3><p>General Idea to solve k-something …</p>
+<ol>
+<li>Method1: Binary Reduction<ul>
+<li>eg. Merge Sort</li>
+<li>Call how many times of LCA(nodea, nodeb)? O(kn)</li>
+</ul>
+</li>
+<li>Method2: Iterative<ul>
+<li>12 -&gt; 3, 13 -&gt; 4, 14 -&gt; 5 …</li>
+<li>Call how many times of LCA(nodea, nodeb)? O(kn)</li>
+</ul>
+</li>
+<li>Method3: k way all together O(n)</li>
+</ol>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lowestCommonAncestor</span><span class="params">(self, root, nodes)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root <span class="keyword">or</span> root <span class="keyword">in</span> nodes:</span><br><span class="line">            <span class="keyword">return</span> root</span><br><span class="line"></span><br><span class="line">        left = self.lowestCommonAncestor(root.left, nodes)</span><br><span class="line">        right = self.lowestCommonAncestor(root.right, nodes)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> left <span class="keyword">and</span> right:</span><br><span class="line">            <span class="keyword">return</span> root</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> left <span class="keyword">if</span> left <span class="keyword">else</span> right</span><br></pre></td></tr></table></figure>
+<h3 id="Follow-up-4-k-nary-Tree"><a href="#Follow-up-4-k-nary-Tree" class="headerlink" title="Follow up 4 k-nary Tree"></a>Follow up 4 k-nary Tree</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.val = x</span><br><span class="line">        self.children = []</span><br></pre></td></tr></table></figure>
+<h3 id="Follow-up-5-k-node-in-k-nary-tree"><a href="#Follow-up-5-k-node-in-k-nary-tree" class="headerlink" title="Follow up 5 k node in k-nary tree"></a>Follow up 5 k node in k-nary tree</h3><p>Combine 3 &amp; 4</p>
+<h3 id="Follow-up-6-very-large-tree"><a href="#Follow-up-6-very-large-tree" class="headerlink" title="Follow up 6 very large tree"></a>Follow up 6 very large tree</h3><p>LCA for two nodes a and b in a very large tree that contains billions of nodes, given 10000 machies.(32 machines)</p>
+<ul>
+<li><strong>Mapper</strong> : 1 job -&gt; distribute to 10000 machines.</li>
+<li><strong>Reducer</strong> : collect results from each mapper (machines) to do aggregation/post-processing</li>
+</ul>
+<p><strong>Solution Map-reduce</strong><br>Assume we hace 32 machines 2 ^ 5 = 32, so we have 32 nodes in level 5.</p>
+<ol>
+<li><p><strong>Case 1</strong>: both nodes a and b are within top 5 layers (we can run <strong>BFS1 within top 5 layers</strong>) Call LCA(root, a, b, level_limit = 5)</p>
+</li>
+<li><p><strong>Case 2</strong>: either node a or node b is within top 5 layers.</p>
+</li>
+</ol>
+<ul>
+<li>Assume a is on top 5 layers, Call Find(M1, b), Find(M2, b), …, Find(M32, b)</li>
+<li>Say, M7 return s that I found b in my sub-tree. Call LCA(root, a, M7, level_limit = 5)</li>
+</ul>
+<ol start="3">
+<li><strong>Case 3</strong>: neither node a nor node b is within top 5 layers.</li>
+</ol>
+<ul>
+<li>Call LCA(M1, a, b), LCA(M2, a, b), …, LCA(M32, a, b)</li>
+<li>Case3.1 a and b are in different machines.<ul>
+<li>In this case, there must be exactly two machines that find non-null</li>
+<li>Say they’re M3, M7, Call LCA(root, M3, M7, level_limit=5)</li>
+</ul>
+</li>
+<li>Case3.2 a and b are in the same machine.<ul>
+<li>In this case, ONLY ONE machine returns non null</li>
+<li>Case3.2.1 if it returns a or b: one node is the ancestor of the other node</li>
+<li>Case3.2.2 if it returns c: a and b are both in the tree and c is the LCA</li>
+</ul>
+</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/10/15/tree-lca/" data-id="cjntqnkqq003uwu78om3n8jxp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-sampling-randomization" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/10/14/sampling-randomization/">Sampling &amp; Randomization</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/10/14/sampling-randomization/">
+            <time datetime="2018-10-14T15:35:31.000Z" itemprop="datePublished">2018-10-14</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="Reservoir-Sampling"><a href="#Reservoir-Sampling" class="headerlink" title="Reservoir Sampling"></a>Reservoir Sampling</h2><h3 id="Shuffling-Algorithm"><a href="#Shuffling-Algorithm" class="headerlink" title="Shuffling Algorithm"></a>Shuffling Algorithm</h3><p>pokers(spades, hearts, diamonds, clubs)</p>
+<ol>
+<li><p>Iteration 1<br>Call random(0-51), lets say, random_numbers1 = 5<br>P(every card can showup in position 51) = 1/52</p>
+</li>
+<li><p>Iteration 2<br>Call random(0-50), lets say, random_numbers2 = 8<br>Every card was NOT selected during previous iteration = 1 - 1/52<br>P(every card showup in position 50) = <strong>(1-1/52) * 1/51 = 1/52</strong></p>
+</li>
+<li><p>Iteration 3<br>Every card was NOT selected during previous iteration = 1 - 1/52<br>Every card was NOT selected during previous iteration = 1 - 1/51<br>P(every card showup in position 50) = <strong>(1-1/52) <em> (1-1/51) </em> 1/50 = 1/52</strong></p>
+</li>
+</ol>
+<p>…..</p>
+<ul>
+<li>Select random k elements in an array of size n</li>
+</ul>
+<h3 id="Sampling-for-an-unlimited-data-flow"><a href="#Sampling-for-an-unlimited-data-flow" class="headerlink" title="Sampling for an unlimited data flow"></a>Sampling for an unlimited data flow</h3><p>How to do sampling for an unlimited data flow and when reading the n-th element we are required to return one random number among all numbers read so far, such that the probability of returning any element read so far is 1/n.</p>
+<ul>
+<li>O(1) sapce complexity</li>
+</ul>
+<ol>
+<li>t = 0 call random[0-0] = random_num1, if random_num1 == 0 -&gt; solu = input[0]<br>P(input[0] will be returned as the solu) = 100%</li>
+<li>t = 1 call random[0-1] = random_num2, if random_num2 == 0 -&gt; solu = input[1]<br>P(input[0] will be returned as the solu) = 1 - 50%<br>P(input[1] will be returned as the solu) = 50%</li>
+<li>t = 2 call random[0-2] = random_num3, if random_num3 == 0 -&gt; solu = input[2]<br>P(input[0] will be returned as the solu) = 1/2 <em> (1 - 1/3) = 1/3<br>P(input[1] will be returned as the solu) = 1/2 </em> (1 - 1/3) = 1/3<br>P(input[2] will be returned as the solu) = 1/3<br>….</li>
+</ol>
+<h3 id="Return-k-out-of-n-log"><a href="#Return-k-out-of-n-log" class="headerlink" title="Return k out of n log"></a>Return k out of n log</h3><p>same thing as above!</p>
+<ul>
+<li>Return a <strong>random</strong> largest number’s index</li>
+</ul>
+<h3 id="398-Random-Pick-Index"><a href="#398-Random-Pick-Index" class="headerlink" title="398. Random Pick Index"></a><a href="https://leetcode.com/problems/random-pick-index/" target="_blank" rel="noopener">398. Random Pick Index</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        self.nums = nums</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pick</span><span class="params">(self, target)</span>:</span></span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(self.nums)):</span><br><span class="line">            <span class="keyword">if</span> self.nums[i] != target:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> random.randint(<span class="number">0</span>, cnt) == <span class="number">0</span>:</span><br><span class="line">                res = i</span><br><span class="line">            cnt += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h2 id="Randomization"><a href="#Randomization" class="headerlink" title="Randomization"></a>Randomization</h2><p>Random(5) -&gt; Random(25) -&gt; Random(7)<br>0  1  2  3  4<br>5  6  7  8  9<br>10 11 12 13 14<br>15 16 17 18 19<br>20 21 22 23 24</p>
+<ol>
+<li>call Random(5) for the 1st time = random_num1[0—4] = row number</li>
+<li>call Random(5) for the 2nd time = random_num2[0—4] = col number<br>generated_number = r1 * 5 + r2</li>
+</ol>
+<h3 id="470-Implement-Rand10-Using-Rand7"><a href="#470-Implement-Rand10-Using-Rand7" class="headerlink" title="470. Implement Rand10() Using Rand7()"></a><a href="https://leetcode.com/problems/implement-rand10-using-rand7/" target="_blank" rel="noopener">470. Implement Rand10() Using Rand7()</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rand10</span><span class="params">(self)</span>:</span></span><br><span class="line">        r1 = rand7()</span><br><span class="line">        r2 = rand7()</span><br><span class="line">        num = (r1<span class="number">-1</span>) * <span class="number">7</span> + (r2<span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">if</span> num &lt;= <span class="number">39</span>:</span><br><span class="line">            <span class="keyword">return</span> (num % <span class="number">10</span>) + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> self.rand10()</span><br></pre></td></tr></table></figure>
+<h3 id="Design-Random-1-000-000-with-Random-5"><a href="#Design-Random-1-000-000-with-Random-5" class="headerlink" title="Design Random(1,000,000) with Random(5)"></a>Design Random(1,000,000) with Random(5)</h3><ul>
+<li>$log_5(1000000)$</li>
+</ul>
+<h2 id="Design"><a href="#Design" class="headerlink" title="Design"></a>Design</h2>
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/10/14/sampling-randomization/" data-id="cjntqnkq0002swu78rs3adaey" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-string-advanced" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -268,7 +966,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/11/string-advanced/" data-id="cjnqqpgn40039v078d2i98h3x" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/11/string-advanced/" data-id="cjntqnkq80035wu78o89sr4m0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -423,7 +1121,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/10/binary-search-advanced/" data-id="cjnqqpgk00004v078vzokqaxl" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/10/binary-search-advanced/" data-id="cjntqnkn90003wu78a11w8qmd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -564,7 +1262,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/09/greedy-schedule/" data-id="cjnqqpgl6001ev078ovx994mw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/09/greedy-schedule/" data-id="cjntqnkp2001awu7826243u6y" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -716,7 +1414,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/08/hash-table/" data-id="cjnqqpgkz0014v078cvz26l92" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/08/hash-table/" data-id="cjntqnkp9001lwu78vxqiromp" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -882,7 +1580,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/07/dfs/" data-id="cjnqqpgkp000nv078mye8ev82" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/07/dfs/" data-id="cjntqnkoo000xwu78cmsrtync" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1054,784 +1752,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/06/heap/" data-id="cjnqqpgl4001bv078xt0jc5cx" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-string-basic" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/10/05/string-basic/">String Basic</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/10/05/string-basic/">
-            <time datetime="2018-10-05T15:26:11.000Z" itemprop="datePublished">2018-10-05</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/string/">string</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>Popular representation of characters:</p>
-<ol>
-<li>ASCII representation of a letter: A==65, a==97</li>
-<li>Unicode : the latest version of Unicode contains a repertoire of more than 110,000 charaters covering 100 scripts and various symbols.</li>
-</ol>
-<h2 id="Removol"><a href="#Removol" class="headerlink" title="Removol"></a>Removol</h2><h3 id="Char-Removal"><a href="#Char-Removal" class="headerlink" title="Char Removal"></a>Char Removal</h3><p>Remove a/some particular chars from a String. Example: string input = “student”, remove “u and n” -&gt; output:”stdet”</p>
-<ul>
-<li>Attention : String and Array erase API!!!</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">charRemoval</span><span class="params">(self, s, ch)</span>:</span></span><br><span class="line">        chs = list(s)</span><br><span class="line">        start = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(chs)):</span><br><span class="line">            <span class="keyword">if</span> chs[i] <span class="keyword">not</span> <span class="keyword">in</span> ch:</span><br><span class="line">                chs[start] = chs[i]</span><br><span class="line">            start += <span class="number">1</span></span><br><span class="line">        retrun <span class="string">''</span>.join(chs[:start])</span><br></pre></td></tr></table></figure>
-<h3 id="27-Remove-Element"><a href="#27-Remove-Element" class="headerlink" title="27. Remove Element"></a><a href="https://leetcode.com/problems/remove-element/" target="_blank" rel="noopener">27. Remove Element</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeElement</span><span class="params">(self, nums, val)</span>:</span></span><br><span class="line">        start = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] != val:</span><br><span class="line">                nums[start] = nums[i]</span><br><span class="line">                start += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> start</span><br></pre></td></tr></table></figure>
-<h3 id="Char-Removal-II"><a href="#Char-Removal-II" class="headerlink" title="Char Removal II"></a>Char Removal II</h3><p>Remove all leading/trailing and duplicate empty spaces(only leave one empty space if duplicated spaces happen) from the input string.</p>
-<h2 id="De-duplication"><a href="#De-duplication" class="headerlink" title="De-duplication"></a>De-duplication</h2><h3 id="26-Remove-Duplicates-from-Sorted-Array"><a href="#26-Remove-Duplicates-from-Sorted-Array" class="headerlink" title="26. Remove Duplicates from Sorted Array"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array/" target="_blank" rel="noopener">26. Remove Duplicates from Sorted Array</a></h3><p>What’s the phisical definition of the two pointers???</p>
-<ul>
-<li><strong>slow</strong>: all elements to the left hand side of slow pointer(excluding slow) are the final results to return</li>
-<li><strong>fast</strong>: current index</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        start = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] != nums[start<span class="number">-1</span>]:</span><br><span class="line">                nums[start] = nums[i]</span><br><span class="line">                start += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> start</span><br></pre></td></tr></table></figure>
-<ul>
-<li>follow up : what if we want to reserve 2 duplicate elements?</li>
-</ul>
-<h3 id="80-Remove-Duplicates-from-Sorted-Array-II"><a href="#80-Remove-Duplicates-from-Sorted-Array-II" class="headerlink" title="80. Remove Duplicates from Sorted Array II"></a><a href="https://leetcode.com/problems/remove-duplicates-from-sorted-array-ii/" target="_blank" rel="noopener">80. Remove Duplicates from Sorted Array II</a></h3><ul>
-<li>you can just compare the current pointer with <strong>slow - 2 position</strong></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(nums) &lt;= <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> len(nums)</span><br><span class="line"></span><br><span class="line">        slow = <span class="number">2</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">2</span>, len(nums)):</span><br><span class="line">            <span class="keyword">if</span> nums[i] != nums[slow<span class="number">-2</span>]:</span><br><span class="line">                nums[slow] = nums[i]</span><br><span class="line">                slow += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> slow</span><br></pre></td></tr></table></figure>
-<ul>
-<li>follow up : what if we want to reserve k duplicate elements?</li>
-</ul>
-<h3 id="Remove-adjacent-letters-repeatedly"><a href="#Remove-adjacent-letters-repeatedly" class="headerlink" title="Remove adjacent letters repeatedly"></a>Remove adjacent letters repeatedly</h3><ul>
-<li>Stack or Two pointers</li>
-</ul>
-<h2 id="Substring-Matching"><a href="#Substring-Matching" class="headerlink" title="Substring Matching"></a>Substring Matching</h2><h3 id="28-Implement-strStr"><a href="#28-Implement-strStr" class="headerlink" title="28. Implement strStr()"></a><a href="https://leetcode.com/problems/implement-strstr/" target="_blank" rel="noopener">28. Implement strStr()</a></h3><ul>
-<li>Time : O(m * n)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">strStr</span><span class="params">(self, haystack, needle)</span>:</span></span><br><span class="line">        m, n = len(needle), len(haystack)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n-m+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> haystack[i:i+m] == needle:</span><br><span class="line">                <span class="keyword">return</span> i</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
-<h2 id="Reversal"><a href="#Reversal" class="headerlink" title="Reversal"></a>Reversal</h2><h3 id="344-Reverse-String"><a href="#344-Reverse-String" class="headerlink" title="344. Reverse String"></a><a href="https://leetcode.com/problems/reverse-string/" target="_blank" rel="noopener">344. Reverse String</a></h3><ul>
-<li>two pointers : left, right or start, end<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseString</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        chs = list(s)</span><br><span class="line">        s, e = <span class="number">0</span>, len(s)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> s &lt; e:</span><br><span class="line">            chs[s], chs[e] = chs[e], chs[s]</span><br><span class="line">            s += <span class="number">1</span></span><br><span class="line">            e -= <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span>.join(chs)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="557-Reverse-Words-in-a-String-III"><a href="#557-Reverse-Words-in-a-String-III" class="headerlink" title="557. Reverse Words in a String III"></a><a href="https://leetcode.com/problems/reverse-words-in-a-string-iii/" target="_blank" rel="noopener">557. Reverse Words in a String III</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseWords</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        words = s.split()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(words)):</span><br><span class="line">            words[i] = words[i][::<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">return</span> <span class="string">' '</span>.join(words)</span><br></pre></td></tr></table></figure>
-<h3 id="186-Reverse-Words-in-a-String-II"><a href="#186-Reverse-Words-in-a-String-II" class="headerlink" title="186. Reverse Words in a String II"></a><a href="https://leetcode.com/problems/reverse-words-in-a-string-ii/" target="_blank" rel="noopener">186. Reverse Words in a String II</a></h3><p>e.g. “I love Google” - “Google love I”</p>
-<ul>
-<li><p>sol1. split and reverse<br>but not in-place in thie way!</p>
-</li>
-<li><p>sol2. reverse twice(trick)</p>
-</li>
-</ul>
-<ol>
-<li>reverse each words “I love Google” - “I evol elgooG”</li>
-<li>reverse the string “Google love I”</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reverseWords</span><span class="params">(self, str)</span>:</span></span><br><span class="line">        n = len(str)</span><br><span class="line">        <span class="comment"># Step 1. reverse each word</span></span><br><span class="line">        start = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">if</span> i == n <span class="keyword">or</span> str[i] == <span class="string">" "</span>:</span><br><span class="line">                end = i<span class="number">-1</span></span><br><span class="line">                <span class="keyword">while</span> start &lt; end:</span><br><span class="line">                    str[start], str[end] = str[end], str[start]</span><br><span class="line">                    start += <span class="number">1</span></span><br><span class="line">                    end -= <span class="number">1</span></span><br><span class="line">                start = i + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># Step 2. reverse all the sentences</span></span><br><span class="line">        start, end = <span class="number">0</span>, n<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> start &lt; end:</span><br><span class="line">            str[start], str[end] = str[end], str[start]</span><br><span class="line">            start += <span class="number">1</span></span><br><span class="line">            end -= <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>Dicussion</strong></li>
-</ul>
-<ol>
-<li>The idea for “I LOVE GOOGLE” can be combined to form more complex prblem. e.g., if we have empty/leading/trailing spaces in the input.</li>
-<li>The idea can be extended to other probem as well!<ul>
-<li>“abcdef” sift to the left by two steps “cdefab”</li>
-<li>step1. seperate reverse “bafedc”</li>
-<li>step2. reverse the word “cdefab”</li>
-</ul>
-</li>
-</ol>
-<h2 id="Char-Replace"><a href="#Char-Replace" class="headerlink" title="Char Replace"></a>Char Replace</h2><h3 id="Word-Replacement"><a href="#Word-Replacement" class="headerlink" title="Word Replacement"></a>Word Replacement</h3><p>“student” -&gt; “stuXXt”(den -&gt; XX)</p>
-<ul>
-<li><strong>Two Pointers</strong></li>
-</ul>
-<ol>
-<li>slow: all letters to the left hand side of slow are the results to return</li>
-<li>fast: fast index to scan the whole string</li>
-</ol>
-<ul>
-<li><strong>follow up</strong><br>s1 = “_“, s2 = “20%”</li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/10/05/string-basic/" data-id="cjnqqpgmo0032v078ad3n6xbt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-queue-stack" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/10/04/queue-stack/">Queue &amp; Stack</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/10/04/queue-stack/">
-            <time datetime="2018-10-04T17:33:39.000Z" itemprop="datePublished">2018-10-04</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/stack/">stack</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>Logic Data Structure</p>
-<h2 id="Queue"><a href="#Queue" class="headerlink" title="Queue"></a>Queue</h2><ul>
-<li>FIFO == First In First Out, e.g. waith in a line</li>
-<li><strong>Usages</strong><ul>
-<li><strong>BFS</strong> related problems, Tree printout by levels</li>
-<li>Sliding Window problems(Deque)</li>
-</ul>
-</li>
-</ul>
-<h3 id="225-Implement-Stack-using-Queues"><a href="#225-Implement-Stack-using-Queues" class="headerlink" title="225. Implement Stack using Queues"></a><a href="https://leetcode.com/problems/implement-stack-using-queues/" target="_blank" rel="noopener">225. Implement Stack using Queues</a></h3><ul>
-<li>Only use one Queue, O(n)push, O(1)pop</li>
-<li>Two Queues, O(1)push, O(n)pop<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">queue = collections.deque()</span><br><span class="line">queue.append(<span class="number">1</span>)</span><br><span class="line">queue.appendleft(<span class="number">2</span>)</span><br><span class="line">queue.pop()</span><br><span class="line">queue.popleft()</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h2><ul>
-<li>LIFO == Last in First Out, e.g. like a box</li>
-<li>All operation available: push(), pop(), top()</li>
-<li>Iterative DFS</li>
-</ul>
-<h3 id="Discussion"><a href="#Discussion" class="headerlink" title="Discussion"></a>Discussion</h3><ul>
-<li>When do we consider “stack” in our algorithm?</li>
-<li><strong>Answer</strong>: when we linear scan an array/a string from left to right, and we need to look back the top element!<ul>
-<li><ol>
-<li>Find the biggest Rectangle in Histogram</li>
-</ol>
-</li>
-<li><ol start="2">
-<li>Reverse Polish notation, a <em> (b + c) -&gt; abc+</em></li>
-</ol>
-</li>
-<li><ol start="3">
-<li>String repeatedly deduplication. cabba -&gt; caa -&gt; c</li>
-</ol>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="232-Implement-Queue-using-Stacks"><a href="#232-Implement-Queue-using-Stacks" class="headerlink" title="232.Implement Queue using Stacks"></a><a href="https://leetcode.com/problems/implement-queue-using-stacks/" target="_blank" rel="noopener">232.Implement Queue using Stacks</a></h3><p>Implement a Queue by using two stacks</p>
-<ul>
-<li>Key Point : When we pop all the elements from stack1 to stack2, we do not need to pop all the elements to stack1 again! Just put them to stack2 waiting for pop() function!</li>
-<li>Time : pop(),<strong>amortized O(1)</strong>; push(),O(1)</li>
-<li>Space : O(n)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyQueue</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.stack1 = [] <span class="comment"># Buffer all the new elements</span></span><br><span class="line">        self.stack2 = [] <span class="comment"># Pop out the 1st element</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.stack1.append(x)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(self.stack2) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">while</span> self.stack1:</span><br><span class="line">                self.stack2.append(self.stack1.pop())</span><br><span class="line">        <span class="keyword">return</span> self.stack2.pop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peek</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(self.stack2) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">while</span> self.stack1:</span><br><span class="line">                self.stack2.append(self.stack1.pop())</span><br><span class="line">        <span class="keyword">return</span> self.stack2[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">empty</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> len(self.stack1) == <span class="number">0</span> <span class="keyword">and</span> len(self.stack2) == <span class="number">0</span></span><br></pre></td></tr></table></figure>
-<h3 id="20-Valid-Parentheses"><a href="#20-Valid-Parentheses" class="headerlink" title="20. Valid Parentheses"></a><a href="https://leetcode.com/problems/valid-parentheses/" target="_blank" rel="noopener">20. Valid Parentheses</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValid</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        stack = []</span><br><span class="line">        pdic = &#123;<span class="string">'('</span>:<span class="string">')'</span>, <span class="string">'&#123;'</span>:<span class="string">'&#125;'</span>, <span class="string">'['</span>:<span class="string">']'</span>&#125;</span><br><span class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> ch <span class="keyword">in</span> <span class="string">"(&#123;["</span>:</span><br><span class="line">                stack.append(pdic[ch])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">if</span> len(stack) == <span class="number">0</span> <span class="keyword">or</span> stack[<span class="number">-1</span>] != ch:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">                stack.pop()</span><br><span class="line">        <span class="keyword">return</span> len(stack) == <span class="number">0</span></span><br></pre></td></tr></table></figure>
-<h3 id="155-Min-Stack"><a href="#155-Min-Stack" class="headerlink" title="155. Min Stack"></a><a href="https://leetcode.com/problems/min-stack/" target="_blank" rel="noopener">155. Min Stack</a></h3><ul>
-<li>Two Stack: original stack &amp; min stack</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Keep the push and pop function in sync between two stacks</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MinStack</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.stack = []</span><br><span class="line">        self.minstack = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.stack.append(x)</span><br><span class="line">        cmin = min(x, self.minstack[<span class="number">-1</span>]) <span class="keyword">if</span> self.minstack <span class="keyword">else</span> x</span><br><span class="line">        self.minstack.append(cmin)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.stack.pop()</span><br><span class="line">        self.minstack.pop()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">top</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.stack[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getMin</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.minstack[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
-<h3 id="Min-Stack-Follow-Up"><a href="#Min-Stack-Follow-Up" class="headerlink" title="Min Stack Follow Up"></a>Min Stack Follow Up</h3><ul>
-<li>How to optimize the space usage of minstack? (Assume there are a lot of duplicates)<br>Try to make the elements in stack2 a descending order and store an element in stack2 &lt;value, size of the stack1 when elements add to stack2&gt;</li>
-</ul>
-<h3 id="716-Max-Stack"><a href="#716-Max-Stack" class="headerlink" title="716. Max Stack"></a><a href="https://leetcode.com/problems/max-stack/" target="_blank" rel="noopener">716. Max Stack</a></h3><ul>
-<li><strong>popMax()</strong> – Retrieve the maximum element in the stack, and remove it. If you find more than one maximum elements, only remove the top-most one.</li>
-<li>TreeMap in Java!!!</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MaxStack</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.stack = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">push</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.stack.append((x, max(x, self.stack[<span class="number">-1</span>][<span class="number">1</span>] <span class="keyword">if</span> self.stack <span class="keyword">else</span> <span class="keyword">None</span>)))        </span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pop</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.stack.pop()[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">top</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.stack[<span class="number">-1</span>][<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">peekMax</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.stack[<span class="number">-1</span>][<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">popMax</span><span class="params">(self)</span>:</span></span><br><span class="line">        m = self.stack[<span class="number">-1</span>][<span class="number">1</span>]</span><br><span class="line">        temp = []</span><br><span class="line">        <span class="keyword">while</span> self.stack[<span class="number">-1</span>][<span class="number">0</span>] != m:</span><br><span class="line">            temp.append(self.pop()) <span class="comment"># temp.insert(0, self.stack.pop())</span></span><br><span class="line">        self.stack.pop()</span><br><span class="line">        map(self.push, reversed(temp))</span><br><span class="line">        <span class="keyword">return</span> m</span><br></pre></td></tr></table></figure>
-<ul>
-<li>TODO : Using Stack for Selection Sort; Implement Deque using stacks</li>
-</ul>
-<h2 id="Remove-Duplicates"><a href="#Remove-Duplicates" class="headerlink" title="Remove Duplicates"></a>Remove Duplicates</h2><h3 id="Remove-3-or-more-duplicates-repeatedly"><a href="#Remove-3-or-more-duplicates-repeatedly" class="headerlink" title="Remove 3 or more duplicates repeatedly"></a>Remove 3 or more duplicates repeatedly</h3><ul>
-<li>Stack + traversal pointer</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(s)</span>:</span></span><br><span class="line">    stack = []</span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    print(s)</span><br><span class="line">    <span class="keyword">while</span> i &lt; len(s):</span><br><span class="line">        <span class="keyword">if</span> len(stack) &gt; <span class="number">1</span> <span class="keyword">and</span> s[i] == stack[<span class="number">-1</span>] == stack[<span class="number">-2</span>]:</span><br><span class="line">            <span class="keyword">while</span> i &lt; len(s) <span class="keyword">and</span> s[i] == stack[<span class="number">-1</span>]:</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">            stack.pop()</span><br><span class="line">            stack.pop()</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            stack.append(s[i])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> stack</span><br><span class="line"></span><br><span class="line"><span class="comment"># TEST</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    string = raw_input()</span><br><span class="line">    res = removeDuplicates(string)</span><br><span class="line">    print(res)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>Use Two pointers to imitate the stack!<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">removeDuplicates</span><span class="params">(s)</span>:</span></span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    slow = <span class="number">-1</span></span><br><span class="line">    <span class="keyword">while</span> i &lt; len(s):</span><br><span class="line">        <span class="keyword">if</span> slow &gt; <span class="number">0</span>  <span class="keyword">and</span> s[i] == s[slow] == s[slow<span class="number">-1</span>]:</span><br><span class="line">            <span class="keyword">while</span> i &lt; len(s) <span class="keyword">and</span> s[i] == s[slow]:</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">            slow -= <span class="number">2</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            slow += <span class="number">1</span></span><br><span class="line">            s[i], s[slow] = s[slow], s[i]</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> s[:slow+<span class="number">1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># TEST</span></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    string = raw_input()</span><br><span class="line">    res = removeDuplicates(list(string))</span><br><span class="line">    print(res)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/10/04/queue-stack/" data-id="cjnqqpgly0026v0785lfkleq0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-sort" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/10/02/sort/">Sort</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/10/02/sort/">
-            <time datetime="2018-10-02T20:01:03.000Z" itemprop="datePublished">2018-10-02</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/array/">array</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="Selection-Sort"><a href="#Selection-Sort" class="headerlink" title="Selection Sort"></a>Selection Sort</h2><p>The selection sort algorithm sorts an array by repeatedly <strong>finding the minimum element from unsorted part and putting it at the beginning</strong>.</p>
-<ul>
-<li>Time : O(n^2), as there are two <strong>nested</strong> loops</li>
-<li>Space : O(1) (In-place)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">selectionSort</span><span class="params">(nums)</span>:</span></span><br><span class="line">    n = len(nums)</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">        minIndex = i</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> xrange(i, n):</span><br><span class="line">            <span class="keyword">if</span> nums[j] &lt; nums[minIndex]:</span><br><span class="line">                minIndex = j</span><br><span class="line">        nums[i], nums[minIndex] = nums[minIndex], nums[i]</span><br></pre></td></tr></table></figure>
-<h2 id="Bubble-Sort"><a href="#Bubble-Sort" class="headerlink" title="Bubble Sort"></a>Bubble Sort</h2><p>Bubble Sort is the simplest sorting algorithm that works by repeatedly <strong>swapping the adjacent elements if they are in wrong order</strong>.</p>
-<ul>
-<li>Time : O(n^2), Best Case : O(n)</li>
-<li>Space : O(1)<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">bubbleSort</span><span class="params">(nums)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(nums)):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> xrange(len(nums)-i<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> nums[j] &gt; nums[j+<span class="number">1</span>]:</span><br><span class="line">                nums[j+<span class="number">1</span>], nums[j] = nums[j], nums[j+<span class="number">1</span>]</span><br><span class="line">    <span class="keyword">return</span> nums</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="Insertion-Sort"><a href="#Insertion-Sort" class="headerlink" title="Insertion Sort"></a>Insertion Sort</h2><ul>
-<li>Time : O(n^2), Best Case : O(n) when the elements are already sorted!</li>
-<li>Space : O(1)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">insertionSort</span><span class="params">(nums)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> i, num <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">        j = i</span><br><span class="line">        <span class="keyword">while</span> j &gt; <span class="number">0</span> <span class="keyword">and</span> nums[j<span class="number">-1</span>] &gt; num:</span><br><span class="line">            nums[j] = nums[j<span class="number">-1</span>]</span><br><span class="line">            j -= <span class="number">1</span></span><br><span class="line">        nums[j] = num</span><br><span class="line">    <span class="keyword">return</span> nums</span><br></pre></td></tr></table></figure>
-<h2 id="Merge-sort"><a href="#Merge-sort" class="headerlink" title="Merge sort"></a>Merge sort</h2><p>It divides input array in two halves, calls itself for the two halves and then merges the two sorted halves.</p>
-<ul>
-<li>Time : O(nlogn)</li>
-<li>Space : O(n)</li>
-</ul>
-<h3 id="88-Merge-Sorted-Array"><a href="#88-Merge-Sorted-Array" class="headerlink" title="88. Merge Sorted Array"></a><a href="https://leetcode.com/problems/merge-sorted-array/" target="_blank" rel="noopener">88. Merge Sorted Array</a></h3><p>Merge Two Sorted Array in Merge Sort Algorithms</p>
-<ul>
-<li>Three Pointers: nums1, nums2 and results</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, nums1, m, nums2, n)</span>:</span></span><br><span class="line">        p1, p2 = m<span class="number">-1</span>, n<span class="number">-1</span></span><br><span class="line">        idx = m+n<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> p1 &gt;= <span class="number">0</span> <span class="keyword">and</span> p2 &gt;= <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">if</span> nums2[p2] &gt; nums1[p1]:</span><br><span class="line">                nums1[idx] = nums2[p2]</span><br><span class="line">                p2 -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                nums1[idx] = nums1[p1]</span><br><span class="line">                p1 -= <span class="number">1</span></span><br><span class="line">            idx -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> p2 &gt;= <span class="number">0</span>:</span><br><span class="line">            nums1[idx] = nums2[p2]</span><br><span class="line">            p2 -= <span class="number">1</span></span><br><span class="line">            idx -= <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<h3 id="Merge-k-sorted-array"><a href="#Merge-k-sorted-array" class="headerlink" title="Merge k sorted array"></a>Merge k sorted array</h3><ul>
-<li>Time : O(nlogk)</li>
-</ul>
-<ol>
-<li>sol1: Iterative way (Brute Force)</li>
-<li>sol2: Binary Reduction (Divide and Conquer)</li>
-</ol>
-<ul>
-<li>if very large,so data in disk : <strong>read and write</strong> logk times</li>
-</ul>
-<ol start="3">
-<li>sol3: k pointers smallest element(Heap)</li>
-</ol>
-<ul>
-<li>if very large,so data in disk : <strong>read and write</strong> only 1 time</li>
-</ul>
-<h3 id="Counting-Inversions"><a href="#Counting-Inversions" class="headerlink" title="Counting Inversions"></a>Counting Inversions</h3><ul>
-<li>based on merge sort, count all the inversion paris!</li>
-</ul>
-<h2 id="Quick-Sort"><a href="#Quick-Sort" class="headerlink" title="Quick Sort"></a>Quick Sort</h2><p>It picks an element as pivot and partitions the given array around the picked pivot.</p>
-<ul>
-<li>The key process in quickSort is <strong>partition()</strong>.<br>Target of partitions is, given an array and an element x of array as pivot, put x at its correct position in sorted array and put all smaller elements (smaller than x) before x, and put all greater elements (greater than x) after x. All this should be done in linear time.</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(nums, l, r)</span>:</span></span><br><span class="line">    pivot = nums[r] <span class="comment"># pick last element as pivot</span></span><br><span class="line">    low = l</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> xrange(l, r):</span><br><span class="line">        <span class="keyword">if</span> nums[i] &lt; pivot:</span><br><span class="line">            nums[i], nums[low] = nums[low], nums[i]</span><br><span class="line">            low += <span class="number">1</span></span><br><span class="line">    nums[low], nums[r] = nums[r], nums[low]</span><br><span class="line">    <span class="keyword">return</span> low</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quickSort</span><span class="params">(nums, l, r)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> l &gt;= r:</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    pivot = partition(nums, l, r)</span><br><span class="line">    quickSort(nums, l, pivot<span class="number">-1</span>)</span><br><span class="line">    quickSort(nums, pivot+<span class="number">1</span>, r)</span><br></pre></td></tr></table></figure>
-<h3 id="215-Kth-Largest-Element-in-an-Array"><a href="#215-Kth-Largest-Element-in-an-Array" class="headerlink" title="215. Kth Largest Element in an Array"></a><a href="https://leetcode.com/problems/kth-largest-element-in-an-array/" target="_blank" rel="noopener">215. Kth Largest Element in an Array</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findKthLargest</span><span class="params">(self, nums, k)</span>:</span></span><br><span class="line">        l, r = <span class="number">0</span>, len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> l &lt;= r:</span><br><span class="line">            idx = self.partition(nums, l, r)</span><br><span class="line">            <span class="keyword">if</span> idx &gt; k<span class="number">-1</span>:</span><br><span class="line">                r = idx - <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> idx &lt; k<span class="number">-1</span>:</span><br><span class="line">                l = idx + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> nums[idx]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Similar to Move Zeros!</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">partition</span><span class="params">(self, nums, l, r)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> l &gt;= r: <span class="keyword">return</span> l</span><br><span class="line"></span><br><span class="line">        pivot = nums[r]</span><br><span class="line">        low = l</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(l, r):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; pivot:</span><br><span class="line">                nums[i], nums[low] = nums[low], nums[i]</span><br><span class="line">                low += <span class="number">1</span></span><br><span class="line">        nums[low], nums[r] = nums[r], nums[low]</span><br><span class="line">        <span class="keyword">return</span> low</span><br></pre></td></tr></table></figure>
-<h3 id="283-Move-Zeroes"><a href="#283-Move-Zeroes" class="headerlink" title="283. Move Zeroes"></a><a href="https://leetcode.com/problems/move-zeroes/" target="_blank" rel="noopener">283. Move Zeroes</a></h3><p>Maintaining the <strong>relative order</strong> of the non-zero elements.</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">moveZeroes</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        non0 = <span class="number">0</span></span><br><span class="line">        n = len(nums)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">            <span class="keyword">if</span> nums[i] != <span class="number">0</span>:</span><br><span class="line">                nums[non0] = nums[i]</span><br><span class="line">                non0 += <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(non0, n):</span><br><span class="line">            nums[i] = <span class="number">0</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">moveZeroes</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        non0 = <span class="number">0</span></span><br><span class="line">        n = len(nums)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">            <span class="keyword">if</span> nums[i] != <span class="number">0</span>:</span><br><span class="line">                nums[non0], nums[i] = nums[i], nums[non0]</span><br><span class="line">                non0 += <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<h4 id="Follow-up-order-can-be-changed"><a href="#Follow-up-order-can-be-changed" class="headerlink" title="Follow up : order can be changed"></a>Follow up : order can be changed</h4><p>The order of all other elments can be changed.</p>
-<ul>
-<li>left and right pointer swap each number, it could change the order, but it reduces the operation number!</li>
-<li>this method actually is similar to the <strong>partition function</strong> in Quick Sort!!!</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">moveZeroes</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        left, right = <span class="number">0</span>, len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            <span class="keyword">while</span> left &lt; right <span class="keyword">and</span> nums[left] != <span class="number">0</span>:</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> left &lt; right <span class="keyword">and</span> nums[right] == <span class="number">0</span>:</span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">            nums[left], nums[right] = nums[right], nums[left]</span><br><span class="line">            print(<span class="string">"operation"</span>)</span><br><span class="line">            left += <span class="number">1</span></span><br><span class="line">            right -= <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Simplified Version</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">moveZeroes</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        left, right = <span class="number">0</span>, len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            <span class="keyword">if</span> nums[left] != <span class="number">0</span>:</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[right] == <span class="number">0</span>:</span><br><span class="line">                right -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                nums[left], nums[right] = nums[right], nums[left]</span><br><span class="line">                left += <span class="number">1</span></span><br><span class="line">                right -= <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<h2 id="Rainbow-Sort"><a href="#Rainbow-Sort" class="headerlink" title="Rainbow Sort"></a>Rainbow Sort</h2><h3 id="75-Sort-Colors"><a href="#75-Sort-Colors" class="headerlink" title="75. Sort Colors"></a><a href="https://leetcode.com/problems/sort-colors/" target="_blank" rel="noopener">75. Sort Colors</a></h3><h4 id="Sol1-Counting-Sort"><a href="#Sol1-Counting-Sort" class="headerlink" title="Sol1. Counting Sort"></a>Sol1. Counting Sort</h4><p>two-pass algorithm<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n)</span></span><br><span class="line"><span class="comment"># Space : O(n)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortColors</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        cnt = collections.defaultdict(int)</span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">            cnt[num] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        p = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">3</span>):</span><br><span class="line">            <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(cnt[i]):</span><br><span class="line">                nums[p] = i</span><br><span class="line">                p += <span class="number">1</span></span><br></pre></td></tr></table></figure></p>
-<h4 id="Sol2-Dutch-Partitioning-Problem"><a href="#Sol2-Dutch-Partitioning-Problem" class="headerlink" title="Sol2. Dutch Partitioning Problem"></a>Sol2. Dutch Partitioning Problem</h4><p>one-pass algorithm<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortColors</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        l, r = <span class="number">0</span>, len(nums)<span class="number">-1</span></span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i &lt;= r:</span><br><span class="line">            <span class="keyword">if</span> nums[i] == <span class="number">0</span>:</span><br><span class="line">                nums[l], nums[i] = nums[i], nums[l]</span><br><span class="line">                l += <span class="number">1</span></span><br><span class="line">                i += <span class="number">1</span> <span class="comment"># missing part</span></span><br><span class="line">            <span class="keyword">elif</span> nums[i] == <span class="number">1</span>:</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                nums[i], nums[r] = nums[r], nums[i]</span><br><span class="line">                r -= <span class="number">1</span></span><br></pre></td></tr></table></figure></p>
-<h2 id="Big-data"><a href="#Big-data" class="headerlink" title="Big data"></a>Big data</h2><h3 id="Sort-with-small-memory"><a href="#Sort-with-small-memory" class="headerlink" title="Sort with small memory"></a>Sort with small memory</h3><p>Given a single computer with a single CPU and a single core, which has 2GB of memory and 1GB available for use, it also has two 100GB hard drives. How to sort 80GB integers of 64bits.?</p>
-<ul>
-<li>External Sort</li>
-</ul>
-<ol>
-<li>400 chunks. Use 1GB memory to sort each 0.2GB. =&gt; write to disk</li>
-<li>400-way merge<br>chunk1   xxxxxx xxxxxxxxxxxxxxx<br>chunk2   yyyyyy yyyyyyyyyyyyyyy<br>…<br>chunk400 zzzzzz zzzzzzzzzzzzzzz<br>read from each chunk, block by block, insert into a min Heap.</li>
-<li>result block</li>
-</ol>
-<ul>
-<li>Why read one block by block instead of one by one? <strong>File IO</strong>!!!</li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/10/02/sort/" data-id="cjnqqpgmc002pv078k3vj4f2c" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-pramp" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/09/30/pramp/">pramp</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/09/30/pramp/">
-            <time datetime="2018-09-30T19:57:10.000Z" itemprop="datePublished">2018-09-30</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="Communication"><a href="#Communication" class="headerlink" title="Communication"></a>Communication</h2><ul>
-<li>can you hear me?</li>
-<li>can i assume that … ?</li>
-<li><strong>walk through</strong> a small example / some test cases</li>
-<li>It looks good for me / Sounds good!</li>
-<li><strong>Im not sure</strong> why you … ?</li>
-<li>in the line …</li>
-<li>can you <strong>analyze the time and space complexity</strong>?</li>
-<li>the question said that …</li>
-<li><strong>double check</strong> my code</li>
-<li>write some test cases to test my funciton</li>
-<li>there are some <strong>typo</strong> in your code</li>
-<li>clarify your idea</li>
-<li>as we can see</li>
-<li>analyze different cases first</li>
-<li>I will be the interviewer fist</li>
-</ul>
-<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><h3 id="Sales-Path"><a href="#Sales-Path" class="headerlink" title="Sales Path"></a>Sales Path</h3><ul>
-<li><p>Find the minimal sum cost from root to leaf in a Tree (Not necessarily binary)</p>
-<img src="/2018/09/30/pramp/sales_path.png">
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_cheapest_cost</span><span class="params">(rootNode)</span>:</span></span><br><span class="line">  <span class="keyword">if</span> <span class="keyword">not</span> rootNode.children:</span><br><span class="line">    <span class="keyword">return</span> rootNode.cost</span><br><span class="line"></span><br><span class="line">  minCost = float(<span class="string">'inf'</span>)</span><br><span class="line">  <span class="keyword">for</span> child <span class="keyword">in</span> rootNode.children:</span><br><span class="line">    minCost = min(minCost, get_cheapest_cost(child))</span><br><span class="line">  <span class="keyword">return</span> minCost + rootNode.cost</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>follow up</strong>:<br>TODO</p>
-</li>
-</ul>
-<h3 id="H-Tree-Construction"><a href="#H-Tree-Construction" class="headerlink" title="H-Tree Construction"></a>H-Tree Construction</h3><p>Write a function drawHTree that constructs an H-tree, given its center (x and y coordinates), a starting length, and depth. Assume that the starting line is parallel to the X-axis.<br><img src="/2018/09/30/pramp/h_tree.png"></p>
-<ul>
-<li><p>Use the function drawLine provided to implement your algorithm. In a production code, a drawLine function would render a real line between two points. However, this is not a real production environment, so to make things easier, implement drawLine such that it simply prints its arguments (the print format is left to your discretion).</p>
-</li>
-<li><p>Analyze the time and space complexity of your algorithm. In your analysis, assume that drawLine’s time and space complexities are constant, i.e. O(1).</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">            <span class="number">1</span></span><br><span class="line">   <span class="number">1</span>     <span class="number">1</span>     <span class="number">1</span>     <span class="number">1</span></span><br><span class="line"><span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span>  </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">drawLine</span><span class="params">(p1, p2)</span>:</span></span><br><span class="line">  <span class="comment"># draw line</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Time : O(4^depth)</span></span><br><span class="line"><span class="comment"># Space : O(depth)  </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">drawHTree</span><span class="params">(x, y, length, depth)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> depth == <span class="number">0</span>:</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># horizontal segment "-"</span></span><br><span class="line">    x1 = x - length / <span class="number">2</span></span><br><span class="line">    x2 = x + length / <span class="number">2</span></span><br><span class="line">    drawLine((x1, y), (x2, y))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># left &amp; right vertical segment '|'</span></span><br><span class="line">    y1 = y - length / <span class="number">2</span></span><br><span class="line">    y2 = y + length / <span class="number">2</span></span><br><span class="line">    drawLine((x1, y1), (x1, y2))</span><br><span class="line">    drawLine((x2, y1), (x2, y2))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Recursion</span></span><br><span class="line">    new_len = length / math.sqrt(<span class="number">2</span>)</span><br><span class="line">    drawHTree((x1, y1), new_length, depth - <span class="number">1</span>)</span><br><span class="line">    drawHTree((x1, y2), new_length, depth - <span class="number">1</span>)</span><br><span class="line">    drawHTree((x2, y1), new_length, depth - <span class="number">1</span>)</span><br><span class="line">    drawHTree((x2, y2), new_length, depth - <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="Getting-a-Different-Number"><a href="#Getting-a-Different-Number" class="headerlink" title="Getting a Different Number"></a>Getting a Different Number</h3><p>Given an array arr of unique nonnegative integers, implement a function getDifferentNumber that finds the smallest nonnegative integer that is NOT in the array.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n)</span></span><br><span class="line"><span class="comment"># Space : O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_different_number</span><span class="params">(arr)</span>:</span></span><br><span class="line">  n = len(arr)</span><br><span class="line">  arr_set = set(arr)</span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> arr_set:</span><br><span class="line">      <span class="keyword">return</span> i</span><br></pre></td></tr></table></figure></p>
-<h3 id="Array-Index-amp-Element-Equality"><a href="#Array-Index-amp-Element-Equality" class="headerlink" title="Array Index &amp; Element Equality"></a>Array Index &amp; Element Equality</h3><p>Given a <strong>sorted array</strong> arr of distinct integers, write a function indexEqualsValueSearch that returns the lowest index i for which arr[i] == i. Return -1 if there is no such index.</p>
-<ul>
-<li>Binary Search</li>
-<li>Edge case</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(logn)</span></span><br><span class="line"><span class="comment"># Space : O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index_equals_value_search</span><span class="params">(arr)</span>:</span></span><br><span class="line">  <span class="keyword">if</span> <span class="keyword">not</span> arr:</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">  start, end = <span class="number">0</span>, len(arr)<span class="number">-1</span></span><br><span class="line">  <span class="keyword">while</span> start &lt; end:</span><br><span class="line">    mid = start + (end - start) // <span class="number">2</span></span><br><span class="line">    <span class="keyword">if</span> arr[mid] == mid:</span><br><span class="line">      end = mid</span><br><span class="line">    <span class="keyword">elif</span> arr[mid] &gt; mid:</span><br><span class="line">      end = mid - <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      start = mid + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># post processing</span></span><br><span class="line">  <span class="keyword">if</span> arr[start] == start:</span><br><span class="line">    <span class="keyword">return</span> start</span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
-<h3 id="Number-of-Paths"><a href="#Number-of-Paths" class="headerlink" title="Number of Paths"></a>Number of Paths</h3><p>Given n, the size of the grid’s axes, write a function numOfPathsToDest that returns the number of the possible paths the driverless car can take.</p>
-<img src="/2018/09/30/pramp/number_of_paths.png">
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">num_of_paths_to_dest</span><span class="params">(n)</span>:</span></span><br><span class="line">  <span class="comment"># Init dp</span></span><br><span class="line">  <span class="comment">#dp = [[0] * n for _ in xrange(n)]</span></span><br><span class="line">  dp = [<span class="number">1</span>] * n</span><br><span class="line"></span><br><span class="line">  <span class="comment"># calculate the number</span></span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, n):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> xrange(i+<span class="number">1</span>, n):</span><br><span class="line">      dp[j] += dp[j<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">  print(num_of_paths_to_dest(<span class="number">4</span>))</span><br><span class="line"></span><br><span class="line">test()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Time : O(n^2) Space : O(n^2)</span></span><br><span class="line"><span class="comment"># Improved Space : O(n)</span></span><br></pre></td></tr></table></figure>
-<h4 id="Explanation"><a href="#Explanation" class="headerlink" title="Explanation"></a>Explanation</h4><p>Since the car can only move up and move down, when it arrives at a point, there are two possibilities:</p>
-<ol>
-<li>It arrives at the point from below cell (move up to the point)</li>
-<li>It arrives at the point from left cell (move right to the point)</li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/09/30/pramp/" data-id="cjnqqpgm3002cv07856r8deia" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/06/heap/" data-id="cjntqnkp6001hwu783604wgnd" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1908,7 +1829,7 @@ ga('send', 'pageview');
 
 
     <nav id="page-nav">
-        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+        <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
 </section>
             
@@ -1925,44 +1846,44 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/30/dp-sequence-cut/" class="title">DP - Cut Sequence</a></p>
+                            <p class="item-date"><time datetime="2018-10-30T21:27:03.000Z" itemprop="datePublished">2018-10-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/29/dfs-matrix/" class="title">DFS - Matrix</a></p>
+                            <p class="item-date"><time datetime="2018-10-29T19:57:53.000Z" itemprop="datePublished">2018-10-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/28/trie/" class="title">Trie</a></p>
+                            <p class="item-date"><time datetime="2018-10-28T15:21:34.000Z" itemprop="datePublished">2018-10-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/27/dp-game/" class="title">DP - Game</a></p>
+                            <p class="item-date"><time datetime="2018-10-27T21:32:26.000Z" itemprop="datePublished">2018-10-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/10/26/topic-data-stream/" class="title">Data Stream</a></p>
                             <p class="item-date"><time datetime="2018-10-26T20:42:38.000Z" itemprop="datePublished">2018-10-26</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/25/monotone-stack/" class="title">Monotone Stack</a></p>
-                            <p class="item-date"><time datetime="2018-10-25T14:11:55.000Z" itemprop="datePublished">2018-10-25</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/10/24/math/" class="title">Math</a></p>
-                            <p class="item-date"><time datetime="2018-10-24T13:45:51.000Z" itemprop="datePublished">2018-10-24</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/23/topic-voting-algorithm/" class="title">Boyer-Moore Voting Algorithm</a></p>
-                            <p class="item-date"><time datetime="2018-10-24T00:03:49.000Z" itemprop="datePublished">2018-10-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Design/">Design</a></p>
-                            <p class="item-title"><a href="/2018/10/22/topic-cache/" class="title">Cache</a></p>
-                            <p class="item-date"><time datetime="2018-10-22T13:41:19.000Z" itemprop="datePublished">2018-10-22</time></p>
                         </div>
                     </li>
                 
@@ -1975,7 +1896,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">39</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">43</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -1984,7 +1905,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -1993,7 +1914,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/queue/">queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/queue/">queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/topic/">topic</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">10</span></li></ul>
         </div>
     </div>
 
@@ -2002,7 +1923,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bfs/" style="font-size: 12.5px;">bfs</a> <a href="/tags/binary-search/" style="font-size: 12.5px;">binary search</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/dp/" style="font-size: 17.5px;">dp</a> <a href="/tags/graph/" style="font-size: 15px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 12.5px;">hash table</a> <a href="/tags/heap/" style="font-size: 12.5px;">heap</a> <a href="/tags/linked-list/" style="font-size: 17.5px;">linked list</a> <a href="/tags/queue/" style="font-size: 10px;">queue</a> <a href="/tags/recursion/" style="font-size: 17.5px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/stack/" style="font-size: 12.5px;">stack</a> <a href="/tags/string/" style="font-size: 12.5px;">string</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a> <a href="/tags/union-find/" style="font-size: 10px;">union find</a>
+            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bfs/" style="font-size: 12px;">bfs</a> <a href="/tags/binary-search/" style="font-size: 12px;">binary search</a> <a href="/tags/dfs/" style="font-size: 14px;">dfs</a> <a href="/tags/dp/" style="font-size: 18px;">dp</a> <a href="/tags/graph/" style="font-size: 16px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 12px;">hash table</a> <a href="/tags/heap/" style="font-size: 12px;">heap</a> <a href="/tags/linked-list/" style="font-size: 16px;">linked list</a> <a href="/tags/queue/" style="font-size: 10px;">queue</a> <a href="/tags/recursion/" style="font-size: 16px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/stack/" style="font-size: 12px;">stack</a> <a href="/tags/string/" style="font-size: 12px;">string</a> <a href="/tags/topic/" style="font-size: 16px;">topic</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
         </div>
     </div>
 

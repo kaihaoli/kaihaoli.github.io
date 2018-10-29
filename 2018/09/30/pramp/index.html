@@ -5,20 +5,21 @@
     
     <title>pramp | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Communication can you hear me? can i assume that … ? walk through a small example / some test cases It looks good for me / Sounds good! Im not sure why you … ? in the line … can you analyze the time a">
+    <meta name="description" content="Communication diagram  interviewer can you hear me? can i assume that … ? walk through a small example / some test cases It looks good for me / Sounds good! Im not sure why you … ? in the line … can y">
 <meta property="og:type" content="article">
 <meta property="og:title" content="pramp">
 <meta property="og:url" content="http://kaihaoli.github.io/2018/09/30/pramp/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="Communication can you hear me? can i assume that … ? walk through a small example / some test cases It looks good for me / Sounds good! Im not sure why you … ? in the line … can you analyze the time a">
+<meta property="og:description" content="Communication diagram  interviewer can you hear me? can i assume that … ? walk through a small example / some test cases It looks good for me / Sounds good! Im not sure why you … ? in the line … can y">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://kaihaoli.github.io/2018/09/30/pramp/sales_path.png">
+<meta property="og:image" content="http://kaihaoli.github.io/2018/09/30/pramp/BST_successor.png">
 <meta property="og:image" content="http://kaihaoli.github.io/2018/09/30/pramp/h_tree.png">
 <meta property="og:image" content="http://kaihaoli.github.io/2018/09/30/pramp/number_of_paths.png">
-<meta property="og:updated_time" content="2018-10-26T00:16:48.138Z">
+<meta property="og:updated_time" content="2018-10-29T01:48:19.703Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="pramp">
-<meta name="twitter:description" content="Communication can you hear me? can i assume that … ? walk through a small example / some test cases It looks good for me / Sounds good! Im not sure why you … ? in the line … can you analyze the time a">
+<meta name="twitter:description" content="Communication diagram  interviewer can you hear me? can i assume that … ? walk through a small example / some test cases It looks good for me / Sounds good! Im not sure why you … ? in the line … can y">
 <meta name="twitter:image" content="http://kaihaoli.github.io/2018/09/30/pramp/sales_path.png">
     
 
@@ -167,7 +168,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                47
+                51
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -235,10 +236,13 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Communication"><span class="toc-number">1.</span> <span class="toc-text">Communication</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Question"><span class="toc-number">2.</span> <span class="toc-text">Question</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sales-Path"><span class="toc-number">2.1.</span> <span class="toc-text">Sales Path</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#H-Tree-Construction"><span class="toc-number">2.2.</span> <span class="toc-text">H-Tree Construction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Getting-a-Different-Number"><span class="toc-number">2.3.</span> <span class="toc-text">Getting a Different Number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-Index-amp-Element-Equality"><span class="toc-number">2.4.</span> <span class="toc-text">Array Index &amp; Element Equality</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Number-of-Paths"><span class="toc-number">2.5.</span> <span class="toc-text">Number of Paths</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Explanation"><span class="toc-number">2.5.1.</span> <span class="toc-text">Explanation</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Communication"><span class="toc-number">1.</span> <span class="toc-text">Communication</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#interviewer"><span class="toc-number">1.1.</span> <span class="toc-text">interviewer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#interviewee"><span class="toc-number">1.2.</span> <span class="toc-text">interviewee</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Tree"><span class="toc-number">2.</span> <span class="toc-text">Tree</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Sales-Path"><span class="toc-number">2.1.</span> <span class="toc-text">Sales Path</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#BST-Successor-Search"><span class="toc-number">2.2.</span> <span class="toc-text">BST Successor Search</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Other"><span class="toc-number">3.</span> <span class="toc-text">Other</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#H-Tree-Construction"><span class="toc-number">3.1.</span> <span class="toc-text">H-Tree Construction</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Getting-a-Different-Number"><span class="toc-number">3.2.</span> <span class="toc-text">Getting a Different Number</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Array-Index-amp-Element-Equality"><span class="toc-number">3.3.</span> <span class="toc-text">Array Index &amp; Element Equality</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Number-of-Paths"><span class="toc-number">3.4.</span> <span class="toc-text">Number of Paths</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Explanation"><span class="toc-number">3.4.1.</span> <span class="toc-text">Explanation</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Sentence-Reverse"><span class="toc-number">3.5.</span> <span class="toc-text">Sentence Reverse</span></a></li></ol></li></ol>
                 </div>
             
             <h2 id="Communication"><a href="#Communication" class="headerlink" title="Communication"></a>Communication</h2><ul>
+<li>diagram</li>
+</ul>
+<h3 id="interviewer"><a href="#interviewer" class="headerlink" title="interviewer"></a>interviewer</h3><ul>
 <li>can you hear me?</li>
 <li>can i assume that … ?</li>
 <li><strong>walk through</strong> a small example / some test cases</li>
@@ -247,15 +251,25 @@ ga('send', 'pageview');
 <li>in the line …</li>
 <li>can you <strong>analyze the time and space complexity</strong>?</li>
 <li>the question said that …</li>
-<li><strong>double check</strong> my code</li>
-<li>write some test cases to test my funciton</li>
 <li>there are some <strong>typo</strong> in your code</li>
 <li>clarify your idea</li>
+<li>I will be the interviewer fist</li>
+<li>make sense / make no sense</li>
+<li>on the right track</li>
+<li>you get the point!</li>
+</ul>
+<h3 id="interviewee"><a href="#interviewee" class="headerlink" title="interviewee"></a>interviewee</h3><ul>
+<li>Let me give you a small example</li>
+<li><strong>double check</strong> my code</li>
+<li>write some test cases to test my funciton</li>
 <li>as we can see</li>
 <li>analyze different cases first</li>
-<li>I will be the interviewer fist</li>
+<li>Lets say … variable …</li>
 </ul>
-<h2 id="Question"><a href="#Question" class="headerlink" title="Question"></a>Question</h2><h3 id="Sales-Path"><a href="#Sales-Path" class="headerlink" title="Sales Path"></a>Sales Path</h3><ul>
+<h2 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h2><ul>
+<li>can we assume that class node has parent pointer?</li>
+</ul>
+<h3 id="Sales-Path"><a href="#Sales-Path" class="headerlink" title="Sales Path"></a>Sales Path</h3><ul>
 <li><p>Find the minimal sum cost from root to leaf in a Tree (Not necessarily binary)</p>
 <img src="/2018/09/30/pramp/sales_path.png">
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_cheapest_cost</span><span class="params">(rootNode)</span>:</span></span><br><span class="line">  <span class="keyword">if</span> <span class="keyword">not</span> rootNode.children:</span><br><span class="line">    <span class="keyword">return</span> rootNode.cost</span><br><span class="line"></span><br><span class="line">  minCost = float(<span class="string">'inf'</span>)</span><br><span class="line">  <span class="keyword">for</span> child <span class="keyword">in</span> rootNode.children:</span><br><span class="line">    minCost = min(minCost, get_cheapest_cost(child))</span><br><span class="line">  <span class="keyword">return</span> minCost + rootNode.cost</span><br></pre></td></tr></table></figure>
@@ -263,7 +277,16 @@ ga('send', 'pageview');
 <li><p><strong>follow up</strong>:<br>TODO</p>
 </li>
 </ul>
-<h3 id="H-Tree-Construction"><a href="#H-Tree-Construction" class="headerlink" title="H-Tree Construction"></a>H-Tree Construction</h3><p>Write a function drawHTree that constructs an H-tree, given its center (x and y coordinates), a starting length, and depth. Assume that the starting line is parallel to the X-axis.<br><img src="/2018/09/30/pramp/h_tree.png"></p>
+<h3 id="BST-Successor-Search"><a href="#BST-Successor-Search" class="headerlink" title="BST Successor Search"></a>BST Successor Search</h3><p>In a Binary Search Tree (BST), an Inorder Successor of a node is defined as the node with the smallest key greater than the key of the input node (see examples below).</p>
+<p>Given a node inputNode in a BST, you’re asked to write a function <strong>findInOrderSuccessor</strong> that returns the Inorder Successor of inputNode. If inputNode has no Inorder Successor, return null.<br><img src="/2018/09/30/pramp/BST_successor.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_in_order_successor</span><span class="params">(self, inputNode)</span>:</span></span><br><span class="line">  <span class="keyword">if</span> <span class="keyword">not</span> inputNode:</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> <span class="keyword">not</span> inputNode.right: <span class="comment"># dose not have right subtree</span></span><br><span class="line">    parent = inputNode.parent</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> parent: <span class="comment"># root node</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">while</span> parent:</span><br><span class="line">      <span class="keyword">if</span> parent.key &gt; inputNode.key:</span><br><span class="line">        <span class="keyword">return</span> parent</span><br><span class="line">      parent = parent.parent</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">  <span class="keyword">else</span>:<span class="comment"># have right subree</span></span><br><span class="line">    cur = inputNode.right</span><br><span class="line">    <span class="keyword">while</span> cur.left:</span><br><span class="line">      cur = cur.left</span><br><span class="line">    <span class="keyword">return</span> cur</span><br></pre></td></tr></table></figure>
+<ol>
+<li><p>Case1 : <strong>inputNode has a right child</strong>. In this case successorNode would be the node with the minimum key in inputNode’s right subtree.</p>
+</li>
+<li><p>Case2: <strong>inputNode doesn’t have a right child</strong>. In this case successorNode would be one of inputNode’s ancestors. More specifically, within inputNode’s ancestor chain (starting from inputNode <strong>all the way up</strong> to the root), successorNode is the first parent that has a left child in that chain.</p>
+</li>
+</ol>
+<h2 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h2><h3 id="H-Tree-Construction"><a href="#H-Tree-Construction" class="headerlink" title="H-Tree Construction"></a>H-Tree Construction</h3><p>Write a function drawHTree that constructs an H-tree, given its center (x and y coordinates), a starting length, and depth. Assume that the starting line is parallel to the X-axis.<br><img src="/2018/09/30/pramp/h_tree.png"></p>
 <ul>
 <li><p>Use the function drawLine provided to implement your algorithm. In a production code, a drawLine function would render a real line between two points. However, this is not a real production environment, so to make things easier, implement drawLine such that it simply prints its arguments (the print format is left to your discretion).</p>
 </li>
@@ -286,6 +309,16 @@ ga('send', 'pageview');
 <li>It arrives at the point from below cell (move up to the point)</li>
 <li>It arrives at the point from left cell (move right to the point)</li>
 </ol>
+<h3 id="Sentence-Reverse"><a href="#Sentence-Reverse" class="headerlink" title="Sentence Reverse"></a>Sentence Reverse</h3><ul>
+<li><p>Solution1. python built-in function</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Spacce : O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reverse_words1</span><span class="params">(arr)</span>:</span></span><br><span class="line">  string = <span class="string">''</span>.join(arr)</span><br><span class="line">  chs = string.split()</span><br><span class="line">  res = <span class="string">' '</span>.join(chs[::<span class="number">-1</span>])</span><br><span class="line">  <span class="keyword">return</span> list(res)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Solution2. Reverse Twice</p>
+</li>
+<li>First: reverse all the word!<br>I love google -&gt; I evol elgoog</li>
+<li>Second: reverse the string character by charater<br>I evol elgoog -&gt; google love I</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Space O(n) -&gt; O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reverse_words</span><span class="params">(arr)</span>:</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># First Reverse</span></span><br><span class="line">  start = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(arr)+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> i == len(arr) <span class="keyword">or</span> arr[i] == <span class="string">' '</span>: <span class="comment"># condition</span></span><br><span class="line">      end = i - <span class="number">1</span></span><br><span class="line">      <span class="keyword">while</span> start &lt; end:</span><br><span class="line">        arr[start], arr[end] = arr[end], arr[start]</span><br><span class="line">        start += <span class="number">1</span></span><br><span class="line">        end -= <span class="number">1</span></span><br><span class="line">      start = i + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Second Reverse</span></span><br><span class="line">  start, end = <span class="number">0</span>, len(arr)<span class="number">-1</span></span><br><span class="line">  <span class="keyword">while</span> start &lt; end:</span><br><span class="line">    arr[start], arr[end] = arr[end], arr[start]</span><br><span class="line">    start += <span class="number">1</span></span><br><span class="line">    end -= <span class="number">1</span></span><br><span class="line">  <span class="keyword">return</span> arr</span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -296,7 +329,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/09/30/pramp/" data-id="cjnqqpgm3002cv07856r8deia" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/09/30/pramp/" data-id="cjntqnkpt002hwu78dqgvd3dw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -381,7 +414,7 @@ ga('send', 'pageview');
         </a>
     
     
-        <a href="/2018/09/29/buy-and-sell-stock/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/09/29/topic-buy-and-sell-stock/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
             <div class="article-nav-title">Buy and Sell Stock</div>
         </a>
@@ -411,44 +444,44 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/30/dp-sequence-cut/" class="title">DP - Cut Sequence</a></p>
+                            <p class="item-date"><time datetime="2018-10-30T21:27:03.000Z" itemprop="datePublished">2018-10-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/29/dfs-matrix/" class="title">DFS - Matrix</a></p>
+                            <p class="item-date"><time datetime="2018-10-29T19:57:53.000Z" itemprop="datePublished">2018-10-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/28/trie/" class="title">Trie</a></p>
+                            <p class="item-date"><time datetime="2018-10-28T15:21:34.000Z" itemprop="datePublished">2018-10-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/27/dp-game/" class="title">DP - Game</a></p>
+                            <p class="item-date"><time datetime="2018-10-27T21:32:26.000Z" itemprop="datePublished">2018-10-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/10/26/topic-data-stream/" class="title">Data Stream</a></p>
                             <p class="item-date"><time datetime="2018-10-26T20:42:38.000Z" itemprop="datePublished">2018-10-26</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/25/monotone-stack/" class="title">Monotone Stack</a></p>
-                            <p class="item-date"><time datetime="2018-10-25T14:11:55.000Z" itemprop="datePublished">2018-10-25</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/10/24/math/" class="title">Math</a></p>
-                            <p class="item-date"><time datetime="2018-10-24T13:45:51.000Z" itemprop="datePublished">2018-10-24</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/23/topic-voting-algorithm/" class="title">Boyer-Moore Voting Algorithm</a></p>
-                            <p class="item-date"><time datetime="2018-10-24T00:03:49.000Z" itemprop="datePublished">2018-10-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Design/">Design</a></p>
-                            <p class="item-title"><a href="/2018/10/22/topic-cache/" class="title">Cache</a></p>
-                            <p class="item-date"><time datetime="2018-10-22T13:41:19.000Z" itemprop="datePublished">2018-10-22</time></p>
                         </div>
                     </li>
                 
@@ -461,7 +494,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">39</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">43</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -470,7 +503,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -479,7 +512,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/queue/">queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/queue/">queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/topic/">topic</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">10</span></li></ul>
         </div>
     </div>
 
@@ -488,7 +521,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bfs/" style="font-size: 12.5px;">bfs</a> <a href="/tags/binary-search/" style="font-size: 12.5px;">binary search</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/dp/" style="font-size: 17.5px;">dp</a> <a href="/tags/graph/" style="font-size: 15px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 12.5px;">hash table</a> <a href="/tags/heap/" style="font-size: 12.5px;">heap</a> <a href="/tags/linked-list/" style="font-size: 17.5px;">linked list</a> <a href="/tags/queue/" style="font-size: 10px;">queue</a> <a href="/tags/recursion/" style="font-size: 17.5px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/stack/" style="font-size: 12.5px;">stack</a> <a href="/tags/string/" style="font-size: 12.5px;">string</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a> <a href="/tags/union-find/" style="font-size: 10px;">union find</a>
+            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bfs/" style="font-size: 12px;">bfs</a> <a href="/tags/binary-search/" style="font-size: 12px;">binary search</a> <a href="/tags/dfs/" style="font-size: 14px;">dfs</a> <a href="/tags/dp/" style="font-size: 18px;">dp</a> <a href="/tags/graph/" style="font-size: 16px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 12px;">hash table</a> <a href="/tags/heap/" style="font-size: 12px;">heap</a> <a href="/tags/linked-list/" style="font-size: 16px;">linked list</a> <a href="/tags/queue/" style="font-size: 10px;">queue</a> <a href="/tags/recursion/" style="font-size: 16px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/stack/" style="font-size: 12px;">stack</a> <a href="/tags/string/" style="font-size: 12px;">string</a> <a href="/tags/topic/" style="font-size: 16px;">topic</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
         </div>
     </div>
 

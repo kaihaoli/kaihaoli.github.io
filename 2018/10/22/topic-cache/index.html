@@ -5,18 +5,18 @@
     
     <title>Cache | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Design + Operatin System + Data Structure 146. LRU CacheDesign and implement a data structure for Least Recently Used (LRU) cache.  we need to be able to add an entry to the cache and delete the oldes">
-<meta name="keywords" content="hash table,linked list">
+    <meta name="description" content="Design + Operatin System + Data Structure OrderedDictAn OrderedDict is a dict that remembers the order that keys were first inserted.1234cache = collections.OrderedDict()cache.popitem(last=True)# The">
+<meta name="keywords" content="hash table,linked list,topic">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Cache">
 <meta property="og:url" content="http://kaihaoli.github.io/2018/10/22/topic-cache/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="Design + Operatin System + Data Structure 146. LRU CacheDesign and implement a data structure for Least Recently Used (LRU) cache.  we need to be able to add an entry to the cache and delete the oldes">
+<meta property="og:description" content="Design + Operatin System + Data Structure OrderedDictAn OrderedDict is a dict that remembers the order that keys were first inserted.1234cache = collections.OrderedDict()cache.popitem(last=True)# The">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-27T00:18:48.820Z">
+<meta property="og:updated_time" content="2018-10-29T00:12:18.259Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Cache">
-<meta name="twitter:description" content="Design + Operatin System + Data Structure 146. LRU CacheDesign and implement a data structure for Least Recently Used (LRU) cache.  we need to be able to add an entry to the cache and delete the oldes">
+<meta name="twitter:description" content="Design + Operatin System + Data Structure OrderedDictAn OrderedDict is a dict that remembers the order that keys were first inserted.1234cache = collections.OrderedDict()cache.popitem(last=True)# The">
     
 
     
@@ -164,7 +164,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                47
+                51
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -224,7 +224,7 @@ ga('send', 'pageview');
                         
     <div class="article-tag">
         <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/hash-table/">hash table</a>, <a class="tag-link" href="/tags/linked-list/">linked list</a>
+        <a class="tag-link" href="/tags/hash-table/">hash table</a>, <a class="tag-link" href="/tags/linked-list/">linked list</a>, <a class="tag-link" href="/tags/topic/">topic</a>
     </div>
 
                     </div>
@@ -237,15 +237,24 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#146-LRU-Cache"><span class="toc-number">1.</span> <span class="toc-text">146. LRU Cache</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution1-Built-In"><span class="toc-number">1.1.</span> <span class="toc-text">Solution1. Built-In</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution2-Doublely-Linked-List-Hash-map"><span class="toc-number">1.2.</span> <span class="toc-text">Solution2. Doublely Linked List + Hash map</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#460-LFU-Cache"><span class="toc-number">2.</span> <span class="toc-text">460. LFU Cache</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#OrderedDict"><span class="toc-number">1.</span> <span class="toc-text">OrderedDict</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#146-LRU-Cache"><span class="toc-number">2.</span> <span class="toc-text">146. LRU Cache</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution1-Built-In"><span class="toc-number">2.1.</span> <span class="toc-text">Solution1. Built-In</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution2-Doublely-Linked-List-Hash-map"><span class="toc-number">2.2.</span> <span class="toc-text">Solution2. Doublely Linked List + Hash map</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#460-LFU-Cache"><span class="toc-number">3.</span> <span class="toc-text">460. LFU Cache</span></a></li></ol>
                 </div>
             
             <p>Design + Operatin System + Data Structure</p>
+<h3 id="OrderedDict"><a href="#OrderedDict" class="headerlink" title="OrderedDict"></a>OrderedDict</h3><p>An OrderedDict is a dict that <strong>remembers the order that keys were first inserted</strong>.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cache = collections.OrderedDict()</span><br><span class="line">cache.popitem(last=<span class="keyword">True</span>)</span><br><span class="line"><span class="comment"># The popitem() method for ordered dictionaries returns and removes a (key, value) pair.</span></span><br><span class="line"><span class="comment"># The pairs are returned in LIFO order if last is true or FIFO order if false.</span></span><br></pre></td></tr></table></figure></p>
 <h3 id="146-LRU-Cache"><a href="#146-LRU-Cache" class="headerlink" title="146. LRU Cache"></a><a href="https://leetcode.com/problems/lru-cache/" target="_blank" rel="noopener">146. LRU Cache</a></h3><p>Design and implement a data structure for <strong>Least Recently Used (LRU) cache</strong>.</p>
-<ul>
+<ol>
 <li>we need to be able to add an entry to the cache and <strong>delete the oldest entry</strong> from the cache.(including when the cache is full)</li>
-<li>we need to <strong>find out quickly</strong> whether an entry is in the cache or not.<br>hash map : <key =="" request,="" value="pointer.reference" to="" the="" list="" node=""></key></li>
-<li>we need to <strong>adjust the priority efficiently</strong> of each entry in the cache.<br>double linked list or singly linked list node</li>
+<li>we need to <strong>find out quickly</strong> whether an entry is in the cache or not.</li>
+</ol>
+<ul>
+<li>hash map : <key =="" request,="" value="pointer.reference" to="" the="" list="" node=""></key></li>
+</ul>
+<ol start="3">
+<li>we need to <strong>adjust the priority efficiently</strong> of each entry in the cache.</li>
+</ol>
+<ul>
+<li>double linked list or singly linked list node</li>
 </ul>
 <h4 id="Solution1-Built-In"><a href="#Solution1-Built-In" class="headerlink" title="Solution1. Built-In"></a>Solution1. Built-In</h4><ul>
 <li>python built-in datastructure OrderedDict!!! record the order when they put in the dictionary</li>
@@ -258,7 +267,7 @@ ga('send', 'pageview');
 <li>DummyNode, head and tail</li>
 <li>helper function, remove and addHead</li>
 </ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, key, val)</span>:</span></span><br><span class="line">        self.key = key</span><br><span class="line">        self.val = val</span><br><span class="line">        self.prev = <span class="keyword">None</span></span><br><span class="line">        self.next = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LRUCache</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, capacity)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type capacity: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.cap = capacity</span><br><span class="line">        self.cache = &#123;&#125;</span><br><span class="line">        self.head = Node(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">        self.tail = Node(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">        self.head.next = self.tail</span><br><span class="line">        self.tail.prev = self.head</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_addHead</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        nxt = self.head.next</span><br><span class="line">        self.head.next = node</span><br><span class="line">        node.prev = self.head</span><br><span class="line">        node.next = nxt</span><br><span class="line">        nxt.prev = node</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_remove</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        prev = node.prev</span><br><span class="line">        nxt = node.next</span><br><span class="line">        prev.next = nxt</span><br><span class="line">        nxt.prev = prev</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, key)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> self.cache:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        node = self.cache[key]</span><br><span class="line">        self._remove(node)</span><br><span class="line">        self._addHead(node)</span><br><span class="line">        self.cache[key] = node</span><br><span class="line">        <span class="keyword">return</span> node.val</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span><span class="params">(self, key, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">in</span> self.cache:</span><br><span class="line">            node = self.cache[key]</span><br><span class="line">            node.val = value</span><br><span class="line">            self._remove(node)</span><br><span class="line">            self._addHead(node)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> len(self.cache) &gt;= self.cap:</span><br><span class="line">                lastKey = self.tail.prev.key</span><br><span class="line">                self._remove(self.tail.prev)</span><br><span class="line">                <span class="keyword">del</span> self.cache[lastKey]</span><br><span class="line">            node = Node(key, value)</span><br><span class="line">            self.cache[key] = node</span><br><span class="line">            self._addHead(node)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, key, val)</span>:</span></span><br><span class="line">        self.key = key</span><br><span class="line">        self.val = val</span><br><span class="line">        self.prev = <span class="keyword">None</span></span><br><span class="line">        self.next = <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LRUCache</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, capacity)</span>:</span></span><br><span class="line">        <span class="string">"""</span></span><br><span class="line"><span class="string">        :type capacity: int</span></span><br><span class="line"><span class="string">        """</span></span><br><span class="line">        self.cap = capacity</span><br><span class="line">        self.cache = &#123;&#125;</span><br><span class="line">        self.head = Node(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">        self.tail = Node(<span class="number">0</span>, <span class="number">0</span>)</span><br><span class="line">        self.head.next = self.tail</span><br><span class="line">        self.tail.prev = self.head</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_addHead</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        nxt = self.head.next</span><br><span class="line">        self.head.next = node</span><br><span class="line">        node.prev = self.head</span><br><span class="line">        node.next = nxt</span><br><span class="line">        nxt.prev = node</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_remove</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        prev = node.prev</span><br><span class="line">        nxt = node.next</span><br><span class="line">        prev.next = nxt</span><br><span class="line">        nxt.prev = prev</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, key)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">not</span> <span class="keyword">in</span> self.cache:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line">        node = self.cache[key]</span><br><span class="line">        self._remove(node)</span><br><span class="line">        self._addHead(node)</span><br><span class="line">        self.cache[key] = node</span><br><span class="line">        <span class="keyword">return</span> node.val</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">put</span><span class="params">(self, key, value)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">in</span> self.cache:</span><br><span class="line">            node = self.cache[key]</span><br><span class="line">            node.val = value</span><br><span class="line">            self._remove(node)</span><br><span class="line">            self._addHead(node)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">if</span> len(self.cache) &gt;= self.cap:</span><br><span class="line">                lastKey = self.tail.prev.key</span><br><span class="line">                self._remove(self.tail.prev)</span><br><span class="line">                <span class="keyword">del</span> self.cache[lastKey]</span><br><span class="line">            node = Node(key, value)</span><br><span class="line">            self.cache[key] = node</span><br><span class="line">            self._addHead(node)</span><br></pre></td></tr></table></figure>
 <h3 id="460-LFU-Cache"><a href="#460-LFU-Cache" class="headerlink" title="460. LFU Cache"></a><a href="https://leetcode.com/problems/lfu-cache/" target="_blank" rel="noopener">460. LFU Cache</a></h3><p>TODO!!!</p>
 
         
@@ -270,7 +279,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/22/topic-cache/" data-id="cjnqqpgn10035v0786yf3kz4f" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/22/topic-cache/" data-id="cjntqnkqf003ewu78mtbds7xh" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -385,44 +394,44 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/30/dp-sequence-cut/" class="title">DP - Cut Sequence</a></p>
+                            <p class="item-date"><time datetime="2018-10-30T21:27:03.000Z" itemprop="datePublished">2018-10-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/29/dfs-matrix/" class="title">DFS - Matrix</a></p>
+                            <p class="item-date"><time datetime="2018-10-29T19:57:53.000Z" itemprop="datePublished">2018-10-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/28/trie/" class="title">Trie</a></p>
+                            <p class="item-date"><time datetime="2018-10-28T15:21:34.000Z" itemprop="datePublished">2018-10-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/27/dp-game/" class="title">DP - Game</a></p>
+                            <p class="item-date"><time datetime="2018-10-27T21:32:26.000Z" itemprop="datePublished">2018-10-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/10/26/topic-data-stream/" class="title">Data Stream</a></p>
                             <p class="item-date"><time datetime="2018-10-26T20:42:38.000Z" itemprop="datePublished">2018-10-26</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/25/monotone-stack/" class="title">Monotone Stack</a></p>
-                            <p class="item-date"><time datetime="2018-10-25T14:11:55.000Z" itemprop="datePublished">2018-10-25</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/10/24/math/" class="title">Math</a></p>
-                            <p class="item-date"><time datetime="2018-10-24T13:45:51.000Z" itemprop="datePublished">2018-10-24</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/23/topic-voting-algorithm/" class="title">Boyer-Moore Voting Algorithm</a></p>
-                            <p class="item-date"><time datetime="2018-10-24T00:03:49.000Z" itemprop="datePublished">2018-10-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Design/">Design</a></p>
-                            <p class="item-title"><a href="/2018/10/22/topic-cache/" class="title">Cache</a></p>
-                            <p class="item-date"><time datetime="2018-10-22T13:41:19.000Z" itemprop="datePublished">2018-10-22</time></p>
                         </div>
                     </li>
                 
@@ -435,7 +444,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">39</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">43</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -444,7 +453,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -453,7 +462,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/queue/">queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/queue/">queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/topic/">topic</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">10</span></li></ul>
         </div>
     </div>
 
@@ -462,7 +471,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bfs/" style="font-size: 12.5px;">bfs</a> <a href="/tags/binary-search/" style="font-size: 12.5px;">binary search</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/dp/" style="font-size: 17.5px;">dp</a> <a href="/tags/graph/" style="font-size: 15px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 12.5px;">hash table</a> <a href="/tags/heap/" style="font-size: 12.5px;">heap</a> <a href="/tags/linked-list/" style="font-size: 17.5px;">linked list</a> <a href="/tags/queue/" style="font-size: 10px;">queue</a> <a href="/tags/recursion/" style="font-size: 17.5px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/stack/" style="font-size: 12.5px;">stack</a> <a href="/tags/string/" style="font-size: 12.5px;">string</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a> <a href="/tags/union-find/" style="font-size: 10px;">union find</a>
+            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bfs/" style="font-size: 12px;">bfs</a> <a href="/tags/binary-search/" style="font-size: 12px;">binary search</a> <a href="/tags/dfs/" style="font-size: 14px;">dfs</a> <a href="/tags/dp/" style="font-size: 18px;">dp</a> <a href="/tags/graph/" style="font-size: 16px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 12px;">hash table</a> <a href="/tags/heap/" style="font-size: 12px;">heap</a> <a href="/tags/linked-list/" style="font-size: 16px;">linked list</a> <a href="/tags/queue/" style="font-size: 10px;">queue</a> <a href="/tags/recursion/" style="font-size: 16px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/stack/" style="font-size: 12px;">stack</a> <a href="/tags/string/" style="font-size: 12px;">string</a> <a href="/tags/topic/" style="font-size: 16px;">topic</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
         </div>
     </div>
 

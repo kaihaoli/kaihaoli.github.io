@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <meta charset="utf-8">
+    
+    <title>DP - Cut Sequence | kaihao</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="AnalysisQuestion Type Seperate an sequence to several nonoverlapping subarray no limit or limited k on the number of the subarray Each subarray meet or meet some requirement!  Solution Type Normally,">
+<meta name="keywords" content="dp">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DP - Cut Sequence">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/10/30/dp-sequence-cut/index.html">
+<meta property="og:site_name" content="kaihao">
+<meta property="og:description" content="AnalysisQuestion Type Seperate an sequence to several nonoverlapping subarray no limit or limited k on the number of the subarray Each subarray meet or meet some requirement!  Solution Type Normally,">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-10-29T00:14:45.551Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="DP - Cut Sequence">
+<meta name="twitter:description" content="AnalysisQuestion Type Seperate an sequence to several nonoverlapping subarray no limit or limited k on the number of the subarray Each subarray meet or meet some requirement!  Solution Type Normally,">
+    
+
+    
+
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+        <script type="text/javascript">
+(function(i,s,o,g,r,a,m) {i['GoogleAnalyticsObject']=r;i[r]=i[r]||function() {
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-117906283-1', 'auto');
+ga('send', 'pageview');
+
+</script>
+    
+    
+    
+
+
+</head>
+
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">kaihao</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/algorithms">Algorithms</a>
+                
+                    <a class="main-nav-link" href="/categories">Categories</a>
+                
+                    <a class="main-nav-link" href="/archives">Archives</a>
+                
+                    <a class="main-nav-link" href="/about">About me</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="/css/images/avatar.png" />
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="Type something..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: 'Posts',
+            PAGES: 'Pages',
+            CATEGORIES: 'Categories',
+            TAGS: 'Tags',
+            UNTITLED: '(Untitled)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/algorithms">Algorithms</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">Categories</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">Archives</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">About me</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="Search" />
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="/css/images/avatar.png" />
+            <h2 id="name">Kaihao(Chris) Li</h2>
+            <h3 id="title">I am the Bone of my Sword!</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Stony Brook, New York, USA</span>
+            <a id="follow" target="_blank" href="https://github.com/kaihaoli/">FOLLOW</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                51
+                <span>posts</span>
+            </div>
+            <div class="article-info-block">
+                18
+                <span>tags</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="http://github.com/kaihaoli" target="_blank" title="github" class=tooltip>
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            <section id="main"><article id="post-dp-sequence-cut" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 class="article-title" itemprop="name">
+            DP - Cut Sequence
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/10/30/dp-sequence-cut/">
+            <time datetime="2018-10-30T21:27:03.000Z" itemprop="datePublished">2018-10-30</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/dp/">dp</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">Catalogue</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Analysis"><span class="toc-number">1.</span> <span class="toc-text">Analysis</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Question-Type"><span class="toc-number">1.1.</span> <span class="toc-text">Question Type</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution-Type"><span class="toc-number">1.1.1.</span> <span class="toc-text">Solution Type</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Split-Array"><span class="toc-number">2.</span> <span class="toc-text">Split Array</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#410-Split-Array-Largest-Sum"><span class="toc-number">2.1.</span> <span class="toc-text">410. Split Array Largest Sum</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution1-DP"><span class="toc-number">2.1.1.</span> <span class="toc-text">Solution1. DP</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution2-Binary-Search"><span class="toc-number">2.1.2.</span> <span class="toc-text">Solution2. Binary Search</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Split-String"><span class="toc-number">3.</span> <span class="toc-text">Split String</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#139-Word-Break"><span class="toc-number">3.1.</span> <span class="toc-text">139. Word Break</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution1-DFS"><span class="toc-number">3.1.1.</span> <span class="toc-text">Solution1. DFS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution2-DP"><span class="toc-number">3.1.2.</span> <span class="toc-text">Solution2. DP</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#140-Word-Break-II"><span class="toc-number">3.2.</span> <span class="toc-text">140. Word Break II</span></a></li></ol></li></ol>
+                </div>
+            
+            <h2 id="Analysis"><a href="#Analysis" class="headerlink" title="Analysis"></a>Analysis</h2><h3 id="Question-Type"><a href="#Question-Type" class="headerlink" title="Question Type"></a>Question Type</h3><ul>
+<li>Seperate an sequence to several <strong>nonoverlapping subarray</strong></li>
+<li>no limit or limited k on the number of the subarray</li>
+<li>Each subarray meet or meet some requirement!</li>
+</ul>
+<h4 id="Solution-Type"><a href="#Solution-Type" class="headerlink" title="Solution Type"></a>Solution Type</h4><ul>
+<li>Normally, dp[i][j]represents previous i elements seperate k subarray</li>
+</ul>
+<h2 id="Split-Array"><a href="#Split-Array" class="headerlink" title="Split Array"></a>Split Array</h2><h3 id="410-Split-Array-Largest-Sum"><a href="#410-Split-Array-Largest-Sum" class="headerlink" title="410. Split Array Largest Sum"></a><a href="https://leetcode.com/problems/split-array-largest-sum/" target="_blank" rel="noopener">410. Split Array Largest Sum</a></h3><h4 id="Solution1-DP"><a href="#Solution1-DP" class="headerlink" title="Solution1. DP"></a>Solution1. DP</h4><ul>
+<li>DP[i][j] represents that the largest sum for previous i elements seperated to j group</li>
+<li>DP[i][j] = min{max{dp[k][j-1], sum(k+1, i)}} ($0&lt;= k &lt;i$)</li>
+<li>Time : O($mn^2$), Space : O(mn)<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">splitArray</span><span class="params">(self, nums, m)</span>:</span></span><br><span class="line">        n = len(nums)</span><br><span class="line">        <span class="comment"># Prefix Sum</span></span><br><span class="line">        preSum = [<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            preSum.append(preSum[<span class="number">-1</span>] + nums[i])</span><br><span class="line"></span><br><span class="line">        dp = [[float(<span class="string">'inf'</span>)] * m <span class="keyword">for</span> _ <span class="keyword">in</span> range(n+<span class="number">1</span>)]</span><br><span class="line"></span><br><span class="line">        <span class="comment"># Init</span></span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n+<span class="number">1</span>):</span><br><span class="line">            dp[i][<span class="number">0</span>] = preSum[i]</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(m):</span><br><span class="line">            dp[<span class="number">0</span>][j] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># DP</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i):</span><br><span class="line">                <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">1</span>, m):</span><br><span class="line">                    dp[i][k] = min(dp[i][k], max(dp[j][k<span class="number">-1</span>], preSum[i]-preSum[j]))</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>][<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Solution2-Binary-Search"><a href="#Solution2-Binary-Search" class="headerlink" title="Solution2. Binary Search"></a>Solution2. Binary Search</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">splitArray</span><span class="params">(self, nums, m)</span>:</span></span><br><span class="line">        start, end = max(nums), sum(nums)</span><br><span class="line">        <span class="keyword">while</span> start &lt; end:</span><br><span class="line">            mid = start + (end - start) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> self.isValid(mid, nums, m):</span><br><span class="line">                end = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> start</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isValid</span><span class="params">(self, mid, nums, m)</span>:</span></span><br><span class="line">        cur = <span class="number">0</span></span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> num <span class="keyword">in</span> nums:</span><br><span class="line">            cur += num</span><br><span class="line">            <span class="keyword">if</span> cur &gt; mid:</span><br><span class="line">                cur = num</span><br><span class="line">                cnt += <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> cnt &gt;= m:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<h2 id="Split-String"><a href="#Split-String" class="headerlink" title="Split String"></a>Split String</h2><h3 id="139-Word-Break"><a href="#139-Word-Break" class="headerlink" title="139. Word Break"></a><a href="https://leetcode.com/problems/word-break/" target="_blank" rel="noopener">139. Word Break</a></h3><h4 id="Solution1-DFS"><a href="#Solution1-DFS" class="headerlink" title="Solution1. DFS"></a>Solution1. DFS</h4><ul>
+<li>TLE<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Worst Case : Time O(n!)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wordBreak</span><span class="params">(self, s, wordDict)</span>:</span></span><br><span class="line">        wset = set(wordDict)</span><br><span class="line">        <span class="keyword">return</span> self.isWordBreak(s, wset)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isWordBreak</span><span class="params">(self, s, wset)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(s) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(s)):</span><br><span class="line">            <span class="keyword">if</span> s[i:] <span class="keyword">in</span> wset:</span><br><span class="line">                <span class="keyword">if</span> self.isWordBreak(s[:i], wset):</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="Solution2-DP"><a href="#Solution2-DP" class="headerlink" title="Solution2. DP"></a>Solution2. DP</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n^2)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wordBreak</span><span class="params">(self, s, wordDict)</span>:</span></span><br><span class="line">        wset = set(wordDict)</span><br><span class="line">        n = len(s)</span><br><span class="line">        dp = [<span class="keyword">False</span>] * (n+<span class="number">1</span>)</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(i+<span class="number">1</span>):</span><br><span class="line">                <span class="keyword">if</span> s[j:i+<span class="number">1</span>] <span class="keyword">in</span> wset <span class="keyword">and</span> dp[j]:</span><br><span class="line">                    dp[i+<span class="number">1</span>] = <span class="keyword">True</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<h3 id="140-Word-Break-II"><a href="#140-Word-Break-II" class="headerlink" title="140. Word Break II"></a><a href="https://leetcode.com/problems/word-break-ii/" target="_blank" rel="noopener">140. Word Break II</a></h3><ul>
+<li>DFS + Memorization</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">wordBreak</span><span class="params">(self, s, wordDict)</span>:</span></span><br><span class="line">        words = set(wordDict)</span><br><span class="line">        <span class="keyword">return</span> self.dfs(s, words, &#123;&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, s, words, dic)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> len(s) == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> [<span class="string">''</span>]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> s <span class="keyword">in</span> dic:</span><br><span class="line">            <span class="keyword">return</span> dic[s]</span><br><span class="line"></span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(s)):</span><br><span class="line">            <span class="keyword">if</span> s[:i+<span class="number">1</span>] <span class="keyword">in</span> words:</span><br><span class="line">                ans = self.dfs(s[i+<span class="number">1</span>:], words, dic)</span><br><span class="line">                <span class="keyword">for</span> item <span class="keyword">in</span> ans:</span><br><span class="line">                    <span class="keyword">if</span> item == <span class="string">''</span>:</span><br><span class="line">                        res.append(s[:i+<span class="number">1</span>])</span><br><span class="line">                    <span class="keyword">else</span>:</span><br><span class="line">                        res.append(s[:i+<span class="number">1</span>] + <span class="string">' '</span> + item)</span><br><span class="line">        dic[s] = res</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/10/30/dp-sequence-cut/" data-id="cjntqnkow0013wu788ageei8b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+        
+<nav id="article-nav">
+    
+    
+        <a href="/2018/10/29/dfs-matrix/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">Older</strong>
+            <div class="article-nav-title">DFS - Matrix</div>
+        </a>
+    
+</nav>
+
+
+    
+</article>
+
+
+    
+    
+
+</section>
+            
+                
+<aside id="sidebar">
+   
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">recent</h3>
+        <div class="widget">
+            <ul id="recent-post" class="no-thumbnail">
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/30/dp-sequence-cut/" class="title">DP - Cut Sequence</a></p>
+                            <p class="item-date"><time datetime="2018-10-30T21:27:03.000Z" itemprop="datePublished">2018-10-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/29/dfs-matrix/" class="title">DFS - Matrix</a></p>
+                            <p class="item-date"><time datetime="2018-10-29T19:57:53.000Z" itemprop="datePublished">2018-10-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/28/trie/" class="title">Trie</a></p>
+                            <p class="item-date"><time datetime="2018-10-28T15:21:34.000Z" itemprop="datePublished">2018-10-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/27/dp-game/" class="title">DP - Game</a></p>
+                            <p class="item-date"><time datetime="2018-10-27T21:32:26.000Z" itemprop="datePublished">2018-10-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/26/topic-data-stream/" class="title">Data Stream</a></p>
+                            <p class="item-date"><time datetime="2018-10-26T20:42:38.000Z" itemprop="datePublished">2018-10-26</time></p>
+                        </div>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">categories</h3>
+        <div class="widget">
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">43</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">archives</h3>
+        <div class="widget">
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tags</h3>
+        <div class="widget">
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/queue/">queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/topic/">topic</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">10</span></li></ul>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap">
+        <h3 class="widget-title">tag cloud</h3>
+        <div class="widget tagcloud">
+            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bfs/" style="font-size: 12px;">bfs</a> <a href="/tags/binary-search/" style="font-size: 12px;">binary search</a> <a href="/tags/dfs/" style="font-size: 14px;">dfs</a> <a href="/tags/dp/" style="font-size: 18px;">dp</a> <a href="/tags/graph/" style="font-size: 16px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 12px;">hash table</a> <a href="/tags/heap/" style="font-size: 12px;">heap</a> <a href="/tags/linked-list/" style="font-size: 16px;">linked list</a> <a href="/tags/queue/" style="font-size: 10px;">queue</a> <a href="/tags/recursion/" style="font-size: 16px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/stack/" style="font-size: 12px;">stack</a> <a href="/tags/string/" style="font-size: 12px;">string</a> <a href="/tags/topic/" style="font-size: 16px;">topic</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
+        </div>
+    </div>
+
+    
+        
+    <div class="widget-wrap widget-list">
+        <h3 class="widget-title">links</h3>
+        <div class="widget">
+            <ul>
+                
+                    <li>
+                        <a href="https://leetcode.com/">LeetCode</a>
+                    </li>
+                
+            </ul>
+        </div>
+    </div>
+
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+
+            
+        </div>
+        <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            &copy; 2018 Kaihao Li
+            <span id="busuanzi_container_site_uv">
+                ,  Visitors : <span id="busuanzi_value_site_uv"></span>
+            </span> <br>
+        </div>
+    </div>
+</footer>
+
+        
+
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+            MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
+</html>

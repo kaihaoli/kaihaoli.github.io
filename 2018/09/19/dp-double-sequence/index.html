@@ -5,19 +5,19 @@
     
     <title>DP - Double Sequence | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Input Parameters have two Sequences or Strings Two Sequences Matching?  1 LongestLintCode 77. Longest Common Subsequence State : dp[i][j] means Longest Common Subsequence for A[0…i-1] and B[0…j-1] In">
+    <meta name="description" content="Input Parameters have two Sequences or Strings Two Sequences Matching?  1 LongestLintCode 79. Longest Common Substring1234567891011class Solution:    def longestCommonSubstring(self, A, B):        m,">
 <meta name="keywords" content="dp">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DP - Double Sequence">
 <meta property="og:url" content="http://kaihaoli.github.io/2018/09/19/dp-double-sequence/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="Input Parameters have two Sequences or Strings Two Sequences Matching?  1 LongestLintCode 77. Longest Common Subsequence State : dp[i][j] means Longest Common Subsequence for A[0…i-1] and B[0…j-1] In">
+<meta property="og:description" content="Input Parameters have two Sequences or Strings Two Sequences Matching?  1 LongestLintCode 79. Longest Common Substring1234567891011class Solution:    def longestCommonSubstring(self, A, B):        m,">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://kaihaoli.github.io/2018/09/19/dp-double-sequence/longestcommonsubsequence.png">
-<meta property="og:updated_time" content="2018-10-18T19:20:35.193Z">
+<meta property="og:updated_time" content="2018-10-27T03:29:55.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DP - Double Sequence">
-<meta name="twitter:description" content="Input Parameters have two Sequences or Strings Two Sequences Matching?  1 LongestLintCode 77. Longest Common Subsequence State : dp[i][j] means Longest Common Subsequence for A[0…i-1] and B[0…j-1] In">
+<meta name="twitter:description" content="Input Parameters have two Sequences or Strings Two Sequences Matching?  1 LongestLintCode 79. Longest Common Substring1234567891011class Solution:    def longestCommonSubstring(self, A, B):        m,">
 <meta name="twitter:image" content="http://kaihaoli.github.io/2018/09/19/dp-double-sequence/longestcommonsubsequence.png">
     
 
@@ -166,7 +166,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                47
+                51
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -239,14 +239,15 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Longest"><span class="toc-number">1.</span> <span class="toc-text">1 Longest</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LintCode-77-Longest-Common-Subsequence"><span class="toc-number">1.1.</span> <span class="toc-text">LintCode 77. Longest Common Subsequence</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Exist"><span class="toc-number">2.</span> <span class="toc-text">2 Exist</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Count"><span class="toc-number">3.</span> <span class="toc-text">3 Count</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#72-Edit-Distance"><span class="toc-number">3.1.</span> <span class="toc-text">72. Edit Distance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#161-One-Edit-Distance"><span class="toc-number">3.2.</span> <span class="toc-text">161. One Edit Distance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#801-Minimum-Swaps-To-Make-Sequences-Increasing"><span class="toc-number">3.3.</span> <span class="toc-text">801. Minimum Swaps To Make Sequences Increasing</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Longest"><span class="toc-number">1.</span> <span class="toc-text">1 Longest</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#LintCode-79-Longest-Common-Substring"><span class="toc-number">1.1.</span> <span class="toc-text">LintCode 79. Longest Common Substring</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#LintCode-77-Longest-Common-Subsequence"><span class="toc-number">1.2.</span> <span class="toc-text">LintCode 77. Longest Common Subsequence</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Exist"><span class="toc-number">2.</span> <span class="toc-text">2 Exist</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Count"><span class="toc-number">3.</span> <span class="toc-text">3 Count</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#72-Edit-Distance"><span class="toc-number">3.1.</span> <span class="toc-text">72. Edit Distance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#161-One-Edit-Distance"><span class="toc-number">3.2.</span> <span class="toc-text">161. One Edit Distance</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#801-Minimum-Swaps-To-Make-Sequences-Increasing"><span class="toc-number">3.3.</span> <span class="toc-text">801. Minimum Swaps To Make Sequences Increasing</span></a></li></ol></li></ol>
                 </div>
             
             <ul>
 <li>Input Parameters have <strong>two</strong> Sequences or Strings</li>
 <li>Two Sequences <strong>Matching</strong>?</li>
 </ul>
-<h2 id="1-Longest"><a href="#1-Longest" class="headerlink" title="1 Longest"></a>1 Longest</h2><h3 id="LintCode-77-Longest-Common-Subsequence"><a href="#LintCode-77-Longest-Common-Subsequence" class="headerlink" title="LintCode 77. Longest Common Subsequence"></a><a href="http://www.lintcode.com/en/problem/longest-common-subsequence/" target="_blank" rel="noopener">LintCode 77. Longest Common Subsequence</a></h3><ul>
+<h2 id="1-Longest"><a href="#1-Longest" class="headerlink" title="1 Longest"></a>1 Longest</h2><h3 id="LintCode-79-Longest-Common-Substring"><a href="#LintCode-79-Longest-Common-Substring" class="headerlink" title="LintCode 79. Longest Common Substring"></a><a href="https://www.lintcode.com/problem/longest-common-substring/" target="_blank" rel="noopener">LintCode 79. Longest Common Substring</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">longestCommonSubstring</span><span class="params">(self, A, B)</span>:</span></span><br><span class="line">        m, n = len(A), len(B)</span><br><span class="line">        dp = [[<span class="number">0</span>] * (n+<span class="number">1</span>) <span class="keyword">for</span> _ <span class="keyword">in</span> range(m+<span class="number">1</span>)]</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> A[i] == B[j]:</span><br><span class="line">                    dp[i+<span class="number">1</span>][j+<span class="number">1</span>] = dp[i][j] + <span class="number">1</span></span><br><span class="line">                    res = max(res, dp[i+<span class="number">1</span>][j+<span class="number">1</span>])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h3 id="LintCode-77-Longest-Common-Subsequence"><a href="#LintCode-77-Longest-Common-Subsequence" class="headerlink" title="LintCode 77. Longest Common Subsequence"></a><a href="http://www.lintcode.com/en/problem/longest-common-subsequence/" target="_blank" rel="noopener">LintCode 77. Longest Common Subsequence</a></h3><ul>
 <li><strong>State</strong> : dp[i][j] means Longest Common Subsequence for A[0…i-1] and B[0…j-1]</li>
 <li><strong>Init</strong> : dp[i][0] = dp[0][j] = 0</li>
 <li><strong>Deduction Formula</strong> :<img src="/2018/09/19/dp-double-sequence/longestcommonsubsequence.png">
@@ -281,7 +282,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/09/19/dp-double-sequence/" data-id="cjnqqpgkt000uv078uosnjfvt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/09/19/dp-double-sequence/" data-id="cjntqnkoe000mwu78klume85h" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -396,44 +397,44 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/30/dp-sequence-cut/" class="title">DP - Cut Sequence</a></p>
+                            <p class="item-date"><time datetime="2018-10-30T21:27:03.000Z" itemprop="datePublished">2018-10-30</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/29/dfs-matrix/" class="title">DFS - Matrix</a></p>
+                            <p class="item-date"><time datetime="2018-10-29T19:57:53.000Z" itemprop="datePublished">2018-10-29</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/28/trie/" class="title">Trie</a></p>
+                            <p class="item-date"><time datetime="2018-10-28T15:21:34.000Z" itemprop="datePublished">2018-10-28</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/10/27/dp-game/" class="title">DP - Game</a></p>
+                            <p class="item-date"><time datetime="2018-10-27T21:32:26.000Z" itemprop="datePublished">2018-10-27</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/10/26/topic-data-stream/" class="title">Data Stream</a></p>
                             <p class="item-date"><time datetime="2018-10-26T20:42:38.000Z" itemprop="datePublished">2018-10-26</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/25/monotone-stack/" class="title">Monotone Stack</a></p>
-                            <p class="item-date"><time datetime="2018-10-25T14:11:55.000Z" itemprop="datePublished">2018-10-25</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"></p>
-                            <p class="item-title"><a href="/2018/10/24/math/" class="title">Math</a></p>
-                            <p class="item-date"><time datetime="2018-10-24T13:45:51.000Z" itemprop="datePublished">2018-10-24</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/10/23/topic-voting-algorithm/" class="title">Boyer-Moore Voting Algorithm</a></p>
-                            <p class="item-date"><time datetime="2018-10-24T00:03:49.000Z" itemprop="datePublished">2018-10-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Design/">Design</a></p>
-                            <p class="item-title"><a href="/2018/10/22/topic-cache/" class="title">Cache</a></p>
-                            <p class="item-date"><time datetime="2018-10-22T13:41:19.000Z" itemprop="datePublished">2018-10-22</time></p>
                         </div>
                     </li>
                 
@@ -446,7 +447,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">39</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">43</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -455,7 +456,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">19</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">23</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -464,7 +465,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/queue/">queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">9</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/union-find/">union find</a><span class="tag-list-count">1</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/queue/">queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/topic/">topic</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">10</span></li></ul>
         </div>
     </div>
 
@@ -473,7 +474,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bfs/" style="font-size: 12.5px;">bfs</a> <a href="/tags/binary-search/" style="font-size: 12.5px;">binary search</a> <a href="/tags/dfs/" style="font-size: 10px;">dfs</a> <a href="/tags/dp/" style="font-size: 17.5px;">dp</a> <a href="/tags/graph/" style="font-size: 15px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 12.5px;">hash table</a> <a href="/tags/heap/" style="font-size: 12.5px;">heap</a> <a href="/tags/linked-list/" style="font-size: 17.5px;">linked list</a> <a href="/tags/queue/" style="font-size: 10px;">queue</a> <a href="/tags/recursion/" style="font-size: 17.5px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/stack/" style="font-size: 12.5px;">stack</a> <a href="/tags/string/" style="font-size: 12.5px;">string</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a> <a href="/tags/union-find/" style="font-size: 10px;">union find</a>
+            <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bfs/" style="font-size: 12px;">bfs</a> <a href="/tags/binary-search/" style="font-size: 12px;">binary search</a> <a href="/tags/dfs/" style="font-size: 14px;">dfs</a> <a href="/tags/dp/" style="font-size: 18px;">dp</a> <a href="/tags/graph/" style="font-size: 16px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 12px;">hash table</a> <a href="/tags/heap/" style="font-size: 12px;">heap</a> <a href="/tags/linked-list/" style="font-size: 16px;">linked list</a> <a href="/tags/queue/" style="font-size: 10px;">queue</a> <a href="/tags/recursion/" style="font-size: 16px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/stack/" style="font-size: 12px;">stack</a> <a href="/tags/string/" style="font-size: 12px;">string</a> <a href="/tags/topic/" style="font-size: 16px;">topic</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
         </div>
     </div>
 
