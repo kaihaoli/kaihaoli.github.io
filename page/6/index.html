@@ -159,7 +159,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                63
+                65
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -188,6 +188,406 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-detect-the-cycle" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/08/01/detect-the-cycle/">Graph - Detect the Cycle</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/08/01/detect-the-cycle/">
+            <time datetime="2018-08-02T03:04:25.000Z" itemprop="datePublished">2018-08-01</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/graph/">graph</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h1 id="Detect-the-Cycle"><a href="#Detect-the-Cycle" class="headerlink" title="Detect the Cycle"></a>Detect the Cycle</h1><p>Find if a cycle exits in a directed graph</p>
+<h2 id="Undirected-Graph"><a href="#Undirected-Graph" class="headerlink" title="Undirected Graph"></a>Undirected Graph</h2><h3 id="261-Graph-Valid-Tree"><a href="#261-Graph-Valid-Tree" class="headerlink" title="261. Graph Valid Tree"></a><a href="https://leetcode.com/problems/graph-valid-tree/" target="_blank" rel="noopener">261. Graph Valid Tree</a></h3><ul>
+<li><p><strong>Undirected Graph</strong>: Union Find, DFS, BFS</p>
+</li>
+<li><p><strong>解法1. Union Find</strong></p>
+<ul>
+<li>图是以edge的形式表示的，方便union find</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validTree</span><span class="params">(self, n, edges)</span>:</span></span><br><span class="line">        root = range(n)</span><br><span class="line">        self.cnt = n</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root[x] == x:</span><br><span class="line">                <span class="keyword">return</span> x</span><br><span class="line">            root[x] = find(root[x])</span><br><span class="line">            <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(x, y)</span>:</span></span><br><span class="line">            rootx = find(x)</span><br><span class="line">            rooty = find(y)</span><br><span class="line">            <span class="keyword">if</span> rootx != rooty:</span><br><span class="line">                root[rootx] = rooty</span><br><span class="line">                self.cnt -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> edges:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> union(i, j):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> self.cnt == <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>解法2. DFS</strong><ul>
+<li>undirected graph 边都是对称的，防止dfs访问过的边原路返回构成了环，需要加上prev节点</li>
+<li>三个visited的状态0-未访问，1-正在访问，2-已经访问</li>
+<li>有且只有一个联通图</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validTree</span><span class="params">(self, n, edges)</span>:</span></span><br><span class="line">        graph = collections.defaultdict(set)</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> edges:</span><br><span class="line">            graph[i].add(j)</span><br><span class="line">            graph[j].add(i)</span><br><span class="line"></span><br><span class="line">        visited = [<span class="number">0</span>] * n</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.dfs(<span class="number">-1</span>, <span class="number">0</span>, visited, graph):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> (<span class="number">0</span> <span class="keyword">not</span> <span class="keyword">in</span> visited)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, prev, i, visited, graph)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> visited[i] == <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> visited[i] == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        visited[i] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> graph[i]:</span><br><span class="line">            <span class="keyword">if</span> nei == prev:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.dfs(i, nei, visited, graph):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        visited[i] = <span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>解法3. BFS</strong><ul>
+<li>和DFS思路一样，要避免边的对称性导致的往回检测</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validTree</span><span class="params">(self, n, edges)</span>:</span></span><br><span class="line">        graph = collections.defaultdict(set)</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> edges:</span><br><span class="line">            graph[i].add(j)</span><br><span class="line">            graph[j].add(i)</span><br><span class="line"></span><br><span class="line">        visited = [<span class="number">0</span>] * n</span><br><span class="line">        queue = collections.deque([(<span class="number">0</span>, <span class="number">-1</span>)])</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            node, prev = queue.popleft()</span><br><span class="line">            visited[node] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> nei <span class="keyword">in</span> graph[node]:</span><br><span class="line">                <span class="keyword">if</span> nei == prev:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">if</span> visited[nei]:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">                queue.append((nei, node))</span><br><span class="line">        <span class="keyword">return</span> sum(visited) == n</span><br></pre></td></tr></table></figure>
+<h2 id="Directed-graph"><a href="#Directed-graph" class="headerlink" title="Directed graph"></a>Directed graph</h2><h3 id="207-Course-Schedule"><a href="#207-Course-Schedule" class="headerlink" title="207. Course Schedule"></a><a href="https://leetcode.com/problems/course-schedule/" target="_blank" rel="noopener">207. Course Schedule</a></h3><ul>
+<li><strong>Directed graph</strong>: DFS, BFS</li>
+</ul>
+<p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]</p>
+<p>有向图，This problem is equivalent to <strong>finding if a cycle exists in a directed graph</strong>. If a cycle exists, no topological ordering exists and therefore it will be impossible to take all courses.</p>
+<ul>
+<li><strong>解法1. DFS</strong></li>
+</ul>
+<p>visited三种状态，-1正在visit, 0未visit, 1已经visit</p>
+<ul>
+<li>Why 三种状态？or 两种状态？<ul>
+<li>两种状态，做DFS时间复杂度是O(n^2)</li>
+<li>引入第三种状态，可以避免访问已经访问过不构成环的点，O(n)</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">canFinish</span><span class="params">(self, numCourses, prerequisites)</span>:</span></span><br><span class="line">        graph = collections.defaultdict(set)</span><br><span class="line">        <span class="keyword">for</span> c, p <span class="keyword">in</span> prerequisites:</span><br><span class="line">            graph[c].add(p)</span><br><span class="line"></span><br><span class="line">        visited = [<span class="number">0</span>] * numCourses</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(numCourses):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.dfs(i, visited, graph):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, i, visited, graph)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> visited[i] == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> visited[i] == <span class="number">-1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        visited[i] = <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> edge <span class="keyword">in</span> graph[i]:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.dfs(edge, visited, graph):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        visited[i] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>解法2. BFS</strong></li>
+</ul>
+<p>有向图的BFS算法还是比较有意思的，基于indegree的！<br><strong>Indegree</strong>, 每次访问入度为0的节点，并删掉所在边，最后sum(indegree) == 0!</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">canFinish</span><span class="params">(self, numCourses, prerequisites)</span>:</span></span><br><span class="line">        graph = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(numCourses)]</span><br><span class="line">        indegree = [<span class="number">0</span>] * numCourses</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> prerequisites:</span><br><span class="line">            graph[j].append(i)</span><br><span class="line">            indegree[i] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        queue = [i <span class="keyword">for</span> i <span class="keyword">in</span> xrange(numCourses) <span class="keyword">if</span> indegree[i] == <span class="number">0</span>]</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            course = queue.pop(<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">for</span> n <span class="keyword">in</span> graph[course]:</span><br><span class="line">                indegree[n] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> indegree[n] == <span class="number">0</span>:</span><br><span class="line">                    queue.append(n)</span><br><span class="line">        <span class="keyword">return</span> sum(indegree) == <span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/08/01/detect-the-cycle/" data-id="cjojkru2y000gvdu0bssdo1j0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-graph" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/08/01/graph/">Graph</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/08/01/graph/">
+            <time datetime="2018-08-02T02:43:25.000Z" itemprop="datePublished">2018-08-01</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/graph/">graph</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p>LeetCode 上很多问题都可以抽象成 “图” ，比如搜索类问题，树类问题，迷宫问题，矩阵路径问题，等等。Graph 是非常重要而又涵盖很广的内容，以至于有单独的”图论”研究方向。</p>
+<h2 id="1-图的计算机表示"><a href="#1-图的计算机表示" class="headerlink" title="1 图的计算机表示"></a>1 图的计算机表示</h2><ol>
+<li>Node / State</li>
+<li>Edge / Action</li>
+<li>Directed vs Undirected graph</li>
+<li>Representation of the graph</li>
+</ol>
+<h3 id="Edge-List"><a href="#Edge-List" class="headerlink" title="Edge List"></a>Edge List</h3><p>题目给的Nodes and Edges(Edge List)形式的图</p>
+<ul>
+<li>要么考虑用Union Find，要么考虑重新建立图的表示</li>
+</ul>
+<h3 id="Adjacency-Matrix"><a href="#Adjacency-Matrix" class="headerlink" title="Adjacency Matrix"></a>Adjacency Matrix</h3><img src="/2018/08/01/graph/adjacency_matrix.jpg">
+<ul>
+<li><strong>Pros: Representation is easy to implement.</strong> Edge removal takes O(1) time. Queries like whether there is an edge from vertex ‘u’ to vertec ‘v’ are efficient and can be done O(1)</li>
+<li><strong>Cons: Consumes more space O(V^2)</strong>(V is the number of vertex/node) Even if the graph is sparse(contains less number of edges) == waste of space</li>
+</ul>
+<h3 id="Adjacency-List"><a href="#Adjacency-List" class="headerlink" title="Adjacency List"></a>Adjacency List</h3><img src="/2018/08/01/graph/adjacency-list.png">
+<p>Vertices/Nodes : V, Edges : E</p>
+<ul>
+<li><strong>Pros: Space Complexity = O(V + E)</strong>. Adding a vertex.node to the graph is easier</li>
+<li><strong>Cons: Time Complexity is O(V)</strong> to check wheter there is an edge from a node to the other.(Comprared to O(1) in adjacent matrix)</li>
+</ul>
+<h3 id="Adjacency-“Hash-Set”"><a href="#Adjacency-“Hash-Set”" class="headerlink" title="Adjacency “Hash Set”"></a>Adjacency “Hash Set”</h3><p>用hashset替代list表示相邻的节点，综合了Adjacency Matrix和Adjacency List的优点！</p>
+<h2 id="2-Graph-Search-Algorithm"><a href="#2-Graph-Search-Algorithm" class="headerlink" title="2 Graph Search Algorithm"></a>2 Graph Search Algorithm</h2><h3 id="Breadth-First-Search"><a href="#Breadth-First-Search" class="headerlink" title="Breadth First Search"></a>Breadth First Search</h3><p><strong>How to describe a BFS’s action during an interview?</strong></p>
+<ul>
+<li>Definition 1: expand a node s, 延展一个node</li>
+<li>Definition 2: generate s’s neighbor node: reach out to its neighboring node</li>
+<li><strong>Data Structure</strong> : Maintain a FIFO queue, put all generated nodes in the queue</li>
+<li><strong>Termination condition</strong> : do a loop until the queue is empty</li>
+</ul>
+<p><strong>Discussion</strong></p>
+<ul>
+<li>When we deal with the tree-related problem and in the meantime we need to address the relationship <strong>on the same level</strong></li>
+<li>BFS is <strong>NOT</strong> the right algorithm to find <strong>the shortest path</strong> in the graph</li>
+<li>BFS 的时间空间占用以 <strong>branching factor</strong> 为底, 到解的距离 d 为指数增长；</li>
+<li>BFS 空间占用上 Queue 是不会像 DFS 一样只存一条路径的，而是从起点出发越扩越大，因此会有空间不够的风险，空间占用为 <strong>O(b^d)</strong>。</li>
+</ul>
+<p>Assume Input - graph adjacency “hash set”</p>
+<h4 id="Undirected-Graph"><a href="#Undirected-Graph" class="headerlink" title="Undirected Graph"></a>Undirected Graph</h4><ul>
+<li>Queue, visited</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 其实和Tree的BFS traversal是一样的！</span></span><br><span class="line"><span class="comment"># Why visited array? 如果有环的话需要，没有环的话就是tree了，所以不需要！</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BFS1</span><span class="params">()</span>:</span></span><br><span class="line">    visited = [<span class="number">0</span>] * n</span><br><span class="line">    queue = collections.deque([<span class="number">0</span>])</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        print(node)</span><br><span class="line">        visited[node] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> graph[node]:</span><br><span class="line">            <span class="keyword">if</span> visited[nei] == <span class="number">0</span>:</span><br><span class="line">                queue.append(nei)</span><br></pre></td></tr></table></figure>
+<h4 id="Directed-Graph"><a href="#Directed-Graph" class="headerlink" title="Directed Graph"></a>Directed Graph</h4><ul>
+<li>Only directed graph has indegree and outdegree!</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 从Indegree == 0 的node开始！</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">BFS2</span><span class="params">()</span>:</span></span><br><span class="line">    queue = collections.deque([i <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n) <span class="keyword">if</span> indegree[i] == <span class="number">0</span>]）</span><br><span class="line">    <span class="keyword">while</span> queue:</span><br><span class="line">        node = queue.popleft()</span><br><span class="line">        print(node)</span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> graph[course]:</span><br><span class="line">            indegree[nei] -= <span class="number">1</span></span><br><span class="line">            <span class="keyword">if</span> indegree[nei] == <span class="number">0</span>:</span><br><span class="line">                queue.append(nei)</span><br></pre></td></tr></table></figure>
+<h3 id="Dijkstra’s-Algorithm"><a href="#Dijkstra’s-Algorithm" class="headerlink" title="Dijkstra’s Algorithm"></a>Dijkstra’s Algorithm</h3><p>“呆克斯戳” Best First Search, 也是BFS</p>
+<ol>
+<li>Usages: Find the <strong>shortest path cost from a single node (source node) to any other nodes in that graph</strong></li>
+<li>Data Structure: Priority Queue (Min Heap)</li>
+<li><strong>Process</strong></li>
+</ol>
+<ul>
+<li>Initial state (start node)</li>
+<li>Node expansion/ Generation rule</li>
+<li>Termination condition 所有点计算完毕也是”Queue is empty”</li>
+</ul>
+<ol start="4">
+<li><strong>Properties</strong></li>
+</ol>
+<ul>
+<li>One node can be expanded once and only once</li>
+<li>One node can be generated more than once. (cost can be reduced over time)</li>
+<li>all the cost of the nodes that are expanded are monotonically non-decreasing（所有从 priority queue里面pop出来的元素的值是单调非递减-&gt;单调递增）</li>
+<li>time complexity, for a graph with n node and the connectivity of the node is <strong>O(nlogn)</strong></li>
+<li>when a node is popped out for expansion, <strong>its value is fixed which is equal to the shortest distance from the start node</strong> (非负权重)</li>
+</ul>
+<h4 id="743-Network-Delay-Time"><a href="#743-Network-Delay-Time" class="headerlink" title="743. Network Delay Time"></a><a href="https://leetcode.com/problems/network-delay-time/" target="_blank" rel="noopener">743. Network Delay Time</a></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">networkDelayTime</span><span class="params">(self, times, N, K)</span>:</span></span><br><span class="line">      graph = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(N+<span class="number">1</span>)]</span><br><span class="line">      <span class="keyword">for</span> u, v, w <span class="keyword">in</span> times:</span><br><span class="line">          graph[u].append((v, w))</span><br><span class="line"></span><br><span class="line">      dis = [<span class="number">0</span>] + [<span class="number">-1</span>] * N  </span><br><span class="line">      pq = [(<span class="number">0</span>, K)]</span><br><span class="line"></span><br><span class="line">      <span class="keyword">while</span> pq:</span><br><span class="line">          w, s = heapq.heappop(pq)</span><br><span class="line">          <span class="keyword">if</span> dis[s] &gt;= <span class="number">0</span>:</span><br><span class="line">              <span class="keyword">continue</span></span><br><span class="line">          dis[s] = w</span><br><span class="line">          <span class="keyword">for</span> nxt, nw <span class="keyword">in</span> graph[s]:</span><br><span class="line">              heapq.heappush(pq, (w+nw, nxt))</span><br><span class="line">      <span class="keyword">return</span> <span class="number">-1</span> <span class="keyword">if</span> <span class="number">-1</span> <span class="keyword">in</span> dis <span class="keyword">else</span> max(dis)</span><br></pre></td></tr></table></figure>
+<h4 id="378-Kth-Smallest-Element-in-a-Sorted-Matrix"><a href="#378-Kth-Smallest-Element-in-a-Sorted-Matrix" class="headerlink" title="378. Kth Smallest Element in a Sorted Matrix"></a><a href="https://leetcode.com/problems/kth-smallest-element-in-a-sorted-matrix/" target="_blank" rel="noopener">378. Kth Smallest Element in a Sorted Matrix</a></h4><ul>
+<li>Time : O(klogk), Space : O(k)</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kthSmallest</span><span class="params">(self, matrix, k)</span>:</span></span><br><span class="line">        n = len(matrix)</span><br><span class="line">        visited = set([(<span class="number">0</span>, <span class="number">0</span>)])</span><br><span class="line">        heap = [(matrix[<span class="number">0</span>][<span class="number">0</span>], <span class="number">0</span>, <span class="number">0</span>)]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(k):</span><br><span class="line">            val, x, y = heapq.heappop(heap)</span><br><span class="line"></span><br><span class="line">            <span class="comment"># next row</span></span><br><span class="line">            <span class="keyword">if</span> x+<span class="number">1</span> &lt;= n<span class="number">-1</span> <span class="keyword">and</span> (x+<span class="number">1</span>, y) <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                heapq.heappush(heap, (matrix[x+<span class="number">1</span>][y], x+<span class="number">1</span>, y))</span><br><span class="line">                visited.add((x+<span class="number">1</span>,y))</span><br><span class="line"></span><br><span class="line">            <span class="comment"># next col</span></span><br><span class="line">            <span class="keyword">if</span> y+<span class="number">1</span> &lt;= n<span class="number">-1</span> <span class="keyword">and</span> (x, y+<span class="number">1</span>) <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">                heapq.heappush(heap, (matrix[x][y+<span class="number">1</span>], x, y+<span class="number">1</span>))</span><br><span class="line">                visited.add((x,y+<span class="number">1</span>))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> val</span><br></pre></td></tr></table></figure>
+<h3 id="Depth-First-Search"><a href="#Depth-First-Search" class="headerlink" title="Depth First Search"></a>Depth First Search</h3><p>Backtracking is just a behavior of DFS</p>
+<ul>
+<li>DFS 的时间占用以 <strong>branching factor</strong> 为底，树的深度 m 为指数增长</li>
+<li>DFS 的空间占用上，却只是 O(bm)，可视化探索过程中只把每个 Node 的所有子节点存在 Stack 上， 探索完了再 pop 出来接着探，因此储存的节点数为 O(bm)。</li>
+</ul>
+<p>可以看到无论是 BFS 还是 DFS，树的 branching factor 都是对空间与时间复杂度影响最大的参数；除此之外，<strong>BFS 中最重要的是到解的距离，而 DFS 看从当前节点的深度。</strong>普遍来讲，DFS 空间上会经济一些，当然也要分情况讨论。</p>
+<h4 id="Undirected-Graph-1"><a href="#Undirected-Graph-1" class="headerlink" title="Undirected Graph"></a>Undirected Graph</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(node)</span>:</span></span><br><span class="line">    visited.add(node)</span><br><span class="line">    <span class="keyword">for</span> nei <span class="keyword">in</span> node.neighbors:</span><br><span class="line">        <span class="keyword">if</span> nei <span class="keyword">not</span> <span class="keyword">in</span> visited:</span><br><span class="line">            dfs(nei)</span><br></pre></td></tr></table></figure>
+<h4 id="Directed-Graph-1"><a href="#Directed-Graph-1" class="headerlink" title="Directed Graph"></a>Directed Graph</h4><ul>
+<li>visited 需要 三种状态!!! 0-未访问，1-正在访问，2-已经访问</li>
+</ul>
+<h2 id="3-Application"><a href="#3-Application" class="headerlink" title="3 Application"></a>3 Application</h2><h3 id="785-Is-Graph-Bipartite"><a href="#785-Is-Graph-Bipartite" class="headerlink" title="785. Is Graph Bipartite?"></a><a href="https://leetcode.com/problems/is-graph-bipartite/" target="_blank" rel="noopener">785. Is Graph Bipartite?</a></h3><ul>
+<li>BFS的做法有一个问题，就是这个图可能不是连通图！！！所以要遍历所有点！</li>
+<li>所有点有两次一次push进Queue，一次pop出Queue！</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isBipartite</span><span class="params">(self, graph)</span>:</span></span><br><span class="line">        n = len(graph)</span><br><span class="line">        visited = [<span class="keyword">False</span>] * n</span><br><span class="line">        A, B = set(), set()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">if</span> visited[i]:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            queue = collections.deque([(i,<span class="number">0</span>)])</span><br><span class="line">            <span class="keyword">while</span> queue:</span><br><span class="line">                node, level = queue.popleft()</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> level:</span><br><span class="line">                    B.add(node)</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    A.add(node)</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span> visited[node]:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">for</span> nei <span class="keyword">in</span> graph[node]:</span><br><span class="line">                    queue.append((nei, <span class="number">1</span> - level))</span><br><span class="line">                visited[node] = <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">not</span> A&amp;B</span><br></pre></td></tr></table></figure>
+<h3 id="133-Clone-Graph"><a href="#133-Clone-Graph" class="headerlink" title="133. Clone Graph"></a><a href="https://leetcode.com/problems/clone-graph/" target="_blank" rel="noopener">133. Clone Graph</a></h3><p>克隆Graph，很多graph都是用HashTable一一映射</p>
+<ul>
+<li>Hash Table 新旧node一一映射，再把关系同样映射！</li>
+<li>DFS，BFS都可以把所有node遍历一遍就好</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># BFS</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cloneGraph</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        gmap = &#123;node:UndirectedGraphNode(node.label)&#125;</span><br><span class="line">        queue = collections.deque([node])</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            nnode = queue.popleft()</span><br><span class="line">            <span class="keyword">for</span> nei <span class="keyword">in</span> nnode.neighbors:</span><br><span class="line">                <span class="keyword">if</span> nei <span class="keyword">not</span> <span class="keyword">in</span> gmap:</span><br><span class="line">                    gmap[nei] = UndirectedGraphNode(nei.label)</span><br><span class="line">                    queue.append(nei)</span><br><span class="line">                gmap[nnode].neighbors.append(gmap[nei])</span><br><span class="line">        <span class="keyword">return</span> gmap[node]</span><br><span class="line"></span><br><span class="line"><span class="comment"># DFS</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cloneGraph</span><span class="params">(self, node)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.dfs(node, &#123;&#125;)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, node, cache)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> node:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> node <span class="keyword">in</span> cache:</span><br><span class="line">            <span class="keyword">return</span> cache[node]</span><br><span class="line"></span><br><span class="line">        copy = UndirectedGraphNode(node.label)</span><br><span class="line">        cache[node] = copy</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> node.neighbors:</span><br><span class="line">            nnei = self.dfs(nei, cache)</span><br><span class="line">            copy.neighbors.append(nnei)</span><br><span class="line">        <span class="keyword">return</span> copy</span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/08/01/graph/" data-id="cjojkru3x0024vdu0ectbb4mt" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-union-find" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -357,7 +757,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/22/union-find/" data-id="cjod2d3w5005kv6u04tbsv3go" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/22/union-find/" data-id="cjojkru5y005hvdu0jy3ty6p5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -625,7 +1025,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/18/ood-in-interview/" data-id="cjod2d3ug002zv6u0zge3cy4b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/18/ood-in-interview/" data-id="cjojkru4b002mvdu0xab47y8b" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -853,7 +1253,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/16/binary-indexed-tree/" data-id="cjod2d3pp0004v6u058f6qhtq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/16/binary-indexed-tree/" data-id="cjojkru3b0015vdu0blxdhg59" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1019,7 +1419,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/09/tree-traversal-bfs/" data-id="cjod2d3vy0059v6u08f37s1fi" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/09/tree-traversal-bfs/" data-id="cjojkru5s0056vdu0qudyyieo" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1258,7 +1658,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/08/tree-traversal-dfs/" data-id="cjod2d3w2005gv6u0yjchwvg9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/08/tree-traversal-dfs/" data-id="cjojkru5v005avdu0mzdrti3x" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1456,7 +1856,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/05/01/spark-quick-start/" data-id="cjod2d3uq003jv6u0g6b6s7bn" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/05/01/spark-quick-start/" data-id="cjojkru4m0035vdu0tt7t8jug" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1747,7 +2147,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/29/bit-manipulation/" data-id="cjod2d3tb000tv6u0e3t03uxw" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/29/bit-manipulation/" data-id="cjojkru2w000cvdu04j0vl384" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1921,390 +2321,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/25/docker-quick-start/" data-id="cjod2d3to001cv6u0ov1mwzw4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-docker" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/04/21/docker/">Docker</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/04/21/docker/">
-            <time datetime="2018-04-22T00:31:44.000Z" itemprop="datePublished">2018-04-21</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Full-Stack/">Full Stack</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>参考资源:</p>
-<ul>
-<li><a href="https://yeasy.gitbooks.io/docker_practice/content/" target="_blank" rel="noopener">Docker — 从入门到实践</a></li>
-<li><a href="http://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html" target="_blank" rel="noopener">Docker 入门教程 阮一峰</a></li>
-</ul>
-<h2 id="History"><a href="#History" class="headerlink" title="History"></a>History</h2><ul>
-<li><p>Docker 最初是 dotCloud 公司创始人 Solomon Hykes 在法国期间发起的一个公司内部项目，它是基于 dotCloud 公司多年云服务技术的一次革新，并于 <strong>2013 年 3 月以 Apache 2.0 授权协议开源</strong>，主要项目代码在 GitHub 上进行维护。Docker 项目后来还加入了 Linux 基金会，并成立推动 开放容器联盟（OCI）。</p>
-</li>
-<li><p>Docker 自开源后受到广泛的关注和讨论，至今其 GitHub 项目已经超过 4 万 6 千个星标和一万多个 fork。甚至由于 Docker 项目的火爆，在 2013 年底，dotCloud 公司决定改名为 Docker。Docker 最初是在 Ubuntu 12.04 上开发实现的；Red Hat 则从 RHEL 6.5 开始对 Docker 进行支持；Google 也在其 PaaS 产品中广泛应用 Docker。</p>
-</li>
-<li><p><strong>Docker 使用 Google 公司推出的 Go 语言 进行开发实现</strong></p>
-</li>
-<li><p><strong>Docker 在容器的基础上，进行了进一步的封装，从文件系统、网络互联到进程隔离等等，极大的简化了容器的创建和维护。使得 Docker 技术比虚拟机技术更为轻便、快捷。</strong></p>
-</li>
-</ul>
-<h2 id="Why-use-Docker"><a href="#Why-use-Docker" class="headerlink" title="Why use Docker?"></a>Why use Docker?</h2><ul>
-<li>Docker - <strong>Build, Ship, and Run Any App, Anywhere</strong></li>
-<li><strong>向服务器部署代码非常困难</strong></li>
-<li>复杂的技术栈, 不同技术栈的版本依赖与冲突</li>
-<li>How to solve it?<h3 id="Docker-vs-VM"><a href="#Docker-vs-VM" class="headerlink" title="Docker vs VM"></a>Docker vs VM</h3><img src="/2018/04/21/docker/docker-containers-vm.png">
-</li>
-</ul>
-<h2 id="What-is-Docker"><a href="#What-is-Docker" class="headerlink" title="What is Docker?"></a>What is Docker?</h2><h3 id="Docker的三个概念"><a href="#Docker的三个概念" class="headerlink" title="Docker的三个概念"></a>Docker的三个概念</h3><ul>
-<li>1 镜像(Image)<ul>
-<li>类似于虚拟机中的镜像，是一个包含有文件系统的面向Docker引擎的只读模板。</li>
-<li>任何应用程序运行都需要环境，而镜像就是用来提供这种运行环境的。例如一个Ubuntu镜像就是一个包含Ubuntu操作系统环境的模板，同理在该镜像上装上Apache软件，就可以称为Apache镜像。</li>
-</ul>
-</li>
-<li>2 容器(Container)<ul>
-<li>类似于一个轻量级的沙盒，可以将其看作一个<strong>极简的Linux系统环境</strong>（包括root权限、进程空间、用户空间和网络空间等），以及运行在其中的应用程序。</li>
-<li><strong>Docker引擎利用容器来运行、隔离各个应用</strong>。容器是镜像创建的应用实例，可以创建、启动、停止、删除容器，<strong>各个容器之间是是相互隔离的，互不影响</strong>。</li>
-<li>注意：镜像本身是只读的，容器从镜像启动时，Docker在镜像的上层创建一个可写层，镜像本身不变。</li>
-</ul>
-</li>
-<li>3 仓库(Repository)<ul>
-<li>类似于代码仓库，这里是镜像仓库，是<strong>Docker用来集中存放镜像文件</strong>的地方。</li>
-<li>注意与注册服务器（Registry）的区别：注册服务器是存放仓库的地方，一般会有多个仓库；而仓库是存放镜像的地方，一般每个仓库存放一类镜像，每个镜像利用tag进行区分，比如Ubuntu仓库存放有多个版本（12.04、14.04等）的Ubuntu镜像。</li>
-</ul>
-</li>
-</ul>
-<h3 id="Union-File-System"><a href="#Union-File-System" class="headerlink" title="Union File System"></a>Union File System</h3><img src="/2018/04/21/docker/docker-unionfilesystem.jpg">
-<h3 id="Docker-Components"><a href="#Docker-Components" class="headerlink" title="Docker Components"></a>Docker Components</h3><img src="/2018/04/21/docker/docker-component.jpg">
-<ul>
-<li>Docker daemon<ul>
-<li>Runs on a host machine. It does <strong>the heavy lifting of building, running, and distributing Docker containers</strong></li>
-</ul>
-</li>
-<li>Docker client<ul>
-<li>The primary user interface to Docker. It accepts commands from the user and communicates back and forth with a Docker daemon</li>
-</ul>
-</li>
-<li>Docker images<ul>
-<li>Docker image is a read-only template, which is used to create containers</li>
-</ul>
-</li>
-<li>Docker registries<ul>
-<li>Docker registries hold images, which are public or private stores from which you upload or download images.</li>
-</ul>
-</li>
-<li>Docker containers<ul>
-<li>Docker containers are similar to a directory.</li>
-</ul>
-</li>
-</ul>
-<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><ul>
-<li>A Docker container holds everything that is needed for an application to run.</li>
-<li><strong>Each container is created from a Docker image</strong>.</li>
-<li>Docker containers can be <strong>run, started, stopped, moved, and deleted</strong>.</li>
-<li>Each container is an isolated and secure application platform.</li>
-</ul>
-<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><p>Docker 的主要用途，目前有三大类。</p>
-<ul>
-<li>1 <strong>提供一次性的环境。</strong>比如，本地测试他人的软件、持续集成的时候提供单元测试和构建的环境。</li>
-<li>2 <strong>提供弹性的云服务。</strong>因为 Docker 容器可以随开随关，很适合动态扩容和缩容。</li>
-<li>3 <strong>组建微服务架构。</strong>通过多个容器，一台机器可以跑多个服务，因此在本机就可以模拟出微服务架构。</li>
-</ul>
-<h2 id="Docker-on-Mac"><a href="#Docker-on-Mac" class="headerlink" title="Docker on Mac"></a>Docker on Mac</h2><h3 id="Install"><a href="#Install" class="headerlink" title="Install"></a>Install</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew cask install docker</span><br></pre></td></tr></table></figure>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/04/21/docker/" data-id="cjod2d3tl0015v6u07zgglq1w" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-message-queue" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/04/18/message-queue/">Message Queue 消息队列</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/04/18/message-queue/">
-            <time datetime="2018-04-18T22:21:34.000Z" itemprop="datePublished">2018-04-18</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Full-Stack/">Full Stack</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <p>参考资料:</p>
-<ul>
-<li><a href="http://www.cnblogs.com/itfly8/p/5155983.html" target="_blank" rel="noopener">大型网站架构系列：分布式消息队列</a></li>
-</ul>
-<h2 id="What-is-Message-Queue"><a href="#What-is-Message-Queue" class="headerlink" title="What is Message Queue"></a>What is Message Queue</h2><ul>
-<li>A message queue is a <strong>queue of messages sent between applications</strong>. 中间人</li>
-<li>Message queues provide an <strong>asynchronous communications</strong> protocol, meaning that the sender and receiver of the message do not need to interact with the message queue at the same time.</li>
-</ul>
-<img src="/2018/04/18/message-queue/MessageQueuing.jpg">
-<ul>
-<li>An application framework for sending and receiving messages</li>
-<li>A way to communicate between applications / systems</li>
-<li>A way to <strong>decouple</strong> components</li>
-<li>A way to offload work (handle to another worker)</li>
-</ul>
-<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><ul>
-<li>Allow web servers to <strong>respond to requests quickly</strong> instead of being forced to perform resource-heavy procedures.</li>
-<li>Able to <strong>distribute a message to multiple recipients</strong> for consumption or for balancing loads between workers.</li>
-<li>消息队列中间件是分布式系统中重要的组件，主要解决<strong>应用耦合，异步消息，流量削锋等问题。实现高性能，高可用，可伸缩和最终一致性架构</strong>。是大型分布式系统不可缺少的中间件。</li>
-<li>目前在生产环境，使用较多的消息队列有ActiveMQ，RabbitMQ，ZeroMQ，Kafka，MetaMQ，RocketMQ等。</li>
-</ul>
-<h3 id="Message-Queue-in-Real-Life"><a href="#Message-Queue-in-Real-Life" class="headerlink" title="Message Queue in Real Life"></a>Message Queue in Real Life</h3><p>对实时性要求不高的任务！</p>
-<ul>
-<li>Image Resizing</li>
-<li>Video Processing</li>
-<li>Sending out Emails (Ad Campaigns)</li>
-<li>Log Analysis</li>
-<li>…</li>
-</ul>
-<h2 id="AMPQ协议"><a href="#AMPQ协议" class="headerlink" title="AMPQ协议"></a>AMPQ协议</h2><h3 id="Message-Queue-Protocol"><a href="#Message-Queue-Protocol" class="headerlink" title="Message Queue Protocol"></a>Message Queue Protocol</h3><ul>
-<li>AMQP - Advanced Message Queue Protocol (RabbitMQ)</li>
-<li>STOMP - Streaming Text Oriented Messaging Protocol (ActiveMQ)</li>
-<li>XMPP - Extensible Messaging and Presence Protocol</li>
-</ul>
-<h3 id="Network-wire-level-protocol"><a href="#Network-wire-level-protocol" class="headerlink" title="Network wire-level protocol"></a>Network wire-level protocol</h3><ul>
-<li>Defines how clients and brokers talk</li>
-<li>Data serialization, heartbeat</li>
-</ul>
-<h3 id="AMQP-Model"><a href="#AMQP-Model" class="headerlink" title="AMQP Model"></a>AMQP Model</h3><ul>
-<li>Defines routing and storing of messages</li>
-<li>Defines rules how these are wired together</li>
-<li>Exported API<img src="/2018/04/18/message-queue/MQ.jpg">
-</li>
-</ul>
-<h2 id="RabbitMQ"><a href="#RabbitMQ" class="headerlink" title="RabbitMQ"></a>RabbitMQ</h2><ul>
-<li>RabbitMQ是流行的开源消息队列系统，用erlang语言开发。RabbitMQ是AMQP（高级消息队列协议）的标准实现。Implements AMQP</li>
-<li>Easy to use, 支持多种客户端，如：Python、Ruby、.NET、Java、JMS、C、PHP、ActionScript、XMPP、STOMP等，支持AJAX，持久化。用于在分布式系统中存储转发消息，在易用性、扩展性、高可用性等方面表现不俗。</li>
-<li>Open source and commercially supported</li>
-</ul>
-<h3 id="RabiitMQ-Solution"><a href="#RabiitMQ-Solution" class="headerlink" title="RabiitMQ Solution"></a>RabiitMQ Solution</h3><ul>
-<li>Could-based Solution<ul>
-<li><a href="https://www.cloudamqp.com/" target="_blank" rel="noopener">CloudAMQP</a></li>
-<li><a href="https://www.cloudamqp.com/docs/python.html" target="_blank" rel="noopener">CloudAMPQ in Python使用教程</a></li>
-</ul>
-</li>
-<li>Local<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install rabbitmq <span class="comment"># would take long</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/04/18/message-queue/" data-id="cjod2d3uj0037v6u08ubm8nxg" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/25/docker-quick-start/" data-id="cjojkru34000svdu0zh4is6zy" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2398,6 +2415,33 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/11/15/stack-monotone/" class="title">Monotone Stack</a></p>
+                            <p class="item-date"><time datetime="2018-11-16T03:52:01.000Z" itemprop="datePublished">2018-11-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/11/14/topic-interval/" class="title">Interval Problem</a></p>
+                            <p class="item-date"><time datetime="2018-11-14T17:14:48.000Z" itemprop="datePublished">2018-11-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/System-Design/">System Design</a></p>
+                            <p class="item-title"><a href="/2018/11/13/system-design-intro/" class="title">System Design Introduction</a></p>
+                            <p class="item-date"><time datetime="2018-11-14T03:10:33.000Z" itemprop="datePublished">2018-11-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/11/10/string-substring/" class="title">String - Substring</a></p>
                             <p class="item-date"><time datetime="2018-11-10T15:01:08.000Z" itemprop="datePublished">2018-11-10</time></p>
                         </div>
@@ -2412,33 +2456,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/08/string-parenthesis/" class="title">String Parenthesis</a></p>
-                            <p class="item-date"><time datetime="2018-11-09T03:28:02.000Z" itemprop="datePublished">2018-11-08</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/06/tree-definition/" class="title">Tree Definition</a></p>
-                            <p class="item-date"><time datetime="2018-11-06T14:23:54.000Z" itemprop="datePublished">2018-11-06</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/04/topic-two-pointers/" class="title">Two Pinters</a></p>
-                            <p class="item-date"><time datetime="2018-11-05T01:06:32.000Z" itemprop="datePublished">2018-11-04</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -2448,7 +2465,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">54</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">55</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/System-Design/">System Design</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -2457,7 +2474,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">27</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -2466,7 +2483,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/TODO/">TODO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matrix/">matrix</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/queue/">queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/topic/">topic</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">11</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/TODO/">TODO</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matrix/">matrix</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/queue/">queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/topic/">topic</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">11</span></li></ul>
         </div>
     </div>
 
@@ -2475,7 +2492,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/TODO/" style="font-size: 10px;">TODO</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bfs/" style="font-size: 12.86px;">bfs</a> <a href="/tags/binary-search/" style="font-size: 11.43px;">binary search</a> <a href="/tags/dfs/" style="font-size: 14.29px;">dfs</a> <a href="/tags/dp/" style="font-size: 18.57px;">dp</a> <a href="/tags/graph/" style="font-size: 15.71px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 11.43px;">hash table</a> <a href="/tags/heap/" style="font-size: 11.43px;">heap</a> <a href="/tags/linked-list/" style="font-size: 14.29px;">linked list</a> <a href="/tags/matrix/" style="font-size: 10px;">matrix</a> <a href="/tags/queue/" style="font-size: 10px;">queue</a> <a href="/tags/recursion/" style="font-size: 14.29px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/stack/" style="font-size: 11.43px;">stack</a> <a href="/tags/string/" style="font-size: 17.14px;">string</a> <a href="/tags/topic/" style="font-size: 17.14px;">topic</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
+            <a href="/tags/TODO/" style="font-size: 11.25px;">TODO</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bfs/" style="font-size: 12.5px;">bfs</a> <a href="/tags/binary-search/" style="font-size: 11.25px;">binary search</a> <a href="/tags/dfs/" style="font-size: 13.75px;">dfs</a> <a href="/tags/dp/" style="font-size: 18.75px;">dp</a> <a href="/tags/graph/" style="font-size: 15px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 11.25px;">hash table</a> <a href="/tags/heap/" style="font-size: 11.25px;">heap</a> <a href="/tags/linked-list/" style="font-size: 13.75px;">linked list</a> <a href="/tags/matrix/" style="font-size: 10px;">matrix</a> <a href="/tags/queue/" style="font-size: 10px;">queue</a> <a href="/tags/recursion/" style="font-size: 13.75px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/stack/" style="font-size: 11.25px;">stack</a> <a href="/tags/string/" style="font-size: 16.25px;">string</a> <a href="/tags/topic/" style="font-size: 17.5px;">topic</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
         </div>
     </div>
 

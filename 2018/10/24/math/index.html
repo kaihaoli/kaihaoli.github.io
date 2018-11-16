@@ -5,17 +5,17 @@
     
     <title>Math | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="836. Rectangle Overlap12345class Solution(object):    def isRectangleOverlap(self, rec1, rec2):        x1, y1, x2, y2 = rec1        x3, y3, x4, y4 = rec2        return x2 &amp;gt; x3 and x1 &amp;lt; x4 and y2">
+    <meta name="description" content="750. Number Of Corner Rectangles123456789101112class Solution(object):    def countCornerRectangles(self, grid):        m, n = len(grid), len(grid[0])        res = 0        corner = []        for i in">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Math">
 <meta property="og:url" content="http://kaihaoli.github.io/2018/10/24/math/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="836. Rectangle Overlap12345class Solution(object):    def isRectangleOverlap(self, rec1, rec2):        x1, y1, x2, y2 = rec1        x3, y3, x4, y4 = rec2        return x2 &amp;gt; x3 and x1 &amp;lt; x4 and y2">
+<meta property="og:description" content="750. Number Of Corner Rectangles123456789101112class Solution(object):    def countCornerRectangles(self, grid):        m, n = len(grid), len(grid[0])        res = 0        corner = []        for i in">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-03T15:59:33.636Z">
+<meta property="og:updated_time" content="2018-11-13T00:54:28.434Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Math">
-<meta name="twitter:description" content="836. Rectangle Overlap12345class Solution(object):    def isRectangleOverlap(self, rec1, rec2):        x1, y1, x2, y2 = rec1        x3, y3, x4, y4 = rec2        return x2 &amp;gt; x3 and x1 &amp;lt; x4 and y2">
+<meta name="twitter:description" content="750. Number Of Corner Rectangles123456789101112class Solution(object):    def countCornerRectangles(self, grid):        m, n = len(grid), len(grid[0])        res = 0        corner = []        for i in">
     
 
     
@@ -163,7 +163,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                63
+                65
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -226,10 +226,11 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#836-Rectangle-Overlap"><span class="toc-number">1.</span> <span class="toc-text">836. Rectangle Overlap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Prime-Number"><span class="toc-number"></span> <span class="toc-text">Prime Number</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#is-Prime"><span class="toc-number">1.</span> <span class="toc-text">is Prime</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#204-Count-Primes"><span class="toc-number">2.</span> <span class="toc-text">204. Count Primes</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#750-Number-Of-Corner-Rectangles"><span class="toc-number">1.</span> <span class="toc-text">750. Number Of Corner Rectangles</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#836-Rectangle-Overlap"><span class="toc-number">2.</span> <span class="toc-text">836. Rectangle Overlap</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Prime-Number"><span class="toc-number"></span> <span class="toc-text">Prime Number</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#is-Prime"><span class="toc-number">1.</span> <span class="toc-text">is Prime</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#204-Count-Primes"><span class="toc-number">2.</span> <span class="toc-text">204. Count Primes</span></a></li></ol>
                 </div>
             
-            <h3 id="836-Rectangle-Overlap"><a href="#836-Rectangle-Overlap" class="headerlink" title="836. Rectangle Overlap"></a><a href="https://leetcode.com/problems/rectangle-overlap/" target="_blank" rel="noopener">836. Rectangle Overlap</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isRectangleOverlap</span><span class="params">(self, rec1, rec2)</span>:</span></span><br><span class="line">        x1, y1, x2, y2 = rec1</span><br><span class="line">        x3, y3, x4, y4 = rec2</span><br><span class="line">        <span class="keyword">return</span> x2 &gt; x3 <span class="keyword">and</span> x1 &lt; x4 <span class="keyword">and</span> y2 &gt; y3 <span class="keyword">and</span> y1 &lt; y4</span><br></pre></td></tr></table></figure>
+            <h3 id="750-Number-Of-Corner-Rectangles"><a href="#750-Number-Of-Corner-Rectangles" class="headerlink" title="750. Number Of Corner Rectangles"></a><a href="https://leetcode.com/problems/number-of-corner-rectangles/" target="_blank" rel="noopener">750. Number Of Corner Rectangles</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countCornerRectangles</span><span class="params">(self, grid)</span>:</span></span><br><span class="line">        m, n = len(grid), len(grid[<span class="number">0</span>])</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        corner = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">            layer = &#123;j <span class="keyword">for</span> j <span class="keyword">in</span> range(n) <span class="keyword">if</span> grid[i][j] == <span class="number">1</span>&#125;</span><br><span class="line">            <span class="keyword">for</span> prev <span class="keyword">in</span> corner:</span><br><span class="line">                cnt = len(layer &amp; prev)</span><br><span class="line">                res += cnt * (cnt - <span class="number">1</span>) // <span class="number">2</span></span><br><span class="line">            corner.append(layer)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h3 id="836-Rectangle-Overlap"><a href="#836-Rectangle-Overlap" class="headerlink" title="836. Rectangle Overlap"></a><a href="https://leetcode.com/problems/rectangle-overlap/" target="_blank" rel="noopener">836. Rectangle Overlap</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isRectangleOverlap</span><span class="params">(self, rec1, rec2)</span>:</span></span><br><span class="line">        x1, y1, x2, y2 = rec1</span><br><span class="line">        x3, y3, x4, y4 = rec2</span><br><span class="line">        <span class="keyword">return</span> x2 &gt; x3 <span class="keyword">and</span> x1 &lt; x4 <span class="keyword">and</span> y2 &gt; y3 <span class="keyword">and</span> y1 &lt; y4</span><br></pre></td></tr></table></figure>
 <h2 id="Prime-Number"><a href="#Prime-Number" class="headerlink" title="Prime Number"></a>Prime Number</h2><p>A prime number (or a prime) is a natural number greater than 1 that <strong>cannot be formed by multiplying two smaller natural numbers</strong>.</p>
 <h3 id="is-Prime"><a href="#is-Prime" class="headerlink" title="is Prime"></a>is Prime</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">isPrime</span><span class="params">(m)</span>:</span></span><br><span class="line">    i = <span class="number">2</span></span><br><span class="line">    <span class="keyword">while</span>(i*i &lt;= m):</span><br><span class="line">        <span class="keyword">if</span> m % i == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
 <h3 id="204-Count-Primes"><a href="#204-Count-Primes" class="headerlink" title="204. Count Primes"></a><a href="https://leetcode.com/problems/count-primes/" target="_blank" rel="noopener">204. Count Primes</a></h3><ul>
@@ -246,7 +247,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/24/math/" data-id="cjod2d3ud002tv6u0xs966v1l" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/24/math/" data-id="cjojkru47002gvdu0d493rzs9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -321,11 +322,11 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2018/10/25/monotone-stack/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2018/10/26/topic-data-stream/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    Monotone Stack
+                    Data Stream
                 
             </div>
         </a>
@@ -361,6 +362,33 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/11/15/stack-monotone/" class="title">Monotone Stack</a></p>
+                            <p class="item-date"><time datetime="2018-11-16T03:52:01.000Z" itemprop="datePublished">2018-11-15</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/11/14/topic-interval/" class="title">Interval Problem</a></p>
+                            <p class="item-date"><time datetime="2018-11-14T17:14:48.000Z" itemprop="datePublished">2018-11-14</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/System-Design/">System Design</a></p>
+                            <p class="item-title"><a href="/2018/11/13/system-design-intro/" class="title">System Design Introduction</a></p>
+                            <p class="item-date"><time datetime="2018-11-14T03:10:33.000Z" itemprop="datePublished">2018-11-13</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/11/10/string-substring/" class="title">String - Substring</a></p>
                             <p class="item-date"><time datetime="2018-11-10T15:01:08.000Z" itemprop="datePublished">2018-11-10</time></p>
                         </div>
@@ -375,33 +403,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/08/string-parenthesis/" class="title">String Parenthesis</a></p>
-                            <p class="item-date"><time datetime="2018-11-09T03:28:02.000Z" itemprop="datePublished">2018-11-08</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/06/tree-definition/" class="title">Tree Definition</a></p>
-                            <p class="item-date"><time datetime="2018-11-06T14:23:54.000Z" itemprop="datePublished">2018-11-06</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/04/topic-two-pointers/" class="title">Two Pinters</a></p>
-                            <p class="item-date"><time datetime="2018-11-05T01:06:32.000Z" itemprop="datePublished">2018-11-04</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -411,7 +412,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">54</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">55</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/System-Design/">System Design</a><span class="category-list-count">1</span></li></ul>
         </div>
     </div>
 
@@ -420,7 +421,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">27</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">11</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">26</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
@@ -429,7 +430,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tags</h3>
         <div class="widget">
-            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/TODO/">TODO</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matrix/">matrix</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/queue/">queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/topic/">topic</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">11</span></li></ul>
+            <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/TODO/">TODO</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/array/">array</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bfs/">bfs</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/binary-search/">binary search</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dfs/">dfs</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dp/">dp</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/graph/">graph</a><span class="tag-list-count">5</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/greedy/">greedy</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/hash-table/">hash table</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/heap/">heap</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/linked-list/">linked list</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/matrix/">matrix</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/queue/">queue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/recursion/">recursion</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sliding-window/">sliding window</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/sort/">sort</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/stack/">stack</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/string/">string</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/topic/">topic</a><span class="tag-list-count">7</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/tree/">tree</a><span class="tag-list-count">11</span></li></ul>
         </div>
     </div>
 
@@ -438,7 +439,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">tag cloud</h3>
         <div class="widget tagcloud">
-            <a href="/tags/TODO/" style="font-size: 10px;">TODO</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bfs/" style="font-size: 12.86px;">bfs</a> <a href="/tags/binary-search/" style="font-size: 11.43px;">binary search</a> <a href="/tags/dfs/" style="font-size: 14.29px;">dfs</a> <a href="/tags/dp/" style="font-size: 18.57px;">dp</a> <a href="/tags/graph/" style="font-size: 15.71px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 11.43px;">hash table</a> <a href="/tags/heap/" style="font-size: 11.43px;">heap</a> <a href="/tags/linked-list/" style="font-size: 14.29px;">linked list</a> <a href="/tags/matrix/" style="font-size: 10px;">matrix</a> <a href="/tags/queue/" style="font-size: 10px;">queue</a> <a href="/tags/recursion/" style="font-size: 14.29px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/stack/" style="font-size: 11.43px;">stack</a> <a href="/tags/string/" style="font-size: 17.14px;">string</a> <a href="/tags/topic/" style="font-size: 17.14px;">topic</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
+            <a href="/tags/TODO/" style="font-size: 11.25px;">TODO</a> <a href="/tags/array/" style="font-size: 10px;">array</a> <a href="/tags/bfs/" style="font-size: 12.5px;">bfs</a> <a href="/tags/binary-search/" style="font-size: 11.25px;">binary search</a> <a href="/tags/dfs/" style="font-size: 13.75px;">dfs</a> <a href="/tags/dp/" style="font-size: 18.75px;">dp</a> <a href="/tags/graph/" style="font-size: 15px;">graph</a> <a href="/tags/greedy/" style="font-size: 10px;">greedy</a> <a href="/tags/hash-table/" style="font-size: 11.25px;">hash table</a> <a href="/tags/heap/" style="font-size: 11.25px;">heap</a> <a href="/tags/linked-list/" style="font-size: 13.75px;">linked list</a> <a href="/tags/matrix/" style="font-size: 10px;">matrix</a> <a href="/tags/queue/" style="font-size: 10px;">queue</a> <a href="/tags/recursion/" style="font-size: 13.75px;">recursion</a> <a href="/tags/sliding-window/" style="font-size: 10px;">sliding window</a> <a href="/tags/sort/" style="font-size: 10px;">sort</a> <a href="/tags/stack/" style="font-size: 11.25px;">stack</a> <a href="/tags/string/" style="font-size: 16.25px;">string</a> <a href="/tags/topic/" style="font-size: 17.5px;">topic</a> <a href="/tags/tree/" style="font-size: 20px;">tree</a>
         </div>
     </div>
 
