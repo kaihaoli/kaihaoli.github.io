@@ -3,20 +3,20 @@
 <head>
     <meta charset="utf-8">
     
-    <title>Graph - Detect the Cycle | kaihao</title>
+    <title>Graph Cycle | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="Detect the CycleFind if a cycle exits in a directed graph Undirected Graph261. Graph Valid Tree Undirected Graph: Union Find, DFS, BFS  解法1. Union Find  图是以edge的形式表示的，方便union find    12345678910111213">
+    <meta name="description" content="Detect the CycleFind if a cycle exits in a graph 261. Graph Valid Tree Undirected Graph: Union Find, DFS, BFS  Solution1. Union Find graph is represented by edges!!! signal to use union find!!! tree i">
 <meta name="keywords" content="graph">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Graph - Detect the Cycle">
-<meta property="og:url" content="http://kaihaoli.github.io/2018/08/01/detect-the-cycle/index.html">
+<meta property="og:title" content="Graph Cycle">
+<meta property="og:url" content="http://kaihaoli.github.io/2018/12/01/graph-cycle/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="Detect the CycleFind if a cycle exits in a directed graph Undirected Graph261. Graph Valid Tree Undirected Graph: Union Find, DFS, BFS  解法1. Union Find  图是以edge的形式表示的，方便union find    12345678910111213">
+<meta property="og:description" content="Detect the CycleFind if a cycle exits in a graph 261. Graph Valid Tree Undirected Graph: Union Find, DFS, BFS  Solution1. Union Find graph is represented by edges!!! signal to use union find!!! tree i">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-10-07T03:35:25.794Z">
+<meta property="og:updated_time" content="2018-12-01T15:59:39.103Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Graph - Detect the Cycle">
-<meta name="twitter:description" content="Detect the CycleFind if a cycle exits in a directed graph Undirected Graph261. Graph Valid Tree Undirected Graph: Union Find, DFS, BFS  解法1. Union Find  图是以edge的形式表示的，方便union find    12345678910111213">
+<meta name="twitter:title" content="Graph Cycle">
+<meta name="twitter:description" content="Detect the CycleFind if a cycle exits in a graph 261. Graph Valid Tree Undirected Graph: Union Find, DFS, BFS  Solution1. Union Find graph is represented by edges!!! signal to use union find!!! tree i">
     
 
     
@@ -192,7 +192,7 @@ ga('send', 'pageview');
 </aside>
 
             
-            <section id="main"><article id="post-detect-the-cycle" class="article article-type-post" itemscope itemprop="blogPost">
+            <section id="main"><article id="post-graph-cycle" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -200,7 +200,7 @@ ga('send', 'pageview');
                 
     
         <h1 class="article-title" itemprop="name">
-            Graph - Detect the Cycle
+            Graph Cycle
         </h1>
     
 
@@ -209,8 +209,8 @@ ga('send', 'pageview');
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/2018/08/01/detect-the-cycle/">
-            <time datetime="2018-08-02T03:04:25.000Z" itemprop="datePublished">2018-08-01</time>
+        <a href="/2018/12/01/graph-cycle/">
+            <time datetime="2018-12-01T15:35:11.000Z" itemprop="datePublished">2018-12-01</time>
         </a>
     </div>
 
@@ -237,45 +237,38 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Detect-the-Cycle"><span class="toc-number">1.</span> <span class="toc-text">Detect the Cycle</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Undirected-Graph"><span class="toc-number">1.1.</span> <span class="toc-text">Undirected Graph</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#261-Graph-Valid-Tree"><span class="toc-number">1.1.1.</span> <span class="toc-text">261. Graph Valid Tree</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Directed-graph"><span class="toc-number">1.2.</span> <span class="toc-text">Directed graph</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#207-Course-Schedule"><span class="toc-number">1.2.1.</span> <span class="toc-text">207. Course Schedule</span></a></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Detect-the-Cycle"><span class="toc-number">1.</span> <span class="toc-text">Detect the Cycle</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#261-Graph-Valid-Tree"><span class="toc-number">1.1.</span> <span class="toc-text">261. Graph Valid Tree</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution1-Union-Find"><span class="toc-number">1.1.1.</span> <span class="toc-text">Solution1. Union Find</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#solution2-DFS"><span class="toc-number">1.1.2.</span> <span class="toc-text">solution2. DFS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution3-BFS"><span class="toc-number">1.1.3.</span> <span class="toc-text">Solution3. BFS</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Directed-graph"><span class="toc-number">2.</span> <span class="toc-text">Directed graph</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#207-Course-Schedule"><span class="toc-number">2.1.</span> <span class="toc-text">207. Course Schedule</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution1-DFS"><span class="toc-number">2.1.1.</span> <span class="toc-text">Solution1. DFS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Solution2-BFS"><span class="toc-number">2.1.2.</span> <span class="toc-text">Solution2. BFS</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Graph-gt-Tree"><span class="toc-number">3.</span> <span class="toc-text">Graph =&gt; Tree</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#684-Redundant-Connection"><span class="toc-number">3.1.</span> <span class="toc-text">684. Redundant Connection</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#685-Redundant-Connection-II"><span class="toc-number">3.2.</span> <span class="toc-text">685. Redundant Connection II</span></a></li></ol></li></ol>
                 </div>
             
-            <h1 id="Detect-the-Cycle"><a href="#Detect-the-Cycle" class="headerlink" title="Detect the Cycle"></a>Detect the Cycle</h1><p>Find if a cycle exits in a directed graph</p>
-<h2 id="Undirected-Graph"><a href="#Undirected-Graph" class="headerlink" title="Undirected Graph"></a>Undirected Graph</h2><h3 id="261-Graph-Valid-Tree"><a href="#261-Graph-Valid-Tree" class="headerlink" title="261. Graph Valid Tree"></a><a href="https://leetcode.com/problems/graph-valid-tree/" target="_blank" rel="noopener">261. Graph Valid Tree</a></h3><ul>
-<li><p><strong>Undirected Graph</strong>: Union Find, DFS, BFS</p>
-</li>
-<li><p><strong>解法1. Union Find</strong></p>
-<ul>
-<li>图是以edge的形式表示的，方便union find</li>
+            <h2 id="Detect-the-Cycle"><a href="#Detect-the-Cycle" class="headerlink" title="Detect the Cycle"></a>Detect the Cycle</h2><p>Find if a cycle exits in a graph</p>
+<h3 id="261-Graph-Valid-Tree"><a href="#261-Graph-Valid-Tree" class="headerlink" title="261. Graph Valid Tree"></a><a href="https://leetcode.com/problems/graph-valid-tree/" target="_blank" rel="noopener">261. Graph Valid Tree</a></h3><ul>
+<li><strong>Undirected Graph</strong>: Union Find, DFS, BFS</li>
 </ul>
+<h4 id="Solution1-Union-Find"><a href="#Solution1-Union-Find" class="headerlink" title="Solution1. Union Find"></a>Solution1. Union Find</h4><ul>
+<li>graph is represented by edges!!! signal to use union find!!!</li>
+<li>tree is connected graph without cycle, but graph can be seperate clusters!!!<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validTree</span><span class="params">(self, n, edges)</span>:</span></span><br><span class="line">        root = range(n)</span><br><span class="line">        self.cnt = n</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root[x] == x:</span><br><span class="line">                <span class="keyword">return</span> x</span><br><span class="line">            root[x] = find(root[x])</span><br><span class="line">            <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(x, y)</span>:</span></span><br><span class="line">            rootx = find(x)</span><br><span class="line">            rooty = find(y)</span><br><span class="line">            <span class="keyword">if</span> rootx != rooty:</span><br><span class="line">                root[rootx] = rooty</span><br><span class="line">                self.cnt -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> edges:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> union(i, j):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> self.cnt == <span class="number">1</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validTree</span><span class="params">(self, n, edges)</span>:</span></span><br><span class="line">        root = range(n)</span><br><span class="line">        self.cnt = n</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root[x] == x:</span><br><span class="line">                <span class="keyword">return</span> x</span><br><span class="line">            root[x] = find(root[x])</span><br><span class="line">            <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">union</span><span class="params">(x, y)</span>:</span></span><br><span class="line">            rootx = find(x)</span><br><span class="line">            rooty = find(y)</span><br><span class="line">            <span class="keyword">if</span> rootx != rooty:</span><br><span class="line">                root[rootx] = rooty</span><br><span class="line">                self.cnt -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> edges:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> union(i, j):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> self.cnt == <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>解法2. DFS</strong><ul>
-<li>undirected graph 边都是对称的，防止dfs访问过的边原路返回构成了环，需要加上prev节点</li>
-<li>三个visited的状态0-未访问，1-正在访问，2-已经访问</li>
-<li>有且只有一个联通图</li>
-</ul>
-</li>
+<h4 id="solution2-DFS"><a href="#solution2-DFS" class="headerlink" title="solution2. DFS"></a>solution2. DFS</h4><ul>
+<li>for undirected graph, it’s better to use Union Find and BFS</li>
+<li>prev node !!!!</li>
+<li>3 states for visited: 0-no visited，1-visiting，2-visited</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validTree</span><span class="params">(self, n, edges)</span>:</span></span><br><span class="line">        graph = collections.defaultdict(set)</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> edges:</span><br><span class="line">            graph[i].add(j)</span><br><span class="line">            graph[j].add(i)</span><br><span class="line"></span><br><span class="line">        visited = [<span class="number">0</span>] * n</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.dfs(<span class="number">-1</span>, <span class="number">0</span>, visited, graph):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> (<span class="number">0</span> <span class="keyword">not</span> <span class="keyword">in</span> visited)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, prev, i, visited, graph)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> visited[i] == <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> visited[i] == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        visited[i] = <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> nei <span class="keyword">in</span> graph[i]:</span><br><span class="line">            <span class="keyword">if</span> nei == prev:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.dfs(i, nei, visited, graph):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        visited[i] = <span class="number">2</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>解法3. BFS</strong><ul>
-<li>和DFS思路一样，要避免边的对称性导致的往回检测</li>
-</ul>
+<h4 id="Solution3-BFS"><a href="#Solution3-BFS" class="headerlink" title="Solution3. BFS"></a>Solution3. BFS</h4><ul>
+<li>prev node to avoid edge(a, b) and (b, a) cycle !!!<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validTree</span><span class="params">(self, n, edges)</span>:</span></span><br><span class="line">        graph = collections.defaultdict(set)</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> edges:</span><br><span class="line">            graph[i].add(j)</span><br><span class="line">            graph[j].add(i)</span><br><span class="line"></span><br><span class="line">        visited = [<span class="number">0</span>] * n</span><br><span class="line">        queue = collections.deque([(<span class="number">0</span>, <span class="number">-1</span>)])</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            node, prev = queue.popleft()</span><br><span class="line">            visited[node] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> nei <span class="keyword">in</span> graph[node]:</span><br><span class="line">                <span class="keyword">if</span> nei == prev:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">if</span> visited[nei]:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">                queue.append((nei, node))</span><br><span class="line">        <span class="keyword">return</span> sum(visited) == n</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">validTree</span><span class="params">(self, n, edges)</span>:</span></span><br><span class="line">        graph = collections.defaultdict(set)</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> edges:</span><br><span class="line">            graph[i].add(j)</span><br><span class="line">            graph[j].add(i)</span><br><span class="line"></span><br><span class="line">        visited = [<span class="number">0</span>] * n</span><br><span class="line">        queue = collections.deque([(<span class="number">0</span>, <span class="number">-1</span>)])</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            node, prev = queue.popleft()</span><br><span class="line">            visited[node] = <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> nei <span class="keyword">in</span> graph[node]:</span><br><span class="line">                <span class="keyword">if</span> nei == prev:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">if</span> visited[nei]:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">                queue.append((nei, node))</span><br><span class="line">        <span class="keyword">return</span> sum(visited) == n</span><br></pre></td></tr></table></figure>
 <h2 id="Directed-graph"><a href="#Directed-graph" class="headerlink" title="Directed graph"></a>Directed graph</h2><h3 id="207-Course-Schedule"><a href="#207-Course-Schedule" class="headerlink" title="207. Course Schedule"></a><a href="https://leetcode.com/problems/course-schedule/" target="_blank" rel="noopener">207. Course Schedule</a></h3><ul>
 <li><strong>Directed graph</strong>: DFS, BFS</li>
 </ul>
-<p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]</p>
-<p>有向图，This problem is equivalent to <strong>finding if a cycle exists in a directed graph</strong>. If a cycle exists, no topological ordering exists and therefore it will be impossible to take all courses.</p>
 <ul>
-<li><strong>解法1. DFS</strong></li>
+<li><p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: [0,1]</p>
+</li>
+<li><p>This problem is equivalent to <strong>finding if a cycle exists in a directed graph</strong>. If a cycle exists, no topological ordering exists and therefore it will be impossible to take all courses.</p>
+<h4 id="Solution1-DFS"><a href="#Solution1-DFS" class="headerlink" title="Solution1. DFS"></a>Solution1. DFS</h4><p>visited三种状态，-1正在visit, 0未visit, 1已经visit</p>
+</li>
 </ul>
-<p>visited三种状态，-1正在visit, 0未visit, 1已经visit</p>
 <ul>
 <li>Why 三种状态？or 两种状态？<ul>
 <li>两种状态，做DFS时间复杂度是O(n^2)</li>
@@ -284,11 +277,16 @@ ga('send', 'pageview');
 </li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n)</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">canFinish</span><span class="params">(self, numCourses, prerequisites)</span>:</span></span><br><span class="line">        graph = collections.defaultdict(set)</span><br><span class="line">        <span class="keyword">for</span> c, p <span class="keyword">in</span> prerequisites:</span><br><span class="line">            graph[c].add(p)</span><br><span class="line"></span><br><span class="line">        visited = [<span class="number">0</span>] * numCourses</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(numCourses):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.dfs(i, visited, graph):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, i, visited, graph)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> visited[i] == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> visited[i] == <span class="number">-1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        visited[i] = <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> edge <span class="keyword">in</span> graph[i]:</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.dfs(edge, visited, graph):</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        visited[i] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>解法2. BFS</strong></li>
+<h4 id="Solution2-BFS"><a href="#Solution2-BFS" class="headerlink" title="Solution2. BFS"></a>Solution2. BFS</h4><ul>
+<li>有向图的BFS算法还是比较有意思的，基于indegree的！</li>
+<li><strong>Indegree</strong>, 每次访问入度为0的节点，并删掉所在边，最后sum(indegree) == 0!</li>
 </ul>
-<p>有向图的BFS算法还是比较有意思的，基于indegree的！<br><strong>Indegree</strong>, 每次访问入度为0的节点，并删掉所在边，最后sum(indegree) == 0!</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">canFinish</span><span class="params">(self, numCourses, prerequisites)</span>:</span></span><br><span class="line">        graph = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(numCourses)]</span><br><span class="line">        indegree = [<span class="number">0</span>] * numCourses</span><br><span class="line">        <span class="keyword">for</span> i, j <span class="keyword">in</span> prerequisites:</span><br><span class="line">            graph[j].append(i)</span><br><span class="line">            indegree[i] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        queue = [i <span class="keyword">for</span> i <span class="keyword">in</span> xrange(numCourses) <span class="keyword">if</span> indegree[i] == <span class="number">0</span>]</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            course = queue.pop(<span class="number">0</span>)</span><br><span class="line">            <span class="keyword">for</span> n <span class="keyword">in</span> graph[course]:</span><br><span class="line">                indegree[n] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> indegree[n] == <span class="number">0</span>:</span><br><span class="line">                    queue.append(n)</span><br><span class="line">        <span class="keyword">return</span> sum(indegree) == <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h2 id="Graph-gt-Tree"><a href="#Graph-gt-Tree" class="headerlink" title="Graph =&gt; Tree"></a>Graph =&gt; Tree</h2><h3 id="684-Redundant-Connection"><a href="#684-Redundant-Connection" class="headerlink" title="684. Redundant Connection"></a><a href="https://leetcode.com/problems/redundant-connection/" target="_blank" rel="noopener">684. Redundant Connection</a></h3><ul>
+<li>union find<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findRedundantConnection</span><span class="params">(self, edges)</span>:</span></span><br><span class="line">        n = len(edges)</span><br><span class="line">        root = range(n+<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> root[x] == x:</span><br><span class="line">                <span class="keyword">return</span> x</span><br><span class="line">            root[x] = find(root[x])</span><br><span class="line">            <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> src, dst <span class="keyword">in</span> edges:</span><br><span class="line">            root1 = find(src)</span><br><span class="line">            root2 = find(dst)</span><br><span class="line">            <span class="keyword">if</span> root1 != root2:</span><br><span class="line">                root[root1] = root2</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> [src, dst]</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="685-Redundant-Connection-II"><a href="#685-Redundant-Connection-II" class="headerlink" title="685. Redundant Connection II"></a><a href="https://leetcode.com/problems/redundant-connection-ii/" target="_blank" rel="noopener">685. Redundant Connection II</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findRedundantDirectedConnection</span><span class="params">(self, edges)</span>:</span></span><br><span class="line">        candidates = []</span><br><span class="line">        n = len(edges)</span><br><span class="line">        parent = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i, (p, c) <span class="keyword">in</span> enumerate(edges):</span><br><span class="line">            <span class="keyword">if</span> c <span class="keyword">in</span> parent:</span><br><span class="line">                candidates = [(parent[c], c), (p, c)]</span><br><span class="line">                edges[i][<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                parent[c] = p</span><br><span class="line"></span><br><span class="line">        <span class="comment"># candiates is none =&gt; only cycle case</span></span><br><span class="line">        <span class="comment"># else =&gt; indegree &gt; 1 case</span></span><br><span class="line"></span><br><span class="line">        root = range(n+<span class="number">1</span>)</span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">find</span><span class="params">(x)</span>:</span></span><br><span class="line">            <span class="keyword">if</span> x == root[x]:</span><br><span class="line">                <span class="keyword">return</span> x</span><br><span class="line">            root[x] = find(root[x])</span><br><span class="line">            <span class="keyword">return</span> root[x]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> p, c <span class="keyword">in</span> edges:</span><br><span class="line">            root1 = find(c)</span><br><span class="line">            root2 = find(p)</span><br><span class="line">            <span class="keyword">if</span> root1 == root2:</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> candidates:</span><br><span class="line">                    <span class="keyword">return</span> [p, c]</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> candidates[<span class="number">0</span>]</span><br><span class="line">            root[root1] = root2</span><br><span class="line">        <span class="keyword">return</span> candidates[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -299,7 +297,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/08/01/detect-the-cycle/" data-id="cjp0plc7s000tf0u0d52k0im5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/12/01/graph-cycle/" data-id="cjpmt2x8m001nhdu0890ord70" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -374,19 +372,19 @@ ga('send', 'pageview');
         
 <nav id="article-nav">
     
-        <a href="/2018/08/06/linked-list-basic/" id="article-nav-newer" class="article-nav-link-wrap">
+        <a href="/2018/12/02/bfs/" id="article-nav-newer" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Newer</strong>
             <div class="article-nav-title">
                 
-                    Linked List Basic
+                    BFS
                 
             </div>
         </a>
     
     
-        <a href="/2018/08/01/graph/" id="article-nav-older" class="article-nav-link-wrap">
+        <a href="/2018/11/27/dp-sequence-adjacent/" id="article-nav-older" class="article-nav-link-wrap">
             <strong class="article-nav-caption">Older</strong>
-            <div class="article-nav-title">Graph</div>
+            <div class="article-nav-title">DP - Sequence Adjacent Element</div>
         </a>
     
 </nav>
@@ -414,6 +412,33 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/12/03/bfs-matrix/" class="title">BFS Matrix</a></p>
+                            <p class="item-date"><time datetime="2018-12-03T13:33:40.000Z" itemprop="datePublished">2018-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/12/02/bfs/" class="title">BFS</a></p>
+                            <p class="item-date"><time datetime="2018-12-03T03:29:29.000Z" itemprop="datePublished">2018-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/12/01/graph-cycle/" class="title">Graph Cycle</a></p>
+                            <p class="item-date"><time datetime="2018-12-01T15:35:11.000Z" itemprop="datePublished">2018-12-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/11/27/dp-sequence-adjacent/" class="title">DP - Sequence Adjacent Element</a></p>
                             <p class="item-date"><time datetime="2018-11-27T16:26:04.000Z" itemprop="datePublished">2018-11-27</time></p>
                         </div>
@@ -425,33 +450,6 @@ ga('send', 'pageview');
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/11/23/topic-calculator/" class="title">Calculator</a></p>
                             <p class="item-date"><time datetime="2018-11-23T22:46:58.000Z" itemprop="datePublished">2018-11-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/17/topic-serialization/" class="title">Serialization</a></p>
-                            <p class="item-date"><time datetime="2018-11-17T21:32:56.000Z" itemprop="datePublished">2018-11-17</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/15/stack-monotone/" class="title">Monotone Stack</a></p>
-                            <p class="item-date"><time datetime="2018-11-16T03:52:01.000Z" itemprop="datePublished">2018-11-15</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/14/topic-interval/" class="title">Interval Problem</a></p>
-                            <p class="item-date"><time datetime="2018-11-14T17:14:48.000Z" itemprop="datePublished">2018-11-14</time></p>
                         </div>
                     </li>
                 
@@ -473,7 +471,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 

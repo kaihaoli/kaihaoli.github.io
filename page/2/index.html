@@ -188,6 +188,439 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-topic-points" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/11/09/topic-points/">Input are Points</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/11/09/topic-points/">
+            <time datetime="2018-11-09T21:11:54.000Z" itemprop="datePublished">2018-11-09</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/topic/">topic</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="Lies-inside-or-outside"><a href="#Lies-inside-or-outside" class="headerlink" title="Lies inside or outside"></a>Lies inside or outside</h2><h3 id="Point-Lies-inside-or-outside-a-polygon"><a href="#Point-Lies-inside-or-outside-a-polygon" class="headerlink" title="Point Lies inside or outside a polygon"></a><a href="https://www.geeksforgeeks.org/how-to-check-if-a-given-point-lies-inside-a-polygon/" target="_blank" rel="noopener">Point Lies inside or outside a polygon</a></h3><ol>
+<li>Draw a horizontal line to the right of each point and extend it to infinity</li>
+<li>Count the number of times the line intersects with polygon edges.</li>
+<li>A point is inside the polygon if either count of intersections is odd or point lies on an edge of polygon. If none of the conditions is true, then point lies outside.</li>
+</ol>
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><h3 id="939-Minimum-Area-Rectangle"><a href="#939-Minimum-Area-Rectangle" class="headerlink" title="939. Minimum Area Rectangle"></a><a href="">939. Minimum Area Rectangle</a></h3><p>Given some points, please calculate the minimum Rectangle.<br>Height and width must be parallel to axes<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minAreaRect</span><span class="params">(self, points)</span>:</span></span><br><span class="line">        pset = set()</span><br><span class="line">        <span class="keyword">for</span> x, y <span class="keyword">in</span> points:</span><br><span class="line">            pset.add((x, y))</span><br><span class="line"></span><br><span class="line">        n = len(points)</span><br><span class="line">        res = float(<span class="string">'inf'</span>)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(n):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i+<span class="number">1</span>, n):</span><br><span class="line">                x1, y1 = points[i]</span><br><span class="line">                x2, y2 = points[j]</span><br><span class="line">                <span class="keyword">if</span> x1 == x2 <span class="keyword">or</span> y1 == y2:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">if</span> (x1, y2) <span class="keyword">not</span> <span class="keyword">in</span> pset <span class="keyword">or</span> (x2, y1) <span class="keyword">not</span> <span class="keyword">in</span> pset:</span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">                res = min(res, abs(x2-x1) * abs(y2-y1))</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span> <span class="keyword">if</span> res == float(<span class="string">'inf'</span>) <span class="keyword">else</span> res</span><br></pre></td></tr></table></figure></p>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/11/09/topic-points/" data-id="cjpmt2xd3005ghdu0gwlks7wq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-string-parenthesis" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/11/08/string-parenthesis/">String Parenthesis</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/11/08/string-parenthesis/">
+            <time datetime="2018-11-09T03:28:02.000Z" itemprop="datePublished">2018-11-08</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/dfs/">dfs</a>, <a class="tag-link" href="/tags/string/">string</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h3 id="678-Valid-Parenthesis-String"><a href="#678-Valid-Parenthesis-String" class="headerlink" title="678. Valid Parenthesis String"></a><a href="https://leetcode.com/problems/valid-parenthesis-string" target="_blank" rel="noopener">678. Valid Parenthesis String</a></h3><ul>
+<li>If you use stack to solve this question, it will be complex to handle different cases!</li>
+<li>If you use dfs to search if is valid, it will be time consuming!</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">checkValidString</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        low = high = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> ch == <span class="string">'('</span>:</span><br><span class="line">                low += <span class="number">1</span></span><br><span class="line">                high += <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> ch == <span class="string">')'</span>:</span><br><span class="line">                low = max(<span class="number">0</span>, low<span class="number">-1</span>)</span><br><span class="line">                high -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> high &lt; <span class="number">0</span>:</span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">            <span class="keyword">else</span>: <span class="comment"># "*"</span></span><br><span class="line">                low = max(<span class="number">0</span>, low<span class="number">-1</span>)</span><br><span class="line">                high += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> low == <span class="number">0</span></span><br></pre></td></tr></table></figure>
+<h3 id="22-Generate-Parentheses"><a href="#22-Generate-Parentheses" class="headerlink" title="22. Generate Parentheses"></a><a href="https://leetcode.com/problems/generate-parentheses/" target="_blank" rel="noopener">22. Generate Parentheses</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generateParenthesis</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        res = []</span><br><span class="line">        self.dfs(<span class="number">0</span>, <span class="number">0</span>, n, [], res)</span><br><span class="line">        <span class="keyword">return</span> res</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, left, right, n, path, res)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> right == n:</span><br><span class="line">            res.append(<span class="string">''</span>.join(path))</span><br><span class="line">            <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> left &lt; n:</span><br><span class="line">            self.dfs(left + <span class="number">1</span>, right, n, path + [<span class="string">'('</span>], res)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> right &lt; left:</span><br><span class="line">            self.dfs(left, right + <span class="number">1</span>, n, path + [<span class="string">')'</span>], res)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Follow up : 3 {}, 2(), 1[]</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/11/08/string-parenthesis/" data-id="cjpmt2xcg004fhdu0xtl5k7c5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
+    <article id="post-tree-definition" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/11/06/tree-definition/">Tree Definition</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/11/06/tree-definition/">
+            <time datetime="2018-11-06T14:23:54.000Z" itemprop="datePublished">2018-11-06</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/tree/">tree</a>
+    </div>
+
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="Definition-of-Tree"><a href="#Definition-of-Tree" class="headerlink" title="Definition of Tree"></a>Definition of Tree</h2><ul>
+<li>at most two children node</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for a binary tree node.</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, x)</span>:</span></span><br><span class="line">        self.val = x</span><br><span class="line">        self.left = <span class="keyword">None</span></span><br><span class="line">        self.right = <span class="keyword">None</span></span><br></pre></td></tr></table></figure>
+<h2 id="Application"><a href="#Application" class="headerlink" title="Application"></a>Application</h2><ul>
+<li>Social networks analysis</li>
+<li>Information indexing</li>
+<li>Information compression</li>
+</ul>
+<h3 id="388-Longest-Absolute-File-Path"><a href="#388-Longest-Absolute-File-Path" class="headerlink" title="388. Longest Absolute File Path"></a><a href="https://leetcode.com/problems/longest-absolute-file-path/" target="_blank" rel="noopener">388. Longest Absolute File Path</a></h3><ul>
+<li>use Stack to simulate the traversal of file system</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lengthLongestPath</span><span class="params">(self, input)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">countT</span><span class="params">(s)</span>:</span></span><br><span class="line">            cnt = <span class="number">0</span></span><br><span class="line">            <span class="keyword">for</span> ch <span class="keyword">in</span> s:</span><br><span class="line">                <span class="keyword">if</span> ch == <span class="string">'\t'</span>:</span><br><span class="line">                    cnt += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    <span class="keyword">return</span> cnt</span><br><span class="line">            <span class="keyword">return</span> cnt</span><br><span class="line"></span><br><span class="line">        dirs = input.split(<span class="string">'\n'</span>)</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        stack = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(dirs)):</span><br><span class="line">            path = dirs[i]</span><br><span class="line">            n = countT(path)</span><br><span class="line">            <span class="keyword">while</span> n &lt; len(stack):</span><br><span class="line">                stack.pop()</span><br><span class="line">            stack.append(path[n:])</span><br><span class="line">            <span class="keyword">if</span> <span class="string">'.'</span> <span class="keyword">in</span> stack[<span class="number">-1</span>]:</span><br><span class="line">                res = max(res, len(<span class="string">'/'</span>.join(stack)))</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h2 id="Terms"><a href="#Terms" class="headerlink" title="Terms"></a>Terms</h2><ul>
+<li><strong>Balanced Binary Tree</strong><br>Balanced Binary Tree is commonly defined as a binary tree in which the depth of the left and right subtrees of <strong>every node</strong> differ by 1 or less</li>
+<li><strong>Complete Binary Tree</strong><br>Complete Binary Tree is a banary tree in which every level, except possibly the last, is completely filled, and all nodes are as far left as possible.</li>
+<li><strong>Binary Search Tree</strong><br>Binary Search Tree is for <strong>every sigle node</strong> in the tree, the values in its left <strong>subtree</strong> are all smaller than its value, and the values in its right subtree are all larger than its value.</li>
+</ul>
+<h3 id="919-Complete-Binary-Tree-Inserter"><a href="#919-Complete-Binary-Tree-Inserter" class="headerlink" title="919. Complete Binary Tree Inserter"></a><a href="https://leetcode.com/problems/complete-binary-tree-inserter/" target="_blank" rel="noopener">919. Complete Binary Tree Inserter</a></h3><h4 id="Solution1-Array"><a href="#Solution1-Array" class="headerlink" title="Solution1. Array"></a>Solution1. Array</h4><ul>
+<li>For Complete Binary Search Tree, we can use an array to save all the node index! Then we can find its parent using the index relation!</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CBTInserter</span>:</span></span><br><span class="line">    <span class="comment"># Space : O(n) n is the number of the nodes</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        self.nodes = []</span><br><span class="line">        queue = collections.deque([root])</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            node = queue.popleft()</span><br><span class="line">            self.nodes.append(node)</span><br><span class="line">            <span class="keyword">if</span> node.left:</span><br><span class="line">                queue.append(node.left)</span><br><span class="line">            <span class="keyword">if</span> node.right:</span><br><span class="line">                queue.append(node.right)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Time : O(1)            </span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, v)</span>:</span></span><br><span class="line">        n = len(self.nodes)</span><br><span class="line">        parent = self.nodes[(n - <span class="number">1</span>) // <span class="number">2</span>]</span><br><span class="line">        node = TreeNode(v)</span><br><span class="line">        self.nodes.append(node)</span><br><span class="line">        <span class="keyword">if</span> n % <span class="number">2</span> == <span class="number">1</span>:</span><br><span class="line">            parent.left = node</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            parent.right = node</span><br><span class="line">        <span class="keyword">return</span> parent.val</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_root</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.nodes[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<h4 id="Solution2-Deque"><a href="#Solution2-Deque" class="headerlink" title="Solution2. Deque"></a>Solution2. Deque</h4><ul>
+<li>Have the Same time and space complexity, but actually use half spaces than sol1!!<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">CBTInserter</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        self.root = root</span><br><span class="line">        self.deque = collections.deque()</span><br><span class="line">        queue = collections.deque([root])</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            node = queue.popleft()</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> node.left <span class="keyword">or</span> <span class="keyword">not</span> node.right:</span><br><span class="line">                self.deque.append(node)</span><br><span class="line">            <span class="keyword">if</span> node.left:</span><br><span class="line">                queue.append(node.left)</span><br><span class="line">            <span class="keyword">if</span> node.right:</span><br><span class="line">                queue.append(node.right)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, v)</span>:</span></span><br><span class="line">        node = TreeNode(v)</span><br><span class="line">        parent = self.deque[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> parent.left:</span><br><span class="line">            parent.left = node</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            parent.right = node</span><br><span class="line">            self.deque.popleft()</span><br><span class="line">        self.deque.append(node)</span><br><span class="line">        <span class="keyword">return</span> parent.val</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get_root</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self.root</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="222-Count-Complete-Tree-Nodes"><a href="#222-Count-Complete-Tree-Nodes" class="headerlink" title="222. Count Complete Tree Nodes"></a><a href="https://leetcode.com/problems/count-complete-tree-nodes/" target="_blank" rel="noopener">222. Count Complete Tree Nodes</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">countNodes</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        left = self.getDepth(root.left)</span><br><span class="line">        right = self.getDepth(root.right)</span><br><span class="line">        <span class="keyword">if</span> left == right:</span><br><span class="line">            <span class="keyword">return</span> (<span class="number">2</span>**left) + self.countNodes(root.right)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> (<span class="number">2</span>**right) + self.countNodes(root.left)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getDepth</span><span class="params">(self, root)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> root:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        cur = root</span><br><span class="line">        <span class="keyword">while</span> cur:</span><br><span class="line">            cur = cur.left</span><br><span class="line">            cnt += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> cnt</span><br></pre></td></tr></table></figure>
+<h4 id="Follow-Up"><a href="#Follow-Up" class="headerlink" title="Follow Up"></a>Follow Up</h4><ul>
+<li>Given the key n, binary tree key is [1, 2, 3, 4 …], how to check if the node with key n in the complete binary tree ?<br>Time : O(log n)</li>
+<li>Can you count the number of nodes in complete binary tree, based on previous question?<br>Binary Search + Previous Question. Time ($(logn)^2$)</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/11/06/tree-definition/" data-id="cjpmt2xdi005yhdu0x89ds6as" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-topic-two-pointers" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -257,7 +690,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/11/04/topic-two-pointers/" data-id="cjp0plcan004sf0u0o9ttemn6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/11/04/topic-two-pointers/" data-id="cjpmt2xd6005khdu0anmarux7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -383,7 +816,7 @@ ga('send', 'pageview');
 </ul>
 <h4 id="Solution1-Recursion"><a href="#Solution1-Recursion" class="headerlink" title="Solution1. Recursion"></a>Solution1. Recursion</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isSubsequence</span><span class="params">(self, s, t)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> s:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(t)):</span><br><span class="line">            <span class="keyword">if</span> t[i] == s[<span class="number">0</span>]:</span><br><span class="line">                <span class="keyword">return</span> self.isSubsequence(s[<span class="number">1</span>:], t[i+<span class="number">1</span>:])</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
 <h4 id="Solution2-Iteration"><a href="#Solution2-Iteration" class="headerlink" title="Solution2. Iteration"></a>Solution2. Iteration</h4><ul>
-<li>Two Pointer<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isSubsequence</span><span class="params">(self, s, t)</span>:</span></span><br><span class="line">        p = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(t)):</span><br><span class="line">            <span class="keyword">if</span> p &gt;= len(s):</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> s[p] == t[i]:</span><br><span class="line">                p += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> p == len(s)</span><br></pre></td></tr></table></figure>
+<li>Two Pointer and Greedy<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isSubsequence</span><span class="params">(self, s, t)</span>:</span></span><br><span class="line">        p = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(t)):</span><br><span class="line">            <span class="keyword">if</span> p &gt;= len(s):</span><br><span class="line">                <span class="keyword">break</span></span><br><span class="line">            <span class="keyword">if</span> s[p] == t[i]:</span><br><span class="line">                p += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> p == len(s)</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h4 id="Follow-up-multiple-strings"><a href="#Follow-up-multiple-strings" class="headerlink" title="Follow up : multiple strings"></a>Follow up : multiple strings</h4><p>If there are lots of incoming S, say S1, S2, … , Sk where k &gt;= 1B, and you want to check one by one to see if T has its subsequence.</p>
@@ -401,6 +834,7 @@ ga('send', 'pageview');
 <li>Offline Algorithms, Precalculate words</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">numMatchingSubseq</span><span class="params">(self, S, words)</span>:</span></span><br><span class="line">        indices = [[] <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">26</span>)]</span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">            indices[ord(word[<span class="number">0</span>]) - ord(<span class="string">'a'</span>)].append(word[<span class="number">1</span>:])</span><br><span class="line"></span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> ch <span class="keyword">in</span> S:</span><br><span class="line">            cans = indices[ord(ch)-ord(<span class="string">'a'</span>)]</span><br><span class="line">            newCans = []</span><br><span class="line">            <span class="keyword">for</span> can <span class="keyword">in</span> cans:</span><br><span class="line">                <span class="keyword">if</span> len(can) == <span class="number">0</span>:</span><br><span class="line">                    cnt += <span class="number">1</span></span><br><span class="line">                    <span class="keyword">continue</span></span><br><span class="line">                <span class="keyword">if</span> can[<span class="number">0</span>] == ch:</span><br><span class="line">                    newCans.append(can[<span class="number">1</span>:])</span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    indices[ord(can[<span class="number">0</span>])-ord(<span class="string">'a'</span>)].append(can[<span class="number">1</span>:])</span><br><span class="line">            indices[ord(ch)-ord(<span class="string">'a'</span>)] = newCans</span><br><span class="line">        <span class="keyword">return</span> cnt</span><br></pre></td></tr></table></figure>
+<h3 id="727-Minimum-Window-Subsequence"><a href="#727-Minimum-Window-Subsequence" class="headerlink" title="727. Minimum Window Subsequence"></a><a href="https://leetcode.com/problems/minimum-window-subsequence/" target="_blank" rel="noopener">727. Minimum Window Subsequence</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minWindow</span><span class="params">(self, S, T)</span>:</span></span><br><span class="line">        n = len(S)</span><br><span class="line">        <span class="comment"># Must be the start index of the results!!!</span></span><br><span class="line">        cur = [i <span class="keyword">if</span> S[i] == T[<span class="number">0</span>] <span class="keyword">else</span> <span class="number">-1</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(n)]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> xrange(<span class="number">1</span>, len(T)):</span><br><span class="line">            last = <span class="number">-1</span></span><br><span class="line">            new = [<span class="number">-1</span>] * n</span><br><span class="line">            <span class="keyword">for</span> i, ch <span class="keyword">in</span> enumerate(S):</span><br><span class="line">                <span class="keyword">if</span> last &gt;= <span class="number">0</span> <span class="keyword">and</span> ch == T[j]:</span><br><span class="line">                    new[i] = last</span><br><span class="line">                <span class="keyword">if</span> cur[i] &gt;= <span class="number">0</span>:</span><br><span class="line">                    last = cur[i]</span><br><span class="line">            cur = new</span><br><span class="line"></span><br><span class="line">        start, end = <span class="number">0</span>, n</span><br><span class="line">        <span class="keyword">for</span> e, s <span class="keyword">in</span> enumerate(cur):</span><br><span class="line">            <span class="keyword">if</span> s &gt;= <span class="number">0</span> <span class="keyword">and</span> e - s &lt; end - start:</span><br><span class="line">                start, end = s, e</span><br><span class="line">        <span class="keyword">return</span> S[start:end+<span class="number">1</span>] <span class="keyword">if</span> end != n <span class="keyword">else</span> <span class="string">""</span></span><br></pre></td></tr></table></figure>
 
         
         </div>
@@ -411,7 +845,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/11/03/string-subsequence/" data-id="cjp0plca4003yf0u06r3nfccm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/11/03/string-subsequence/" data-id="cjpmt2xcj004lhdu02liu6c6s" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -543,7 +977,7 @@ ga('send', 'pageview');
 </ul>
 <h3 id="322-Coin-Change"><a href="#322-Coin-Change" class="headerlink" title="322. Coin Change"></a><a href="https://leetcode.com/problems/coin-change/" target="_blank" rel="noopener">322. Coin Change</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">coinChange</span><span class="params">(self, coins, amount)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> amount == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        dp = [float(<span class="string">'inf'</span>)] * (amount+<span class="number">1</span>)</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, amount+<span class="number">1</span>):</span><br><span class="line">            <span class="keyword">for</span> coin <span class="keyword">in</span> coins:</span><br><span class="line">                <span class="keyword">if</span> i-coin &gt;= <span class="number">0</span>:</span><br><span class="line">                    dp[i] = min(dp[i], dp[i-coin]+<span class="number">1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span> <span class="keyword">if</span> dp[<span class="number">-1</span>] == float(<span class="string">'inf'</span>) <span class="keyword">else</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
 <h2 id="Count"><a href="#Count" class="headerlink" title="Count"></a>Count</h2><h3 id="518-Coin-Change-2"><a href="#518-Coin-Change-2" class="headerlink" title="518. Coin Change 2"></a><a href="https://leetcode.com/problems/coin-change-2/" target="_blank" rel="noopener">518. Coin Change 2</a></h3><ul>
-<li>Why use for loop in this order???<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">change</span><span class="params">(self, amount, coins)</span>:</span></span><br><span class="line">        dp = [<span class="number">0</span>] * (amount+<span class="number">1</span>)</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> coin <span class="keyword">in</span> coins:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(coin, amount+<span class="number">1</span>):</span><br><span class="line">                dp[i] += dp[i-coin]</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
+<li>Why use for loop in this order??? coin first, then amount?<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">change</span><span class="params">(self, amount, coins)</span>:</span></span><br><span class="line">        dp = [<span class="number">0</span>] * (amount+<span class="number">1</span>)</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span></span><br><span class="line">        <span class="keyword">for</span> coin <span class="keyword">in</span> coins:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(coin, amount+<span class="number">1</span>):</span><br><span class="line">                dp[i] += dp[i-coin]</span><br><span class="line">        <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 
@@ -556,155 +990,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/11/02/dp-bag/" data-id="cjp0plc7w000zf0u0xvy0vpei" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-bfs-matrix" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/11/01/bfs-matrix/">BFS Matrix</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/11/01/bfs-matrix/">
-            <time datetime="2018-11-01T12:33:40.000Z" itemprop="datePublished">2018-11-01</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/bfs/">bfs</a>, <a class="tag-link" href="/tags/matrix/">matrix</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h3 id="296-Best-Meeting-Point"><a href="#296-Best-Meeting-Point" class="headerlink" title="296. Best Meeting Point"></a><a href="https://leetcode.com/problems/best-meeting-point/" target="_blank" rel="noopener">296. Best Meeting Point</a></h3><h4 id="Solution1-Sort"><a href="#Solution1-Sort" class="headerlink" title="Solution1. Sort"></a>Solution1. Sort</h4><ul>
-<li>Time : O(mn), Space : O(mn)</li>
-<li>Only for this case that we do not have any obstacle and distance is Manhattan Distance</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minTotalDistance</span><span class="params">(self, grid)</span>:</span></span><br><span class="line">        xnums, ynums = [], []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(grid)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(len(grid[<span class="number">0</span>])):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="number">1</span>:</span><br><span class="line">                    xnums.append(i)</span><br><span class="line">                    ynums.append(j)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> self.minDistance(xnums) + self.minDistance(ynums)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minDistance</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        nums = sorted(nums)</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        left, right = <span class="number">0</span>, len(nums)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> left &lt; right:</span><br><span class="line">            res += nums[right] - nums[left]</span><br><span class="line">            right -= <span class="number">1</span></span><br><span class="line">            left += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-<h4 id="Solution2-BFS-TLE"><a href="#Solution2-BFS-TLE" class="headerlink" title="Solution2. BFS - TLE"></a>Solution2. BFS - TLE</h4><ul>
-<li>Time : O($(mn)^2$), Space : O(mn)</li>
-<li>More General Solution, But have high time complexity!!<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minTotalDistance</span><span class="params">(self, grid)</span>:</span></span><br><span class="line">        m, n = len(grid), len(grid[<span class="number">0</span>])</span><br><span class="line">        self.dis = [[<span class="number">0</span>] * n <span class="keyword">for</span> _ <span class="keyword">in</span> range(m)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="number">1</span>:</span><br><span class="line">                    self.bfs(grid, i, j)</span><br><span class="line">        <span class="keyword">return</span> min([self.dis[i][j] <span class="keyword">for</span> i <span class="keyword">in</span> range(m) <span class="keyword">for</span> j <span class="keyword">in</span> range(n)])</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bfs</span><span class="params">(self, grid, i, j)</span>:</span></span><br><span class="line">        queue = collections.deque([(i, j, <span class="number">0</span>)])</span><br><span class="line">        visited = set([(i, j)])</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            ni, nj, d = queue.popleft()</span><br><span class="line">            self.dis[ni][nj] += d</span><br><span class="line"></span><br><span class="line">            <span class="keyword">for</span> di, dj <span class="keyword">in</span> [(<span class="number">1</span>, <span class="number">0</span>), (<span class="number">-1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>), (<span class="number">0</span>, <span class="number">-1</span>)]:</span><br><span class="line">                <span class="keyword">if</span> (<span class="number">0</span> &lt;= ni+di &lt;= len(grid)<span class="number">-1</span> <span class="keyword">and</span></span><br><span class="line">                    <span class="number">0</span> &lt;= nj+dj &lt;= len(grid[<span class="number">0</span>])<span class="number">-1</span> <span class="keyword">and</span></span><br><span class="line">                    (ni+di, nj+dj) <span class="keyword">not</span> <span class="keyword">in</span> visited):</span><br><span class="line">                    queue.append((ni+di, nj+dj, d+<span class="number">1</span>))</span><br><span class="line">                    visited.add((ni+di, nj+dj))</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="317-Shortest-Distance-from-All-Buildings"><a href="#317-Shortest-Distance-from-All-Buildings" class="headerlink" title="317. Shortest Distance from All Buildings"></a><a href="https://leetcode.com/problems/shortest-distance-from-all-buildings/" target="_blank" rel="noopener">317. Shortest Distance from All Buildings</a></h3><ul>
-<li>Key idea : people to building or building to people ?<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shortestDistance</span><span class="params">(self, grid)</span>:</span></span><br><span class="line">        m, n = len(grid), len(grid[<span class="number">0</span>])</span><br><span class="line">        sums = collections.defaultdict(int)</span><br><span class="line">        bcnt = collections.defaultdict(int)</span><br><span class="line">        total = <span class="number">0</span></span><br><span class="line">        directions = [(<span class="number">-1</span>,<span class="number">0</span>), (<span class="number">0</span>,<span class="number">-1</span>), (<span class="number">0</span>,<span class="number">1</span>), (<span class="number">1</span>,<span class="number">0</span>)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(n):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="number">1</span>: <span class="comment"># Run BFS</span></span><br><span class="line">                    total += <span class="number">1</span></span><br><span class="line">                    visited = set()</span><br><span class="line">                    queue = [(i,j,<span class="number">0</span>)]</span><br><span class="line">                    <span class="keyword">while</span> queue:</span><br><span class="line">                        x, y, val = queue.pop(<span class="number">0</span>)</span><br><span class="line">                        <span class="keyword">for</span> dx, dy <span class="keyword">in</span> directions:</span><br><span class="line">                            <span class="keyword">if</span> <span class="number">0</span> &lt;= x+dx &lt;= m<span class="number">-1</span> <span class="keyword">and</span> <span class="number">0</span> &lt;= y+dy &lt;= n<span class="number">-1</span> <span class="keyword">and</span> (x+dx, y+dy) <span class="keyword">not</span> <span class="keyword">in</span> visited <span class="keyword">and</span> grid[x+dx][y+dy] == <span class="number">0</span>:</span><br><span class="line">                                visited.add((x+dx, y+dy))</span><br><span class="line">                                queue.append((x+dx, y+dy, val+<span class="number">1</span>))</span><br><span class="line">                                sums[(x+dx, y+dy)] += val+<span class="number">1</span></span><br><span class="line">                                bcnt[(x+dx, y+dy)] += <span class="number">1</span></span><br><span class="line">        res = float(<span class="string">'inf'</span>)</span><br><span class="line">        <span class="keyword">for</span> x, y <span class="keyword">in</span> bcnt.keys():</span><br><span class="line">            <span class="keyword">if</span> bcnt[(x, y)] == total:</span><br><span class="line">                res = min(res, sums[(x, y)])</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span> <span class="keyword">if</span> res == float(<span class="string">'inf'</span>) <span class="keyword">else</span> res</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<ul>
-<li>where to add visited in BFS? when pop out or push in?</li>
-<li>add visited hash set when you append an element in the queue!!!</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">shortestDistance</span><span class="params">(self, grid)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> grid:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">        m, n = len(grid), len(grid[<span class="number">0</span>])</span><br><span class="line">        matrix = [[[<span class="number">0</span>, <span class="number">0</span>] <span class="keyword">for</span> _ <span class="keyword">in</span> range(n)] <span class="keyword">for</span> _ <span class="keyword">in</span> range(m)]</span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="number">1</span>:</span><br><span class="line">                    self.bfs(matrix, i, j, grid)</span><br><span class="line">                    cnt += <span class="number">1</span></span><br><span class="line">        res = float(<span class="string">'inf'</span>)            </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(m):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(n):</span><br><span class="line">                <span class="keyword">if</span> grid[i][j] == <span class="number">0</span> <span class="keyword">and</span> matrix[i][j][<span class="number">1</span>] == cnt:</span><br><span class="line">                    res = min(res, matrix[i][j][<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span> <span class="keyword">if</span> res == float(<span class="string">'inf'</span>) <span class="keyword">else</span> res</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">bfs</span><span class="params">(self, matrix, i, j, grid)</span>:</span></span><br><span class="line">        m, n = len(grid), len(grid[<span class="number">0</span>])</span><br><span class="line">        queue = collections.deque([(i, j, <span class="number">0</span>)])</span><br><span class="line">        visited = set()</span><br><span class="line">        visited.add((i, j))</span><br><span class="line">        <span class="keyword">while</span> queue:</span><br><span class="line">            x, y, step = queue.popleft()</span><br><span class="line">            matrix[x][y][<span class="number">0</span>] += step</span><br><span class="line">            matrix[x][y][<span class="number">1</span>] += <span class="number">1</span></span><br><span class="line">            <span class="keyword">for</span> dx, dy <span class="keyword">in</span> [(<span class="number">-1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">-1</span>), (<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>)]:</span><br><span class="line">                nx, ny = x+dx, y+dy</span><br><span class="line">                <span class="keyword">if</span> <span class="number">0</span> &lt;= nx &lt;= m<span class="number">-1</span> <span class="keyword">and</span> <span class="number">0</span> &lt;= ny &lt;= n<span class="number">-1</span> <span class="keyword">and</span> (nx, ny) <span class="keyword">not</span> <span class="keyword">in</span> visited <span class="keyword">and</span> grid[nx][ny] == <span class="number">0</span>:</span><br><span class="line">                    queue.append((nx, ny, step+<span class="number">1</span>))</span><br><span class="line">                    visited.add((nx, ny))</span><br></pre></td></tr></table></figure>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/11/01/bfs-matrix/" data-id="cjp0plc6t0000f0u05hdcvncm" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/11/02/dp-bag/" data-id="cjpmt2x89000zhdu0c5oqx6ut" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -843,7 +1129,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/31/string-pattern/" data-id="cjp0plca2003uf0u0a760mine" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/31/string-pattern/" data-id="cjpmt2xch004ihdu0vjzzwbcz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -991,7 +1277,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/30/dp-matrix/" data-id="cjp0plc810015f0u09me7yta2" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/30/dp-matrix/" data-id="cjpmt2x8e0019hdu0d5z8y683" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1125,7 +1411,7 @@ ga('send', 'pageview');
 <li>Backtrack: turn 2 times to revert, move 1 step, and turn 2 times to revert back.<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">cleanRoom</span><span class="params">(self, robot)</span>:</span></span><br><span class="line">        visited = set()</span><br><span class="line">        self.dfs(robot, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, visited)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dfs</span><span class="params">(self, robot, i, j, k, visited)</span>:</span></span><br><span class="line">        robot.clean()</span><br><span class="line">        visited.add((i, j))</span><br><span class="line"></span><br><span class="line">        dirs = [(<span class="number">-1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">-1</span>), (<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">1</span>)]</span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">4</span>):</span><br><span class="line">            di, dj = dirs[k]</span><br><span class="line">            ni, nj = i + di, j + dj</span><br><span class="line">            <span class="keyword">if</span> (ni, nj) <span class="keyword">not</span> <span class="keyword">in</span> visited <span class="keyword">and</span> robot.move():</span><br><span class="line">                self.dfs(robot, ni, nj, k, visited)</span><br><span class="line">                robot.turnLeft()</span><br><span class="line">                robot.turnLeft()</span><br><span class="line">                robot.move()</span><br><span class="line">                robot.turnLeft()</span><br><span class="line">                robot.turnLeft()</span><br><span class="line">            robot.turnLeft()</span><br><span class="line">            k = (k + <span class="number">1</span>) % <span class="number">4</span></span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-
+<h3 id=""><a href="#" class="headerlink" title=""></a><a href=""></a></h3>
         
         </div>
         <footer class="article-footer">
@@ -1135,7 +1421,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/29/dfs-matrix/" data-id="cjp0plc7f000cf0u0jshv4gtz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/29/dfs-matrix/" data-id="cjpmt2x84000ohdu0q5hnvski" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1323,380 +1609,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/28/trie/" data-id="cjp0plcc6005ff0u0f4rvn2f1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-dp-game" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/10/27/dp-game/">DP - Game</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/10/27/dp-game/">
-            <time datetime="2018-10-27T21:32:26.000Z" itemprop="datePublished">2018-10-27</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/dfs/">dfs</a>, <a class="tag-link" href="/tags/dp/">dp</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="DFS-Memorization"><a href="#DFS-Memorization" class="headerlink" title="DFS + Memorization"></a>DFS + Memorization</h2><h3 id="464-Can-I-Win"><a href="#464-Can-I-Win" class="headerlink" title="464. Can I Win"></a><a href="https://leetcode.com/problems/can-i-win/" target="_blank" rel="noopener">464. Can I Win</a></h3><ul>
-<li>DFS + Memorization + Pruning</li>
-<li>If there exist one way that the other one will NOT win, then I win!</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">canIWin</span><span class="params">(self, maxChoosableInteger, desiredTotal)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> maxChoosableInteger * (maxChoosableInteger + <span class="number">1</span>) / <span class="number">2</span> &lt; desiredTotal:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        self.memo = &#123;&#125;</span><br><span class="line">        <span class="keyword">return</span> self.helper(list(range(<span class="number">1</span>, maxChoosableInteger + <span class="number">1</span>)), desiredTotal)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">helper</span><span class="params">(self, nums, desiredTotal)</span>:</span></span><br><span class="line">        key = tuple(nums)</span><br><span class="line">        <span class="keyword">if</span> key <span class="keyword">in</span> self.memo:</span><br><span class="line">            <span class="keyword">return</span> self.memo[key]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> nums[<span class="number">-1</span>] &gt;= desiredTotal:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="keyword">if</span> <span class="keyword">not</span> self.helper(nums[:i]+nums[i+<span class="number">1</span>:], desiredTotal-nums[i]):</span><br><span class="line">                self.memo[key] = <span class="keyword">True</span></span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        self.memo[key] = <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
-<h3 id="293-Flip-Game"><a href="#293-Flip-Game" class="headerlink" title="293. Flip Game"></a><a href="https://leetcode.com/problems/flip-game/" target="_blank" rel="noopener">293. Flip Game</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">generatePossibleNextMoves</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> s[i] == <span class="string">'+'</span> <span class="keyword">and</span> s[i+<span class="number">1</span>] == <span class="string">'+'</span>:</span><br><span class="line">                res.append(s[:i] + <span class="string">"-"</span> + <span class="string">"-"</span> + s[i+<span class="number">2</span>:])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-<h3 id="294-Flip-Game-II"><a href="#294-Flip-Game-II" class="headerlink" title="294. Flip Game II"></a><a href="https://leetcode.com/problems/flip-game-ii/" target="_blank" rel="noopener">294. Flip Game II</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">canWin</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        self.memo = &#123;&#125;</span><br><span class="line">        <span class="keyword">return</span> self.win(s)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">win</span><span class="params">(self, s)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> s <span class="keyword">in</span> self.memo:</span><br><span class="line">            <span class="keyword">return</span> self.memo[s]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(s)<span class="number">-1</span>):</span><br><span class="line">            <span class="keyword">if</span> s[i] == <span class="string">'+'</span> <span class="keyword">and</span> s[i+<span class="number">1</span>] == <span class="string">'+'</span>:</span><br><span class="line">                news = s[:i] + <span class="string">"-"</span> + <span class="string">"-"</span> + s[i+<span class="number">2</span>:]</span><br><span class="line">                <span class="keyword">if</span> <span class="keyword">not</span> self.win(news):</span><br><span class="line">                    self.memo[s] = <span class="keyword">True</span></span><br><span class="line">                    <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        self.memo[s] = <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
-<h2 id="DP"><a href="#DP" class="headerlink" title="DP"></a>DP</h2><h3 id="LintCode-394-Coins-in-a-Line"><a href="#LintCode-394-Coins-in-a-Line" class="headerlink" title="LintCode 394. Coins in a Line"></a><a href="https://www.lintcode.com/problem/coins-in-a-line/" target="_blank" rel="noopener">LintCode 394. Coins in a Line</a></h3><h4 id="Solution1-DFS-Memorization"><a href="#Solution1-DFS-Memorization" class="headerlink" title="Solution1. DFS + Memorization"></a>Solution1. DFS + Memorization</h4><ul>
-<li>TLE<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">firstWillWin</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        self.memo = &#123;&#125;</span><br><span class="line">        <span class="keyword">return</span> self.helper(n)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">helper</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> n &lt;= <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> n <span class="keyword">in</span> self.memo:</span><br><span class="line">            <span class="keyword">return</span> self.memo[n]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.firstWillWin(n<span class="number">-1</span>) <span class="keyword">or</span> <span class="keyword">not</span> self.firstWillWin(n<span class="number">-2</span>):</span><br><span class="line">            self.memo[n] = <span class="keyword">True</span></span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        self.memo[n] = <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">False</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h4 id="Solution2-DP"><a href="#Solution2-DP" class="headerlink" title="Solution2. DP"></a>Solution2. DP</h4><ul>
-<li>Time : O(n), Space : O(n)</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">firstWillWin</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> n == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> n &lt;= <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        dp = [<span class="keyword">False</span>] * (n+<span class="number">1</span>)</span><br><span class="line">        dp[<span class="number">1</span>] = dp[<span class="number">2</span>] = <span class="keyword">True</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">3</span>, n+<span class="number">1</span>):</span><br><span class="line">            dp[i] = <span class="keyword">not</span> dp[i<span class="number">-1</span>] <span class="keyword">or</span> <span class="keyword">not</span> dp[i<span class="number">-2</span>]</span><br><span class="line">        <span class="keyword">return</span> dp[n]</span><br></pre></td></tr></table></figure>
-<h4 id="Solution3-Math"><a href="#Solution3-Math" class="headerlink" title="Solution3. Math"></a>Solution3. Math</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">firstWillWin</span><span class="params">(self, n)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> bool(n % <span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="LintCode-395-Coins-in-a-Line-II"><a href="#LintCode-395-Coins-in-a-Line-II" class="headerlink" title="LintCode 395. Coins in a Line II"></a><a href="https://www.lintcode.com/problem/coins-in-a-line-ii/" target="_blank" rel="noopener">LintCode 395. Coins in a Line II</a></h3><ul>
-<li>dp[i], preSum[i]-dp[i] represent how many i get and how many other one get!!!</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">firstWillWin</span><span class="params">(self, values)</span>:</span></span><br><span class="line">        n = len(values)</span><br><span class="line">        <span class="keyword">if</span> n &lt;= <span class="number">2</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">        values.reverse()</span><br><span class="line">        psum = self.preSum(values)</span><br><span class="line"></span><br><span class="line">        dp = [<span class="number">0</span>] * n</span><br><span class="line">        dp[<span class="number">0</span>] = psum[<span class="number">0</span>]</span><br><span class="line">        dp[<span class="number">1</span>] = psum[<span class="number">1</span>]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, n):</span><br><span class="line">            dp[i] = max(psum[i] - dp[i<span class="number">-1</span>], psum[i] - dp[i<span class="number">-2</span>])</span><br><span class="line">        <span class="keyword">return</span> dp[n<span class="number">-1</span>] &gt; psum[n<span class="number">-1</span>] - dp[n<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">preSum</span><span class="params">(self, values)</span>:</span></span><br><span class="line">        psum = [values[<span class="number">0</span>]]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(values)):</span><br><span class="line">            psum.append(psum[<span class="number">-1</span>] + values[i])</span><br><span class="line">        <span class="keyword">return</span> psum</span><br></pre></td></tr></table></figure>
-<h3 id="LintCode-396-Coins-in-a-Line-III"><a href="#LintCode-396-Coins-in-a-Line-III" class="headerlink" title="LintCode 396. Coins in a Line III"></a><a href="https://www.lintcode.com/problem/coins-in-a-line-iii/" target="_blank" rel="noopener">LintCode 396. Coins in a Line III</a></h3><p>TODO!!!</p>
-<h4 id="Follow-up"><a href="#Follow-up" class="headerlink" title="Follow up"></a>Follow up</h4><p>DP[i][j] represents from i-th coin to the j-th coin, the largest sum of pizza that i can pick.</p>
-<ul>
-<li>case1 : if i take the left coin,</li>
-</ul>
-<ol>
-<li>if input[i+1] &lt; input[j], input[i] + DP[i+1][j-1]</li>
-<li>if input[i+1] &gt; input[j], input[i] + DP[i+2][j]</li>
-</ol>
-<ul>
-<li>case2 : if i take the right coin,</li>
-</ul>
-<ol>
-<li>if input[i] &lt; input[j-1], input[j] + DP[i][j-2]</li>
-<li>if input[i] &gt; input[j-1], input[j] + DP[i+1][j-1]</li>
-</ol>
-<ul>
-<li>Base Case:</li>
-</ul>
-<ol>
-<li>2 coins, DP[i][i+1] = max(input[i], input[i+1])</li>
-<li>1 coin, DP[i][i] = input[i]</li>
-</ol>
-<h3 id="Coin-Game"><a href="#Coin-Game" class="headerlink" title="Coin Game"></a><a href="https://www.geeksforgeeks.org/optimal-strategy-for-a-game-dp-31/" target="_blank" rel="noopener">Coin Game</a></h3><p>Let us understand the problem with few examples:</p>
-<ol>
-<li>5, 3, 7, 10 : The user collects maximum value as 15(10 + 5)</li>
-<li>8, 15, 3, 7 : The user collects maximum value as 22(7 + 15)<br>Does choosing the best at each move give an optimal solution?</li>
-</ol>
-<ul>
-<li>F(i, j)  represents the maximum value the user can collect from i’th coin to j’th coin.</li>
-</ul>
-<ol>
-<li>If I take Ai, Vi + min(F(i+2, j), F(i+1, j-1)</li>
-<li>If I take Ak, Vj + min(F(i+1, j-1), F(i, j-2)<br>$$F(i, j)  = Max(Vi + min(F(i+2, j), F(i+1, j-1) ),  Vj + min(F(i+1, j-1), F(i, j-2) ))$$</li>
-</ol>
-<ul>
-<li>Base Cases</li>
-</ul>
-<ol>
-<li>F(i, j)  = Vi           If j == i</li>
-<li>F(i, j)  = max(Vi, Vj)  If j == i+1</li>
-</ol>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/10/27/dp-game/" data-id="cjp0plc86001cf0u043jjpxx6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-topic-data-stream" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/10/26/topic-data-stream/">Data Stream</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/10/26/topic-data-stream/">
-            <time datetime="2018-10-26T20:42:38.000Z" itemprop="datePublished">2018-10-26</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/heap/">heap</a>, <a class="tag-link" href="/tags/queue/">queue</a>, <a class="tag-link" href="/tags/topic/">topic</a>
-    </div>
-
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="Data-Stream"><a href="#Data-Stream" class="headerlink" title="Data Stream"></a>Data Stream</h2><h3 id="703-Kth-Largest-Element-in-a-Stream"><a href="#703-Kth-Largest-Element-in-a-Stream" class="headerlink" title="703. Kth Largest Element in a Stream"></a><a href="https://leetcode.com/problems/kth-largest-element-in-a-stream/" target="_blank" rel="noopener">703. Kth Largest Element in a Stream</a></h3><ul>
-<li>heap</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">KthLargest</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, k, nums)</span>:</span></span><br><span class="line">        self.size = k</span><br><span class="line">        heapq.heapify(nums)</span><br><span class="line">        self.heap = nums</span><br><span class="line">        <span class="keyword">while</span> len(self.heap) &gt; k:</span><br><span class="line">            heapq.heappop(self.heap)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Time : O(log k), Space : O(k)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(self, val)</span>:</span></span><br><span class="line">        heapq.heappush(self.heap, val)</span><br><span class="line">        <span class="keyword">if</span> len(self.heap) &gt; self.size:</span><br><span class="line">            heapq.heappop(self.heap)</span><br><span class="line">        <span class="keyword">return</span> self.heap[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
-<h3 id="346-Moving-Average-from-Data-Stream"><a href="#346-Moving-Average-from-Data-Stream" class="headerlink" title="346. Moving Average from Data Stream"></a><a href="https://leetcode.com/problems/moving-average-from-data-stream/" target="_blank" rel="noopener">346. Moving Average from Data Stream</a></h3><ul>
-<li>sliding window : deque - double queue</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MovingAverage</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, size)</span>:</span></span><br><span class="line">        self.sum = <span class="number">0</span></span><br><span class="line">        self.size = size</span><br><span class="line">        self.queue = collections.deque()</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">next</span><span class="params">(self, val)</span>:</span></span><br><span class="line">        self.queue.append(val)</span><br><span class="line">        self.sum += val</span><br><span class="line">        <span class="keyword">if</span> len(self.queue) &gt; self.size:</span><br><span class="line">            self.sum -= self.queue.popleft()</span><br><span class="line">        <span class="keyword">return</span> self.sum / (<span class="number">1.0</span> * len(self.queue))</span><br></pre></td></tr></table></figure>
-<h3 id="295-Find-Median-from-Data-Stream"><a href="#295-Find-Median-from-Data-Stream" class="headerlink" title="295. Find Median from Data Stream"></a><a href="https://leetcode.com/problems/find-median-from-data-stream/" target="_blank" rel="noopener">295. Find Median from Data Stream</a></h3><ul>
-<li>min Heap, max Heap</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MedianFinder</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.maxHeap = []</span><br><span class="line">        self.minHeap = []</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">addNum</span><span class="params">(self, num)</span>:</span></span><br><span class="line">        heapq.heappush(self.maxHeap, -num)</span><br><span class="line">        heapq.heappush(self.minHeap, -heapq.heappop(self.maxHeap))</span><br><span class="line">        m1, m2 = len(self.maxHeap), len(self.minHeap)</span><br><span class="line">        <span class="keyword">if</span> m1 &lt; m2:</span><br><span class="line">            heapq.heappush(self.maxHeap, -heapq.heappop(self.minHeap))</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findMedian</span><span class="params">(self)</span>:</span></span><br><span class="line">        m1, m2 = len(self.maxHeap), len(self.minHeap)</span><br><span class="line">        <span class="keyword">if</span> m1 == m2:</span><br><span class="line">            <span class="keyword">return</span> (self.minHeap[<span class="number">0</span>] - self.maxHeap[<span class="number">0</span>]) / <span class="number">2.0</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> -self.maxHeap[<span class="number">0</span>] * <span class="number">1.0</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li>follow up : what if the number of element is toooo large to be stored into the memory?</li>
-</ul>
-<h3 id="Find-the-first-non-repeating-character-from-a-Stream"><a href="#Find-the-first-non-repeating-character-from-a-Stream" class="headerlink" title="Find the first non-repeating character from a Stream"></a>Find the first non-repeating character from a Stream</h3><p>Use Case:</p>
-<ol>
-<li>We need to somehow record which one is the First (order)<br>When a new element comes in</li>
-</ol>
-<ul>
-<li>we found that previous solution is now not the solution any more, we need to update the solution to the next one.(Use a doubl linked list)</li>
-</ul>
-<ol start="2">
-<li>We also need to record what kind of letters that have appeared (non-repeating)</li>
-</ol>
-<ul>
-<li>Hash Map &lt;key:character, val:Node&gt;</li>
-</ul>
-<p>(Same with LRU!!!)</p>
-<h2 id="Sliding-Window"><a href="#Sliding-Window" class="headerlink" title="Sliding Window"></a>Sliding Window</h2><h3 id="239-Sliding-Window-Maximum"><a href="#239-Sliding-Window-Maximum" class="headerlink" title="239. Sliding Window Maximum"></a><a href="https://leetcode.com/problems/sliding-window-maximum/" target="_blank" rel="noopener">239. Sliding Window Maximum</a></h3><p>total data - n, window size - k</p>
-<h4 id="Solution1-Naive"><a href="#Solution1-Naive" class="headerlink" title="Solution1. Naive"></a>Solution1. Naive</h4><p>Time : O((n-k)k)</p>
-<h4 id="Solution2-Heap"><a href="#Solution2-Heap" class="headerlink" title="Solution2. Heap"></a>Solution2. Heap</h4><p>Time : O((n-k)logk)</p>
-<ol>
-<li>Initialization:insert all first k elements into the max-heap.</li>
-<li>Then: when the sliding window moves to the right side step by step<br>1 new element comes in.<br>1 left-most element should be removed from the sliding window. bu we can temoporarily keep it in the heap, until it becomes the top element in the heap. <strong>lazy deletion</strong><br>(value, index)</li>
-</ol>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSlidingWindow</span><span class="params">(self, nums, k)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums <span class="keyword">or</span> k == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">        maxHeap = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(k<span class="number">-1</span>):</span><br><span class="line">            heapq.heappush(maxHeap, (-nums[i], i))</span><br><span class="line"></span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(k<span class="number">-1</span>, len(nums)):</span><br><span class="line">            heapq.heappush(maxHeap, (-nums[i], i))</span><br><span class="line">            <span class="keyword">while</span> maxHeap[<span class="number">0</span>][<span class="number">1</span>] &lt;= i-k:</span><br><span class="line">                heapq.heappop(maxHeap)</span><br><span class="line">            res.append(-maxHeap[<span class="number">0</span>][<span class="number">0</span>])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-<ul>
-<li>When we want to call max_heap.top(), the only thing we should be careful about is to check, whether this top elemtns’s index is &lt; left border of the sliding window. If so, keep poping it out.</li>
-</ul>
-<h4 id="Solution3-Deque"><a href="#Solution3-Deque" class="headerlink" title="Solution3. Deque"></a>Solution3. Deque</h4><p>Time : O(n)</p>
-<ul>
-<li>We must maintain all the values in the dequeue to keep them in a <strong>descending</strong> order.</li>
-<li>because when a new element X comes in, if it is bigger and newer than the right most element r, then r cannot be the solution. whatsoever, we can just delete r</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">maxSlidingWindow</span><span class="params">(self, nums, k)</span>:</span></span><br><span class="line">        queue = collections.deque()</span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i, num <span class="keyword">in</span> enumerate(nums):</span><br><span class="line">            <span class="keyword">if</span> queue <span class="keyword">and</span> queue[<span class="number">0</span>] &lt;= i-k:</span><br><span class="line">                queue.popleft()</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> queue <span class="keyword">and</span> num &gt; nums[queue[<span class="number">-1</span>]]:</span><br><span class="line">                queue.pop()</span><br><span class="line"></span><br><span class="line">            queue.append(i)</span><br><span class="line">            <span class="keyword">if</span> i &gt;= k - <span class="number">1</span>:</span><br><span class="line">                res.append(nums[queue[<span class="number">0</span>]])</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-<ul>
-<li>So the dequeue[left-most] is the final result to return whenever the window slides one step to the right.</li>
-</ul>
-<h3 id="480-Sliding-Window-Median"><a href="#480-Sliding-Window-Median" class="headerlink" title="480. Sliding Window Median"></a><a href="https://leetcode.com/problems/sliding-window-median/" target="_blank" rel="noopener">480. Sliding Window Median</a></h3><ul>
-<li>double heap + lazy clear</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">medianSlidingWindow</span><span class="params">(self, nums, k)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> k == <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> map(float, nums)</span><br><span class="line"></span><br><span class="line">        minHeap, maxHeap = [], []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(k):</span><br><span class="line">            heapq.heappush(maxHeap, (-nums[i], i))</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(k/<span class="number">2</span>):</span><br><span class="line">            val, idx = heapq.heappop(maxHeap)</span><br><span class="line">            heapq.heappush(minHeap, (-val, idx))</span><br><span class="line"></span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(k, len(nums)):</span><br><span class="line">            res.append(-maxHeap[<span class="number">0</span>][<span class="number">0</span>]*<span class="number">1.0</span> <span class="keyword">if</span> k % <span class="number">2</span> <span class="keyword">else</span> (minHeap[<span class="number">0</span>][<span class="number">0</span>]-maxHeap[<span class="number">0</span>][<span class="number">0</span>])/<span class="number">2.0</span>)</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt;= minHeap[<span class="number">0</span>][<span class="number">0</span>]:</span><br><span class="line">                heapq.heappush(minHeap, (nums[i], i))</span><br><span class="line">                <span class="keyword">if</span> nums[i-k] &lt;= -maxHeap[<span class="number">0</span>][<span class="number">0</span>]:</span><br><span class="line">                    val, idx = heapq.heappop(minHeap)</span><br><span class="line">                    heapq.heappush(maxHeap, (-val, idx))</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                heapq.heappush(maxHeap, (-nums[i], i))</span><br><span class="line">                <span class="keyword">if</span> nums[i-k] &gt;= minHeap[<span class="number">0</span>][<span class="number">0</span>]:</span><br><span class="line">                    val, idx = heapq.heappop(maxHeap)</span><br><span class="line">                    heapq.heappush(minHeap, (-val, idx))</span><br><span class="line"></span><br><span class="line">            <span class="keyword">while</span> maxHeap[<span class="number">0</span>][<span class="number">1</span>] &lt;= i-k:</span><br><span class="line">                heapq.heappop(maxHeap)</span><br><span class="line">            <span class="keyword">while</span> minHeap[<span class="number">0</span>][<span class="number">1</span>] &lt;= i-k:</span><br><span class="line">                heapq.heappop(minHeap)</span><br><span class="line">        res.append(-maxHeap[<span class="number">0</span>][<span class="number">0</span>]*<span class="number">1.0</span> <span class="keyword">if</span> k % <span class="number">2</span> <span class="keyword">else</span> (minHeap[<span class="number">0</span>][<span class="number">0</span>]-maxHeap[<span class="number">0</span>][<span class="number">0</span>])/<span class="number">2.0</span>)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/10/26/topic-data-stream/" data-id="cjp0plcaf004ff0u0ff5tucda" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/28/trie/" data-id="cjpmt2xdf005vhdu03d36sepa" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1790,6 +1703,33 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/12/03/bfs-matrix/" class="title">BFS Matrix</a></p>
+                            <p class="item-date"><time datetime="2018-12-03T13:33:40.000Z" itemprop="datePublished">2018-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/12/02/bfs/" class="title">BFS</a></p>
+                            <p class="item-date"><time datetime="2018-12-03T03:29:29.000Z" itemprop="datePublished">2018-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/12/01/graph-cycle/" class="title">Graph Cycle</a></p>
+                            <p class="item-date"><time datetime="2018-12-01T15:35:11.000Z" itemprop="datePublished">2018-12-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/11/27/dp-sequence-adjacent/" class="title">DP - Sequence Adjacent Element</a></p>
                             <p class="item-date"><time datetime="2018-11-27T16:26:04.000Z" itemprop="datePublished">2018-11-27</time></p>
                         </div>
@@ -1801,33 +1741,6 @@ ga('send', 'pageview');
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/11/23/topic-calculator/" class="title">Calculator</a></p>
                             <p class="item-date"><time datetime="2018-11-23T22:46:58.000Z" itemprop="datePublished">2018-11-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/17/topic-serialization/" class="title">Serialization</a></p>
-                            <p class="item-date"><time datetime="2018-11-17T21:32:56.000Z" itemprop="datePublished">2018-11-17</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/15/stack-monotone/" class="title">Monotone Stack</a></p>
-                            <p class="item-date"><time datetime="2018-11-16T03:52:01.000Z" itemprop="datePublished">2018-11-15</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/14/topic-interval/" class="title">Interval Problem</a></p>
-                            <p class="item-date"><time datetime="2018-11-14T17:14:48.000Z" itemprop="datePublished">2018-11-14</time></p>
                         </div>
                     </li>
                 
@@ -1849,7 +1762,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 

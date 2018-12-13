@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="kaihao">
 <meta property="og:description" content="Given an directed graph, a topological order of the graph nodes is defined as follow:  For each directed edge A -&amp;gt; B in graph, A must before B in the order list. The first node in the order can be">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-19T22:30:09.016Z">
+<meta property="og:updated_time" content="2018-12-05T14:30:26.970Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Graph - Topological Sort">
 <meta name="twitter:description" content="Given an directed graph, a topological order of the graph nodes is defined as follow:  For each directed edge A -&amp;gt; B in graph, A must before B in the order list. The first node in the order can be">
@@ -237,7 +237,7 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#LintCode-127-Topological-Sorting"><span class="toc-number">1.</span> <span class="toc-text">LintCode 127. Topological Sorting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#210-Course-Schedule-II"><span class="toc-number">2.</span> <span class="toc-text">210. Course Schedule II</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#269-Alien-Dictionary"><span class="toc-number">3.</span> <span class="toc-text">269. Alien Dictionary</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#LintCode-127-Topological-Sorting"><span class="toc-number">1.</span> <span class="toc-text">LintCode 127. Topological Sorting</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#210-Course-Schedule-II"><span class="toc-number">2.</span> <span class="toc-text">210. Course Schedule II</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#269-Alien-Dictionary"><span class="toc-number">3.</span> <span class="toc-text">269. Alien Dictionary</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#欧拉通路（Eulerian-path"><span class="toc-number">4.</span> <span class="toc-text">欧拉通路（Eulerian path</span></a></li></ol>
                 </div>
             
             <p>Given an <strong>directed graph</strong>, a topological order of the graph nodes is defined as follow:</p>
@@ -272,12 +272,9 @@ ga('send', 'pageview');
 <li>Build the graph represent the dependency of characters!</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">alienOrder</span><span class="params">(self, words)</span>:</span></span><br><span class="line">        indegree = &#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> word <span class="keyword">in</span> words:</span><br><span class="line">            <span class="keyword">for</span> c <span class="keyword">in</span> word:</span><br><span class="line">                indegree[c] = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        graph = [set() <span class="keyword">for</span> _ <span class="keyword">in</span> xrange(<span class="number">26</span>)]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(words)<span class="number">-1</span>):</span><br><span class="line">            cur = words[i]</span><br><span class="line">            next = words[i+<span class="number">1</span>]</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> xrange(min(len(cur), len(next))):</span><br><span class="line">                <span class="keyword">if</span> cur[j] != next[j]:</span><br><span class="line">                    <span class="keyword">if</span> next[j] <span class="keyword">not</span> <span class="keyword">in</span> graph[ord(cur[j])-ord(<span class="string">'a'</span>)]:</span><br><span class="line">                        graph[ord(cur[j])-ord(<span class="string">'a'</span>)].add(next[j])</span><br><span class="line">                        indegree[next[j]] += <span class="number">1</span></span><br><span class="line">                    <span class="keyword">break</span></span><br><span class="line"></span><br><span class="line">        res = []</span><br><span class="line">        cnt = len(indegree.keys())</span><br><span class="line">        q = collections.deque([c <span class="keyword">for</span> c <span class="keyword">in</span> indegree.keys() <span class="keyword">if</span> indegree[c] == <span class="number">0</span>])</span><br><span class="line">        <span class="keyword">while</span> q:</span><br><span class="line">            cur = q.popleft()</span><br><span class="line">            res.append(cur)</span><br><span class="line">            <span class="keyword">for</span> n <span class="keyword">in</span> list(graph[ord(cur)-ord(<span class="string">'a'</span>)]):</span><br><span class="line">                indegree[n] -= <span class="number">1</span></span><br><span class="line">                <span class="keyword">if</span> indegree[n] == <span class="number">0</span>:</span><br><span class="line">                    q.append(n)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">''</span>.join(res) <span class="keyword">if</span> len(res) == cnt <span class="keyword">else</span> <span class="string">""</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>欧拉通路（Eulerian path）</strong><ul>
+<h3 id="欧拉通路（Eulerian-path"><a href="#欧拉通路（Eulerian-path" class="headerlink" title="欧拉通路（Eulerian path"></a>欧拉通路（Eulerian path</h3><ul>
 <li><strong>若一个图为欧拉图或半欧拉图都可以通过一笔画遍历。</strong>通过图（有向图或无向图）中的所有边<strong>且每一条边仅通过一次</strong>的通路称为欧拉通路，若此通路为回路则称为<a href="https://blog.csdn.net/nameix/article/details/52288755" target="_blank" rel="noopener">欧拉回路</a></li>
 <li>每次深度优先搜索的结果必然是图的一个连通分量。深度优先搜索可以从多点发起。如果将每个节点在深度优先搜索过程中的<strong>“结束时间”排序</strong>(具体做法是创建一个list,然后在每个节点的相邻节点都已被访问的情况下，将该节点加入list结尾，然后逆转整个链表),则我们可以得到所谓的“拓扑排序”，即topological sort.</li>
-</ul>
-</li>
 </ul>
 
         
@@ -289,7 +286,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/09/08/graph-topological-sort/" data-id="cjp0plc8k001uf0u05ayvtvk6" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/09/08/graph-topological-sort/" data-id="cjpmt2x8s001whdu0y49g9vl5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -404,6 +401,33 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/12/03/bfs-matrix/" class="title">BFS Matrix</a></p>
+                            <p class="item-date"><time datetime="2018-12-03T13:33:40.000Z" itemprop="datePublished">2018-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/12/02/bfs/" class="title">BFS</a></p>
+                            <p class="item-date"><time datetime="2018-12-03T03:29:29.000Z" itemprop="datePublished">2018-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/12/01/graph-cycle/" class="title">Graph Cycle</a></p>
+                            <p class="item-date"><time datetime="2018-12-01T15:35:11.000Z" itemprop="datePublished">2018-12-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/11/27/dp-sequence-adjacent/" class="title">DP - Sequence Adjacent Element</a></p>
                             <p class="item-date"><time datetime="2018-11-27T16:26:04.000Z" itemprop="datePublished">2018-11-27</time></p>
                         </div>
@@ -415,33 +439,6 @@ ga('send', 'pageview');
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/11/23/topic-calculator/" class="title">Calculator</a></p>
                             <p class="item-date"><time datetime="2018-11-23T22:46:58.000Z" itemprop="datePublished">2018-11-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/17/topic-serialization/" class="title">Serialization</a></p>
-                            <p class="item-date"><time datetime="2018-11-17T21:32:56.000Z" itemprop="datePublished">2018-11-17</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/15/stack-monotone/" class="title">Monotone Stack</a></p>
-                            <p class="item-date"><time datetime="2018-11-16T03:52:01.000Z" itemprop="datePublished">2018-11-15</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/14/topic-interval/" class="title">Interval Problem</a></p>
-                            <p class="item-date"><time datetime="2018-11-14T17:14:48.000Z" itemprop="datePublished">2018-11-14</time></p>
                         </div>
                     </li>
                 
@@ -463,7 +460,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 

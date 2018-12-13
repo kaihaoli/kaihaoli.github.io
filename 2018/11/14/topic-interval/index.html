@@ -5,18 +5,18 @@
     
     <title>Interval Problem | kaihao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-    <meta name="description" content="370. Range AdditionTrade off for Update and Query!  O(1) for update and O(n) for Query O(n) for update and O(1) for Query  1234567891011class Solution(object):    def getModifiedArray(self, length, up">
+    <meta name="description" content="Range370. Range AdditionTrade off for Update and Query!  O(1) for update and O(n) for Query O(n) for update and O(1) for Query We only care about the intervals start and end!!!  1234567891011class Sol">
 <meta name="keywords" content="topic">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Interval Problem">
 <meta property="og:url" content="http://kaihaoli.github.io/2018/11/14/topic-interval/index.html">
 <meta property="og:site_name" content="kaihao">
-<meta property="og:description" content="370. Range AdditionTrade off for Update and Query!  O(1) for update and O(n) for Query O(n) for update and O(1) for Query  1234567891011class Solution(object):    def getModifiedArray(self, length, up">
+<meta property="og:description" content="Range370. Range AdditionTrade off for Update and Query!  O(1) for update and O(n) for Query O(n) for update and O(1) for Query We only care about the intervals start and end!!!  1234567891011class Sol">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-11-14T17:37:32.683Z">
+<meta property="og:updated_time" content="2018-12-05T03:23:27.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Interval Problem">
-<meta name="twitter:description" content="370. Range AdditionTrade off for Update and Query!  O(1) for update and O(n) for Query O(n) for update and O(1) for Query  1234567891011class Solution(object):    def getModifiedArray(self, length, up">
+<meta name="twitter:description" content="Range370. Range AdditionTrade off for Update and Query!  O(1) for update and O(n) for Query O(n) for update and O(1) for Query We only care about the intervals start and end!!!  1234567891011class Sol">
     
 
     
@@ -237,16 +237,36 @@ ga('send', 'pageview');
             
                 <div id="toc" class="toc-article">
                 <strong class="toc-title">Catalogue</strong>
-                    <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#370-Range-Addition"><span class="toc-number">1.</span> <span class="toc-text">370. Range Addition</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#56-Merge-Intervals"><span class="toc-number">2.</span> <span class="toc-text">56. Merge Intervals</span></a></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Range"><span class="toc-number">1.</span> <span class="toc-text">Range</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#370-Range-Addition"><span class="toc-number">1.1.</span> <span class="toc-text">370. Range Addition</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Overlap"><span class="toc-number">2.</span> <span class="toc-text">Overlap</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#252-Meeting-Rooms"><span class="toc-number">2.1.</span> <span class="toc-text">252. Meeting Rooms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#253-Meeting-Rooms-II"><span class="toc-number">2.2.</span> <span class="toc-text">253. Meeting Rooms II</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Operations"><span class="toc-number">3.</span> <span class="toc-text">Operations</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#56-Merge-Intervals"><span class="toc-number">3.1.</span> <span class="toc-text">56. Merge Intervals</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#57-Insert-Interval"><span class="toc-number">3.2.</span> <span class="toc-text">57. Insert Interval</span></a></li></ol></li></ol>
                 </div>
             
-            <h3 id="370-Range-Addition"><a href="#370-Range-Addition" class="headerlink" title="370. Range Addition"></a><a href="https://leetcode.com/problems/range-addition/" target="_blank" rel="noopener">370. Range Addition</a></h3><p>Trade off for Update and Query!</p>
+            <h2 id="Range"><a href="#Range" class="headerlink" title="Range"></a>Range</h2><h3 id="370-Range-Addition"><a href="#370-Range-Addition" class="headerlink" title="370. Range Addition"></a><a href="https://leetcode.com/problems/range-addition/" target="_blank" rel="noopener">370. Range Addition</a></h3><p>Trade off for Update and Query!</p>
 <ul>
 <li>O(1) for update and O(n) for Query</li>
 <li>O(n) for update and O(1) for Query</li>
+<li>We only care about the intervals start and end!!!</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getModifiedArray</span><span class="params">(self, length, updates)</span>:</span></span><br><span class="line">        nums = [<span class="number">0</span>] * length</span><br><span class="line">        <span class="keyword">for</span> start, end, diff <span class="keyword">in</span> updates:</span><br><span class="line">            nums[start] += diff</span><br><span class="line">            <span class="keyword">if</span> end &lt; length - <span class="number">1</span>:</span><br><span class="line">                nums[end+<span class="number">1</span>] -= diff</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, length):</span><br><span class="line">            nums[i] += nums[i<span class="number">-1</span>]</span><br><span class="line">        <span class="keyword">return</span> nums</span><br></pre></td></tr></table></figure>
-<h3 id="56-Merge-Intervals"><a href="#56-Merge-Intervals" class="headerlink" title="56. Merge Intervals"></a><a href="https://leetcode.com/problems/merge-intervals/" target="_blank" rel="noopener">56. Merge Intervals</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for an interval.</span></span><br><span class="line"><span class="comment"># class Interval(object):</span></span><br><span class="line"><span class="comment">#     def __init__(self, s=0, e=0):</span></span><br><span class="line"><span class="comment">#         self.start = s</span></span><br><span class="line"><span class="comment">#         self.end = e</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, intervals)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> intervals:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">        intervals.sort(key = <span class="keyword">lambda</span> x:x.start)</span><br><span class="line">        n = len(intervals)</span><br><span class="line">        stack = [intervals[<span class="number">0</span>]]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n):</span><br><span class="line">            start, end = intervals[i].start, intervals[i].end</span><br><span class="line">            <span class="keyword">if</span> start &lt;= stack[<span class="number">-1</span>].end:</span><br><span class="line">                stack[<span class="number">-1</span>].end = max(stack[<span class="number">-1</span>].end, end)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                stack.append(intervals[i])</span><br><span class="line">        <span class="keyword">return</span> stack</span><br></pre></td></tr></table></figure>
+<h2 id="Overlap"><a href="#Overlap" class="headerlink" title="Overlap"></a>Overlap</h2><ul>
+<li>How to define two intervals overapped?</li>
+</ul>
+<ol>
+<li>A.end &gt; B.start</li>
+<li>B.end &gt; A.start</li>
+</ol>
+<ul>
+<li>Why we always sort by start or end at first?<h3 id="252-Meeting-Rooms"><a href="#252-Meeting-Rooms" class="headerlink" title="252. Meeting Rooms"></a><a href="https://leetcode.com/problems/meeting-rooms/" target="_blank" rel="noopener">252. Meeting Rooms</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">canAttendMeetings</span><span class="params">(self, intervals)</span>:</span></span><br><span class="line">        intervals.sort(key=<span class="keyword">lambda</span> x:x.start)</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(intervals)):</span><br><span class="line">            <span class="keyword">if</span> intervals[i].start &lt; intervals[i<span class="number">-1</span>].end:</span><br><span class="line">                <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="253-Meeting-Rooms-II"><a href="#253-Meeting-Rooms-II" class="headerlink" title="253. Meeting Rooms II"></a><a href="https://leetcode.com/problems/meeting-rooms-ii/" target="_blank" rel="noopener">253. Meeting Rooms II</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minMeetingRooms</span><span class="params">(self, intervals)</span>:</span></span><br><span class="line">        times = []</span><br><span class="line">        <span class="keyword">for</span> interval <span class="keyword">in</span> intervals:</span><br><span class="line">            times.append((interval.start, <span class="number">1</span>))</span><br><span class="line">            times.append((interval.end, <span class="number">0</span>))</span><br><span class="line">        times.sort()</span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> time, fg <span class="keyword">in</span> times:</span><br><span class="line">            cnt += <span class="number">1</span> <span class="keyword">if</span> fg == <span class="number">1</span> <span class="keyword">else</span> <span class="number">-1</span></span><br><span class="line">            res = max(res, cnt)</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Follow Up : Return Max Overlapped Interval</li>
+</ul>
+<h2 id="Operations"><a href="#Operations" class="headerlink" title="Operations"></a>Operations</h2><h3 id="56-Merge-Intervals"><a href="#56-Merge-Intervals" class="headerlink" title="56. Merge Intervals"></a><a href="https://leetcode.com/problems/merge-intervals/" target="_blank" rel="noopener">56. Merge Intervals</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Definition for an interval.</span></span><br><span class="line"><span class="comment"># class Interval(object):</span></span><br><span class="line"><span class="comment">#     def __init__(self, s=0, e=0):</span></span><br><span class="line"><span class="comment">#         self.start = s</span></span><br><span class="line"><span class="comment">#         self.end = e</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">merge</span><span class="params">(self, intervals)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> intervals:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">        intervals.sort(key = <span class="keyword">lambda</span> x:x.start)</span><br><span class="line">        n = len(intervals)</span><br><span class="line">        stack = [intervals[<span class="number">0</span>]]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, n):</span><br><span class="line">            start, end = intervals[i].start, intervals[i].end</span><br><span class="line">            <span class="keyword">if</span> start &lt;= stack[<span class="number">-1</span>].end:</span><br><span class="line">                stack[<span class="number">-1</span>].end = max(stack[<span class="number">-1</span>].end, end)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                stack.append(intervals[i])</span><br><span class="line">        <span class="keyword">return</span> stack</span><br></pre></td></tr></table></figure>
+<h3 id="57-Insert-Interval"><a href="#57-Insert-Interval" class="headerlink" title="57. Insert Interval"></a><a href="https://leetcode.com/problems/insert-interval/" target="_blank" rel="noopener">57. Insert Interval</a></h3><ul>
+<li>O(n)<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, intervals, newInterval)</span>:</span></span><br><span class="line">        n = len(intervals)</span><br><span class="line">        res = []</span><br><span class="line">        i = <span class="number">0</span></span><br><span class="line">        <span class="keyword">while</span> i &lt; n <span class="keyword">and</span> newInterval.start &gt; intervals[i].end:</span><br><span class="line">            res.append(intervals[i])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> i &lt; n <span class="keyword">and</span> intervals[i].start &lt;= newInterval.end:</span><br><span class="line">            newInterval.start = min(intervals[i].start, newInterval.start)</span><br><span class="line">            newInterval.end = max(intervals[i].end, newInterval.end)</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line">        res.append(newInterval)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span> i &lt; n:</span><br><span class="line">            res.append(intervals[i])</span><br><span class="line">            i += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
         
         </div>
@@ -257,7 +277,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/11/14/topic-interval/" data-id="cjp0plcah004jf0u0etoxl1j0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/11/14/topic-interval/" data-id="cjpmt2xcu0053hdu00729p3w0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -372,6 +392,33 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/12/03/bfs-matrix/" class="title">BFS Matrix</a></p>
+                            <p class="item-date"><time datetime="2018-12-03T13:33:40.000Z" itemprop="datePublished">2018-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/12/02/bfs/" class="title">BFS</a></p>
+                            <p class="item-date"><time datetime="2018-12-03T03:29:29.000Z" itemprop="datePublished">2018-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/12/01/graph-cycle/" class="title">Graph Cycle</a></p>
+                            <p class="item-date"><time datetime="2018-12-01T15:35:11.000Z" itemprop="datePublished">2018-12-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/11/27/dp-sequence-adjacent/" class="title">DP - Sequence Adjacent Element</a></p>
                             <p class="item-date"><time datetime="2018-11-27T16:26:04.000Z" itemprop="datePublished">2018-11-27</time></p>
                         </div>
@@ -383,33 +430,6 @@ ga('send', 'pageview');
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/11/23/topic-calculator/" class="title">Calculator</a></p>
                             <p class="item-date"><time datetime="2018-11-23T22:46:58.000Z" itemprop="datePublished">2018-11-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/17/topic-serialization/" class="title">Serialization</a></p>
-                            <p class="item-date"><time datetime="2018-11-17T21:32:56.000Z" itemprop="datePublished">2018-11-17</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/15/stack-monotone/" class="title">Monotone Stack</a></p>
-                            <p class="item-date"><time datetime="2018-11-16T03:52:01.000Z" itemprop="datePublished">2018-11-15</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/14/topic-interval/" class="title">Interval Problem</a></p>
-                            <p class="item-date"><time datetime="2018-11-14T17:14:48.000Z" itemprop="datePublished">2018-11-14</time></p>
                         </div>
                     </li>
                 
@@ -431,7 +451,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 

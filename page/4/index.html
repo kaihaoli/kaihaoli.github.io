@@ -188,6 +188,173 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-sampling-randomization" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/10/14/sampling-randomization/">Sampling &amp; Randomization</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/10/14/sampling-randomization/">
+            <time datetime="2018-10-14T15:35:31.000Z" itemprop="datePublished">2018-10-14</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <h2 id="Reservoir-Sampling"><a href="#Reservoir-Sampling" class="headerlink" title="Reservoir Sampling"></a>Reservoir Sampling</h2><h3 id="Shuffling-Algorithm"><a href="#Shuffling-Algorithm" class="headerlink" title="Shuffling Algorithm"></a>Shuffling Algorithm</h3><p>pokers(spades, hearts, diamonds, clubs)</p>
+<ol>
+<li><p>Iteration 1<br>Call random(0-51), lets say, random_numbers1 = 5<br>P(every card can showup in position 51) = <strong>1/52</strong></p>
+</li>
+<li><p>Iteration 2<br>Call random(0-50), lets say, random_numbers2 = 8<br>Every card was NOT selected during previous iteration = 1 - 1/52<br>P(every card showup in position 50) = <strong>(1-1/52) * 1/51 = 1/52</strong></p>
+</li>
+<li><p>Iteration 3<br>Every card was NOT selected during previous iteration = 1 - 1/52<br>Every card was NOT selected during previous iteration = 1 - 1/51<br>P(every card showup in position 50) = <strong>(1-1/52) <em> (1-1/51) </em> 1/50 = 1/52</strong></p>
+</li>
+</ol>
+<p>…..</p>
+<ul>
+<li>Select random k elements in an array of size n</li>
+</ul>
+<h3 id="Sampling-for-an-unlimited-data-flow"><a href="#Sampling-for-an-unlimited-data-flow" class="headerlink" title="Sampling for an unlimited data flow"></a>Sampling for an unlimited data flow</h3><p>How to do sampling for an unlimited data flow and when reading the n-th element we are required to return one random number among all numbers read so far, such that the probability of returning any element read so far is 1/n.</p>
+<ul>
+<li>O(1) sapce complexity</li>
+</ul>
+<ol>
+<li>t = 0 call random[0-0] = random_num1, if random_num1 == 0 -&gt; solu = input[0]<br>P(input[0] will be returned as the solu) = 100%</li>
+<li>t = 1 call random[0-1] = random_num2, if random_num2 == 0 -&gt; solu = input[1]<br>P(input[0] will be returned as the solu) = 1 - 50%<br>P(input[1] will be returned as the solu) = 50%</li>
+<li>t = 2 call random[0-2] = random_num3, if random_num3 == 0 -&gt; solu = input[2]<br>P(input[0] will be returned as the solu) = 1/2 <em> (1 - 1/3) = 1/3<br>P(input[1] will be returned as the solu) = 1/2 </em> (1 - 1/3) = 1/3<br>P(input[2] will be returned as the solu) = 1/3<br>….</li>
+</ol>
+<h3 id="Return-k-out-of-n-log"><a href="#Return-k-out-of-n-log" class="headerlink" title="Return k out of n log"></a>Return k out of n log</h3><ul>
+<li>same thing as above!</li>
+<li>first k element put into the reservoir</li>
+<li>when new element comes in, generate a random number from 0 to its index</li>
+<li>if index &lt; k, replace the new element with the k postion element</li>
+</ul>
+<h3 id="398-Random-Pick-Index"><a href="#398-Random-Pick-Index" class="headerlink" title="398. Random Pick Index"></a><a href="https://leetcode.com/problems/random-pick-index/" target="_blank" rel="noopener">398. Random Pick Index</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        self.nums = nums</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pick</span><span class="params">(self, target)</span>:</span></span><br><span class="line">        cnt = <span class="number">0</span></span><br><span class="line">        res = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(self.nums)):</span><br><span class="line">            <span class="keyword">if</span> self.nums[i] != target:</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            <span class="keyword">if</span> random.randint(<span class="number">0</span>, cnt) == <span class="number">0</span>:</span><br><span class="line">                res = i</span><br><span class="line">            cnt += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
+<h3 id="Return-a-random-largest-number’s-index"><a href="#Return-a-random-largest-number’s-index" class="headerlink" title="Return a random largest number’s index"></a>Return a random largest number’s index</h3><h2 id="Randomization"><a href="#Randomization" class="headerlink" title="Randomization"></a>Randomization</h2><p>Random(5) -&gt; Random(25) -&gt; Random(7)<br>0  1  2  3  4<br>5  6  7  8  9<br>10 11 12 13 14<br>15 16 17 18 19<br>20 21 22 23 24</p>
+<ol>
+<li>call Random(5) for the 1st time = random_num1[0—4] = row number</li>
+<li>call Random(5) for the 2nd time = random_num2[0—4] = col number<br>generated_number = r1 * 5 + r2</li>
+</ol>
+<h3 id="470-Implement-Rand10-Using-Rand7"><a href="#470-Implement-Rand10-Using-Rand7" class="headerlink" title="470. Implement Rand10() Using Rand7()"></a><a href="https://leetcode.com/problems/implement-rand10-using-rand7/" target="_blank" rel="noopener">470. Implement Rand10() Using Rand7()</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">rand10</span><span class="params">(self)</span>:</span></span><br><span class="line">        r1 = rand7()</span><br><span class="line">        r2 = rand7()</span><br><span class="line">        num = (r1<span class="number">-1</span>) * <span class="number">7</span> + (r2<span class="number">-1</span>)</span><br><span class="line">        <span class="keyword">if</span> num &lt;= <span class="number">39</span>:</span><br><span class="line">            <span class="keyword">return</span> (num % <span class="number">10</span>) + <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> self.rand10()</span><br></pre></td></tr></table></figure>
+<h3 id="Design-Random-1-000-000-with-Random-5"><a href="#Design-Random-1-000-000-with-Random-5" class="headerlink" title="Design Random(1,000,000) with Random(5)"></a>Design Random(1,000,000) with Random(5)</h3><ul>
+<li>$log_5(1000000)$</li>
+</ul>
+<h3 id="528-Random-Pick-with-Weight"><a href="#528-Random-Pick-with-Weight" class="headerlink" title="528. Random Pick with Weight"></a><a href="https://leetcode.com/problems/random-pick-with-weight/" target="_blank" rel="noopener">528. Random Pick with Weight</a></h3><ul>
+<li>PreSum + Binary Search<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, w)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> w: <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">        s = [w[<span class="number">0</span>]]</span><br><span class="line">        <span class="keyword">for</span> weight <span class="keyword">in</span> w[<span class="number">1</span>:]:</span><br><span class="line">            s.append(s[<span class="number">-1</span>] + weight)</span><br><span class="line">        self.sum = s</span><br><span class="line">        print(self.sum)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pickIndex</span><span class="params">(self)</span>:</span></span><br><span class="line">        num = random.randint(<span class="number">1</span>, self.sum[<span class="number">-1</span>])</span><br><span class="line">        start, end = <span class="number">0</span>, len(self.sum)<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> start &lt; end:</span><br><span class="line">            mid = (start + end) / <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> self.sum[mid] &lt; num:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                end = mid</span><br><span class="line">        <span class="keyword">return</span> start</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="Random"><a href="#Random" class="headerlink" title="Random"></a>Random</h2><h3 id="380-Insert-Delete-GetRandom-O-1"><a href="#380-Insert-Delete-GetRandom-O-1" class="headerlink" title="380. Insert Delete GetRandom O(1)"></a><a href="https://leetcode.com/problems/insert-delete-getrandom-o1/" target="_blank" rel="noopener">380. Insert Delete GetRandom O(1)</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">RandomizedSet</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        self.nums = []</span><br><span class="line">        self.dic = &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, val)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> val <span class="keyword">in</span> self.dic:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        self.nums.append(val)</span><br><span class="line">        idx = len(self.nums) - <span class="number">1</span></span><br><span class="line">        self.dic[val] = idx</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">remove</span><span class="params">(self, val)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> val <span class="keyword">not</span> <span class="keyword">in</span> self.dic:</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">False</span></span><br><span class="line">        last = len(self.nums) - <span class="number">1</span></span><br><span class="line">        idx = self.dic[val]</span><br><span class="line">        <span class="keyword">if</span> last != idx:</span><br><span class="line">            self.nums[last], self.nums[idx] = self.nums[idx], self.nums[last]</span><br><span class="line">            self.dic[self.nums[idx]] = idx</span><br><span class="line">        <span class="keyword">del</span> self.dic[val]</span><br><span class="line">        self.nums.pop()</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">True</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getRandom</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> random.choice(self.nums)</span><br></pre></td></tr></table></figure>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/10/14/sampling-randomization/" data-id="cjpmt2xc7003whdu0eb8ajvmi" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-string-advanced" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -273,7 +440,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/11/string-advanced/" data-id="cjp0plc9t003hf0u0o4ru4tmi" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/11/string-advanced/" data-id="cjpmt2xcl004ohdu0ysaq5c29" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -393,6 +560,7 @@ ga('send', 'pageview');
         
             
             <h2 id="Advanced-Topic"><a href="#Advanced-Topic" class="headerlink" title="Advanced Topic"></a>Advanced Topic</h2><hr>
+<h3 id="162-Find-Peak-Element"><a href="#162-Find-Peak-Element" class="headerlink" title="162. Find Peak Element"></a><a href="https://leetcode.com/problems/find-peak-element/" target="_blank" rel="noopener">162. Find Peak Element</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">findPeakElement</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        nums = [-float(<span class="string">'inf'</span>)] + nums + [-float(<span class="string">'inf'</span>)]</span><br><span class="line">        start, end = <span class="number">1</span>, len(nums) - <span class="number">2</span></span><br><span class="line">        <span class="keyword">while</span> start &lt;= end:</span><br><span class="line">            mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> nums[mid] &lt;= nums[mid<span class="number">-1</span>]:</span><br><span class="line">                end = mid - <span class="number">1</span></span><br><span class="line">            <span class="keyword">elif</span> nums[mid] &lt;= nums[mid+<span class="number">1</span>]:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="keyword">return</span> mid<span class="number">-1</span></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
 <h3 id="4-Median-of-Two-Sorted-Arrays"><a href="#4-Median-of-Two-Sorted-Arrays" class="headerlink" title="4. Median of Two Sorted Arrays"></a><a href="https://leetcode.com/problems/median-of-two-sorted-arrays/" target="_blank" rel="noopener">4. Median of Two Sorted Arrays</a></h3><ul>
 <li>Input Two Sorted Array. How to do Binary Search?</li>
 <li>Stick with the edge case, like len(nums) &lt;= 1 and len is odd or even!!!</li>
@@ -419,6 +587,10 @@ ga('send', 'pageview');
 </ul>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">lengthOfLIS</span><span class="params">(self, nums)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> nums: <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        n = len(nums)</span><br><span class="line">        ends = [nums[<span class="number">0</span>]]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, n):</span><br><span class="line">            <span class="keyword">if</span> nums[i] &gt; ends[<span class="number">-1</span>]:</span><br><span class="line">                ends.append(nums[i])</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line"></span><br><span class="line">            start, end = <span class="number">0</span>, len(ends)<span class="number">-1</span></span><br><span class="line">            <span class="keyword">while</span> start &lt; end:</span><br><span class="line">                mid = start + (end - start) / <span class="number">2</span></span><br><span class="line">                <span class="keyword">if</span> ends[mid] &lt; nums[i]:</span><br><span class="line">                    start = mid + <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>:</span><br><span class="line">                    end = mid</span><br><span class="line">            ends[start] = nums[i]</span><br><span class="line">        <span class="keyword">return</span> len(ends)</span><br></pre></td></tr></table></figure>
 <h3 id="275-H-Index-II"><a href="#275-H-Index-II" class="headerlink" title="275. H-Index II"></a><a href="https://leetcode.com/problems/h-index-ii/" target="_blank" rel="noopener">275. H-Index II</a></h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hIndex</span><span class="params">(self, citations)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> citations:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        n = len(citations)</span><br><span class="line">        <span class="keyword">if</span> citations[<span class="number">-1</span>] &lt; <span class="number">1</span>:</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line"></span><br><span class="line">        start, end = <span class="number">0</span>, n<span class="number">-1</span></span><br><span class="line">        <span class="keyword">while</span> start &lt; end:</span><br><span class="line">            mid = start + (end - start) // <span class="number">2</span></span><br><span class="line">            <span class="keyword">if</span> citations[mid] &gt;= n - mid:</span><br><span class="line">                end = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                start = mid + <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> n-start</span><br></pre></td></tr></table></figure>
+<h3 id="774-Minimize-Max-Distance-to-Gas-Station"><a href="#774-Minimize-Max-Distance-to-Gas-Station" class="headerlink" title="774. Minimize Max Distance to Gas Station"></a><a href="https://leetcode.com/problems/minimize-max-distance-to-gas-station/" target="_blank" rel="noopener">774. Minimize Max Distance to Gas Station</a></h3><ul>
+<li>use valid function =&gt; Binary Search the results!!!<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span><span class="params">(object)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">minmaxGasDist</span><span class="params">(self, stations, K)</span>:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">valid</span><span class="params">(D)</span>:</span></span><br><span class="line">            <span class="keyword">return</span> sum([int((p2-p1) / D) <span class="keyword">for</span> p1, p2 <span class="keyword">in</span> zip(stations, stations[<span class="number">1</span>:])]) &lt;= K</span><br><span class="line"></span><br><span class="line">        start, end = <span class="number">0</span>, stations[<span class="number">-1</span>]-stations[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">while</span> end - start &gt; <span class="number">1e-6</span>:</span><br><span class="line">            mid = (start + end) / <span class="number">2.0</span></span><br><span class="line">            <span class="keyword">if</span> valid(mid):</span><br><span class="line">                end = mid</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                start = mid</span><br><span class="line">        <span class="keyword">return</span> start</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
 
         
         </div>
@@ -429,7 +601,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/10/binary-search-advanced/" data-id="cjp0plc790008f0u0fsyu5hu9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/10/binary-search-advanced/" data-id="cjpmt2x7w000bhdu0u7litgol" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -571,7 +743,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/09/greedy-schedule/" data-id="cjp0plc98002lf0u0z6oxjyec" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/09/greedy-schedule/" data-id="cjpmt2x8t001yhdu0xf3dx55o" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -725,7 +897,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/08/hash-table/" data-id="cjp0plc8o0020f0u0wcvb7x6v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/08/hash-table/" data-id="cjpmt2x8v0021hdu0t2zzey7v" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -889,7 +1061,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/07/dfs/" data-id="cjp0plc7q000qf0u0guj1ivof" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/07/dfs/" data-id="cjpmt2x83000lhdu0twflzr2t" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1063,7 +1235,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/06/heap/" data-id="cjp0plc91002af0u0kvhhxvy1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/06/heap/" data-id="cjpmt2xb70038hdu0zc99mpxa" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1290,7 +1462,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/05/string-basic/" data-id="cjp0plca0003sf0u054ujl2js" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/05/string-basic/" data-id="cjpmt2xce004bhdu04mx30w5j" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1493,7 +1665,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/04/stack/" data-id="cjp0plc9v003lf0u0cjozooyb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/04/stack/" data-id="cjpmt2xcb0044hdu0x61zdirb" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1707,222 +1879,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/10/02/array-sort/" data-id="cjp0plc770007f0u00vxdhi94" class="article-share-link"><i class="fa fa-share"></i>Share</a>
-<script>
-    (function ($) {
-        // Prevent duplicate binding
-        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
-            __SHARE_BUTTON_BINDED__ = true;
-        } else {
-            return;
-        }
-        $('body').on('click', function() {
-            $('.article-share-box.on').removeClass('on');
-        }).on('click', '.article-share-link', function(e) {
-            e.stopPropagation();
-
-            var $this = $(this),
-                url = $this.attr('data-url'),
-                encodedUrl = encodeURIComponent(url),
-                id = 'article-share-box-' + $this.attr('data-id'),
-                offset = $this.offset(),
-                box;
-
-            if ($('#' + id).length) {
-                box = $('#' + id);
-
-                if (box.hasClass('on')){
-                    box.removeClass('on');
-                    return;
-                }
-            } else {
-                var html = [
-                    '<div id="' + id + '" class="article-share-box">',
-                        '<input class="article-share-input" value="' + url + '">',
-                        '<div class="article-share-links">',
-                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
-                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
-                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
-                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
-                        '</div>',
-                    '</div>'
-                ].join('');
-
-              box = $(html);
-
-              $('body').append(box);
-            }
-
-            $('.article-share-box.on').hide();
-
-            box.css({
-                top: offset.top + 25,
-                left: offset.left
-            }).addClass('on');
-
-        }).on('click', '.article-share-box', function (e) {
-            e.stopPropagation();
-        }).on('click', '.article-share-box-input', function () {
-            $(this).select();
-        }).on('click', '.article-share-box-link', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-
-            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
-        });
-    })(jQuery);
-</script>
-
-            
-    
-
-        </footer>
-    </div>
-    
-</article>
-
-
-
-    <article id="post-pramp" class="article article-type-post" itemscope itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/2018/09/30/pramp/">pramp</a>
-        </h1>
-    
-
-                
-                    <div class="article-meta">
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/2018/09/30/pramp/">
-            <time datetime="2018-09-30T19:57:10.000Z" itemprop="datePublished">2018-09-30</time>
-        </a>
-    </div>
-
-
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/Algorithms/">Algorithms</a>
-    </div>
-
-                        
-                    </div>
-                
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-            
-            <h2 id="Communication"><a href="#Communication" class="headerlink" title="Communication"></a>Communication</h2><ul>
-<li>diagram</li>
-</ul>
-<h3 id="small-talk"><a href="#small-talk" class="headerlink" title="small talk"></a>small talk</h3><ul>
-<li>How are you? Im doing great!</li>
-<li>Thank you for the interview!</li>
-<li>Have a good night! / Have a nice day!</li>
-</ul>
-<h3 id="interviewer"><a href="#interviewer" class="headerlink" title="interviewer"></a>interviewer</h3><ul>
-<li>can you hear me?</li>
-<li>can i assume that … ?</li>
-<li><strong>walk through</strong> a small example / some test cases</li>
-<li>It looks good for me / Sounds good!</li>
-<li><strong>Im not sure</strong> why you … ?</li>
-<li>in the line …</li>
-<li>can you <strong>analyze the time and space complexity</strong>?</li>
-<li>the question said that …</li>
-<li>there are some <strong>typo</strong> in your code</li>
-<li>clarify your idea</li>
-<li>I will be the interviewer fist</li>
-<li>make sense / make no sense</li>
-<li>on the right track</li>
-<li>you get the point!</li>
-<li>you can use either BFS or DFS</li>
-<li>Go ahead!</li>
-</ul>
-<h3 id="interviewee"><a href="#interviewee" class="headerlink" title="interviewee"></a>interviewee</h3><ul>
-<li>Let me give you a small example</li>
-<li><strong>double check</strong> my code</li>
-<li>write some test cases to test my funciton</li>
-<li>as we can see</li>
-<li>analyze different cases first</li>
-<li>Lets say … variable …</li>
-<li>Can you share a small example for me?</li>
-<li>make sure that i understand the question!</li>
-</ul>
-<h2 id="Tree"><a href="#Tree" class="headerlink" title="Tree"></a>Tree</h2><ul>
-<li>can we assume that class node has parent pointer?</li>
-</ul>
-<h3 id="Sales-Path"><a href="#Sales-Path" class="headerlink" title="Sales Path"></a>Sales Path</h3><ul>
-<li><p>Find the minimal sum cost from root to leaf in a Tree (Not necessarily binary)</p>
-<img src="/2018/09/30/pramp/sales_path.png">
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Space : O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_cheapest_cost</span><span class="params">(rootNode)</span>:</span></span><br><span class="line">  <span class="keyword">if</span> <span class="keyword">not</span> rootNode.children:</span><br><span class="line">    <span class="keyword">return</span> rootNode.cost</span><br><span class="line"></span><br><span class="line">  minCost = float(<span class="string">'inf'</span>)</span><br><span class="line">  <span class="keyword">for</span> child <span class="keyword">in</span> rootNode.children:</span><br><span class="line">    minCost = min(minCost, get_cheapest_cost(child))</span><br><span class="line">  <span class="keyword">return</span> minCost + rootNode.cost</span><br></pre></td></tr></table></figure>
-</li>
-<li><p><strong>follow up</strong>:<br>TODO</p>
-</li>
-</ul>
-<h3 id="BST-Successor-Search"><a href="#BST-Successor-Search" class="headerlink" title="BST Successor Search"></a>BST Successor Search</h3><p>In a Binary Search Tree (BST), an Inorder Successor of a node is defined as the node with the smallest key greater than the key of the input node (see examples below).</p>
-<p>Given a node inputNode in a BST, you’re asked to write a function <strong>findInOrderSuccessor</strong> that returns the Inorder Successor of inputNode. If inputNode has no Inorder Successor, return null.<br><img src="/2018/09/30/pramp/BST_successor.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">find_in_order_successor</span><span class="params">(self, inputNode)</span>:</span></span><br><span class="line">  <span class="keyword">if</span> <span class="keyword">not</span> inputNode:</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> <span class="keyword">not</span> inputNode.right: <span class="comment"># dose not have right subtree</span></span><br><span class="line">    parent = inputNode.parent</span><br><span class="line">    <span class="keyword">if</span> <span class="keyword">not</span> parent: <span class="comment"># root node</span></span><br><span class="line">      <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">    <span class="keyword">while</span> parent:</span><br><span class="line">      <span class="keyword">if</span> parent.key &gt; inputNode.key:</span><br><span class="line">        <span class="keyword">return</span> parent</span><br><span class="line">      parent = parent.parent</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">None</span></span><br><span class="line">  <span class="keyword">else</span>:<span class="comment"># have right subree</span></span><br><span class="line">    cur = inputNode.right</span><br><span class="line">    <span class="keyword">while</span> cur.left:</span><br><span class="line">      cur = cur.left</span><br><span class="line">    <span class="keyword">return</span> cur</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p>Case1 : <strong>inputNode has a right child</strong>. In this case successorNode would be the node with the minimum key in inputNode’s right subtree.</p>
-</li>
-<li><p>Case2: <strong>inputNode doesn’t have a right child</strong>. In this case successorNode would be one of inputNode’s ancestors. More specifically, within inputNode’s ancestor chain (starting from inputNode <strong>all the way up</strong> to the root), successorNode is the first parent that has a left child in that chain.</p>
-</li>
-</ol>
-<h2 id="Other"><a href="#Other" class="headerlink" title="Other"></a>Other</h2><h3 id="H-Tree-Construction"><a href="#H-Tree-Construction" class="headerlink" title="H-Tree Construction"></a>H-Tree Construction</h3><p>Write a function drawHTree that constructs an H-tree, given its center (x and y coordinates), a starting length, and depth. Assume that the starting line is parallel to the X-axis.<br><img src="/2018/09/30/pramp/h_tree.png"></p>
-<ul>
-<li><p>Use the function drawLine provided to implement your algorithm. In a production code, a drawLine function would render a real line between two points. However, this is not a real production environment, so to make things easier, implement drawLine such that it simply prints its arguments (the print format is left to your discretion).</p>
-</li>
-<li><p>Analyze the time and space complexity of your algorithm. In your analysis, assume that drawLine’s time and space complexities are constant, i.e. O(1).</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">            <span class="number">1</span></span><br><span class="line">   <span class="number">1</span>     <span class="number">1</span>     <span class="number">1</span>     <span class="number">1</span></span><br><span class="line"><span class="number">1</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span>  </span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> math</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">drawLine</span><span class="params">(p1, p2)</span>:</span></span><br><span class="line">  <span class="comment"># draw line</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Time : O(4^depth)</span></span><br><span class="line"><span class="comment"># Space : O(depth)  </span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">drawHTree</span><span class="params">(x, y, length, depth)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> depth == <span class="number">0</span>:</span><br><span class="line">      <span class="keyword">return</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># horizontal segment "-"</span></span><br><span class="line">    x1 = x - length / <span class="number">2</span></span><br><span class="line">    x2 = x + length / <span class="number">2</span></span><br><span class="line">    drawLine((x1, y), (x2, y))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># left &amp; right vertical segment '|'</span></span><br><span class="line">    y1 = y - length / <span class="number">2</span></span><br><span class="line">    y2 = y + length / <span class="number">2</span></span><br><span class="line">    drawLine((x1, y1), (x1, y2))</span><br><span class="line">    drawLine((x2, y1), (x2, y2))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Recursion</span></span><br><span class="line">    new_len = length / math.sqrt(<span class="number">2</span>)</span><br><span class="line">    drawHTree((x1, y1), new_length, depth - <span class="number">1</span>)</span><br><span class="line">    drawHTree((x1, y2), new_length, depth - <span class="number">1</span>)</span><br><span class="line">    drawHTree((x2, y1), new_length, depth - <span class="number">1</span>)</span><br><span class="line">    drawHTree((x2, y2), new_length, depth - <span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="Getting-a-Different-Number"><a href="#Getting-a-Different-Number" class="headerlink" title="Getting a Different Number"></a>Getting a Different Number</h3><p>Given an array arr of unique nonnegative integers, implement a function getDifferentNumber that finds the smallest nonnegative integer that is NOT in the array.<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n)</span></span><br><span class="line"><span class="comment"># Space : O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_different_number</span><span class="params">(arr)</span>:</span></span><br><span class="line">  n = len(arr)</span><br><span class="line">  arr_set = set(arr)</span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> xrange(n+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> arr_set:</span><br><span class="line">      <span class="keyword">return</span> i</span><br></pre></td></tr></table></figure></p>
-<h3 id="Array-Index-amp-Element-Equality"><a href="#Array-Index-amp-Element-Equality" class="headerlink" title="Array Index &amp; Element Equality"></a>Array Index &amp; Element Equality</h3><p>Given a <strong>sorted array</strong> arr of distinct integers, write a function indexEqualsValueSearch that returns the lowest index i for which arr[i] == i. Return -1 if there is no such index.</p>
-<ul>
-<li>Binary Search</li>
-<li>Edge case</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(logn)</span></span><br><span class="line"><span class="comment"># Space : O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">index_equals_value_search</span><span class="params">(arr)</span>:</span></span><br><span class="line">  <span class="keyword">if</span> <span class="keyword">not</span> arr:</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">  start, end = <span class="number">0</span>, len(arr)<span class="number">-1</span></span><br><span class="line">  <span class="keyword">while</span> start &lt; end:</span><br><span class="line">    mid = start + (end - start) // <span class="number">2</span></span><br><span class="line">    <span class="keyword">if</span> arr[mid] == mid:</span><br><span class="line">      end = mid</span><br><span class="line">    <span class="keyword">elif</span> arr[mid] &gt; mid:</span><br><span class="line">      end = mid - <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">      start = mid + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># post processing</span></span><br><span class="line">  <span class="keyword">if</span> arr[start] == start:</span><br><span class="line">    <span class="keyword">return</span> start</span><br><span class="line">  <span class="keyword">else</span>:</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span></span><br></pre></td></tr></table></figure>
-<h3 id="Number-of-Paths"><a href="#Number-of-Paths" class="headerlink" title="Number of Paths"></a>Number of Paths</h3><p>Given n, the size of the grid’s axes, write a function numOfPathsToDest that returns the number of the possible paths the driverless car can take.</p>
-<img src="/2018/09/30/pramp/number_of_paths.png">
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">num_of_paths_to_dest</span><span class="params">(n)</span>:</span></span><br><span class="line">  <span class="comment"># Init dp</span></span><br><span class="line">  <span class="comment">#dp = [[0] * n for _ in xrange(n)]</span></span><br><span class="line">  dp = [<span class="number">1</span>] * n</span><br><span class="line"></span><br><span class="line">  <span class="comment"># calculate the number</span></span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> xrange(<span class="number">1</span>, n):</span><br><span class="line">    <span class="keyword">for</span> j <span class="keyword">in</span> xrange(i+<span class="number">1</span>, n):</span><br><span class="line">      dp[j] += dp[j<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> dp[<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></span><br><span class="line">  print(num_of_paths_to_dest(<span class="number">4</span>))</span><br><span class="line"></span><br><span class="line">test()</span><br><span class="line"></span><br><span class="line"><span class="comment"># Time : O(n^2) Space : O(n^2)</span></span><br><span class="line"><span class="comment"># Improved Space : O(n)</span></span><br></pre></td></tr></table></figure>
-<h4 id="Explanation"><a href="#Explanation" class="headerlink" title="Explanation"></a>Explanation</h4><p>Since the car can only move up and move down, when it arrives at a point, there are two possibilities:</p>
-<ol>
-<li>It arrives at the point from below cell (move up to the point)</li>
-<li>It arrives at the point from left cell (move right to the point)</li>
-</ol>
-<h3 id="Sentence-Reverse"><a href="#Sentence-Reverse" class="headerlink" title="Sentence Reverse"></a>Sentence Reverse</h3><ul>
-<li><p>Solution1. python built-in function</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Time : O(n), Spacce : O(n)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reverse_words1</span><span class="params">(arr)</span>:</span></span><br><span class="line">  string = <span class="string">''</span>.join(arr)</span><br><span class="line">  chs = string.split()</span><br><span class="line">  res = <span class="string">' '</span>.join(chs[::<span class="number">-1</span>])</span><br><span class="line">  <span class="keyword">return</span> list(res)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>Solution2. Reverse Twice</p>
-</li>
-<li>First: reverse all the word!<br>I love google -&gt; I evol elgoog</li>
-<li>Second: reverse the string character by charater<br>I evol elgoog -&gt; google love I</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Space O(n) -&gt; O(1)</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">reverse_words</span><span class="params">(arr)</span>:</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># First Reverse</span></span><br><span class="line">  start = <span class="number">0</span></span><br><span class="line">  <span class="keyword">for</span> i <span class="keyword">in</span> xrange(len(arr)+<span class="number">1</span>):</span><br><span class="line">    <span class="keyword">if</span> i == len(arr) <span class="keyword">or</span> arr[i] == <span class="string">' '</span>: <span class="comment"># condition</span></span><br><span class="line">      end = i - <span class="number">1</span></span><br><span class="line">      <span class="keyword">while</span> start &lt; end:</span><br><span class="line">        arr[start], arr[end] = arr[end], arr[start]</span><br><span class="line">        start += <span class="number">1</span></span><br><span class="line">        end -= <span class="number">1</span></span><br><span class="line">      start = i + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">  <span class="comment"># Second Reverse</span></span><br><span class="line">  start, end = <span class="number">0</span>, len(arr)<span class="number">-1</span></span><br><span class="line">  <span class="keyword">while</span> start &lt; end:</span><br><span class="line">    arr[start], arr[end] = arr[end], arr[start]</span><br><span class="line">    start += <span class="number">1</span></span><br><span class="line">    end -= <span class="number">1</span></span><br><span class="line">  <span class="keyword">return</span> arr</span><br></pre></td></tr></table></figure>
-<h3 id="Matrix-Spiral-Copy"><a href="#Matrix-Spiral-Copy" class="headerlink" title="Matrix Spiral Copy"></a>Matrix Spiral Copy</h3><p>Given a 2D array (matrix) inputMatrix of integers, create a function spiralCopy that copies inputMatrix’s values into a 1D array in a spiral order, clockwise. Your function then should return that array. Analyze the time and space complexities of your solution.<br><img src="/2018/09/30/pramp/spiral_matrix.png"></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">spiralOrder</span><span class="params">(self, matrix)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> matrix:</span><br><span class="line">            <span class="keyword">return</span> []</span><br><span class="line"></span><br><span class="line">        m, n = len(matrix), len(matrix[<span class="number">0</span>])</span><br><span class="line">        directions = [(<span class="number">0</span>, <span class="number">1</span>), (<span class="number">1</span>, <span class="number">0</span>), (<span class="number">0</span>, <span class="number">-1</span>), (<span class="number">-1</span>, <span class="number">0</span>)]</span><br><span class="line">        k = <span class="number">0</span></span><br><span class="line">        visited = set()</span><br><span class="line">        x = y = <span class="number">0</span></span><br><span class="line">        res = []</span><br><span class="line">        <span class="keyword">while</span> len(res) &lt; m * n:</span><br><span class="line">            res.append(matrix[x][y])</span><br><span class="line">            visited.add((x, y))</span><br><span class="line"></span><br><span class="line">            dx, dy = directions[k]</span><br><span class="line">            nx, ny = x+dx, y+dy</span><br><span class="line">            <span class="keyword">if</span> (nx, ny) <span class="keyword">not</span> <span class="keyword">in</span> visited <span class="keyword">and</span> <span class="number">0</span> &lt;= nx &lt;= m<span class="number">-1</span> <span class="keyword">and</span> <span class="number">0</span> &lt;= ny &lt;= n<span class="number">-1</span>:</span><br><span class="line">                x, y = nx, ny</span><br><span class="line">            <span class="keyword">else</span>: <span class="comment"># need to change direction</span></span><br><span class="line">                k = (k + <span class="number">1</span>) % <span class="number">4</span></span><br><span class="line">                dx, dy = directions[k]</span><br><span class="line">                x, y = x+dx, y+dy</span><br><span class="line">        <span class="keyword">return</span> res</span><br></pre></td></tr></table></figure>
-
-        
-        </div>
-        <footer class="article-footer">
-            <div class="share-container">
-
-
-
-</div>
-
-    <a data-url="http://kaihaoli.github.io/2018/09/30/pramp/" data-id="cjp0plc9f002vf0u0lmil7ldq" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/10/02/array-sort/" data-id="cjpmt2x7b0001hdu070rnh5o0" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -2016,6 +1973,33 @@ ga('send', 'pageview');
                         
                         <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/12/03/bfs-matrix/" class="title">BFS Matrix</a></p>
+                            <p class="item-date"><time datetime="2018-12-03T13:33:40.000Z" itemprop="datePublished">2018-12-03</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/12/02/bfs/" class="title">BFS</a></p>
+                            <p class="item-date"><time datetime="2018-12-03T03:29:29.000Z" itemprop="datePublished">2018-12-02</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
+                            <p class="item-title"><a href="/2018/12/01/graph-cycle/" class="title">Graph Cycle</a></p>
+                            <p class="item-date"><time datetime="2018-12-01T15:35:11.000Z" itemprop="datePublished">2018-12-01</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/11/27/dp-sequence-adjacent/" class="title">DP - Sequence Adjacent Element</a></p>
                             <p class="item-date"><time datetime="2018-11-27T16:26:04.000Z" itemprop="datePublished">2018-11-27</time></p>
                         </div>
@@ -2027,33 +2011,6 @@ ga('send', 'pageview');
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/11/23/topic-calculator/" class="title">Calculator</a></p>
                             <p class="item-date"><time datetime="2018-11-23T22:46:58.000Z" itemprop="datePublished">2018-11-23</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/17/topic-serialization/" class="title">Serialization</a></p>
-                            <p class="item-date"><time datetime="2018-11-17T21:32:56.000Z" itemprop="datePublished">2018-11-17</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/15/stack-monotone/" class="title">Monotone Stack</a></p>
-                            <p class="item-date"><time datetime="2018-11-16T03:52:01.000Z" itemprop="datePublished">2018-11-15</time></p>
-                        </div>
-                    </li>
-                
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/14/topic-interval/" class="title">Interval Problem</a></p>
-                            <p class="item-date"><time datetime="2018-11-14T17:14:48.000Z" itemprop="datePublished">2018-11-14</time></p>
                         </div>
                     </li>
                 
@@ -2075,7 +2032,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">25</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">8</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
