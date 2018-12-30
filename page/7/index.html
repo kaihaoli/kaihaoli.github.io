@@ -159,7 +159,7 @@ ga('send', 'pageview');
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                67
+                68
                 <span>posts</span>
             </div>
             <div class="article-info-block">
@@ -188,6 +188,204 @@ ga('send', 'pageview');
 
             
             <section id="main">
+    <article id="post-spark-quick-start" class="article article-type-post" itemscope itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+    
+        <h1 itemprop="name">
+            <a class="article-title" href="/2018/05/01/spark-quick-start/">Spark Quick Start</a>
+        </h1>
+    
+
+                
+                    <div class="article-meta">
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/2018/05/01/spark-quick-start/">
+            <time datetime="2018-05-01T18:24:06.000Z" itemprop="datePublished">2018-05-01</time>
+        </a>
+    </div>
+
+
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Big-Data/">Big Data</a>
+    </div>
+
+                        
+                    </div>
+                
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+            
+            <p><strong>Apache Spark™</strong> is a <strong>unified analytics engine</strong> for <strong>large-scale data processing</strong>.</p>
+<ul>
+<li>Speed<ul>
+<li>Computation optimization (DAG, thread-based)</li>
+<li><strong>In memory computing </strong></li>
+</ul>
+</li>
+<li>Easy to Use &amp; Generality<ul>
+<li>Interactive Shell with the Scala, Python, R, and SQL shells.</li>
+<li>80 <strong>high-level operators</strong> that make it easy to build parallel apps.</li>
+<li>Combine SQL, streaming, and complex analytics.(多个框架的学习成本)</li>
+</ul>
+</li>
+<li>Runs Everywhere<ul>
+<li>Spark runs on Hadoop, Apache Mesos, Kubernetes, standalone, or in the cloud.</li>
+<li>技术选型！Access data in HDFS, Apache Cassandra, Apache HBase, Apache Hive, and hundreds of other data sources.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h2><img src="/2018/05/01/spark-quick-start/spark-architecture.png">
+<h2 id="History"><a href="#History" class="headerlink" title="History"></a>History</h2><img src="/2018/05/01/spark-quick-start/SparkStreaming.jpg">
+<p>Quick Start Reference : <a href="https://spark.apache.org/docs/latest/quick-start.html" target="_blank" rel="noopener">Quick Start Spark</a></p>
+<h2 id="Install-Spark-without-Hadoop"><a href="#Install-Spark-without-Hadoop" class="headerlink" title="Install Spark without Hadoop"></a>Install Spark without Hadoop</h2><ul>
+<li>Download a packaged release of Spark from the <a href="http://spark.apache.org/downloads.html" target="_blank" rel="noopener">Spark website</a>.</li>
+<li>Since we won’t be using HDFS, you can download a package for any version of Hadoop.</li>
+<li>下载即可用</li>
+</ul>
+<h2 id="Interact-with-the-Spark-Shell"><a href="#Interact-with-the-Spark-Shell" class="headerlink" title="Interact with the Spark Shell"></a>Interact with the Spark Shell</h2><p>Spark’s shell provides a simple way to learn the API, as well as <strong>a powerful tool to analyze data interactively</strong>. It is available in either <strong>Scala or Python</strong>.</p>
+<h3 id="Start"><a href="#Start" class="headerlink" title="Start"></a>Start</h3><ul>
+<li>Start it by running pyspark in the Spark directory</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./bin/pyspark</span><br></pre></td></tr></table></figure>
+<h3 id="DataSet"><a href="#DataSet" class="headerlink" title="DataSet"></a>DataSet</h3><p>Spark’s primary abstraction is a <strong>distributed collection of items called a Dataset</strong>.(Before Spark2.x, it called Resilient Distributed Dataset (RDD)) Datasets can be created from Hadoop InputFormats (such as HDFS files) or by transforming other Datasets.</p>
+<p>Due to Python’s dynamic nature, we don’t need the Dataset to be strongly-typed in Python. As a result, all Datasets in Python are Dataset[Row], and we call it <strong>DataFrame</strong> to be consistent with the data frame concept in Pandas and R.</p>
+<ul>
+<li>Make a new DataFrame from the text of the README file</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; textFile = spark.read.text(<span class="string">"README.md"</span>)</span><br><span class="line">&gt;&gt;&gt; textFile.count()  <span class="comment"># Number of rows in this DataFrame</span></span><br><span class="line">103</span><br><span class="line"></span><br><span class="line">&gt;&gt;&gt; textFile.first()  <span class="comment"># First row in this DataFrame</span></span><br><span class="line">Row(value=u<span class="string">'# Apache Spark'</span>)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Transform this DataFrame to a new one<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># We call filter to return a new DataFrame with a subset of the lines in the file.</span></span><br><span class="line">&gt;&gt;&gt; linesWithSpark = textFile.filter(textFile.value.contains(<span class="string">"Spark"</span>))</span><br><span class="line"><span class="comment"># How many lines contain "Spark"?</span></span><br><span class="line">&gt;&gt;&gt; textFile.filter(textFile.value.contains(<span class="string">"Spark"</span>)).count()  </span><br><span class="line">20</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="Self-Contained-Applications"><a href="#Self-Contained-Applications" class="headerlink" title="Self-Contained Applications"></a>Self-Contained Applications</h2><p><strong>Scala (with sbt), Java (with Maven), and Python (pip).</strong></p>
+<ul>
+<li>This program just counts the number of lines containing ‘a’ and the number containing ‘b’ in a text file.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""spark-test.py"""</span></span><br><span class="line"><span class="keyword">from</span> pyspark.sql <span class="keyword">import</span> SparkSession</span><br><span class="line"></span><br><span class="line"><span class="comment"># TODO : YOUR_SPARK_HOME</span></span><br><span class="line">logFile = <span class="string">"/Users/kaihaoli/Downloads/spark-2.3.0-bin-hadoop2.7/README.md"</span></span><br><span class="line">spark = SparkSession.builder.appName(<span class="string">"SimpleApp"</span>).getOrCreate()</span><br><span class="line">logData = spark.read.text(logFile).cache()</span><br><span class="line"></span><br><span class="line">numAs = logData.filter(logData.value.contains(<span class="string">'a'</span>)).count()</span><br><span class="line">numBs = logData.filter(logData.value.contains(<span class="string">'b'</span>)).count()</span><br><span class="line"></span><br><span class="line">print(<span class="string">"Lines with a: %i, lines with b: %i"</span> % (numAs, numBs))</span><br><span class="line"></span><br><span class="line">spark.stop()</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Install pySpark</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt; pip install pyspark</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Run the simple application</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; python spark-test.py</span><br><span class="line">........</span><br><span class="line">Lines with a: 61, lines with b: 30</span><br><span class="line">.......</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<hr>
+<h2 id="Spark-Streaming-With-Kafka"><a href="#Spark-Streaming-With-Kafka" class="headerlink" title="Spark Streaming With Kafka"></a>Spark Streaming With Kafka</h2><h3 id="SparkContext"><a href="#SparkContext" class="headerlink" title="SparkContext"></a><strong>SparkContext</strong></h3><ul>
+<li>Main entry point for <strong>Spark functionality</strong>.</li>
+<li>A SparkContext represents the connection to a Spark cluster, and can be used to create RDD and broadcast variables on that cluster.</li>
+<li>master = “local[2]”, appName = “StockAveragePrice“<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark <span class="keyword">import</span> SparkContext</span><br><span class="line">sc = SparkContext(<span class="string">"local[2]"</span>, <span class="string">"StockAveragePrice"</span>)</span><br><span class="line">sc.setLogLevel(<span class="string">'ERROR'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="StreamingContext"><a href="#StreamingContext" class="headerlink" title="StreamingContext"></a><strong>StreamingContext</strong></h3><ul>
+<li>Main entry point for <strong>Spark Streaming functionality</strong>.</li>
+<li>A StreamingContext represents the connection to a Spark cluster, and can be used to create <strong>DStream various input sources</strong>.<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.streaming <span class="keyword">import</span> StreamingContext</span><br><span class="line">ssc = StreamingContext(sc, <span class="number">5</span>)</span><br><span class="line"><span class="comment"># sparkContext = sc, batchDuration = 5</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="KafkaUtils"><a href="#KafkaUtils" class="headerlink" title="KafkaUtils"></a><strong>KafkaUtils</strong></h3><ul>
+<li>KafkaUtils.createDirectStream(ssc, topics, kafkaParams,…)</li>
+<li>Create an input stream that directly pulls messages from a Kafka Broker and specific offset.<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> pyspark.streaming.kafka <span class="keyword">import</span> KafkaUtils</span><br><span class="line">topic = <span class="string">"test"</span></span><br><span class="line">brokers = <span class="string">"192.168.99.100:9092"</span></span><br><span class="line"><span class="comment"># Kafka Consumer</span></span><br><span class="line">directKafkaStream = KafkaUtils.createDirectStream(</span><br><span class="line">                            ssc,</span><br><span class="line">                            [topic],</span><br><span class="line">                            &#123;<span class="string">'metadata.broker.list'</span>: brokers&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+        
+        </div>
+        <footer class="article-footer">
+            <div class="share-container">
+
+
+
+</div>
+
+    <a data-url="http://kaihaoli.github.io/2018/05/01/spark-quick-start/" data-id="cjqb5pi4c003b2qu0ys9s7kdu" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+<script>
+    (function ($) {
+        // Prevent duplicate binding
+        if (typeof(__SHARE_BUTTON_BINDED__) === 'undefined' || !__SHARE_BUTTON_BINDED__) {
+            __SHARE_BUTTON_BINDED__ = true;
+        } else {
+            return;
+        }
+        $('body').on('click', function() {
+            $('.article-share-box.on').removeClass('on');
+        }).on('click', '.article-share-link', function(e) {
+            e.stopPropagation();
+
+            var $this = $(this),
+                url = $this.attr('data-url'),
+                encodedUrl = encodeURIComponent(url),
+                id = 'article-share-box-' + $this.attr('data-id'),
+                offset = $this.offset(),
+                box;
+
+            if ($('#' + id).length) {
+                box = $('#' + id);
+
+                if (box.hasClass('on')){
+                    box.removeClass('on');
+                    return;
+                }
+            } else {
+                var html = [
+                    '<div id="' + id + '" class="article-share-box">',
+                        '<input class="article-share-input" value="' + url + '">',
+                        '<div class="article-share-links">',
+                            '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="fa fa-twitter article-share-twitter" target="_blank" title="Twitter"></a>',
+                            '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="fa fa-facebook article-share-facebook" target="_blank" title="Facebook"></a>',
+                            '<a href="http://pinterest.com/pin/create/button/?url=' + encodedUrl + '" class="fa fa-pinterest article-share-pinterest" target="_blank" title="Pinterest"></a>',
+                            '<a href="https://plus.google.com/share?url=' + encodedUrl + '" class="fa fa-google article-share-google" target="_blank" title="Google+"></a>',
+                        '</div>',
+                    '</div>'
+                ].join('');
+
+              box = $(html);
+
+              $('body').append(box);
+            }
+
+            $('.article-share-box.on').hide();
+
+            box.css({
+                top: offset.top + 25,
+                left: offset.left
+            }).addClass('on');
+
+        }).on('click', '.article-share-box', function (e) {
+            e.stopPropagation();
+        }).on('click', '.article-share-box-input', function () {
+            $(this).select();
+        }).on('click', '.article-share-box-link', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            window.open(this.href, 'article-share-box-window-' + Date.now(), 'width=500,height=450');
+        });
+    })(jQuery);
+</script>
+
+            
+    
+
+        </footer>
+    </div>
+    
+</article>
+
+
+
     <article id="post-bit-manipulation" class="article article-type-post" itemscope itemprop="blogPost">
     <div class="article-inner">
         
@@ -403,7 +601,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/29/bit-manipulation/" data-id="cjpmt2x81000ihdu0qv11nill" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/29/bit-manipulation/" data-id="cjqb5pi2h000f2qu0xy6sc7dz" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -577,7 +775,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/25/docker-quick-start/" data-id="cjpmt2x87000uhdu0rbwyrbog" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/25/docker-quick-start/" data-id="cjqb5pi2x000w2qu0izl5l5y4" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -778,7 +976,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/21/docker/" data-id="cjpmt2x85000rhdu07kgw38c9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/21/docker/" data-id="cjqb5pi2r000m2qu01azdhyz9" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -960,7 +1158,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/18/message-queue/" data-id="cjpmt2xbn003dhdu0gpaj4bt5" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/18/message-queue/" data-id="cjqb5pi41002r2qu0jegau0n8" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1163,7 +1361,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/17/redis/" data-id="cjpmt2xc5003uhdu0zxrqnqo1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/17/redis/" data-id="cjqb5pi4800352qu0327so9u3" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1408,7 +1606,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/15/binary-search/" data-id="cjpmt2x7s000ahdu0rvtf7o3z" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/15/binary-search/" data-id="cjqb5pi2u000s2qu0du0hq2c7" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1576,7 +1774,7 @@ ga('send', 'pageview');
 
 </div>
 
-    <a data-url="http://kaihaoli.github.io/2018/04/10/segment-tree/" data-id="cjpmt2xca0041hdu0o4st6qnc" class="article-share-link"><i class="fa fa-share"></i>Share</a>
+    <a data-url="http://kaihaoli.github.io/2018/04/10/segment-tree/" data-id="cjqb5pi4f003h2qu03v6wj5k1" class="article-share-link"><i class="fa fa-share"></i>Share</a>
 <script>
     (function ($) {
         // Prevent duplicate binding
@@ -1669,6 +1867,15 @@ ga('send', 'pageview');
                     <li>
                         
                         <div class="item-inner">
+                            <p class="item-category"><a class="article-category-link" href="/categories/System-Design/">System Design</a></p>
+                            <p class="item-title"><a href="/2018/12/25/system-design-news/" class="title">System Design - News Feed</a></p>
+                            <p class="item-date"><time datetime="2018-12-25T15:26:08.000Z" itemprop="datePublished">2018-12-25</time></p>
+                        </div>
+                    </li>
+                
+                    <li>
+                        
+                        <div class="item-inner">
                             <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
                             <p class="item-title"><a href="/2018/12/03/bfs-matrix/" class="title">BFS Matrix</a></p>
                             <p class="item-date"><time datetime="2018-12-03T13:33:40.000Z" itemprop="datePublished">2018-12-03</time></p>
@@ -1702,15 +1909,6 @@ ga('send', 'pageview');
                         </div>
                     </li>
                 
-                    <li>
-                        
-                        <div class="item-inner">
-                            <p class="item-category"><a class="article-category-link" href="/categories/Algorithms/">Algorithms</a></p>
-                            <p class="item-title"><a href="/2018/11/23/topic-calculator/" class="title">Calculator</a></p>
-                            <p class="item-date"><time datetime="2018-11-23T22:46:58.000Z" itemprop="datePublished">2018-11-23</time></p>
-                        </div>
-                    </li>
-                
             </ul>
         </div>
     </div>
@@ -1720,7 +1918,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">categories</h3>
         <div class="widget">
-            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">57</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/System-Design/">System Design</a><span class="category-list-count">1</span></li></ul>
+            <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Algorithms/">Algorithms</a><span class="category-list-count">57</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Big-Data/">Big Data</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Design/">Design</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Full-Stack/">Full Stack</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/OOD/">OOD</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/System-Design/">System Design</a><span class="category-list-count">2</span></li></ul>
         </div>
     </div>
 
@@ -1729,7 +1927,7 @@ ga('send', 'pageview');
     <div class="widget-wrap">
         <h3 class="widget-title">archives</h3>
         <div class="widget">
-            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
+            <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/12/">December 2018</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a><span class="archive-list-count">13</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/09/">September 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">August 2018</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/05/">May 2018</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a><span class="archive-list-count">7</span></li></ul>
         </div>
     </div>
 
